@@ -11,6 +11,14 @@
 #import "UROPMainViewController.h"
 
 @interface UROP2ndViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+    <UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate>
+{
+    UIImageView *imageView;
+    BOOL newMedia;
+}
+
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)useCameraRoll;
 
 @end

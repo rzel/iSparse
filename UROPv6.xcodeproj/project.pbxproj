@@ -23,6 +23,7 @@
 		D2DF754916CF1AA100DF158B /* ted.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2DF754816CF1AA100DF158B /* ted.jpg */; };
 		D2DF754B16CF1B8700DF158B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF754A16CF1B8700DF158B /* Accelerate.framework */; };
 		D2DF754D16CF1B8E00DF158B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF754C16CF1B8E00DF158B /* MobileCoreServices.framework */; };
+		D2DF755016CF209400DF158B /* UROP3rdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF754F16CF209400DF158B /* UROP3rdViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		D2DF754816CF1AA100DF158B /* ted.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ted.jpg; sourceTree = "<group>"; };
 		D2DF754A16CF1B8700DF158B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D2DF754C16CF1B8E00DF158B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D2DF754E16CF209300DF158B /* UROP3rdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROP3rdViewController.h; sourceTree = "<group>"; };
+		D2DF754F16CF209400DF158B /* UROP3rdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROP3rdViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +106,12 @@
 				D2DF752E16CF174A00DF158B /* UROPAppDelegate.h */,
 				D2DF752F16CF174A00DF158B /* UROPAppDelegate.m */,
 				D2DF753716CF174A00DF158B /* MainStoryboard.storyboard */,
-				D2DF754516CF181100DF158B /* UROP2ndViewController.h */,
-				D2DF754616CF181100DF158B /* UROP2ndViewController.m */,
 				D2DF753A16CF174A00DF158B /* UROPMainViewController.h */,
 				D2DF753B16CF174A00DF158B /* UROPMainViewController.m */,
+				D2DF754516CF181100DF158B /* UROP2ndViewController.h */,
+				D2DF754616CF181100DF158B /* UROP2ndViewController.m */,
+				D2DF754E16CF209300DF158B /* UROP3rdViewController.h */,
+				D2DF754F16CF209400DF158B /* UROP3rdViewController.m */,
 				D2DF753D16CF174A00DF158B /* UROPFlipsideViewController.h */,
 				D2DF753E16CF174A00DF158B /* UROPFlipsideViewController.m */,
 				D2DF752616CF174900DF158B /* Supporting Files */,
@@ -201,6 +206,7 @@
 				D2DF753C16CF174A00DF158B /* UROPMainViewController.m in Sources */,
 				D2DF753F16CF174A00DF158B /* UROPFlipsideViewController.m in Sources */,
 				D2DF754716CF181100DF158B /* UROP2ndViewController.m in Sources */,
+				D2DF755016CF209400DF158B /* UROP3rdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
