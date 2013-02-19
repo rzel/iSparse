@@ -11,6 +11,7 @@
 #import "UROPFinalViewController.h"
 #import "UROPMainViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "UROPbrain.h"
 
 @interface UROP3rdViewController ()
 
@@ -23,8 +24,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.imageView.image = self.imageStay;
+    self.label.text = @"test?";
     
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"samplingToFinal"]) {
         

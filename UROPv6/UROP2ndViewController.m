@@ -11,20 +11,35 @@
 #import "UROP3rdViewController.h"
 #import "UROPMainViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import "UROPbrain.h"
 @interface UROP2ndViewController ()
+@property (nonatomic, strong) UROPbrain *brain;
 
 @end
 
 @implementation UROP2ndViewController
 @synthesize imageView = _imageView;
+@synthesize brain = _brain;
+
+-(UROPbrain *)brain
+{
+    if (!_brain) _brain = [[UROPbrain alloc] init];
+    return _brain;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.imageView.image = [UIImage imageNamed:@"ted.jpg"];
-    self.imageStay = [UIImage imageNamed:@"ted.jpg"];
+    UIImage * image = [self imageWithImage:[UIImage imageNamed:@"ted.jpg"] scaledToSize:CGSizeMake(256, 256)];
+    self.imageView.image = image;
+    self.imageStay = image;
+}
+- (IBAction)coarsenessChanged:(id)sender {
+    float rate = 1.5*(1 - 0.5*self.slider.value);
+    NSLog(@"before: self.imageStay = %@, self.imageView.image = %@", self.imageStay, self.imageView.image);
+    self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
+        NSLog(@"\t after: self.imageStay = %@, self.imageView.image = %@", self.imageStay, self.imageView.image);
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,8 +74,14 @@
         destViewController.imageStay = self.imageStay;
     }
 }
+- (IBAction)sliderChanged:(id)sender {
+    float rate = 1.5*(1 - 0.3*self.slider.value);
+    self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
+    
 
+}
 
+// from the web
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
