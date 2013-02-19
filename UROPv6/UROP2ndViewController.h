@@ -19,6 +19,8 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIImage *imageStay;
+
 - (IBAction)useCameraRoll;
 
 @end

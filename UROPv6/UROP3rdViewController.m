@@ -8,6 +8,7 @@
 
 
 #import "UROP3rdViewController.h"
+#import "UROPFinalViewController.h"
 #import "UROPMainViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
@@ -21,6 +22,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.imageView.image = self.imageStay;
+    
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"samplingToFinal"]) {
+        
+        UROPFinalViewController *destViewController = segue.destinationViewController;
+        destViewController.imageStay = self.imageStay;
+    }
 }
 
 - (void)didReceiveMemoryWarning

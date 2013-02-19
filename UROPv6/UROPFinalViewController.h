@@ -1,15 +1,14 @@
 //
-//  UROP3rdViewController.h
+//  UROPFinalViewController.h
 //  UROPv6
 //
-//  Created by Scott Sievert on 2/15/13.
+//  Created by Scott Sievert on 2/18/13.
 //  Copyright (c) 2013 com.scott. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface UROP3rdViewController : UIViewController
+@interface UROPFinalViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
 @end

@@ -8,6 +8,7 @@
 
 
 #import "UROP2ndViewController.h"
+#import "UROP3rdViewController.h"
 #import "UROPMainViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
@@ -23,6 +24,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.imageView.image = [UIImage imageNamed:@"ted.jpg"];
+    self.imageStay = [UIImage imageNamed:@"ted.jpg"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +52,14 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"qualityToSampling"]) {
+        
+        UROP3rdViewController *destViewController = segue.destinationViewController;
+        destViewController.imageStay = self.imageStay;
+    }
+}
+
 
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -63,6 +73,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         // "self." added by SCOTT
         image = [self imageWithImage:image scaledToSize:CGSizeMake(256, 256)];
         self.imageView.image = image;
+        self.imageStay = image;
         if (newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
