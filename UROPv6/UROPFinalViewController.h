@@ -10,5 +10,8 @@
 
 @interface UROPFinalViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
+@property  float rate;
+@property  float coarse;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end

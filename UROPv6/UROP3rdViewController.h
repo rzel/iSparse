@@ -10,6 +10,8 @@
 
 @interface UROP3rdViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
+@property  float rate;
+@property  float coarse;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UISlider *samplingSlider;

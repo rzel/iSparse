@@ -20,6 +20,9 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
+@property float rate;
+@property float coarse;
+
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 
 - (IBAction)useCameraRoll;

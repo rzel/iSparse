@@ -39,6 +39,7 @@
 - (IBAction)coarsenessChanged:(id)sender {
     float rate = 1.5*(1 - 0.9*self.slider.value);
     self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
+    self.coarse = rate;
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +72,8 @@
         
         UROP3rdViewController *destViewController = segue.destinationViewController;
         destViewController.imageStay = self.imageStay;
+        destViewController.coarse = self.coarse;
+        destViewController.rate = -1;
     }
 }
 - (IBAction)sliderChanged:(id)sender {
@@ -91,6 +94,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         UIImage *image = [info
                           objectForKey:UIImagePickerControllerOriginalImage];
         // "self." added by SCOTT
+        // IMAGE picks here. FINDME. change as needed.
         image = [self imageWithImage:image scaledToSize:CGSizeMake(256, 256)];
         self.imageView.image = image;
         self.imageStay = image;

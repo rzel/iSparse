@@ -38,6 +38,7 @@
     float rate = 0.6*self.samplingSlider.value + 0.2;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
     self.label.text = [NSString stringWithFormat:@"%.0f%%", 100*self.samplingSlider.value];
+    self.rate = rate;
     
 }
 
@@ -46,6 +47,9 @@
         
         UROPFinalViewController *destViewController = segue.destinationViewController;
         destViewController.imageStay = self.imageStay;
+        destViewController.rate = self.rate;
+        destViewController.coarse = self.coarse;
+        
     }
 }
 
