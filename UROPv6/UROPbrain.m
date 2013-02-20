@@ -1244,16 +1244,15 @@
 -(float *)sample:(float *)array atRate:(float)rate ofLength:(int)n
 {
     srandom(42);
+    srand(42);
+
     for (int i=0; i<n; i++) {
         float ra = (float)(rand() % n)/n;
         if (ra > rate) {
             array[i] = 0;
         }
-        //NSLog(@"%f", ra);
     }
-    for (int i=0; i<10; i++) {
-        //NSLog(@"%f", array[i]);
-    }
+
     return array;
     
 }

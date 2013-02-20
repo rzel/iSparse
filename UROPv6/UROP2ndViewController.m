@@ -32,14 +32,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     UIImage * image = [self imageWithImage:[UIImage imageNamed:@"ted.jpg"] scaledToSize:CGSizeMake(256, 256)];
+    image = [self.brain doWaveletKeepingLargestKTerms:image coarse:1.5*(1-0.9*0.5)];
     self.imageView.image = image;
     self.imageStay = image;
 }
 - (IBAction)coarsenessChanged:(id)sender {
-    float rate = 1.5*(1 - 0.5*self.slider.value);
-    NSLog(@"before: self.imageStay = %@, self.imageView.image = %@", self.imageStay, self.imageView.image);
+    float rate = 1.5*(1 - 0.9*self.slider.value);
     self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
-        NSLog(@"\t after: self.imageStay = %@, self.imageView.image = %@", self.imageStay, self.imageView.image);
 }
 
 - (void)didReceiveMemoryWarning

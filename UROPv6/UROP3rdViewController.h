@@ -12,5 +12,6 @@
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UISlider *samplingSlider;
 
 @end
