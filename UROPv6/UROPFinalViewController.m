@@ -149,13 +149,22 @@
                                                             coarse:coarseness
                                                                idx:idx y_r:y_r y_g:y_g y_b:y_b
                                                               rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:75],
-                                          
-                                          [UIImage imageNamed:@"ted.jpg"],
-
+                                          [self.brain reconstruct2:self.imageView.image
+                                                            coarse:coarseness
+                                                               idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                              rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:120],
+                                          [self.brain reconstruct2:self.imageView.image
+                                                            coarse:coarseness
+                                                               idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                              rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:150],
+                                          [self.brain reconstruct2:self.imageView.image
+                                                            coarse:coarseness
+                                                               idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                              rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:180],
                                           
                                                                        nil];
     self.imageView.animationDuration = 6.00;
-    self.imageView.animationRepeatCount = 1000;
+    self.imageView.animationRepeatCount = 100;
     [self.imageView startAnimating];
 }
 

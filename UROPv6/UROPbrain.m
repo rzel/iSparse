@@ -1973,7 +1973,7 @@
            atRate:(float)p
              xold:(float *)xold
                 y:(float *)y
-              idx:(NSMutableArray *)idx
+              idx:(NSMutableArray *)idx coarse:(float)coarse
 {
     int i;
 //    NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:N];
@@ -2124,7 +2124,7 @@
     // idx is only used to make the measurements
     
     //      s = 5000
-    int s = 5000;
+//    int s = 5000;
     
     //      xold = zeros(size(I3));
 //    for (i=0; i<N; i++) {
@@ -2190,7 +2190,7 @@
         //[self reverseArray:tt length:N];
         //s = 5000;
         //float cut_off = tt[s];
-        float cut_off = 1.00 * (165.24 * pow(2.7318, -0.22*its) + 26.25);
+        float cut_off = coarse * (165.24 * pow(2.7318, -0.22*its) + 26.25);
         //NSLog(@"cut_off == %f", cut_off);
         //float cut_off = 159;
         //NSLog(@"cut_off, again == %f", cut_off);
@@ -2259,7 +2259,7 @@
         [self IHT2_v4:colorPlane ofLength:pix
               ofWidth:width ofHeight:height order:order
             iteration:1 atRate:rate
-                 xold:xold y:y idx:idx];
+                 xold:xold y:y idx:idx coarse:coarse];
         // end of do what you want
         [self inverseOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
         
@@ -2434,7 +2434,7 @@
         [self IHT2_v4:xold ofLength:pix
               ofWidth:width ofHeight:height order:order
             iteration:its atRate:rate
-                 xold:xold y:y idx:idx];
+                 xold:xold y:y idx:idx coarse:coarse];
         
         // and then update
         if (n==0) {
