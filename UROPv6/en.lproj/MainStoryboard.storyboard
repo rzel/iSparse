@@ -25,20 +25,36 @@
                                     <segue destination="6" kind="modal" identifier="showAlternate" modalTransitionStyle="flipHorizontal" id="11"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLY-Xp-vRr">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="277" id="8C6-0r-M43"/>
+                                    <constraint firstAttribute="width" constant="240" id="UW2-KO-YeA"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="10" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="apl-1S-UOC"/>
                             <constraint firstAttribute="bottom" secondItem="10" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="bcr-if-aDO"/>
+                            <constraint firstItem="jLY-Xp-vRr" firstAttribute="top" secondItem="3" secondAttribute="top" constant="42" id="t9o-eO-Bz1"/>
+                            <constraint firstItem="jLY-Xp-vRr" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="tCB-Yy-GTg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WXg-aa-oNx">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="DUi-zd-ZbZ">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="DUi-zd-ZbZ">
                             <connections>
                                 <segue destination="Opu-mG-0GY" kind="push" id="Q8Q-f7-a5w"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="text" destination="jLY-Xp-vRr" id="3x2-t3-Ksa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,6 +68,16 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVN-q3-xKF">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="292" id="EqD-lR-DZU"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="12">
                                 <items>
                                     <navigationItem title="Title" id="13">
@@ -66,11 +92,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IVN-q3-xKF" firstAttribute="trailing" secondItem="7" secondAttribute="trailing" type="default" id="IBd-oc-otw"/>
+                            <constraint firstItem="IVN-q3-xKF" firstAttribute="top" secondItem="7" secondAttribute="top" constant="121" id="TKQ-Co-tSq"/>
+                            <constraint firstItem="IVN-q3-xKF" firstAttribute="leading" secondItem="7" secondAttribute="leading" type="default" id="Xtx-Mg-mLy"/>
                             <constraint firstItem="12" firstAttribute="leading" secondItem="7" secondAttribute="leading" type="default" id="kyL-VC-rMY"/>
                             <constraint firstItem="12" firstAttribute="top" secondItem="7" secondAttribute="top" type="default" id="oQ7-QK-1Ab"/>
                             <constraint firstItem="12" firstAttribute="trailing" secondItem="7" secondAttribute="trailing" type="default" id="yf5-Bx-wHg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="text" destination="IVN-q3-xKF" id="3Hy-8F-Vlk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,7 +168,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Quality" id="GTM-BQ-JPY">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="JFP-Rw-O0M">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="JFP-Rw-O0M">
                             <connections>
                                 <segue destination="cyA-Xc-H01" kind="push" identifier="qualityToSampling" id="XKF-Hn-9dm"/>
                             </connections>
@@ -215,29 +247,37 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZf-wf-ool">
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVR-ED-ezj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Au6-If-dj6">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="KuO-4Z-0cp"/>
+                                    <constraint firstAttribute="height" constant="320" id="dJo-EU-3yE"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBl-l7-hp2">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Reconstruct!">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="reconstruct:" destination="MW8-sq-QGe" eventType="touchUpInside" id="RYT-aI-epR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UVR-ED-ezj" firstAttribute="leading" secondItem="D8l-sr-5YX" secondAttribute="leading" type="default" id="3rm-Rv-oeM"/>
-                            <constraint firstItem="OZf-wf-ool" firstAttribute="top" secondItem="D8l-sr-5YX" secondAttribute="top" constant="-66" id="5mm-ar-pWi"/>
-                            <constraint firstItem="OZf-wf-ool" firstAttribute="leading" secondItem="D8l-sr-5YX" secondAttribute="leading" constant="-7" id="ExD-hg-j7x"/>
-                            <constraint firstItem="UVR-ED-ezj" firstAttribute="centerY" secondItem="D8l-sr-5YX" secondAttribute="centerY" type="default" id="MIF-FI-vCt"/>
-                            <constraint firstAttribute="bottom" secondItem="OZf-wf-ool" secondAttribute="bottom" constant="-5" id="RNp-h6-i7o"/>
-                            <constraint firstAttribute="trailing" secondItem="OZf-wf-ool" secondAttribute="trailing" constant="-22" id="VgF-um-awv"/>
-                            <constraint firstItem="UVR-ED-ezj" firstAttribute="trailing" secondItem="D8l-sr-5YX" secondAttribute="trailing" type="default" id="bU8-Ak-tw5"/>
+                            <constraint firstItem="Au6-If-dj6" firstAttribute="top" secondItem="D8l-sr-5YX" secondAttribute="top" type="default" id="Pnd-8K-T17"/>
+                            <constraint firstAttribute="bottom" secondItem="WBl-l7-hp2" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="U3e-ad-cCk"/>
+                            <constraint firstItem="Au6-If-dj6" firstAttribute="leading" secondItem="D8l-sr-5YX" secondAttribute="leading" type="default" id="UFD-Et-6L9"/>
+                            <constraint firstItem="WBl-l7-hp2" firstAttribute="centerX" secondItem="Au6-If-dj6" secondAttribute="centerX" type="default" id="Vye-tw-NvW"/>
+                            <constraint firstItem="Au6-If-dj6" firstAttribute="trailing" secondItem="D8l-sr-5YX" secondAttribute="trailing" type="default" id="nr9-VU-pXV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ssz-VU-DMW"/>
                     <connections>
-                        <outlet property="imageView" destination="UVR-ED-ezj" id="f8Z-m9-TTd"/>
+                        <outlet property="imageView" destination="Au6-If-dj6" id="9zl-sA-fMw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEw-1q-XxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,6 +331,7 @@
         <class className="UROPFinalViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPFinalViewController.h"/>
             <relationships>
+                <relationship kind="action" name="reconstruct:"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
             </relationships>
@@ -299,10 +340,14 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPFlipsideViewController.h"/>
             <relationships>
                 <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="UROPMainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPMainViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

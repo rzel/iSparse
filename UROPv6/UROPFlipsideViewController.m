@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.text.text = @"This app uses a procedure called compressed sensing. What it does is applies a transformation to the image, then tries to match the measurements to the reconstruction iteratively. The coarseness slider dictates how much detail your final reconstruction can have.";
 }
 
 

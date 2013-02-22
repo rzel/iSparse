@@ -35,6 +35,7 @@
     image = [self.brain doWaveletKeepingLargestKTerms:image coarse:1.5*(1-0.9*0.5)];
     self.imageView.image = image;
     self.imageStay = image;
+    self.coarse = 1.5*(1 - 0.45);
 }
 - (IBAction)coarsenessChanged:(id)sender {
     float rate = 1.5*(1 - 0.9*self.slider.value);
@@ -79,7 +80,7 @@
 - (IBAction)sliderChanged:(id)sender {
     float rate = 1.5*(1 - 0.3*self.slider.value);
     self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
-    
+    self.coarse = self.rate;
 
 }
 

@@ -1947,11 +1947,12 @@
 // -------------------------------------------------------------------------
 -(void)makeIDX:(NSMutableArray *)idx ofLength:(int)pix
 {
+    srand(42);
     int i;
     for (i=0; i<pix; i++) {
         [idx addObject:[NSNumber numberWithInt:i]];
     }
-    srandom(42);
+    srandom(42); srand(42); // 'srand' works
     for (i=0; i<pix; i++) {
         int index = random() % pix;
         [idx exchangeObjectAtIndex:i withObjectAtIndex:index];
@@ -2130,7 +2131,7 @@
 //        xold[i] = 0;
 //    }
     
-    iter=200;
+    iter=10;
     
     for (int its=0; its<iter; its++) {
         //NSLog(@"---------------------- its = %d --------------------", its);
@@ -2384,7 +2385,7 @@
     
     
 }
--(UIImage *)reconstruct:(UIImage *)image
+-(UIImage *)reconstruct2:(UIImage *)image
                  coarse:(float)coarse
                     idx:(NSMutableArray *)idx
                   y_r:(float *)y_r y_g:(float *)y_g y_b:(float *)y_b

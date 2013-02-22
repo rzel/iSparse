@@ -72,7 +72,7 @@
                    blue:(float *)y_g
                ofLength:(int)length
                     idx:(NSMutableArray *)idx;
--(UIImage *)reconstruct:(UIImage *)image
+-(UIImage *)reconstruct2:(UIImage *)image
                  coarse:(float)coarse
                     idx:(NSMutableArray *)idx
                     y_r:(float *)y_r y_g:(float *)y_g y_b:(float *)y_b

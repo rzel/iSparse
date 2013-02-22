@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.text.text = @"Currently, images are taken by sampling every pixel. We then compress the image, normally into a .jpg. Why do this? Isn't it wasteful? This app will show you an example of not sampling at every pixel. ";
 }
 
 - (void)didReceiveMemoryWarning

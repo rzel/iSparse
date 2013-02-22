@@ -17,6 +17,7 @@
 @interface UROPFlipsideViewController : UIViewController
 
 @property (weak, nonatomic) id <UROPFlipsideViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextView *text;
 
 - (IBAction)done:(id)sender;
 

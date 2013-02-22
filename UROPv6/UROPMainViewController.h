@@ -9,5 +9,6 @@
 #import "UROPFlipsideViewController.h"
 
 @interface UROPMainViewController : UIViewController <UROPFlipsideViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *text;
 
 @end

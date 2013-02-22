@@ -31,6 +31,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:0.5];
+    self.rate = 0.5;
     self.label.text = [NSString stringWithFormat:@"%.0f%%", 50.0];
     
 }
