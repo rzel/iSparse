@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    UIImage * image = [self imageWithImage:[UIImage imageNamed:@"ted.jpg"] scaledToSize:CGSizeMake(256, 256)];
+    UIImage * image = [self imageWithImage:[UIImage imageNamed:@"mountain.jpg"] scaledToSize:CGSizeMake(256, 256)];
     image = [self.brain doWaveletKeepingLargestKTerms:image coarse:1.5*(1-0.9*0.5)];
     self.imageView.image = image;
     self.imageStay = image;

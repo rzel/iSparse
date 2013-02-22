@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2215D9516D7F9B000FD2A48 /* mountain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2215D9416D7F9B000FD2A48 /* mountain.jpg */; };
 		D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2365EA916D432E70017E15A /* UROPbrain.m */; };
 		D2DF752016CF174900DF158B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF751F16CF174900DF158B /* UIKit.framework */; };
 		D2DF752216CF174900DF158B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF752116CF174900DF158B /* Foundation.framework */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2215D9416D7F9B000FD2A48 /* mountain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountain.jpg; sourceTree = "<group>"; };
 		D2365EA816D432E70017E15A /* UROPbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPbrain.h; sourceTree = "<group>"; };
 		D2365EA916D432E70017E15A /* UROPbrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPbrain.m; sourceTree = "<group>"; };
 		D2DF751C16CF174900DF158B /* UROPv6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UROPv6.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				D2365EA916D432E70017E15A /* UROPbrain.m */,
 				D2DF755D16D2811200DF158B /* UROPFlipsideViewController.h */,
 				D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */,
+				D2215D9416D7F9B000FD2A48 /* mountain.jpg */,
 				D2DF754816CF1AA100DF158B /* ted.jpg */,
 				D2DF752E16CF174A00DF158B /* UROPAppDelegate.h */,
 				D2DF752F16CF174A00DF158B /* UROPAppDelegate.m */,
@@ -201,6 +204,7 @@
 				D2DF753616CF174A00DF158B /* Default-568h@2x.png in Resources */,
 				D2DF753916CF174A00DF158B /* MainStoryboard.storyboard in Resources */,
 				D2DF754916CF1AA100DF158B /* ted.jpg in Resources */,
+				D2215D9516D7F9B000FD2A48 /* mountain.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

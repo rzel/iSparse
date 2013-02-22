@@ -2131,7 +2131,7 @@
 //        xold[i] = 0;
 //    }
     
-    iter=10;
+//    iter=100;
     
     for (int its=0; its<iter; its++) {
         //NSLog(@"---------------------- its = %d --------------------", its);
@@ -2392,8 +2392,10 @@
                    rate:(float)rate
                  xold_r:(float *)xold_r
                  xold_g:(float *)xold_g
-                 xold_b:(float *)xold_b
+                  xold_b:(float *)xold_b
+              iterations:(int)its
 {
+    // We need no image-to-array function, as the arrays are held in the view controller.
     int height = image.size.height;
     int width = image.size.width;
     int order = log2(width);
@@ -2404,7 +2406,7 @@
     float * y = (float *)malloc(sizeof(float) * pix);
     
     // get data
-    array = [self UIImageToRawArray:image];
+//    array = [self UIImageToRawArray:image];
     int i, j, n;
     //float max, min;
     // end making raw array
@@ -2414,51 +2416,42 @@
     // using color planes, all of that
     for (n=0; n<3; n++) {
         
-        colorPlane = [self getColorPlane:array ofArea:pix startingIndex:n into:colorPlane];
-//        NSLog(@"%d", n);
+//        colorPlane = [self getColorPlane:array ofArea:pix startingIndex:n into:colorPlane];
         
         // properly init for IHT2_v4
-        for (i=0; i<rate*pix; i++) {
-            if (n == 0) {
-                y[i] = y_r[i];
-                xold[i] = xold_r[i];
-            }
-            if (n == 1) {
-                y[i] = y_g[i];
-                xold[i] = xold_g[i];
-            }
-            if (n == 2) {
-                y[i] = y_b[i];
-                xold[i] = xold_b[i];
-            }
+        if (n==0) {
+            for (i=0; i<rate*pix; i++) {y[i]    = y_r[i];}
+            for (i=0; i<pix;      i++) {xold[i] = xold_r[i];}
+        } else  if (n==1) {
+            for (i=0; i<rate*pix; i++) {y[i]    = y_g[i];}
+            for (i=0; i<pix;      i++) {xold[i] = xold_g[i];}
+        } else if (n==2) {
+            for (i=0; i<rate*pix; i++) {y[i]    = y_b[i]; }
+            for (i=0; i<pix;      i++) {xold[i] = xold_b[i];}
         }
         
         // the do-what-you-want code should go here.
-        [self IHT2_v4:colorPlane ofLength:pix
+        [self IHT2_v4:xold ofLength:pix
               ofWidth:width ofHeight:height order:order
-            iteration:1 atRate:rate
+            iteration:its atRate:rate
                  xold:xold y:y idx:idx];
         
         // and then update
-        for (i=0; i<rate*pix; i++) {
-            if (n == 0) {
-                y_r[i] = y[i];
-                xold_r[i] = xold[i];
-            }
-            if (n == 1) {
-                y_g[i] = y[i];
-                xold_g[i] = xold[i];
-            }
-            if (n == 2) {
-                y_b[i] = y[i];
-                xold_b[i] = xold[i];
-            }
+        if (n==0) {
+            for (i=0; i<rate*pix; i++) {y_r[i]    = y[i];}
+            for (i=0; i<pix;      i++) {xold_r[i] = xold[i];}
+        } else if (n==1) {
+            for (i=0; i<rate*pix; i++) {y_g[i]    = y[i];}
+            for (i=0; i<pix;      i++) {xold_g[i] = xold[i];}
+        } else if (n==2) {
+            for (i=0; i<rate*pix; i++) {y_b[i]    = y[i];}
+            for (i=0; i<pix;      i++) {xold_b[i] = xold[i];}
         }
         
         // end of do what you want
-        [self inverseOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
+        [self inverseOn2DArray:xold ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
         
-        array      = [self putColorPlaneBackIn:colorPlane into:array ofArea:pix startingIndex:n];
+        array      = [self putColorPlaneBackIn:xold into:array ofArea:pix startingIndex:n];
     }
     
     

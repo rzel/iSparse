@@ -79,5 +79,6 @@
                    rate:(float)rate
                  xold_r:(float *)xold_r
                  xold_g:(float *)xold_g
-                 xold_b:(float *)xold_b;
+                  xold_b:(float *)xold_b
+              iterations:(int)its;
 @end
