@@ -134,12 +134,6 @@
                                     <action selector="useCameraRoll" destination="Opu-mG-0GY" eventType="touchUpInside" id="bjm-dK-7G6"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IvW-QM-zgn">
-                                <connections>
-                                    <action selector="coarsenessChanged:" destination="Opu-mG-0GY" eventType="valueChanged" id="lAm-ep-XgU"/>
-                                    <action selector="sliderChanged:" destination="Opu-mG-0GY" eventType="valueChanged" id="uN1-7z-kmr"/>
-                                </connections>
-                            </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="coarse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njS-SR-ogb">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -150,21 +144,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bmZ-yg-oFR">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="205" id="W9n-J2-fAT"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="coarsenessSliderChanged:" destination="Opu-mG-0GY" eventType="valueChanged" id="aDD-dM-Xtr"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CAR-Bt-i83" firstAttribute="top" secondItem="rCS-DO-I16" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1hN-yw-fhs"/>
-                            <constraint firstItem="IvW-QM-zgn" firstAttribute="leading" secondItem="h9h-Xz-DmK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7VG-tV-iWd"/>
                             <constraint firstAttribute="trailing" secondItem="3oG-YQ-zHz" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="FY5-RI-KxH"/>
+                            <constraint firstItem="bmZ-yg-oFR" firstAttribute="leading" secondItem="h9h-Xz-DmK" secondAttribute="leading" constant="53" id="GaQ-7s-e8M"/>
                             <constraint firstItem="rCS-DO-I16" firstAttribute="leading" secondItem="h9h-Xz-DmK" secondAttribute="leading" type="default" id="KsH-gG-cc4"/>
-                            <constraint firstAttribute="bottom" secondItem="3oG-YQ-zHz" secondAttribute="bottom" constant="30" id="UVB-2x-jp9"/>
-                            <constraint firstAttribute="trailing" secondItem="IvW-QM-zgn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="W9I-cu-BhO"/>
-                            <constraint firstAttribute="bottom" secondItem="IvW-QM-zgn" secondAttribute="bottom" constant="12" id="WSN-yq-Rbc"/>
+                            <constraint firstAttribute="bottom" secondItem="njS-SR-ogb" secondAttribute="bottom" constant="30" id="Url-G5-kMI"/>
+                            <constraint firstItem="CAR-Bt-i83" firstAttribute="centerX" secondItem="rCS-DO-I16" secondAttribute="centerX" type="default" id="aDp-Rv-XaX"/>
+                            <constraint firstAttribute="bottom" secondItem="bmZ-yg-oFR" secondAttribute="bottom" constant="11" id="cad-mM-LGq"/>
                             <constraint firstItem="3oG-YQ-zHz" firstAttribute="baseline" secondItem="njS-SR-ogb" secondAttribute="baseline" type="default" id="cjR-4L-kKa"/>
                             <constraint firstItem="rCS-DO-I16" firstAttribute="top" secondItem="h9h-Xz-DmK" secondAttribute="top" type="default" id="hif-mu-hno"/>
                             <constraint firstItem="njS-SR-ogb" firstAttribute="leading" secondItem="h9h-Xz-DmK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="nBy-YC-T10"/>
                             <constraint firstItem="rCS-DO-I16" firstAttribute="trailing" secondItem="h9h-Xz-DmK" secondAttribute="trailing" type="default" id="sIc-WV-dPz"/>
-                            <constraint firstItem="CAR-Bt-i83" firstAttribute="centerX" secondItem="IvW-QM-zgn" secondAttribute="centerX" type="default" id="sbc-Dg-7QG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Quality" id="GTM-BQ-JPY">
@@ -176,7 +177,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="rCS-DO-I16" id="5Uu-Yg-3cC"/>
-                        <outlet property="slider" destination="IvW-QM-zgn" id="Mno-VY-CgK"/>
+                        <outlet property="slider" destination="bmZ-yg-oFR" id="P0R-2E-k3P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20R-Kk-E7k" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -1957,9 +1957,9 @@
         int index = random() % pix;
         [idx exchangeObjectAtIndex:i withObjectAtIndex:index];
     }
-    NSLog(@"-----------");
+   // NSLog(@"-----------");
     for (i=0; i<5; i++) {
-        NSLog(@"%@", [idx objectAtIndex:i]);
+       // NSLog(@"%@", [idx objectAtIndex:i]);
 
     }
     

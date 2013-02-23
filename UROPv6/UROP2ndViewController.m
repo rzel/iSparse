@@ -37,12 +37,7 @@
     self.imageStay = image;
     self.coarse = 1.5*(1 - 0.45);
 }
-- (IBAction)coarsenessChanged:(id)sender {
-//    float rate = 1.5*(1 - self.slider.value);
-//    self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
-//    self.coarse = rate;
-    // view the other function for slider-changed. "sliderChanged"
-}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -50,13 +45,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+// the code I changed:
+    // image = [self imageWithImage:image scaledToSize:CGSizeMake(256, 256)];
+    //self.imageView.image = image;
+    //self.imageStay = image;
+
 - (IBAction)useCameraRoll{
     NSLog(@"here");
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeSavedPhotosAlbum])
     {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
         imagePicker.sourceType =
         UIImagePickerControllerSourceTypePhotoLibrary;
@@ -64,7 +63,9 @@
                                   (NSString *) kUTTypeImage,
                                   nil];
         imagePicker.allowsEditing = NO;
-        [self presentModalViewController:imagePicker animated:YES];
+//        [self presentModalViewController:imagePicker animated:YES];
+        [self presentViewController:imagePicker animated:YES completion:nil];
+//        [self.navigationController pushViewController:(UIViewController *)imagePicker animated:YES];
         newMedia = NO;
     }
 }
@@ -78,20 +79,22 @@
         destViewController.rate = -1;
     }
 }
-- (IBAction)sliderChanged:(id)sender {
-    float rate = 1.5*(1 - self.slider.value);
-    self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
-    self.coarse = self.rate;
 
+- (IBAction)coarsenessSliderChanged:(id)sender {
+    float rate = 1.5*(1 - self.slider.value);
+    
+    self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
+    
+    self.coarse = self.rate;
 }
 
 // from the web
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    NSString *mediaType = [info
-                           objectForKey:UIImagePickerControllerMediaType];
-    [self dismissModalViewControllerAnimated:YES];
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = [info
                           objectForKey:UIImagePickerControllerOriginalImage];
@@ -127,7 +130,7 @@ finishedSavingWithError:(NSError *)error
 }
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     //UIGraphicsBeginImageContext(newSize);
