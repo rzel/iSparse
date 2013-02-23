@@ -81,7 +81,7 @@
 }
 
 - (IBAction)coarsenessSliderChanged:(id)sender {
-    float rate = 1.5*(1 - self.slider.value);
+    float rate = 10*(self.slider.value - 0.5);
     
     self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
     

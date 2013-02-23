@@ -80,5 +80,5 @@
                  xold_r:(float *)xold_r
                  xold_g:(float *)xold_g
                   xold_b:(float *)xold_b
-              iterations:(int)its;
+              iterations:(int)its pastIterations:(int)pastIts;
 @end

@@ -1665,7 +1665,7 @@
         
         colorPlane = [self waveletOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order divide:@"null"]; // change from null to image if want /2
         
-        float cut_off = coarse * (165.24 * pow(2.7318, -0.22*1000) + 26.25);
+        float cut_off = coarse * 26.25;
         for (i=0; i<area; i++) {
             if (abs(colorPlane[i]) < cut_off) {
                 colorPlane[i] = 0;
@@ -1973,7 +1973,7 @@
            atRate:(float)p
              xold:(float *)xold
                 y:(float *)y
-              idx:(NSMutableArray *)idx coarse:(float)coarse
+              idx:(NSMutableArray *)idx coarse:(float)coarse numberOfPastIterations:(int)pastIts
 {
     int i;
 //    NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:N];
@@ -2190,7 +2190,24 @@
         //[self reverseArray:tt length:N];
         //s = 5000;
         //float cut_off = tt[s];
-        float cut_off = coarse * (165.24 * pow(2.7318, -0.22*its) + 26.25);
+        
+        float cut_off;
+        int max_its = 200; // iterations where it cuts off the value
+        if (its > max_its) {
+            cut_off = 165.24 * pow(2.7318, -0.22*(its + pastIts )) + 0;
+            // cut_off = 0 + 0; // essentially
+        } else { 
+            cut_off = 165.24 * pow(2.7318, -0.22*(its + pastIts)) + 26.25 - 26.25/200 * (pastIts + its);
+        }
+        
+    
+        
+        
+        cut_off = 165.24 * pow(2.7318, -0.22*(pastIts+its)) + 26.25;
+        cut_off = 165.24 * pow(2.7318, -0.08*(pastIts+its)) + 17.25;
+//        cut_off = 119.85 * pow(2.718281, -0.5297*(pastIts + its)) + 15.02;
+        NSLog(@"pastIts + its = %d, cut_off = %f.      coarse = %f", pastIts + its, cut_off, coarse);
+
         //NSLog(@"cut_off == %f", cut_off);
         //float cut_off = 159;
         //NSLog(@"cut_off, again == %f", cut_off);
@@ -2256,10 +2273,10 @@
 
         
         // the do-what-you-want code should go here.
-        [self IHT2_v4:colorPlane ofLength:pix
-              ofWidth:width ofHeight:height order:order
-            iteration:1 atRate:rate
-                 xold:xold y:y idx:idx coarse:coarse];
+//        [self IHT2_v4:colorPlane ofLength:pix
+//              ofWidth:width ofHeight:height order:order
+//            iteration:1 atRate:rate
+//                 xold:xold y:y idx:idx coarse:coarse];
         // end of do what you want
         [self inverseOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
         
@@ -2393,7 +2410,7 @@
                  xold_r:(float *)xold_r
                  xold_g:(float *)xold_g
                   xold_b:(float *)xold_b
-              iterations:(int)its
+              iterations:(int)its pastIterations:(int)pastIts
 {
     // We need no image-to-array function, as the arrays are held in the view controller.
     int height = image.size.height;
@@ -2434,7 +2451,7 @@
         [self IHT2_v4:xold ofLength:pix
               ofWidth:width ofHeight:height order:order
             iteration:its atRate:rate
-                 xold:xold y:y idx:idx coarse:coarse];
+                 xold:xold y:y idx:idx coarse:coarse numberOfPastIterations:pastIts];
         
         // and then update
         if (n==0) {

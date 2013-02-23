@@ -98,72 +98,72 @@
      * or the animation recieves the same image each time?
      
      */
-    self.coarse = 0.825;
     NSLog(@"self.coarse = %f", self.coarse);
     self.imageView.animationImages = [NSArray arrayWithObjects:[self.brain reconstruct2:self.imageView.image
                                                                                  coarse:self.coarse
                                                                                     idx:idx y_r:y_r y_g:y_g y_b:y_b
-                                                                                   rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:1],
+                                                                                   rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:1
+                                                                pastIterations:0],
                                       [self.brain reconstruct2:self.imageView.image
                                                         coarse:self.coarse
                                                            idx:idx y_r:y_r y_g:y_g y_b:y_b
-                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:2],
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:2 pastIterations:1],
                                       [self.brain reconstruct2:self.imageView.image
                                                         coarse:self.coarse
                                                            idx:idx y_r:y_r y_g:y_g y_b:y_b
-                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:3],
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:3 pastIterations:3],
                                       [self.brain reconstruct2:self.imageView.image
                                                         coarse:self.coarse
                                                            idx:idx y_r:y_r y_g:y_g y_b:y_b
-                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:4],
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:4 pastIterations:7],
                                       [self.brain reconstruct2:self.imageView.image
                                                         coarse:self.coarse
                                                            idx:idx y_r:y_r y_g:y_g y_b:y_b
-                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:5],
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:5 pastIterations:11],
                                       [self.brain reconstruct2:self.imageView.image
                                                         coarse:self.coarse
                                                            idx:idx y_r:y_r y_g:y_g y_b:y_b
-                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:8],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:13],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:20],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:25],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:35],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:48],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:60],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:75],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:120],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:150],
-//                                      [self.brain reconstruct2:self.imageView.image
-//                                                        coarse:self.coarse
-//                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
-//                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:180],
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:8 pastIterations:19],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:13 pastIterations:27],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:20 pastIterations:47],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:25 pastIterations:67],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:35 pastIterations:92],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:48 pastIterations:127],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:60 pastIterations:187],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:75 pastIterations:262],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:120 pastIterations:336],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:150 pastIterations:486],
+                                      [self.brain reconstruct2:self.imageView.image
+                                                        coarse:self.coarse
+                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
+                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:180 pastIterations:636],
                                       
                                                                    nil];
 //    self.imageView.animationImages = [NSArray arrayWithObjects:[UIImage imageNamed:@"mountain.jpg"], [UIImage imageNamed:@"ted.jpg"], nil];
