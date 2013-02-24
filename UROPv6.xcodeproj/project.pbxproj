@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D2215D9516D7F9B000FD2A48 /* mountain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2215D9416D7F9B000FD2A48 /* mountain.jpg */; };
+		D2215D9716D9495C00FD2A48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2215D9616D9495C00FD2A48 /* QuartzCore.framework */; };
 		D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2365EA916D432E70017E15A /* UROPbrain.m */; };
 		D2DF752016CF174900DF158B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF751F16CF174900DF158B /* UIKit.framework */; };
 		D2DF752216CF174900DF158B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF752116CF174900DF158B /* Foundation.framework */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		D2215D9416D7F9B000FD2A48 /* mountain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountain.jpg; sourceTree = "<group>"; };
+		D2215D9616D9495C00FD2A48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D2365EA816D432E70017E15A /* UROPbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPbrain.h; sourceTree = "<group>"; };
 		D2365EA916D432E70017E15A /* UROPbrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPbrain.m; sourceTree = "<group>"; };
 		D2DF751C16CF174900DF158B /* UROPv6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UROPv6.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2215D9716D9495C00FD2A48 /* QuartzCore.framework in Frameworks */,
 				D2DF754D16CF1B8E00DF158B /* MobileCoreServices.framework in Frameworks */,
 				D2DF754B16CF1B8700DF158B /* Accelerate.framework in Frameworks */,
 				D2DF752016CF174900DF158B /* UIKit.framework in Frameworks */,
@@ -81,6 +84,7 @@
 		D2DF751316CF174900DF158B = {
 			isa = PBXGroup;
 			children = (
+				D2215D9616D9495C00FD2A48 /* QuartzCore.framework */,
 				D2DF754C16CF1B8E00DF158B /* MobileCoreServices.framework */,
 				D2DF754A16CF1B8700DF158B /* Accelerate.framework */,
 				D2DF752516CF174900DF158B /* UROPv6 */,

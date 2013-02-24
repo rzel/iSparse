@@ -8,6 +8,7 @@
 
 #import "UROPFinalViewController.h"
 #import "UROPbrain.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface UROPFinalViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
@@ -37,8 +38,17 @@
     // no user-selected image: 0xf6... 0x715...
     // user-selected image:    0xf7... 0x11d
     // user-sel., largestKTerms0xf6822 0xf6c29
+//    UIImage *image1 = [UIImage imageNamed:@"ted.jpg"];
+//    UIImage *image2 = [UIImage imageNamed:@"mountain.jpg"];
+//    self.imageView.animationImages = [NSArray arrayWithObjects:image1, image2, nil];
+//    self.imageView.animationDuration = 6.00;
+//    self.imageView.animationRepeatCount = 100;
+//    [self.imageView startAnimating];
+    
 }
 - (IBAction)reconstruct:(id)sender {
+    
+    
     NSLog(@"rate = %f", self.rate);
     NSLog(@"coarse = %f", self.coarse);
 
@@ -90,14 +100,14 @@
     // no change: coarse  = 0.825
     // an imageView, assumed to be grayed out
     
-    /* image isn't touched in reconstruct2()
-     * 
-     * then perhaps somehow presenting the camera roll disables the 
-     * animation?
+    // image isn't touched in reconstruct2()
+     //
+     // then perhaps somehow presenting the camera roll disables the
+     // animation?
      
-     * or the animation recieves the same image each time?
+     // or the animation recieves the same image each time?
      
-     */
+     
     NSLog(@"self.coarse = %f", self.coarse);
     self.imageView.animationImages = [NSArray arrayWithObjects:[self.brain reconstruct2:self.imageView.image
                                                                                  coarse:self.coarse
@@ -166,11 +176,14 @@
                                                           rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:180 pastIterations:636],
                                       
                                                                    nil];
-//    self.imageView.animationImages = [NSArray arrayWithObjects:[UIImage imageNamed:@"mountain.jpg"], [UIImage imageNamed:@"ted.jpg"], nil];
     self.imageView.animationDuration = 6.00;
     self.imageView.animationRepeatCount = 100;
     [self.imageView startAnimating];
+
+    
+
 }
+
 
 - (void)didReceiveMemoryWarning
 {
