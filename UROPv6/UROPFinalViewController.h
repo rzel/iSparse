@@ -12,6 +12,22 @@
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
 @property  float rate;
 @property  float coarse;
+@property  int pastIts;
+
+
+// making these global
+@property NSMutableArray *idx;
+@property float * y_r;
+@property float * y_g;
+@property float * y_b;
+
+@property float * xold_r;
+@property float * xold_g;
+@property float * xold_b;
+
+
+
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end

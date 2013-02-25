@@ -9,9 +9,13 @@
 #import "UROPFinalViewController.h"
 #import "UROPbrain.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Animations_s/CPAnimationSequence.h"
+#import "Animations_s/CPAnimationStep.h"
+#import "Animations_s/CPAnimationProgram.h"
 
 @interface UROPFinalViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
+
 @end
 
 
@@ -243,20 +247,69 @@
     // animation?
     
     // or the animation recieves the same image each time?
+    self.idx = idx;
+    self.y_r = y_r;
+    self.y_g = y_g;
+    self.y_b = y_b;
+    self.xold_r = xold_r;
+    self.xold_g = xold_g;
+    self.xold_b = xold_b;
     
+    NSMutableArray * steps = [[NSMutableArray alloc] initWithCapacity:10+1];
+    for (i=0; i<10; i++) {
+        [steps addObject:[CPAnimationStep           for:1 animate:^{ self.imageView.image =
+                    [self.brain reconstruct2:self.imageView.image
+                                      coarse:self.coarse
+                                         idx:self.idx
+                                         y_r:self.y_r y_g:self.y_g y_b:self.y_b
+                                        rate:self.rate
+                                      xold_r:self.xold_r xold_g:self.xold_g
+                                      xold_b:self.xold_b
+                                  iterations:1 pastIterations:0]; }]];
+        
+    }
+    [steps addObject:nil];
     
-    NSLog(@"self.coarse = %f", self.coarse);
+    NSArray * stepsStay = [[NSArray alloc] initWithArray:steps copyItems:YES];
+    
+    CPAnimationSequence * anim= [[CPAnimationSequence alloc] init];
+//    anim.steps = stepsStay;
 
-    CABasicAnimation *anim=[CABasicAnimation animationWithKeyPath:@"self.imageView.image"];
-    anim.fromValue=[self.brain reconstruct2:self.imageView.image coarse:self.coarse idx:idx y_r:y_r y_g:y_g y_b:y_b rate:self.rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:1 pastIterations:0];
-    anim.toValue=[self.brain reconstruct2:self.imageView.image coarse:self.coarse idx:idx y_r:y_r y_g:y_g y_b:y_b rate:self.rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:4 pastIterations:1];
-    anim.repeatCount = 1;
-    anim.fillMode = kCAFillModeForwards;
-    anim.removedOnCompletion = NO;
-    [self.imageView.layer addAnimation:anim forKey:@"self.imageView.image"];
+//    [[CPAnimationSequence sequenceWithSteps:
+//      [CPAnimationStep           for:1 animate:^{ self.imageView.image =
+//                                                            [self.brain reconstruct2:self.imageView.image
+//                                                                              coarse:self.coarse
+//                                                                                 idx:self.idx
+//                                                                                 y_r:self.y_r y_g:self.y_g y_b:self.y_b
+//                                                                                rate:self.rate
+//                                                                              xold_r:self.xold_r xold_g:self.xold_g
+//                                                                              xold_b:self.xold_b
+//                                                                          iterations:1 pastIterations:0]; }],
+//
+//      
+// 
+//      nil]
+//     runAnimated:YES];
 
+}
+
+- (void)animationFinished:(NSString *)animationID finished:(BOOL)finished context:(void *)context
+{
+
+    // something done after the animation
+    // start the next animation
+    self.imageView.image = 
+            [self.brain reconstruct2:self.imageView.image
+                              coarse:self.coarse
+                                 idx:self.idx
+                                 y_r:self.y_r y_g:self.y_g y_b:self.y_b
+                                rate:self.rate
+                              xold_r:self.xold_r xold_g:self.xold_g
+                              xold_b:self.xold_b
+                          iterations:2 pastIterations:1];
     
 
+    
 }
 
 - (void)didReceiveMemoryWarning
