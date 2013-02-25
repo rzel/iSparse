@@ -256,40 +256,116 @@
     self.xold_b = xold_b;
     
     NSMutableArray * steps = [[NSMutableArray alloc] initWithCapacity:10+1];
-    for (i=0; i<10; i++) {
-        [steps addObject:[CPAnimationStep           for:1 animate:^{ self.imageView.image =
-                    [self.brain reconstruct2:self.imageView.image
-                                      coarse:self.coarse
-                                         idx:self.idx
-                                         y_r:self.y_r y_g:self.y_g y_b:self.y_b
-                                        rate:self.rate
-                                      xold_r:self.xold_r xold_g:self.xold_g
-                                      xold_b:self.xold_b
-                                  iterations:1 pastIterations:0]; }]];
+    int pastIts = 1;
+    for (i=0; i<100; i++) {
+        [steps addObject:[CPAnimationStep
+                          for:1 animate:^{ self.imageView.image =
+                                        [self.brain reconstruct2:self.imageView.image
+                                                          coarse:self.coarse
+                                                             idx:self.idx
+                                                             y_r:self.y_r y_g:self.y_g y_b:self.y_b
+                                                            rate:self.rate
+                                                          xold_r:self.xold_r xold_g:self.xold_g
+                                                          xold_b:self.xold_b
+                                                      iterations:10
+                                                  pastIterations:pastIts]; }]];
+        pastIts = 10 + pastIts;
+        NSLog(@"pastIts = %d", pastIts);
         
     }
-    [steps addObject:nil];
     
-    NSArray * stepsStay = [[NSArray alloc] initWithArray:steps copyItems:YES];
+//    NSArray * stepsStay = [[NSArray alloc] initWithArray:steps copyItems:YES];
     
-    CPAnimationSequence * anim= [[CPAnimationSequence alloc] init];
+//    CPAnimationSequence * anim= [[CPAnimationSequence alloc] init];
 //    anim.steps = stepsStay;
 
-//    [[CPAnimationSequence sequenceWithSteps:
-//      [CPAnimationStep           for:1 animate:^{ self.imageView.image =
-//                                                            [self.brain reconstruct2:self.imageView.image
-//                                                                              coarse:self.coarse
-//                                                                                 idx:self.idx
-//                                                                                 y_r:self.y_r y_g:self.y_g y_b:self.y_b
-//                                                                                rate:self.rate
-//                                                                              xold_r:self.xold_r xold_g:self.xold_g
-//                                                                              xold_b:self.xold_b
-//                                                                          iterations:1 pastIterations:0]; }],
-//
-//      
-// 
-//      nil]
-//     runAnimated:YES];
+    [[CPAnimationSequence sequenceWithSteps:
+            [steps objectAtIndex:0],
+            [steps objectAtIndex:1],
+            [steps objectAtIndex:2],
+            [steps objectAtIndex:3],
+            [steps objectAtIndex:4],
+            [steps objectAtIndex:5],
+            [steps objectAtIndex:6],
+            [steps objectAtIndex:7],
+            [steps objectAtIndex:8],
+            [steps objectAtIndex:9],
+            [steps objectAtIndex:9],
+            [steps objectAtIndex:10],
+            [steps objectAtIndex:11],
+            [steps objectAtIndex:12],
+            [steps objectAtIndex:13],
+            [steps objectAtIndex:14],
+            [steps objectAtIndex:15],
+            [steps objectAtIndex:16],
+            [steps objectAtIndex:17],
+            [steps objectAtIndex:18],
+            [steps objectAtIndex:18],
+            [steps objectAtIndex:19],
+            [steps objectAtIndex:20],
+            [steps objectAtIndex:21],
+            [steps objectAtIndex:22],
+            [steps objectAtIndex:23],
+            [steps objectAtIndex:24],
+            [steps objectAtIndex:25],
+            [steps objectAtIndex:26],
+            [steps objectAtIndex:27],
+            [steps objectAtIndex:28],
+            [steps objectAtIndex:29],
+            [steps objectAtIndex:30],
+            [steps objectAtIndex:31],
+            [steps objectAtIndex:32],
+            [steps objectAtIndex:33],
+            [steps objectAtIndex:34],
+            [steps objectAtIndex:35],
+            [steps objectAtIndex:36],
+            [steps objectAtIndex:37],
+            [steps objectAtIndex:38],
+            [steps objectAtIndex:39],
+            [steps objectAtIndex:40],
+            [steps objectAtIndex:41],
+            [steps objectAtIndex:42],
+            [steps objectAtIndex:43],
+            [steps objectAtIndex:44],
+            [steps objectAtIndex:45],
+            [steps objectAtIndex:46],
+            [steps objectAtIndex:47],
+            [steps objectAtIndex:48],
+            [steps objectAtIndex:49],
+            [steps objectAtIndex:50],
+            [steps objectAtIndex:51],
+            [steps objectAtIndex:52],
+            [steps objectAtIndex:53],
+            [steps objectAtIndex:54],
+            [steps objectAtIndex:55],
+            [steps objectAtIndex:56],
+            [steps objectAtIndex:57],
+            [steps objectAtIndex:58],
+            [steps objectAtIndex:59],
+            [steps objectAtIndex:60],
+            [steps objectAtIndex:61],
+            [steps objectAtIndex:62],
+            [steps objectAtIndex:63],
+            [steps objectAtIndex:64],
+            [steps objectAtIndex:65],
+            [steps objectAtIndex:66],
+            [steps objectAtIndex:67],
+            [steps objectAtIndex:68],
+            [steps objectAtIndex:69],
+            [steps objectAtIndex:70],
+            [steps objectAtIndex:71],
+            [steps objectAtIndex:72],
+            [steps objectAtIndex:73],
+            [steps objectAtIndex:74],
+            [steps objectAtIndex:75],
+            [steps objectAtIndex:76],
+            [steps objectAtIndex:77],
+            [steps objectAtIndex:78],
+            [steps objectAtIndex:79],
+            [steps objectAtIndex:80],
+            [steps objectAtIndex:81],
+            nil]
+     runAnimated:YES];
 
 }
 
