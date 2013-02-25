@@ -158,7 +158,7 @@
                                                         coarse:self.coarse
                                                            idx:idx y_r:y_r y_g:y_g y_b:y_b
                                                           rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:60 pastIterations:187],
-                                      [self.brain reconstruct2:self.imageView.image
+//                                      [self.brain reconstruct2:self.imageView.image
 //                                                        coarse:self.coarse
 //                                                           idx:idx y_r:y_r y_g:y_g y_b:y_b
 //                                                          rate:rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:75 pastIterations:262],
