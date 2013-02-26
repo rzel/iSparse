@@ -32,12 +32,21 @@
     
     self.rate = 0.5;
 
+    self.imageView.contentMode = UIViewContentModeScaleToFill;
+ //   self.imageView.clipsToBounds = YES;
+    
+
     
     self.label.text = [NSString stringWithFormat:@"%.0f%%", 50.0];
     UIImage * image = [self imageWithImage:[UIImage imageNamed:@"mountain.jpg"] scaledToSize:CGSizeMake(256, 256)];
+    self.imageStay = image;
     image = [self.brain sampleImage:image atRate:self.rate];
     self.imageView.image = image;
-    self.imageStay = image;
+    
+
+    
+    
+    NSLog(@"%@", self.imageView.frame);
 
     
 }
@@ -106,7 +115,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         // "self." added by SCOTT
         // IMAGE picks here. FINDME. change as needed.
         image = [self imageWithImage:image scaledToSize:CGSizeMake(256, 256)];
-        self.imageView.image = image;
+        self.imageView.image = [self.brain sampleImage:image atRate:self.rate];
         self.imageStay = image;
         
         if (newMedia)

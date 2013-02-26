@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="2" customClass="UROPMainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10">
@@ -28,11 +28,10 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLY-Xp-vRr">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="304" id="4kb-NK-G92"/>
-                                    <constraint firstAttribute="height" constant="352" id="KSO-Gj-aig"/>
+                                    <constraint firstAttribute="height" constant="409" id="kmu-hR-0sP"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -52,16 +51,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jLY-Xp-vRr" firstAttribute="top" secondItem="3" secondAttribute="top" constant="10" id="6S1-d6-adP"/>
+                            <constraint firstItem="jLY-Xp-vRr" firstAttribute="centerX" secondItem="hxc-g5-zDU" secondAttribute="centerX" type="default" id="410-V2-m03"/>
+                            <constraint firstItem="jLY-Xp-vRr" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="47x-R3-z9h"/>
+                            <constraint firstAttribute="trailing" secondItem="jLY-Xp-vRr" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="IiY-5H-fft"/>
+                            <constraint firstAttribute="bottom" secondItem="hxc-g5-zDU" secondAttribute="bottom" constant="15" id="Zdm-U8-k90"/>
                             <constraint firstAttribute="trailing" secondItem="10" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="apl-1S-UOC"/>
                             <constraint firstAttribute="bottom" secondItem="10" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="bcr-if-aDO"/>
-                            <constraint firstAttribute="bottom" secondItem="hxc-g5-zDU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="eox-pl-nIq"/>
-                            <constraint firstItem="hxc-g5-zDU" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="qe0-jH-wHO"/>
-                            <constraint firstItem="jLY-Xp-vRr" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="9" id="zrk-4E-gPg"/>
+                            <constraint firstItem="jLY-Xp-vRr" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="lA8-eE-bvl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WXg-aa-oNx"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="text" destination="jLY-Xp-vRr" id="3x2-t3-Ksa"/>
                     </connections>
@@ -75,13 +75,13 @@
             <objects>
                 <viewController id="6" customClass="UROPFlipsideViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVN-q3-xKF">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="369" id="NFj-pQ-F7O"/>
+                                    <constraint firstAttribute="height" constant="273" id="4Yo-fS-jiy"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -102,7 +102,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IVN-q3-xKF" firstAttribute="top" secondItem="7" secondAttribute="top" constant="67" id="9ol-G1-Y1I"/>
+                            <constraint firstItem="IVN-q3-xKF" firstAttribute="top" secondItem="7" secondAttribute="top" constant="163" id="f6v-Dk-bbT"/>
                             <constraint firstAttribute="trailing" secondItem="IVN-q3-xKF" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="isf-5b-J1V"/>
                             <constraint firstItem="12" firstAttribute="leading" secondItem="7" secondAttribute="leading" type="default" id="kyL-VC-rMY"/>
                             <constraint firstItem="12" firstAttribute="top" secondItem="7" secondAttribute="top" type="default" id="oQ7-QK-1Ab"/>
@@ -110,7 +110,7 @@
                             <constraint firstItem="12" firstAttribute="trailing" secondItem="7" secondAttribute="trailing" type="default" id="yf5-Bx-wHg"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="text" destination="IVN-q3-xKF" id="3Hy-8F-Vlk"/>
                     </connections>
@@ -194,7 +194,7 @@
             <objects>
                 <viewController title="UROP3rdViewController" id="cyA-Xc-H01" customClass="UROP3rdViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sf4-Vd-byn">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aS9-Ls-PD2">
@@ -216,9 +216,6 @@
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0A-jn-sRv">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="6ny-6o-TAo"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Reconstruct">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -233,7 +230,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgj-tG-N40">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="138" id="2uK-9f-JlC"/>
+                                    <constraint firstAttribute="width" constant="141" id="DG4-g2-KYs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Choose an image">
@@ -250,22 +247,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="BCt-A2-dMm" secondAttribute="bottom" constant="78" id="9QJ-UR-gDO"/>
-                            <constraint firstAttribute="bottom" secondItem="hgj-tG-N40" secondAttribute="bottom" constant="10" id="Cgf-D9-obs"/>
-                            <constraint firstItem="hgj-tG-N40" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" constant="10" id="CxL-mQ-TdR"/>
+                            <constraint firstAttribute="bottom" secondItem="hgj-tG-N40" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="0ua-dU-q03"/>
+                            <constraint firstAttribute="bottom" secondItem="g0A-jn-sRv" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="G53-nD-b2f"/>
+                            <constraint firstItem="BCt-A2-dMm" firstAttribute="top" secondItem="Quf-WF-Ktu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NPz-Hp-olz"/>
                             <constraint firstAttribute="trailing" secondItem="Quf-WF-Ktu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="OrT-KK-UXh"/>
+                            <constraint firstAttribute="bottom" secondItem="BCt-A2-dMm" secondAttribute="bottom" constant="93" id="Pco-wt-0CM"/>
                             <constraint firstItem="aS9-Ls-PD2" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" type="default" id="RDR-Vp-UU7"/>
-                            <constraint firstAttribute="bottom" secondItem="Quf-WF-Ktu" secondAttribute="bottom" constant="54" id="cdl-DN-Fcw"/>
-                            <constraint firstItem="hgj-tG-N40" firstAttribute="baseline" secondItem="g0A-jn-sRv" secondAttribute="baseline" type="default" id="eoy-pN-tIQ"/>
-                            <constraint firstItem="BCt-A2-dMm" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" constant="148" id="ffU-Ua-Xnb"/>
+                            <constraint firstAttribute="trailing" secondItem="g0A-jn-sRv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="TH6-yc-bkT"/>
+                            <constraint firstItem="BCt-A2-dMm" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" constant="147" id="VGj-tq-Ihi"/>
+                            <constraint firstItem="hgj-tG-N40" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZLk-1c-NCv"/>
                             <constraint firstItem="aS9-Ls-PD2" firstAttribute="top" secondItem="Sf4-Vd-byn" secondAttribute="top" type="default" id="idI-0O-hsq"/>
-                            <constraint firstAttribute="trailing" secondItem="g0A-jn-sRv" secondAttribute="trailing" constant="8" id="ljj-fg-WsW"/>
                             <constraint firstItem="Quf-WF-Ktu" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="o2l-g2-hBR"/>
                             <constraint firstItem="aS9-Ls-PD2" firstAttribute="trailing" secondItem="Sf4-Vd-byn" secondAttribute="trailing" type="default" id="vXa-oo-QaL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sampling Rate" id="mum-bU-OUC"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="imageView" destination="aS9-Ls-PD2" id="Mx4-Di-0pN"/>
                         <outlet property="label" destination="BCt-A2-dMm" id="JD9-10-Yus"/>
@@ -281,7 +278,7 @@
             <objects>
                 <viewController title="UROPFinalViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="MW8-sq-QGe" customClass="UROPFinalViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D8l-sr-5YX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" indicatorStyle="black" minimumZoomScale="0.25" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="5e3-nH-5Fj">
@@ -293,10 +290,10 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Au6-If-dj6" secondAttribute="bottom" constant="51" id="SUn-vN-Qh3"/>
+                                    <constraint firstItem="Au6-If-dj6" firstAttribute="top" secondItem="5e3-nH-5Fj" secondAttribute="top" constant="71" id="DD1-Xv-Pic"/>
                                     <constraint firstItem="Au6-If-dj6" firstAttribute="centerX" secondItem="5e3-nH-5Fj" secondAttribute="centerX" type="default" id="gbw-MH-5cm"/>
+                                    <constraint firstAttribute="bottom" secondItem="Au6-If-dj6" secondAttribute="bottom" constant="120" id="iqU-xB-TqP"/>
                                     <constraint firstItem="Au6-If-dj6" firstAttribute="trailing" secondItem="5e3-nH-5Fj" secondAttribute="trailing" type="default" id="l4k-lh-FSl"/>
-                                    <constraint firstItem="Au6-If-dj6" firstAttribute="top" secondItem="5e3-nH-5Fj" secondAttribute="top" constant="52" id="oRz-pZ-xfW"/>
                                     <constraint firstItem="Au6-If-dj6" firstAttribute="leading" secondItem="5e3-nH-5Fj" secondAttribute="leading" type="default" id="wQK-om-PLu"/>
                                 </constraints>
                             </scrollView>
@@ -310,7 +307,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ssz-VU-DMW"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="imageView" destination="Au6-If-dj6" id="9zl-sA-fMw"/>
                         <outlet property="scrollView" destination="5e3-nH-5Fj" id="9fU-wS-sr0"/>
@@ -325,7 +322,6 @@
             <objects>
                 <navigationController id="GGi-HH-o7Y" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ycc-5R-ADL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -357,6 +353,8 @@
         <class className="UROP3rdViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROP3rdViewController.h"/>
             <relationships>
+                <relationship kind="action" name="samplingSliderChanged:"/>
+                <relationship kind="action" name="useCameraRoll2:"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>

@@ -10,9 +10,7 @@
 		D2215D9516D7F9B000FD2A48 /* mountain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2215D9416D7F9B000FD2A48 /* mountain.jpg */; };
 		D2215D9716D9495C00FD2A48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2215D9616D9495C00FD2A48 /* QuartzCore.framework */; };
 		D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2365EA916D432E70017E15A /* UROPbrain.m */; };
-		D24C2F3016DAFCBE0041F4CE /* CPAnimationProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = D24C2F2D16DAFCBE0041F4CE /* CPAnimationProgram.m */; };
-		D24C2F3116DAFCBE0041F4CE /* CPAnimationSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = D24C2F2E16DAFCBE0041F4CE /* CPAnimationSequence.m */; };
-		D24C2F3216DAFCBE0041F4CE /* CPAnimationStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D24C2F2F16DAFCBE0041F4CE /* CPAnimationStep.m */; };
+		D24C2F6D16DD1EDA0041F4CE /* MainStoryboard5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24C2F6B16DD1EDA0041F4CE /* MainStoryboard5.storyboard */; };
 		D2DF752016CF174900DF158B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF751F16CF174900DF158B /* UIKit.framework */; };
 		D2DF752216CF174900DF158B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF752116CF174900DF158B /* Foundation.framework */; };
 		D2DF752416CF174900DF158B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF752316CF174900DF158B /* CoreGraphics.framework */; };
@@ -38,12 +36,7 @@
 		D2215D9616D9495C00FD2A48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D2365EA816D432E70017E15A /* UROPbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPbrain.h; sourceTree = "<group>"; };
 		D2365EA916D432E70017E15A /* UROPbrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPbrain.m; sourceTree = "<group>"; };
-		D24C2F2A16DAFCBE0041F4CE /* CPAnimationProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAnimationProgram.h; sourceTree = "<group>"; };
-		D24C2F2B16DAFCBE0041F4CE /* CPAnimationSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAnimationSequence.h; sourceTree = "<group>"; };
-		D24C2F2C16DAFCBE0041F4CE /* CPAnimationStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAnimationStep.h; sourceTree = "<group>"; };
-		D24C2F2D16DAFCBE0041F4CE /* CPAnimationProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAnimationProgram.m; sourceTree = "<group>"; };
-		D24C2F2E16DAFCBE0041F4CE /* CPAnimationSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAnimationSequence.m; sourceTree = "<group>"; };
-		D24C2F2F16DAFCBE0041F4CE /* CPAnimationStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAnimationStep.m; sourceTree = "<group>"; };
+		D24C2F6C16DD1EDA0041F4CE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard5.storyboard; sourceTree = "<group>"; };
 		D2DF751C16CF174900DF158B /* UROPv6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UROPv6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DF751F16CF174900DF158B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D2DF752116CF174900DF158B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -90,19 +83,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D24C2F2916DAFCB20041F4CE /* Animations_s */ = {
-			isa = PBXGroup;
-			children = (
-				D24C2F2A16DAFCBE0041F4CE /* CPAnimationProgram.h */,
-				D24C2F2B16DAFCBE0041F4CE /* CPAnimationSequence.h */,
-				D24C2F2C16DAFCBE0041F4CE /* CPAnimationStep.h */,
-				D24C2F2D16DAFCBE0041F4CE /* CPAnimationProgram.m */,
-				D24C2F2E16DAFCBE0041F4CE /* CPAnimationSequence.m */,
-				D24C2F2F16DAFCBE0041F4CE /* CPAnimationStep.m */,
-			);
-			path = Animations_s;
-			sourceTree = "<group>";
-		};
 		D2DF751316CF174900DF158B = {
 			isa = PBXGroup;
 			children = (
@@ -136,9 +116,9 @@
 		D2DF752516CF174900DF158B /* UROPv6 */ = {
 			isa = PBXGroup;
 			children = (
+				D24C2F6B16DD1EDA0041F4CE /* MainStoryboard5.storyboard */,
 				D2365EA816D432E70017E15A /* UROPbrain.h */,
 				D2365EA916D432E70017E15A /* UROPbrain.m */,
-				D24C2F2916DAFCB20041F4CE /* Animations_s */,
 				D2DF755D16D2811200DF158B /* UROPFlipsideViewController.h */,
 				D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */,
 				D2215D9416D7F9B000FD2A48 /* mountain.jpg */,
@@ -232,6 +212,7 @@
 				D2DF753916CF174A00DF158B /* MainStoryboard.storyboard in Resources */,
 				D2DF754916CF1AA100DF158B /* ted.jpg in Resources */,
 				D2215D9516D7F9B000FD2A48 /* mountain.jpg in Resources */,
+				D24C2F6D16DD1EDA0041F4CE /* MainStoryboard5.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,15 +231,20 @@
 				D2DF755916D2802000DF158B /* UROPFinalViewController.m in Sources */,
 				D2DF755F16D2811300DF158B /* UROPFlipsideViewController.m in Sources */,
 				D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */,
-				D24C2F3016DAFCBE0041F4CE /* CPAnimationProgram.m in Sources */,
-				D24C2F3116DAFCBE0041F4CE /* CPAnimationSequence.m in Sources */,
-				D24C2F3216DAFCBE0041F4CE /* CPAnimationStep.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D24C2F6B16DD1EDA0041F4CE /* MainStoryboard5.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D24C2F6C16DD1EDA0041F4CE /* en */,
+			);
+			name = MainStoryboard5.storyboard;
+			sourceTree = "<group>";
+		};
 		D2DF752816CF174900DF158B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

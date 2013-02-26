@@ -9,9 +9,9 @@
 #import "UROPFinalViewController.h"
 #import "UROPbrain.h"
 #import <QuartzCore/QuartzCore.h>
-#import "Animations_s/CPAnimationSequence.h"
-#import "Animations_s/CPAnimationStep.h"
-#import "Animations_s/CPAnimationProgram.h"
+//#import "Animations_s/CPAnimationSequence.h"
+//#import "Animations_s/CPAnimationStep.h"
+//#import "Animations_s/CPAnimationProgram.h"
 
 @interface UROPFinalViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
@@ -36,6 +36,7 @@
 //    NSLog(@"coarse = %f", self.coarse);
 //    
 //    // image set up properly
+    self.imageView.image = self.imageStay;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
     NSLog(@"%f", self.rate);
     NSLog(@"%@", self.imageStay);
@@ -49,7 +50,17 @@
 //    self.imageView.animationDuration = 6.00;
 //    self.imageView.animationRepeatCount = 100;
 //    [self.imageView startAnimating];
+    [self.scrollView setBackgroundColor:[UIColor blackColor]];
+    [self.scrollView setMaximumZoomScale:2.0];
+//    self.scrollView.scrollEnabled = YES;
+//    self.scrollView.pagingEnabled = YES;
+    [self.scrollView addSubview:self.imageView];
+    self.scrollView.delegate = self;
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.maximumZoomScale = 4.0;
+    self.scrollView.minimumZoomScale = 1.0;
     
+
     
     
     NSLog(@"rate = %f", self.rate);
@@ -1466,6 +1477,9 @@
 
     
 
+}
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageView;
 }
 
 - (IBAction)reconstructV2:(id)sender {
