@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.text.text = @"This app uses a procedure called compressed sensing. What it does is applies a transformation to the image, then tries to match the measurements to the reconstruction iteratively. The coarseness slider dictates how much detail your final reconstruction can have.";
+    self.text.text = [NSString stringWithFormat:@"This app uses a technique that allows for the nearly perfect reconstruction, as long as the image is mostly zeros in some basis. \n\nThe reason that the image doesn't show up perfectly is that this method requires a time-intensive process that we avoided, and this results in less detail in the image, the reason you see bright pixels. \n\nThis app was made by Dr. Jarvis Haupt and Scott Sievert at the University of Minnesota under the Undergraduate Research Oppurtunities Program. "];
 }
 
 

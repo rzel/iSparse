@@ -29,16 +29,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.imageView.image = [self.brain sampleImage:self.imageStay atRate:0.5];
+    
     self.rate = 0.5;
+
+    
     self.label.text = [NSString stringWithFormat:@"%.0f%%", 50.0];
+    UIImage * image = [self imageWithImage:[UIImage imageNamed:@"mountain.jpg"] scaledToSize:CGSizeMake(256, 256)];
+    image = [self.brain sampleImage:image atRate:self.rate];
+    self.imageView.image = image;
+    self.imageStay = image;
+
     
 }
 - (IBAction)samplingSliderChanged:(id)sender {
     float rate = 0.6*self.samplingSlider.value + 0.2;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
-    self.label.text = [NSString stringWithFormat:@"%.0f%%", 100*self.samplingSlider.value];
+    self.label.text = [NSString stringWithFormat:@"%.0f%%", 100*(0.6*self.samplingSlider.value + 0.2)];
     self.rate = rate;
     
 }
@@ -59,4 +65,61 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// all from web
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+- (IBAction)useCameraRoll2:(id)sender {
+    NSLog(@"here");
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType =
+        UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = [NSArray arrayWithObjects:
+                                  (NSString *) kUTTypeImage,
+                                  nil];
+        imagePicker.allowsEditing = NO;
+        //        [self presentModalViewController:imagePicker animated:YES];
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        //        [self.navigationController pushViewController:(UIViewController *)imagePicker animated:YES];
+        newMedia = NO;
+    }
+}
+-(void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *image = [info
+                          objectForKey:UIImagePickerControllerOriginalImage];
+        // "self." added by SCOTT
+        // IMAGE picks here. FINDME. change as needed.
+        image = [self imageWithImage:image scaledToSize:CGSizeMake(256, 256)];
+        self.imageView.image = image;
+        self.imageStay = image;
+        
+        if (newMedia)
+            UIImageWriteToSavedPhotosAlbum(image,
+                                           self,
+                                           @selector(image:finishedSavingWithError:contextInfo:),
+                                           nil);
+    }
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
+    {
+		// Code here to support video if enabled
+	}
+}
+
+
 @end

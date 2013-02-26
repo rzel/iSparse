@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface UROP3rdViewController : UIViewController
+<UIImagePickerControllerDelegate,
+UINavigationControllerDelegate>
+{
+    UIImageView *imageView;
+    BOOL newMedia;
+}
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
 @property  float rate;
 @property  float coarse;

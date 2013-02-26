@@ -37,6 +37,7 @@
 //    
 //    // image set up properly
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
+    NSLog(@"%f", self.rate);
     NSLog(@"%@", self.imageStay);
     NSLog(@"%@", self.imageView.image);
     // no user-selected image: 0xf6... 0x715...

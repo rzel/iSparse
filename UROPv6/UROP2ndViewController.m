@@ -89,31 +89,7 @@
 }
 
 // from the web
--(void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *image = [info
-                          objectForKey:UIImagePickerControllerOriginalImage];
-        // "self." added by SCOTT
-        // IMAGE picks here. FINDME. change as needed.
-        image = [self imageWithImage:image scaledToSize:CGSizeMake(256, 256)];
-        self.imageView.image = image;
-        self.imageStay = image;
-        if (newMedia)
-            UIImageWriteToSavedPhotosAlbum(image,
-                                           self,
-                                           @selector(image:finishedSavingWithError:contextInfo:),
-                                           nil);
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-		// Code here to support video if enabled
-	}
-}
+
 -(void)image:(UIImage *)image
 finishedSavingWithError:(NSError *)error
  contextInfo:(void *)contextInfo
