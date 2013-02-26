@@ -347,7 +347,6 @@
         <class className="UROP2ndViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROP2ndViewController.h"/>
             <relationships>
-                <relationship kind="action" name="coarsenessSliderChanged:"/>
                 <relationship kind="action" name="useCameraRoll"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
