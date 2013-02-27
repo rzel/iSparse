@@ -32,6 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
+    
+//    [main_view release];
 //    NSLog(@"rate = %f", self.rate);
 //    NSLog(@"coarse = %f", self.coarse);
 //    

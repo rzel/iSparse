@@ -197,15 +197,12 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aS9-Ls-PD2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="aS9-Ls-PD2">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="6jI-rm-pNr"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="50%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCt-A2-dMm">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="yPP-et-NXH"/>
-                                </constraints>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sampling rate: 50%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCt-A2-dMm">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -249,12 +246,12 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hgj-tG-N40" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="0ua-dU-q03"/>
                             <constraint firstAttribute="bottom" secondItem="g0A-jn-sRv" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="G53-nD-b2f"/>
-                            <constraint firstItem="BCt-A2-dMm" firstAttribute="top" secondItem="Quf-WF-Ktu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NPz-Hp-olz"/>
+                            <constraint firstAttribute="bottom" secondItem="BCt-A2-dMm" secondAttribute="bottom" constant="85" id="HHy-hE-bhl"/>
+                            <constraint firstItem="Quf-WF-Ktu" firstAttribute="centerX" secondItem="BCt-A2-dMm" secondAttribute="centerX" type="default" id="MaJ-P5-B32"/>
                             <constraint firstAttribute="trailing" secondItem="Quf-WF-Ktu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="OrT-KK-UXh"/>
-                            <constraint firstAttribute="bottom" secondItem="BCt-A2-dMm" secondAttribute="bottom" constant="93" id="Pco-wt-0CM"/>
                             <constraint firstItem="aS9-Ls-PD2" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" type="default" id="RDR-Vp-UU7"/>
                             <constraint firstAttribute="trailing" secondItem="g0A-jn-sRv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="TH6-yc-bkT"/>
-                            <constraint firstItem="BCt-A2-dMm" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" constant="147" id="VGj-tq-Ihi"/>
+                            <constraint firstAttribute="bottom" secondItem="Quf-WF-Ktu" secondAttribute="bottom" constant="122" id="Tbl-hL-8P4"/>
                             <constraint firstItem="hgj-tG-N40" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZLk-1c-NCv"/>
                             <constraint firstItem="aS9-Ls-PD2" firstAttribute="top" secondItem="Sf4-Vd-byn" secondAttribute="top" type="default" id="idI-0O-hsq"/>
                             <constraint firstItem="Quf-WF-Ktu" firstAttribute="leading" secondItem="Sf4-Vd-byn" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="o2l-g2-hBR"/>
@@ -353,8 +350,6 @@
         <class className="UROP3rdViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROP3rdViewController.h"/>
             <relationships>
-                <relationship kind="action" name="samplingSliderChanged:"/>
-                <relationship kind="action" name="useCameraRoll2:"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>
@@ -364,6 +359,8 @@
         <class className="UROPFinalViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPFinalViewController.h"/>
             <relationships>
+                <relationship kind="action" name="reconstruct:"/>
+                <relationship kind="action" name="reconstructV2:"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>

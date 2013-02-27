@@ -30,6 +30,9 @@
 {
     [super viewDidLoad];
     
+
+    
+    
     self.rate = 0.5;
 
     self.imageView.contentMode = UIViewContentModeScaleToFill;
@@ -37,7 +40,7 @@
     
 
     
-    self.label.text = [NSString stringWithFormat:@"%.0f%%", 50.0];
+    self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 50.0];
     UIImage * image = [self imageWithImage:[UIImage imageNamed:@"mountain.jpg"] scaledToSize:CGSizeMake(256, 256)];
     self.imageStay = image;
     image = [self.brain sampleImage:image atRate:self.rate];
@@ -53,7 +56,7 @@
 - (IBAction)samplingSliderChanged:(id)sender {
     float rate = 0.6*self.samplingSlider.value + 0.2;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
-    self.label.text = [NSString stringWithFormat:@"%.0f%%", 100*(0.6*self.samplingSlider.value + 0.2)];
+    self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 100*(0.6*self.samplingSlider.value + 0.2)];
     self.rate = rate;
     
 }
