@@ -73,6 +73,7 @@
     
     // image set up properly
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
+
     float rate = self.rate;
     float pix = self.imageStay.size.width * self.imageStay.size.height;
     float coarseness = self.coarse;
@@ -1478,6 +1479,7 @@
     self.imageView.animationDuration = 6.00;
     self.imageView.animationRepeatCount = 100;
     [self.imageView startAnimating];
+ 
 
     
 
