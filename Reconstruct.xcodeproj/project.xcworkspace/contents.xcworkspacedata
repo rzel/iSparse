@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:UROPv6.xcodeproj">
+      location = "self:Reconstruct.xcodeproj">
    </FileRef>
 </Workspace>

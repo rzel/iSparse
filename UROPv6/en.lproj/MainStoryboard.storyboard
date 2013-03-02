@@ -193,7 +193,7 @@
         <scene sceneID="DNp-WK-a8Y">
             <objects>
                 <viewController title="UROP3rdViewController" id="cyA-Xc-H01" customClass="UROP3rdViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Sf4-Vd-byn">
+                    <view key="view" contentMode="scaleToFill" horizontalHuggingPriority="864" verticalHuggingPriority="871" id="Sf4-Vd-byn">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -239,7 +239,7 @@
                                     <action selector="useCameraRoll2:" destination="cyA-Xc-H01" eventType="touchUpInside" id="XdX-vs-vvv"/>
                                 </connections>
                             </button>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="NFq-u7-fco">
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="mountain.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="NFq-u7-fco">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="331" id="GGk-qt-eJq"/>
                                     <constraint firstAttribute="height" constant="309" id="zCb-OL-bef"/>
@@ -283,7 +283,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" indicatorStyle="black" minimumZoomScale="0.25" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="5e3-nH-5Fj">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Au6-If-dj6">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="mountain.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Au6-If-dj6">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="dJo-EU-3yE"/>
                                         </constraints>
@@ -337,6 +337,9 @@
             <point key="canvasLocation" x="-427" y="182"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mountain.jpg" width="256" height="256"/>
+    </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -344,6 +347,7 @@
         <class className="UROP2ndViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROP2ndViewController.h"/>
             <relationships>
+                <relationship kind="action" name="coarsenessSliderChanged:"/>
                 <relationship kind="action" name="useCameraRoll"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>

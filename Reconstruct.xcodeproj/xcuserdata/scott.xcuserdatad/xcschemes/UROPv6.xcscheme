@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2DF751B16CF174900DF158B"
                BuildableName = "UROPv6.app"
-               BlueprintName = "UROPv6"
-               ReferencedContainer = "container:UROPv6.xcodeproj">
+               BlueprintName = "Reconstruct"
+               ReferencedContainer = "container:Reconstruct.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2DF751B16CF174900DF158B"
             BuildableName = "UROPv6.app"
-            BlueprintName = "UROPv6"
-            ReferencedContainer = "container:UROPv6.xcodeproj">
+            BlueprintName = "Reconstruct"
+            ReferencedContainer = "container:Reconstruct.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,8 +53,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2DF751B16CF174900DF158B"
             BuildableName = "UROPv6.app"
-            BlueprintName = "UROPv6"
-            ReferencedContainer = "container:UROPv6.xcodeproj">
+            BlueprintName = "Reconstruct"
+            ReferencedContainer = "container:Reconstruct.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,8 +71,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2DF751B16CF174900DF158B"
             BuildableName = "UROPv6.app"
-            BlueprintName = "UROPv6"
-            ReferencedContainer = "container:UROPv6.xcodeproj">
+            BlueprintName = "Reconstruct"
+            ReferencedContainer = "container:Reconstruct.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

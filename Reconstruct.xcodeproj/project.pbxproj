@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D203E50116E1920400336557 /* 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = D203E50016E1920400336557 /* 57x57.png */; };
+		D203E50316E1924B00336557 /* 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = D203E50216E1924B00336557 /* 114x114.png */; };
+		D203E50516E24FEA00336557 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D203E50416E24FEA00336557 /* icon.png */; };
+		D203E50716E24FF600336557 /* icon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D203E50616E24FF600336557 /* icon2x.png */; };
 		D2215D9516D7F9B000FD2A48 /* mountain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2215D9416D7F9B000FD2A48 /* mountain.jpg */; };
 		D2215D9716D9495C00FD2A48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2215D9616D9495C00FD2A48 /* QuartzCore.framework */; };
 		D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2365EA916D432E70017E15A /* UROPbrain.m */; };
@@ -32,19 +36,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D203E50016E1920400336557 /* 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57x57.png; sourceTree = "<group>"; };
+		D203E50216E1924B00336557 /* 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114x114.png; sourceTree = "<group>"; };
+		D203E50416E24FEA00336557 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		D203E50616E24FF600336557 /* icon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2x.png; sourceTree = "<group>"; };
 		D2215D9416D7F9B000FD2A48 /* mountain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountain.jpg; sourceTree = "<group>"; };
 		D2215D9616D9495C00FD2A48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D2365EA816D432E70017E15A /* UROPbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPbrain.h; sourceTree = "<group>"; };
 		D2365EA916D432E70017E15A /* UROPbrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPbrain.m; sourceTree = "<group>"; };
 		D24C2F6C16DD1EDA0041F4CE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard5.storyboard; sourceTree = "<group>"; };
-		D2DF751C16CF174900DF158B /* UROPv6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UROPv6.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2DF751C16CF174900DF158B /* Reconstruct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reconstruct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DF751F16CF174900DF158B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D2DF752116CF174900DF158B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2DF752316CF174900DF158B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D2DF752716CF174900DF158B /* UROPv6-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UROPv6-Info.plist"; sourceTree = "<group>"; };
+		D2DF752716CF174900DF158B /* Reconstruct-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Reconstruct-Info.plist"; sourceTree = "<group>"; };
 		D2DF752916CF174900DF158B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2DF752B16CF174900DF158B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D2DF752D16CF174900DF158B /* UROPv6-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UROPv6-Prefix.pch"; sourceTree = "<group>"; };
+		D2DF752D16CF174900DF158B /* Reconstruct-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Reconstruct-Prefix.pch"; sourceTree = "<group>"; };
 		D2DF752E16CF174A00DF158B /* UROPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPAppDelegate.h; sourceTree = "<group>"; };
 		D2DF752F16CF174A00DF158B /* UROPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPAppDelegate.m; sourceTree = "<group>"; };
 		D2DF753116CF174A00DF158B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 		D2DF751316CF174900DF158B = {
 			isa = PBXGroup;
 			children = (
+				D203E50616E24FF600336557 /* icon2x.png */,
+				D203E50416E24FEA00336557 /* icon.png */,
+				D203E50216E1924B00336557 /* 114x114.png */,
+				D203E50016E1920400336557 /* 57x57.png */,
 				D2215D9616D9495C00FD2A48 /* QuartzCore.framework */,
 				D2DF754C16CF1B8E00DF158B /* MobileCoreServices.framework */,
 				D2DF754A16CF1B8700DF158B /* Accelerate.framework */,
@@ -94,11 +106,12 @@
 				D2DF751D16CF174900DF158B /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		D2DF751D16CF174900DF158B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2DF751C16CF174900DF158B /* UROPv6.app */,
+				D2DF751C16CF174900DF158B /* Reconstruct.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,10 +155,10 @@
 		D2DF752616CF174900DF158B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D2DF752716CF174900DF158B /* UROPv6-Info.plist */,
+				D2DF752716CF174900DF158B /* Reconstruct-Info.plist */,
 				D2DF752816CF174900DF158B /* InfoPlist.strings */,
 				D2DF752B16CF174900DF158B /* main.m */,
-				D2DF752D16CF174900DF158B /* UROPv6-Prefix.pch */,
+				D2DF752D16CF174900DF158B /* Reconstruct-Prefix.pch */,
 				D2DF753116CF174A00DF158B /* Default.png */,
 				D2DF753316CF174A00DF158B /* Default@2x.png */,
 				D2DF753516CF174A00DF158B /* Default-568h@2x.png */,
@@ -156,9 +169,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D2DF751B16CF174900DF158B /* UROPv6 */ = {
+		D2DF751B16CF174900DF158B /* Reconstruct */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2DF754216CF174A00DF158B /* Build configuration list for PBXNativeTarget "UROPv6" */;
+			buildConfigurationList = D2DF754216CF174A00DF158B /* Build configuration list for PBXNativeTarget "Reconstruct" */;
 			buildPhases = (
 				D2DF751816CF174900DF158B /* Sources */,
 				D2DF751916CF174900DF158B /* Frameworks */,
@@ -168,9 +181,9 @@
 			);
 			dependencies = (
 			);
-			name = UROPv6;
+			name = Reconstruct;
 			productName = UROPv6;
-			productReference = D2DF751C16CF174900DF158B /* UROPv6.app */;
+			productReference = D2DF751C16CF174900DF158B /* Reconstruct.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +196,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = com.scott;
 			};
-			buildConfigurationList = D2DF751716CF174900DF158B /* Build configuration list for PBXProject "UROPv6" */;
+			buildConfigurationList = D2DF751716CF174900DF158B /* Build configuration list for PBXProject "Reconstruct" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -195,7 +208,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2DF751B16CF174900DF158B /* UROPv6 */,
+				D2DF751B16CF174900DF158B /* Reconstruct */,
 			);
 		};
 /* End PBXProject section */
@@ -213,6 +226,10 @@
 				D2DF754916CF1AA100DF158B /* ted.jpg in Resources */,
 				D2215D9516D7F9B000FD2A48 /* mountain.jpg in Resources */,
 				D24C2F6D16DD1EDA0041F4CE /* MainStoryboard5.storyboard in Resources */,
+				D203E50116E1920400336557 /* 57x57.png in Resources */,
+				D203E50316E1924B00336557 /* 114x114.png in Resources */,
+				D203E50516E24FEA00336557 /* icon.png in Resources */,
+				D203E50716E24FF600336557 /* icon2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,9 +341,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UROPv6/UROPv6-Prefix.pch";
-				INFOPLIST_FILE = "UROPv6/UROPv6-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "UROPv6/Reconstruct-Prefix.pch";
+				INFOPLIST_FILE = "UROPv6/Reconstruct-Info.plist";
+				PRODUCT_NAME = Reconstruct;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -335,9 +352,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UROPv6/UROPv6-Prefix.pch";
-				INFOPLIST_FILE = "UROPv6/UROPv6-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "UROPv6/Reconstruct-Prefix.pch";
+				INFOPLIST_FILE = "UROPv6/Reconstruct-Info.plist";
+				PRODUCT_NAME = Reconstruct;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -345,7 +362,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D2DF751716CF174900DF158B /* Build configuration list for PBXProject "UROPv6" */ = {
+		D2DF751716CF174900DF158B /* Build configuration list for PBXProject "Reconstruct" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2DF754016CF174A00DF158B /* Debug */,
@@ -354,7 +371,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2DF754216CF174A00DF158B /* Build configuration list for PBXNativeTarget "UROPv6" */ = {
+		D2DF754216CF174A00DF158B /* Build configuration list for PBXNativeTarget "Reconstruct" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2DF754316CF174A00DF158B /* Debug */,
