@@ -1,6 +1,6 @@
 //
 //  UROP3rdViewController.h
-//  UROPv6
+//  UROPv
 //
 //  Created by Scott Sievert on 2/15/13.
 //  Copyright (c) 2013 com.scott. All rights reserved.
@@ -21,5 +21,8 @@ UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UISlider *samplingSlider;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewTest;
+
 
 @end

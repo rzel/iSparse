@@ -30,21 +30,22 @@
 {
     [super viewDidLoad];
     
-
+//    self.imageViewTest.image = [UIImage imageNamed:@"mountain.jpg"];
     
     
     self.rate = 0.5;
 
-    self.imageView.contentMode = UIViewContentModeScaleToFill;
- //   self.imageView.clipsToBounds = YES;
+//    self.imageView.contentMode = UIViewContentModeScaleToFill;
+//   self.imageView.clipsToBounds = YES;
     
 
     
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 50.0];
     UIImage * image = [self imageWithImage:[UIImage imageNamed:@"mountain.jpg"] scaledToSize:CGSizeMake(256, 256)];
+//    UIImage * image = [UIImage imageNamed:@"mountain.jpg"];
     self.imageStay = image;
-    image = [self.brain sampleImage:image atRate:self.rate];
-    self.imageView.image = image;
+//    image =
+    self.imageView.image = [self.brain sampleImage:image atRate:self.rate];//image;
     
 
     
@@ -80,8 +81,8 @@
 
 // all from web
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 1.0);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
