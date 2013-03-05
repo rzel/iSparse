@@ -11,6 +11,8 @@
 		D203E50316E1924B00336557 /* 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = D203E50216E1924B00336557 /* 114x114.png */; };
 		D203E50516E24FEA00336557 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D203E50416E24FEA00336557 /* icon.png */; };
 		D203E50716E24FF600336557 /* icon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D203E50616E24FF600336557 /* icon2x.png */; };
+		D203E50916E263B300336557 /* lenna256x256.gif in Resources */ = {isa = PBXBuildFile; fileRef = D203E50816E263B300336557 /* lenna256x256.gif */; };
+		D203E50B16E424C700336557 /* lenna.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D203E50A16E424C700336557 /* lenna.jpg */; };
 		D2215D9516D7F9B000FD2A48 /* mountain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2215D9416D7F9B000FD2A48 /* mountain.jpg */; };
 		D2215D9716D9495C00FD2A48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2215D9616D9495C00FD2A48 /* QuartzCore.framework */; };
 		D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2365EA916D432E70017E15A /* UROPbrain.m */; };
@@ -40,6 +42,8 @@
 		D203E50216E1924B00336557 /* 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114x114.png; sourceTree = "<group>"; };
 		D203E50416E24FEA00336557 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D203E50616E24FF600336557 /* icon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2x.png; sourceTree = "<group>"; };
+		D203E50816E263B300336557 /* lenna256x256.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lenna256x256.gif; sourceTree = "<group>"; };
+		D203E50A16E424C700336557 /* lenna.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lenna.jpg; sourceTree = "<group>"; };
 		D2215D9416D7F9B000FD2A48 /* mountain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mountain.jpg; sourceTree = "<group>"; };
 		D2215D9616D9495C00FD2A48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D2365EA816D432E70017E15A /* UROPbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPbrain.h; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				D24C2F6B16DD1EDA0041F4CE /* MainStoryboard5.storyboard */,
+				D203E50816E263B300336557 /* lenna256x256.gif */,
+				D203E50A16E424C700336557 /* lenna.jpg */,
 				D2365EA816D432E70017E15A /* UROPbrain.h */,
 				D2365EA916D432E70017E15A /* UROPbrain.m */,
 				D2DF755D16D2811200DF158B /* UROPFlipsideViewController.h */,
@@ -230,6 +236,8 @@
 				D203E50316E1924B00336557 /* 114x114.png in Resources */,
 				D203E50516E24FEA00336557 /* icon.png in Resources */,
 				D203E50716E24FF600336557 /* icon2x.png in Resources */,
+				D203E50916E263B300336557 /* lenna256x256.gif in Resources */,
+				D203E50B16E424C700336557 /* lenna.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

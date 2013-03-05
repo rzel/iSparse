@@ -387,7 +387,7 @@
     int i;
     int length;
     float * output = (float *) malloc(sizeof(float) * N);
-    int length_stay = N;
+//    int length_stay = N;
     if (output == NULL) {
         NSLog(@"\nmalloc failed to allocate memory for  the real FFT"
               "section of the sample.\n");
@@ -582,8 +582,9 @@
     int height  = image.size.height;
     int width   = image.size.width;
     int area    = height * width;
-    int i, n;
-    float red, green, blue, alpha;
+//    int i
+    int n;
+//    float red, green, blue, alpha;
     float * array = (float *)malloc(sizeof(float) * area * 4);
     float * colorPlane = (float *)malloc(sizeof(float) * area);
     
@@ -594,7 +595,7 @@
     
     // get data
     array = [self UIImageToRawArray:image];
-    int j;
+//    int j;
     //float max, min;
     // end making raw array
     // begin the wavelet part
@@ -902,9 +903,9 @@
     int result_area = result_rows * result_col;
     float * result  = (float *)malloc(sizeof(float) * result_area);
     
-    int result2_col  = x_col;
-    int result2_rows = phi_rows;
-    int result2_area = result_rows * result_col;
+//    int result2_col  = x_col;
+//    int result2_rows = phi_rows;
+//    int result2_area = result_rows * result_col;
     float * result2  = (float *)malloc(sizeof(float) * result_area);
     
     for (i=0; i<x_area; i++) {
@@ -1079,7 +1080,7 @@
     // idx is only used to make the measurements
     
     //      s = 5000
-    int s = 5000;
+//    int s = 5000;
     
     //      xold = zeros(size(I3));
     for (i=0; i<N; i++) {
@@ -1187,7 +1188,7 @@
     int order = floor(log2(height));
     int area    = height * width;
     int i, n;
-    float red, green, blue, alpha;
+//    float red, green, blue, alpha;
     float * array = (float *)malloc(sizeof(float) * area * 4);
     float * colorPlane = (float *)malloc(sizeof(float) * area);
     
@@ -1198,7 +1199,7 @@
     
     // get data
     array = [self UIImageToRawArray:image];
-    int j;
+//    int j;
     //float max, min;
     // end making raw array
     // begin the wavelet part
@@ -1206,8 +1207,8 @@
     // perform wavelet, 2D on image
     // using color planes, all of that
     for (n=0; n<3; n++) {
-        float max = 0;
-        float min = -100;
+//        float max = 0;
+//        float min = -100;
         colorPlane = [self getColorPlane:array ofArea:area startingIndex:n into:colorPlane];
         
         //colorPlane = [self waveletOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order divide:@"null"]; // change from null to image if want /2
@@ -1326,7 +1327,7 @@
     int order = floor(log2(height));
     int area    = height * width;
     int i, n;
-    float red, green, blue, alpha;
+//    float red, green, blue, alpha;
     float * array = (float *)malloc(sizeof(float) * area * 4);
     float * colorPlane = (float *)malloc(sizeof(float) * area);
     
@@ -1337,7 +1338,7 @@
     
     // get data
     array = [self UIImageToRawArray:image];
-    int j;
+//    int j;
     //float max, min;
     // end making raw array
     // begin the wavelet part
@@ -1345,8 +1346,8 @@
     // perform wavelet, 2D on image
     // using color planes, all of that
     for (n=0; n<3; n++) {
-        float max = 0;
-        float min = -100;
+//        float max = 0;
+//        float min = -100;
         colorPlane = [self getColorPlane:array ofArea:area startingIndex:n into:colorPlane];
         
         //colorPlane = [self waveletOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order divide:@"null"]; // change from null to image if want /2
@@ -1652,7 +1653,7 @@
 
     // get data
     array = [self UIImageToRawArray:image];
-    int j, i;
+    int  i;
     //float max, min;
     // end making raw array
     // begin the wavelet part
@@ -2259,7 +2260,7 @@
 
     // get data
     array = [self UIImageToRawArray:image];
-    int i, j, n;
+    int n;
     //float max, min;
     // end making raw array
     // begin the wavelet part
@@ -2305,7 +2306,7 @@
     float * colorPlane = (float *)malloc(sizeof(float) * pix);
     // get data
     array = [self UIImageToRawArray:image];
-    int i, j, n;
+    int j, n;
     //float max, min;
     // end making raw array
     // begin the wavelet part
@@ -2354,7 +2355,7 @@
     float * colorPlane = (float *)malloc(sizeof(float) * pix);
     // get data
     array = [self UIImageToRawArray:image];
-    int i, j, n;
+    int j, n;
     //float max, min;
     // end making raw array
     // begin the wavelet part
@@ -2424,7 +2425,7 @@
     
     // get data
 //    array = [self UIImageToRawArray:image];
-    int i, j, n;
+    int i, n;
     //float max, min;
     // end making raw array
     // begin the wavelet part

@@ -41,7 +41,7 @@
 
     
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 50.0];
-    UIImage * image = [self imageWithImage:[UIImage imageNamed:@"mountain.jpg"] scaledToSize:CGSizeMake(256, 256)];
+    UIImage * image = [self imageWithImage:[UIImage imageNamed:@"lenna.jpg"] scaledToSize:CGSizeMake(256, 256)];
 //    UIImage * image = [UIImage imageNamed:@"mountain.jpg"];
     self.imageStay = image;
 //    image =
