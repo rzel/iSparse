@@ -2191,23 +2191,25 @@
         //[self reverseArray:tt length:N];
         //s = 5000;
         //float cut_off = tt[s];
+        //[ 118.77130756   -0.12812842   17.26287062]. from lenna
         
         float cut_off;
-        int max_its = 200; // iterations where it cuts off the value
-        if (its > max_its) {
-            cut_off = 165.24 * pow(2.7318, -0.22*(its + pastIts )) + 0;
-            // cut_off = 0 + 0; // essentially
-        } else { 
-            cut_off = 165.24 * pow(2.7318, -0.22*(its + pastIts)) + 26.25 - 26.25/200 * (pastIts + its);
+        cut_off = 165.24 * pow(2.7318, -0.08*(its + pastIts)) + 17.25;
+        //cut_off = 118.77 * pow(2.7318, -0.06*(its+pastIts)) + 17.26; // the lenna cut_off, time constant divided by 2
+        if (cut_off < 17.5) {
+            cut_off = cut_off - 0.3*pow(pastIts, 0.5);
+        }
+        if (cut_off < 0) {
+            cut_off = 0;
         }
         
     
         
         
-        cut_off = 165.24 * pow(2.7318, -0.22*(pastIts+its)) + 26.25;
-        cut_off = 165.24 * pow(2.7318, -0.08*(pastIts+its)) + 17.25;
+//        cut_off = 165.24 * pow(2.7318, -0.22*(pastIts+its)) + 26.25;
+//        cut_off = 165.24 * pow(2.7318, -0.08*(pastIts+its)) + 17.25;
 //        cut_off = 119.85 * pow(2.718281, -0.5297*(pastIts + its)) + 15.02;
-        NSLog(@"pastIts + its = %d, cut_off = %f.      coarse = %f", pastIts + its, cut_off, coarse);
+        NSLog(@"pastIts+its = %d, pastIts=%d cut_off = %f.      coarse = %f", pastIts + its, pastIts,cut_off, coarse);
 
         //NSLog(@"cut_off == %f", cut_off);
         //float cut_off = 159;
