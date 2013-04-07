@@ -31,31 +31,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    [self.view.layer removeAllAnimations]; // removes no animations?
-//    [self.view.layer removeAllAnimations];
-//    [self.scrollView.layer removeAllAnimations];
-//    [self.imageView.layer removeAllAnimations];
-////    [UIView stopAnimating];
-//    self.finished = YES;
-//    [CATransaction commit];
-//    //NSLog(@"%@", self.finished);
-//   
-//    [self.imageView.layer removeAllAnimations];
-//    [UIView setAnimationsEnabled:NO];
-//    self.finished = NO;
-//    NSLog(@"\n\nView will dissappear...\n\n");
-//    
-//    [self.view.layer removeAllAnimations];
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationBeginsFromCurrentState:YES];
-//    [UIView setAnimationDuration:0.1];
-//    [UIView setAnimationCurve: UIViewAnimationCurveLinear];
-//    // other animation properties
-//    
-//    // set view properties
-//    
-//    [UIView commitAnimations];
+
     self.imageView = nil;
 
 }
@@ -72,10 +48,10 @@
 //    
 //    // image set up properly
     self.imageView.image = self.imageStay;
-    self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
-    NSLog(@"%f", self.rate);
-    NSLog(@"%@", self.imageStay);
-    NSLog(@"%@", self.imageView.image);
+    //self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
+    //NSLog(@"%f", self.rate);
+    //NSLog(@"%@", self.imageStay);
+    //NSLog(@"%@", self.imageView.image);
     // no user-selected image: 0xf6... 0x715...
     // user-selected image:    0xf7... 0x11d
     // user-sel., largestKTerms0xf6822 0xf6c29
@@ -98,8 +74,8 @@
 
     
     
-    NSLog(@"rate = %f", self.rate);
-    NSLog(@"coarse = %f", self.coarse);
+    //NSLog(@"rate = %f", self.rate);
+    //NSLog(@"coarse = %f", self.coarse);
     // [NSThread sleepForTimeInterval:1.0];
     
     // image set up properly
@@ -128,6 +104,7 @@
     // make idx
     // length not needed. [idx count]
     [self.brain makeIDX:idx ofLength:pix];
+    //idx = self.idx;
     
     // make y
     // length needed
@@ -146,17 +123,7 @@
         xold[i] = 0;
         
     }
-//    UIImage * image =  self.imageView.image;
-    // with change: coarse=0
-    // no change: coarse  = 0.825
-    // an imageView, assumed to be grayed out
-    
-    // image isn't touched in reconstruct2()
-    //
-    // then perhaps somehow presenting the camera roll disables the
-    // animation?
-    
-    // or the animation recieves the same image each time?
+
     self.idx = idx;
     self.y_r = y_r;
     self.y_g = y_g;

@@ -24,5 +24,5 @@ UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewTest;
 
-
+@property (weak, nonatomic) NSMutableArray * idx;
 @end

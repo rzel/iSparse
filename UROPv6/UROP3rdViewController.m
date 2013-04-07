@@ -61,6 +61,39 @@
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 100*(0.6*self.samplingSlider.value + 0.2)];
     self.rate = rate;
     
+    int pix = self.imageView.image.size.width * self.imageView.image.size.height;
+    
+    NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:pix];
+    // init xold
+//    float * xold_r = (float *)malloc(sizeof(float) * pix);
+//    float * xold_g = (float *)malloc(sizeof(float) * pix);
+//    float * xold_b = (float *)malloc(sizeof(float) * pix);
+//    float * xold = (float *)malloc(sizeof(float) * 1.01 * pix);
+    
+//    float * y_r = (float *)malloc(sizeof(float) * 1.01 * rate * pix);
+//    float * y_g = (float *)malloc(sizeof(float) * 1.01 * rate * pix);
+//    float * y_b = (float *)malloc(sizeof(float) * 1.01 * rate * pix);
+    //    float * y = (float *)malloc(sizeof(float) * 1.01 * rate * pix);
+    
+    int i;
+    // make measurements
+    // note that idx is modified in this
+    //    int measurement_length = rate*pix;
+    
+    // make idx
+    // length not needed. [idx count]
+    [self.brain makeIDX:idx ofLength:pix];
+    self.idx = idx;
+    
+    // make y
+    // length needed
+    // DEBUG: y is only the measurements in one color plane
+    
+//    [self.brain makeMeasurements:self.imageStay atRate:rate
+//                             red:y_r green:y_g blue:y_b
+//                        ofLength:(int)rate*pix
+//                             idx:idx];
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -70,6 +103,7 @@
         destViewController.imageStay = self.imageStay;
         destViewController.rate = self.rate;
         destViewController.coarse = self.coarse;
+        destViewController.idx = self.idx;
         
     }
 }
