@@ -35,6 +35,8 @@
     image = [self.brain doWaveletKeepingLargestKTerms:image coarse:1.5*(1-0.5)];
     self.imageView.image = image;
     self.imageStay = image;
+    self.slider.continuous = NO;
+    NSLog(@"At 2ndViewController");
     self.coarse = 1.5*(1 - 0.45);
 }
 
@@ -84,7 +86,7 @@
     float rate = 10*(self.slider.value - 0.5);
     
     self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
-    
+    NSLog(@"%@", self.slider.continuous);
     self.coarse = self.rate;
 }
 

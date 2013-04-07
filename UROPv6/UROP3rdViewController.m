@@ -47,7 +47,8 @@
 //    image =
     self.imageView.image = [self.brain sampleImage:image atRate:self.rate];//image;
     
-
+    self.samplingSlider.continuous = NO;
+    
     
     
     NSLog(@"%@", self.imageView.frame);
