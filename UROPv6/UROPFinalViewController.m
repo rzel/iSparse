@@ -31,20 +31,32 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    //[self.view.layer removeAllAnimations]; // removes no animations?
+//    [self.view.layer removeAllAnimations]; // removes no animations?
 //    [self.view.layer removeAllAnimations];
 //    [self.scrollView.layer removeAllAnimations];
 //    [self.imageView.layer removeAllAnimations];
-//    [UIView.layer stopAnimating];
+////    [UIView stopAnimating];
 //    self.finished = YES;
 //    [CATransaction commit];
-    //NSLog(@"%@", self.finished);
-    //[self.navigationController setNavigationBarHidden:YES animated:animated];
-//    
+//    //NSLog(@"%@", self.finished);
+//   
 //    [self.imageView.layer removeAllAnimations];
 //    [UIView setAnimationsEnabled:NO];
-    self.finished = YES;
-    NSLog(@"View will dissappear...");
+//    self.finished = NO;
+//    NSLog(@"\n\nView will dissappear...\n\n");
+//    
+//    [self.view.layer removeAllAnimations];
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationBeginsFromCurrentState:YES];
+//    [UIView setAnimationDuration:0.1];
+//    [UIView setAnimationCurve: UIViewAnimationCurveLinear];
+//    // other animation properties
+//    
+//    // set view properties
+//    
+//    [UIView commitAnimations];
+    self.imageView = nil;
 
 }
 
@@ -158,7 +170,9 @@
 //    [UIView animateWithDuration:4.25 delay:0 options:nil animations:^{self.imageView.image = [UIImage imageNamed:@"lenna.jpg"];} completion:^(BOOL finished)
 //    {self.imageView.image = [UIImage imageNamed:@"ted.jpg"];}];
 //    [UIView setAnimationsEnabled:YES];
-    
+    self.finished = NO;
+    //[UIView animateWithDuration:3 delay:3 options:nil animations:^(void){self.imageView.image = [UIImage imageNamed:@"ted.jpg"];} completion:^(BOOL finished) {self.imageView.image = [UIImage imageNamed:@"mountain.jpg"];}];
+  
 [UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 //self.imageView.image = [UIImage imageNamed:@"ted.jpg"];
 } completion:^(BOOL finished){

@@ -745,7 +745,7 @@
             array[y*width + x] = wavelet[y];
         }
     }
-    
+    free(wavelet);
     return array;
 }
 
@@ -868,7 +868,7 @@
     
     
     
-    // free(wavelet);
+     free(wavelet);
     
     return array;
 }
