@@ -28,6 +28,25 @@
     if (!_brain) _brain = [[UROPbrain alloc] init];
     return _brain;
 }
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    //[self.view.layer removeAllAnimations]; // removes no animations?
+//    [self.view.layer removeAllAnimations];
+//    [self.scrollView.layer removeAllAnimations];
+//    [self.imageView.layer removeAllAnimations];
+//    [UIView.layer stopAnimating];
+//    self.finished = YES;
+//    [CATransaction commit];
+    //NSLog(@"%@", self.finished);
+    //[self.navigationController setNavigationBarHidden:YES animated:animated];
+//    
+//    [self.imageView.layer removeAllAnimations];
+//    [UIView setAnimationsEnabled:NO];
+    self.finished = YES;
+    NSLog(@"View will dissappear...");
+
+}
 
 - (void)viewDidLoad
 {
@@ -69,7 +88,7 @@
     
     NSLog(@"rate = %f", self.rate);
     NSLog(@"coarse = %f", self.coarse);
-    [NSThread sleepForTimeInterval:1.0];
+    // [NSThread sleepForTimeInterval:1.0];
     
     // image set up properly
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
@@ -133,11 +152,18 @@
     self.xold_r = xold_r;
     self.xold_g = xold_g;
     self.xold_b = xold_b;
+    self.finished = NO;
+    BOOL fin = NO;
+    NSLog(@"the right function....<>");
+//    [UIView animateWithDuration:4.25 delay:0 options:nil animations:^{self.imageView.image = [UIImage imageNamed:@"lenna.jpg"];} completion:^(BOOL finished)
+//    {self.imageView.image = [UIImage imageNamed:@"ted.jpg"];}];
+//    [UIView setAnimationsEnabled:YES];
+    
 [UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 //self.imageView.image = [UIImage imageNamed:@"ted.jpg"];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:1.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse
@@ -149,7 +175,7 @@ xold_b:self.xold_b
 iterations:1 pastIterations:0];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:2.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse
@@ -161,7 +187,7 @@ xold_b:self.xold_b
 iterations:1 pastIterations:1];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:2.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 NSLog(@"2");
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
@@ -174,7 +200,7 @@ xold_b:self.xold_b
 iterations:1 pastIterations:2];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:3.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 NSLog(@"3");
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
@@ -186,8 +212,7 @@ xold_r:self.xold_r xold_g:self.xold_g
 xold_b:self.xold_b
 iterations:1 pastIterations:3];
 } completion:^(BOOL finished){
-
-[UIView animateWithDuration:0.25 delay:4.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse
@@ -199,7 +224,7 @@ xold_b:self.xold_b
 iterations:1 pastIterations:4];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:5.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse
@@ -211,7 +236,7 @@ xold_b:self.xold_b
 iterations:1 pastIterations:5];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:6.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationCurveLinear | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction animations:^{
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse
@@ -223,7 +248,7 @@ xold_b:self.xold_b
 iterations:1 pastIterations:6];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:7.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse
@@ -232,10 +257,10 @@ y_r:self.y_r y_g:self.y_g y_b:self.y_b
 rate:self.rate
 xold_r:self.xold_r xold_g:self.xold_g
 xold_b:self.xold_b
-iterations:1 pastIterations:7];
+              iterations:1 pastIterations:7];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:8.0 options:nil animations:^{
+    [UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse
@@ -247,7 +272,7 @@ xold_b:self.xold_b
 iterations:1 pastIterations:8];
 } completion:^(BOOL finished){
 
-[UIView animateWithDuration:0.25 delay:9.0 options:nil animations:^{
+[UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse
@@ -258,8 +283,8 @@ xold_r:self.xold_r xold_g:self.xold_g
 xold_b:self.xold_b
 iterations:1 pastIterations:9];
 } completion:^(BOOL finished){
-
 [UIView animateWithDuration:0.25 delay:10.0 options:nil animations:^{
+    //if(finished==YES) return;
 self.imageView.image =
 [self.brain reconstruct2:self.imageView.image
 coarse:self.coarse

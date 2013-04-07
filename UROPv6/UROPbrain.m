@@ -2209,7 +2209,7 @@
 //        cut_off = 165.24 * pow(2.7318, -0.22*(pastIts+its)) + 26.25;
 //        cut_off = 165.24 * pow(2.7318, -0.08*(pastIts+its)) + 17.25;
 //        cut_off = 119.85 * pow(2.718281, -0.5297*(pastIts + its)) + 15.02;
-        NSLog(@"pastIts+its = %d, pastIts=%d cut_off = %f.      coarse = %f", pastIts + its, pastIts,cut_off, coarse);
+        NSLog(@"\t\tpastIts+its = %d, pastIts=%d cut_off = %f.      coarse = %f", pastIts + its, pastIts,cut_off, coarse);
 
         //NSLog(@"cut_off == %f", cut_off);
         //float cut_off = 159;

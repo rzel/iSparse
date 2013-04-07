@@ -25,6 +25,7 @@
 @property float * xold_g;
 @property float * xold_b;
 
+@property BOOL finished;// = NO;
 
 
 

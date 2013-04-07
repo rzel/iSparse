@@ -51,7 +51,7 @@
     
     
     
-    NSLog(@"%@", self.imageView.frame);
+    NSLog(@"%@", self.imageView);
 
     
 }
