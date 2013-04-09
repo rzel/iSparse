@@ -23,6 +23,8 @@ UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UISlider *samplingSlider;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewTest;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *reconstructButton;
+- (IBAction)buttonPressed:(id)sender;
 
 @property (weak, nonatomic) NSMutableArray * idx;
 @end

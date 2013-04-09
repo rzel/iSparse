@@ -19,13 +19,17 @@
 
 @implementation UROP3rdViewController
 @synthesize brain = _brain;
+@synthesize reconstructButton = _reconstructButton;
 
 -(UROPbrain *)brain
 {
     if (!_brain) _brain = [[UROPbrain alloc] init];
     return _brain;
 }
-
+-(IBAction)buttonPressed:(UIButton *)sender{
+//    UIImage *image = [UIImage imageNamed:@"MsYWd.png"];
+//    [sender setImage:image forState:UIControlStateNormal];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,7 +67,7 @@
     
     int pix = self.imageView.image.size.width * self.imageView.image.size.height;
     
-    NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:pix];
+    //NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:pix];
     // init xold
 //    float * xold_r = (float *)malloc(sizeof(float) * pix);
 //    float * xold_g = (float *)malloc(sizeof(float) * pix);
@@ -82,8 +86,8 @@
     
     // make idx
     // length not needed. [idx count]
-    [self.brain makeIDX:idx ofLength:pix];
-    self.idx = idx;
+    //[self.brain makeIDX:idx ofLength:pix];
+    //self.idx = idx;
     
     // make y
     // length needed
@@ -98,7 +102,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"samplingToFinal"]) {
-        
+
         UROPFinalViewController *destViewController = segue.destinationViewController;
         destViewController.imageStay = self.imageStay;
         destViewController.rate = self.rate;
@@ -168,6 +172,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 		// Code here to support video if enabled
 	}
 }
+
 
 
 @end
