@@ -13,7 +13,9 @@ to get photos from the camera roll. These also need to be fixed.
 In short, this application goes from sampling an image at a ~50% rate to
 reconstructing it, though not perfectly. In pictures: 
 
-![this][sample] ![this][finished].
+![this][sample] 
+
+![this][finished].
 
 [finished]:https://raw.github.com/scottsievert/UROPv6/master/50reconstruct.png
 [sample]:https://raw.github.com/scottsievert/UROPv6/master/50sample-cropped.png
