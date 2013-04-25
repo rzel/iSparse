@@ -15,6 +15,8 @@ reconstructing it, though not perfectly. In pictures:
 
 ![this][sample] 
 
+...to...
+
 ![this][finished].
 
 [finished]:https://raw.github.com/scottsievert/UROPv6/master/50reconstruct.png
