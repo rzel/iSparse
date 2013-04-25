@@ -15,7 +15,7 @@ reconstructing it, though not perfectly. In pictures:
 
 ![this][sample] 
 
-...to...
+to...
 
 ![this][finished].
 
