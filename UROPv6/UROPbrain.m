@@ -1787,6 +1787,13 @@
 //        % pass the new x in
 //        if i ~= 1 tn = tn1; end
 //    tn1 = (1 + sqrt(1 + 4*tn*tn))/2;
+    int n = width * height;
+    int i;
+    float tn1 = (1 + sqrt(1 + 4*tn*tn)/2);
+    for (i=0; i<n; i++) {
+        xold[i] = xold[i] + (tn - 1)/tn1 * (xold[i]);// - xold1[i]);
+    }
+    xold = [self T:xold width:width height:height order:order y:y idx:idx];
 //    
 //    
 //    xold = T(xold + (tn-1)/tn1 * (xold - xold1), y, rp, upper);
@@ -1852,6 +1859,7 @@
     }
     for (i=0; i<n; i++) {
         xnew[i] = temp4[i];
+        xold[i] = temp4[i];
     }
 //    xnew = temp4;
     free(temp);
@@ -1913,7 +1921,7 @@
         [self IST:xold ofLength:pix
               ofWidth:width ofHeight:height order:order
             iteration:its atRate:rate
-                 xold:xold y:y idx:idx coarse:coarse numberOfPastIterations:pastIts tn:1];
+                 xold:xold y:y idx:idx coarse:coarse numberOfPastIterations:pastIts tn:1.618];
         
         // and then update
         if (n==0) {
