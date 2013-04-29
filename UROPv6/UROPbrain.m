@@ -930,255 +930,8 @@
     
     return array;
 }
--(float *)IHT2:(float *)signal ofLength:(int)N iteration:(int)iter ofWidth:(int)width ofHeight:(int)height order:(int)order atRate:(float)p{
-    int i;
-    NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:N];
-    int index;
-    float * y = (float *)malloc(sizeof(float) * N);
-    float * xold = (float *)malloc(sizeof(float) * N);
-    float * t1 = (float *)malloc(sizeof(float) * N);
-    float * temp = (float *)malloc(sizeof(float) * N);
-    float * temp2 = (float *)malloc(sizeof(float) * N);
-    float * temp3 = (float *)malloc(sizeof(float) * N);
-    float * temp4 = (float *)malloc(sizeof(float) * N);
-    float * tt = (float *)malloc(sizeof(float) * N);
-    for (i=0; i<N; i++) {
-        y[i] = 0;
-        xold[i] = 0;
-        temp[i] = 0;
-        temp2[i] = 0;
-        temp3[i] = 0;
-        temp4[i] = 0;
-    }
-    
-    /*
-     adapted from this MATLAB code:
-     function []=IHT()
-     clear all
-     close all
-     clc
-     % Load in an image
-     I = double(imread('~/Desktop/not-used-frequently/pictures_for_project/lenna.jpg'));
-     I2 = mean(I,3);
-     I3 = imresize(I2,[512,512]);
-     passed in as "signal"
-     
-     % Take Measurements (pixels)
-     sz = size(I3);
-     n = sz(1)*sz(2);
-     passed in as N
-     p = .5;
-     line 1953
-     rp = randperm(n);
-     lines 1956-1960
-     
-     % This line is the image --> pixel samples operation
-     % implementing the linear function A(.)
-     y = I3(rp(1:floor(p*n)));
-     lines 1964-1967
-     
-     % This is the operation that takes a vector of samples
-     % and forms the full image, placing the samples at the right places
-     % and zeros elsewhere. This is the adjoint of A(.)
-     ys = zeros(size(I3));
-     ys(rp(1:floor(p*n))) = y;
-     simply displaying the sampled image; not needed
-     
-     
-     % Display sampled image
-     subplot(1,2,1)
-     imagesc(I3); colormap gray
-     subplot(1,2,2)
-     imagesc(ys); colormap gray
-     
-     % Now let's implement IHT
-     
-     % Note that we're going to go after the wavelet transform coefficients...
-     % So, my effective observation model is
-     
-     % y = A(T^(-1)(T(z)))
-     % let T(z) = x, then
-     % y = A(T^(-1)(x))
-     % let phi = A(T^(-1)(.))
-     % our model is y = A(x)
-     iterations = 10000;
-     passed in as a parameter
-     s = 5000;
-     line 1973
-     %h = daubcqf(2);
-     % initialize
-     xold = zeros(size(I3));
-     line 1978
-     for i=1:iterations
-     % First compute phi(xold)
-     t1 = idwt2_full(xold);
-     lines 1983-1984
-     temp = t1(rp(1:floor(p*n)));
-     lines 1989
-     
-     % Now compute y-phi(xold)
-     temp2 = y-temp;
-     line 1995
-     
-     % Now compute phi*((y-phi(xold))
-     % (first "blow this up" into a full matrix)
-     temp3 = zeros(size(I3));
-     line 2000
-     temp3(rp(1:floor(p*n))) = temp2;
-     line 2004-5
-     % (then take the forward wavelet transform)
-     temp3 = dwt2_full(temp3);
-     line 2009
-     
-     % Now compute xold + phi*((y-phi(xold))
-     temp4 = xold + temp3;
-     line 2014
-     
-     % Finally do hard thresholding
-     tt = reshape(temp4,n,1);
-     don't need this line: already 1D.
-     [srt,inx] = sort(abs(tt),'descend');
-     temp5 = zeros(size(temp4));
-     temp5(inx(1:s)) = tt(inx(1:s));
-     
-     % At each step, plot the current estimate...
-     if (mod(i,1) == 0)
-     imagesc(idwt2_full(temp5)); colormap gray
-     title(num2str(i))
-     drawnow
-     end
-     
-     % update
-     xold = temp5;
-     line 2041
-     end
-     end
-     
-     
-     */
-    //      p = .5;
-    //float p = 0.3;
-    srandom(42);
-    
-    //      rp = randperm(n);
-    for (i=0; i<N; i++) {
-        NSNumber * nu = [NSNumber numberWithInteger:i];
-        [idx addObject:nu];
-    }
-    int ra;
-    for (i=0; i<N; i++) {
-        ra = random() % (N-1);
-        [idx exchangeObjectAtIndex:i withObjectAtIndex:ra];}
-    
-    
-    
-    //      y = I3(rp(1:floor(p*n)));
-    for (i=0; i<p*N; i++) {
-        index = [[idx objectAtIndex:i] intValue];
-        y[i] = signal[index];
-    }
-    // idx is only used to make the measurements
-    
-    //      s = 5000
-//    int s = 5000;
-    
-    //      xold = zeros(size(I3));
-    for (i=0; i<N; i++) {
-        xold[i] = 0;
-    }
-    
-    iter=100;
-    
-    for (int its=0; its<iter; its++) {
-        //NSLog(@"---------------------- its = %d --------------------", its);
-        //      t1 = idwt2_full(xold);
-        for (i=0; i<N; i++) {t1[i] = xold[i];}
-        t1 = [self inverseOn2DArray:t1 ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
-        
-        //          temp = t1(rp(1:floor(p*n)));
-        for (i=0; i<p*N; i++) {
-            index = [[idx objectAtIndex:i] intValue];
-            temp[i] = t1[index];}
-        
-        
-        
-        //         temp2 = y-temp;
-        for (i=0; i<p*N; i++) {
-            temp2[i] = y[i] - temp[i];}
-        
-        
-        //          temp3 = zeros(size(I3));
-        for (i=0; i<N; i++) {
-            temp3[i] = 0;}
-        //          temp3(rp(1:floor(p*n))) = temp2;
-        for (i=0; i<p*N; i++) {
-            index = [[idx objectAtIndex:i] intValue];
-            temp3[index] = temp2[i];}
-        
-        
-        //          temp3 = dwt2_full(temp3);
-        temp3 = [self waveletOn2DArray:temp3 ofWidth:width andHeight:height ofOrder:order divide:@"null"];
-        
-        
-        //          temp4 = xold + temp3;
-        for (i=0; i<N; i++) {
-            temp4[i] = xold[i] + temp3[i];}
-        
-        // hard thresholding -- keeping the highest s terms, setting the rest to 0
-        /* Matlab code:
-         tt = reshape(temp4,n,1);
-         [srt,inx] = sort(abs(tt),'descend');
-         temp5 = zeros(size(temp4));
-         temp5(inx(1:s)) = tt(inx(1:s));*/
-        // find the max
-        //        float max = -1;
-        //        for (i=0; i<N; i++) {
-        //            if (abs(temp4[i]) > max) {
-        //                max = temp4[i];}}
-        //
-        //        float cut_off = 0.01 * max;
-        //        NSLog(@"cutoff == %f", cut_off);
-        //NSLog(@"max == %f", max);
-        for (i=0; i<N; i++) {
-            tt[i] = abs(temp4[i]);
-        }
-        //bubbleSort(tt, N);
-        //[self reverseArray:tt length:N];
-        //s = 5000;
-        //float cut_off = tt[s];
-        float cut_off = 1 * 165.24 * pow(2.7318, -0.22*its) + 26.25;
-        //NSLog(@"cut_off == %f", cut_off);
-        //float cut_off = 159;
-        //NSLog(@"cut_off, again == %f", cut_off);
-        
-        for (i=0; i<N; i++) {
-            if (abs(temp4[i]) < cut_off) {
-                temp4[i] = 0;
-            }
-        }
-        
-        
-        //          xold = temp5;
-        for (i=0; i<N; i++) {
-            xold[i] = temp4[i];}
-        
-        
-        
-        
-    }
-    free(temp);
-    free(temp2);
-    free(temp4);
-    free(temp3);
-    
-    for (i=0; i<N; i++) {
-        signal[i] = xold[i];}
-    return signal;
-    
-    
-}
 
-
+/*
 
 -(UIImage *)recontructImage:(UIImage *)image iterations:(int)N atRate:(float)rate
 { 
@@ -1215,14 +968,14 @@
         
         // reconstruction code goes here
         colorPlane = [self IHT2:colorPlane ofLength:area iteration:N  ofWidth:width ofHeight:height order:order atRate:rate];
-        /*for (i=0; i<N; i++) {
+        for (i=0; i<N; i++) {
          if (colorPlane[i] > max) {
          //max = colorPlane[i];
          }
          if (colorPlane[i] < min) {
          //min = colorPlane[i];
          }
-         }*/
+         }
         //        //colorPlane = [self inverseOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
         colorPlane = [self inverseOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
         //colorPlane = [self normalize:colorPlane ofLength:area max:&max min:&min];
@@ -1242,6 +995,7 @@
     return image;
     
 }
+*/
 -(float *)sample:(float *)array atRate:(float)rate ofLength:(int)n
 {
     srandom(42);
@@ -1388,258 +1142,8 @@
     return image;
     
 }
--(float *)IHT2_v2:(float *)signal ofLength:(int)N
-        iteration:(int)iter ofWidth:(int)width ofHeight:(int)height order:(int)order
-           atRate:(float)p
- withMeasurements:(float *)y ofLength:(float)measurement_length
-             xold:(float *)xold
-              idx:(NSMutableArray *)idx
-{
-    int i;
-//    NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:N];
-    int index;
-//    float * y = (float *)malloc(sizeof(float) * N);
-//    float * xold = (float *)malloc(sizeof(float) * N);
-    float * t1 = (float *)malloc(sizeof(float) * N);
-    float * temp = (float *)malloc(sizeof(float) * N);
-    float * temp2 = (float *)malloc(sizeof(float) * N);
-    float * temp3 = (float *)malloc(sizeof(float) * N);
-    float * temp4 = (float *)malloc(sizeof(float) * N);
-    float * tt = (float *)malloc(sizeof(float) * N);
-    for (i=0; i<N; i++) {
-//        y[i] = 0;
-        xold[i] = 0;
-        temp[i] = 0;
-        temp2[i] = 0;
-        temp3[i] = 0;
-        temp4[i] = 0;
-    }
-    
-    
-    
-    /*
-     adapted from this MATLAB code:
-     function []=IHT()
-     clear all
-     close all
-     clc
-     % Load in an image
-     I = double(imread('~/Desktop/not-used-frequently/pictures_for_project/lenna.jpg'));
-     I2 = mean(I,3);
-     I3 = imresize(I2,[512,512]);
-     passed in as "signal"
-     
-     % Take Measurements (pixels)
-     sz = size(I3);
-     n = sz(1)*sz(2);
-     passed in as N
-     p = .5;
-     line 1953
-     rp = randperm(n);
-     lines 1956-1960
-     
-     % This line is the image --> pixel samples operation
-     % implementing the linear function A(.)
-     y = I3(rp(1:floor(p*n)));
-     lines 1964-1967
-     
-     % This is the operation that takes a vector of samples
-     % and forms the full image, placing the samples at the right places
-     % and zeros elsewhere. This is the adjoint of A(.)
-     ys = zeros(size(I3));
-     ys(rp(1:floor(p*n))) = y;
-     simply displaying the sampled image; not needed
-     
-     
-     % Display sampled image
-     subplot(1,2,1)
-     imagesc(I3); colormap gray
-     subplot(1,2,2)
-     imagesc(ys); colormap gray
-     
-     % Now let's implement IHT
-     
-     % Note that we're going to go after the wavelet transform coefficients...
-     % So, my effective observation model is
-     
-     % y = A(T^(-1)(T(z)))
-     % let T(z) = x, then
-     % y = A(T^(-1)(x))
-     % let phi = A(T^(-1)(.))
-     % our model is y = A(x)
-     iterations = 10000;
-     passed in as a parameter
-     s = 5000;
-     line 1973
-     %h = daubcqf(2);
-     % initialize
-     xold = zeros(size(I3));
-     line 1978
-     for i=1:iterations
-     % First compute phi(xold)
-     t1 = idwt2_full(xold);
-     lines 1983-1984
-     temp = t1(rp(1:floor(p*n)));
-     lines 1989
-     
-     % Now compute y-phi(xold)
-     temp2 = y-temp;
-     line 1995
-     
-     % Now compute phi*((y-phi(xold))
-     % (first "blow this up" into a full matrix)
-     temp3 = zeros(size(I3));
-     line 2000
-     temp3(rp(1:floor(p*n))) = temp2;
-     line 2004-5
-     % (then take the forward wavelet transform)
-     temp3 = dwt2_full(temp3);
-     line 2009
-     
-     % Now compute xold + phi*((y-phi(xold))
-     temp4 = xold + temp3;
-     line 2014
-     
-     % Finally do hard thresholding
-     tt = reshape(temp4,n,1);
-     don't need this line: already 1D.
-     [srt,inx] = sort(abs(tt),'descend');
-     temp5 = zeros(size(temp4));
-     temp5(inx(1:s)) = tt(inx(1:s));
-     
-     % At each step, plot the current estimate...
-     if (mod(i,1) == 0)
-     imagesc(idwt2_full(temp5)); colormap gray
-     title(num2str(i))
-     drawnow
-     end
-     
-     % update
-     xold = temp5;
-     line 2041
-     end
-     end
-     
-     
-     */
-    //      p = .5;
-    //float p = 0.3;
-    srandom(42);
- // I want to send in idx
-    //      rp = randperm(n);
-//    for (i=0; i<N; i++) {
-//        NSNumber * nu = [NSNumber numberWithInteger:i];
-//        [idx addObject:nu];
-//    }
-//    int ra;
-//    for (i=0; i<N; i++) {
-//        ra = random() % (N-1);
-//        [idx exchangeObjectAtIndex:i withObjectAtIndex:ra];}
-//
-//    
-//    
-//    //      y = I3(rp(1:floor(p*n)));
-//    for (i=0; i<p*N; i++) {
-//        index = [[idx objectAtIndex:i] intValue];
-//        y[i] = signal[index];
-//    }
-    
-    //      s = 5000
-//    int s = 5000;
-    
-    //      xold = zeros(size(I3));
-    
-    iter=100;
-    
-    for (int its=0; its<iter; its++) {
-        NSLog(@"--------- its = %d -----------", its);
-        //      t1 = idwt2_full(xold);
 
-        for (i=0; i<N; i++) {t1[i] = xold[i];}
-        t1 = [self inverseOn2DArray:t1 ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
-        
-        //          temp = t1(rp(1:floor(p*n)));
-        for (i=0; i<measurement_length; i++) {
-            index = [[idx objectAtIndex:i] intValue];
-            temp[i] = t1[index];}
-        
-        
-        
-        //         temp2 = y-temp;
-        for (i=0; i<measurement_length; i++) {
-            temp2[i] = y[i] - temp[i];}
-        
-        
-        //          temp3 = zeros(size(I3));
-        for (i=0; i<N; i++) {
-            temp3[i] = 0;}
-        //          temp3(rp(1:floor(p*n))) = temp2;
-        for (i=0; i<measurement_length; i++) {
-            index = [[idx objectAtIndex:i] intValue];
-            temp3[index] = temp2[i];}
-        
-        
-        //          temp3 = dwt2_full(temp3);
-        temp3 = [self waveletOn2DArray:temp3 ofWidth:width andHeight:height ofOrder:order divide:@"null"];
-        
-        
-        //          temp4 = xold + temp3;
-        for (i=0; i<N; i++) {
-            temp4[i] = xold[i] + temp3[i];}
-        
-        // hard thresholding -- keeping the highest s terms, setting the rest to 0
-        /* Matlab code:
-         tt = reshape(temp4,n,1);
-         [srt,inx] = sort(abs(tt),'descend');
-         temp5 = zeros(size(temp4));
-         temp5(inx(1:s)) = tt(inx(1:s));*/
-        // find the max
-        //        float max = -1;
-        //        for (i=0; i<N; i++) {
-        //            if (abs(temp4[i]) > max) {
-        //                max = temp4[i];}}
-        //
-        //        float cut_off = 0.01 * max;
-        //        NSLog(@"cutoff == %f", cut_off);
-        //NSLog(@"max == %f", max);
-        for (i=0; i<N; i++) {
-            tt[i] = abs(temp4[i]);
-        }
-        //bubbleSort(tt, N);
-        //[self reverseArray:tt length:N];
-        //s = 5000;
-        //float cut_off = tt[s];
-        float cut_off = 1 * 165.24 * pow(2.7318, -0.22*its) + 26.25;
-        //NSLog(@"cut_off == %f", cut_off);
-        //float cut_off = 159;
-        //NSLog(@"cut_off, again == %f", cut_off);
-        
-        for (i=0; i<N; i++) {
-            if (abs(temp4[i]) < cut_off) {
-                temp4[i] = 0;
-            }
-        }
-        
-        
-        //          xold = temp5;
-        for (i=0; i<N; i++) {
-            xold[i] = temp4[i];}
-        
-        
-        
-        
-    }
-    free(temp);
-    free(temp2);
-    free(temp4);
-    free(temp3);
-    
-    for (i=0; i<N; i++) {
-        signal[i] = xold[i];}
-    return signal;
-    
-    
-}
+
 
 -(UIImage *)doWaveletKeepingLargestKTerms:(UIImage *)image coarse:(float)coarse
 {
@@ -1690,258 +1194,6 @@
     return image;
 }
 
-
--(float *)IHT2_v3:(float *)signal ofLength:(int)N
-        iteration:(int)iter
-          ofWidth:(int)width ofHeight:(int)height order:(int)order
-           atRate:(float)p
-             xold:(float *)xold
-                y:(float *)y measurementLength:(int)measurementLength
-              idx:(NSMutableArray *)idx{
-//    NSLog(@"@@@@@@@@@@@@@ start of it @@@@@@@@@@@@@");
-    int i;
-//    NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:N];
-    int index;
-    float * t1 = (float *)malloc(sizeof(float) * N);
-    float * temp = (float *)malloc(sizeof(float) * N);
-    float * temp2 = (float *)malloc(sizeof(float) * N);
-    float * temp3 = (float *)malloc(sizeof(float) * N);
-    float * temp4 = (float *)malloc(sizeof(float) * N);
-    float * tt = (float *)malloc(sizeof(float) * N);
-    for (i=0; i<N; i++) {
-        temp[i] = 0;
-        temp2[i] = 0;
-        temp3[i] = 0;
-        temp4[i] = 0;
-    }
-    
-    /*
-     adapted from this MATLAB code:
-     function []=IHT()
-     clear all
-     close all
-     clc
-     % Load in an image
-     I = double(imread('~/Desktop/not-used-frequently/pictures_for_project/lenna.jpg'));
-     I2 = mean(I,3);
-     I3 = imresize(I2,[512,512]);
-     passed in as "signal"
-     
-     % Take Measurements (pixels)
-     sz = size(I3);
-     n = sz(1)*sz(2);
-     passed in as N
-     p = .5;
-     line 1953
-     rp = randperm(n);
-     lines 1956-1960
-     
-     % This line is the image --> pixel samples operation
-     % implementing the linear function A(.)
-     y = I3(rp(1:floor(p*n)));
-     lines 1964-1967
-     
-     % This is the operation that takes a vector of samples
-     % and forms the full image, placing the samples at the right places
-     % and zeros elsewhere. This is the adjoint of A(.)
-     ys = zeros(size(I3));
-     ys(rp(1:floor(p*n))) = y;
-     simply displaying the sampled image; not needed
-     
-     
-     % Display sampled image
-     subplot(1,2,1)
-     imagesc(I3); colormap gray
-     subplot(1,2,2)
-     imagesc(ys); colormap gray
-     
-     % Now let's implement IHT
-     
-     % Note that we're going to go after the wavelet transform coefficients...
-     % So, my effective observation model is
-     
-     % y = A(T^(-1)(T(z)))
-     % let T(z) = x, then
-     % y = A(T^(-1)(x))
-     % let phi = A(T^(-1)(.))
-     % our model is y = A(x)
-     iterations = 10000;
-     passed in as a parameter
-     s = 5000;
-     line 1973
-     %h = daubcqf(2);
-     % initialize
-     xold = zeros(size(I3));
-     line 1978
-     for i=1:iterations
-     % First compute phi(xold)
-     t1 = idwt2_full(xold);
-     lines 1983-1984
-     temp = t1(rp(1:floor(p*n)));
-     lines 1989
-     
-     % Now compute y-phi(xold)
-     temp2 = y-temp;
-     line 1995
-     
-     % Now compute phi*((y-phi(xold))
-     % (first "blow this up" into a full matrix)
-     temp3 = zeros(size(I3));
-     line 2000
-     temp3(rp(1:floor(p*n))) = temp2;
-     line 2004-5
-     % (then take the forward wavelet transform)
-     temp3 = dwt2_full(temp3);
-     line 2009
-     
-     % Now compute xold + phi*((y-phi(xold))
-     temp4 = xold + temp3;
-     line 2014
-     
-     % Finally do hard thresholding
-     tt = reshape(temp4,n,1);
-     don't need this line: already 1D.
-     [srt,inx] = sort(abs(tt),'descend');
-     temp5 = zeros(size(temp4));
-     temp5(inx(1:s)) = tt(inx(1:s));
-     
-     % At each step, plot the current estimate...
-     if (mod(i,1) == 0)
-     imagesc(idwt2_full(temp5)); colormap gray
-     title(num2str(i))
-     drawnow
-     end
-     
-     % update
-     xold = temp5;
-     line 2041
-     end
-     end
-     
-     
-     */
-    //      p = .5;
-    //float p = 0.3;
-    // this seed is important. the values for idx being changed around
-    // are the same as where the measurements are made (sampleImage)
-    srandom(42);
-    //      rp = randperm(n);
-//    for (i=0; i<N; i++) {
-//        NSNumber * nu = [NSNumber numberWithInteger:i];
-//        [idx addObject:nu];
-//    }
-//    
-//    int ra;
-//    for (i=0; i<N; i++) {
-//        ra = random() % (N-1);
-//        [idx exchangeObjectAtIndex:i withObjectAtIndex:ra];}
-//    //      y = I3(rp(1:floor(p*n)));
-//    for (i=0; i<p*N; i++) {
-//        index = [[idx objectAtIndex:i] intValue];
-//        y[i] = signal[index];
-//    }
-    for (i=0; i<10; i++) {
-//        NSLog(@"%@", [idx objectAtIndex:i]);
-    }
-    
-    
-
-    //      xold = zeros(size(I3));
-
-    
-//    iter=100;
-    
-    for (int its=0; its<iter; its++) {
-//        NSLog(@"---------------------- its = %d --------------------", its);
-        //      t1 = idwt2_full(xold);
-        for (i=0; i<N; i++) {t1[i] = xold[i];}
-        t1 = [self inverseOn2DArray:t1 ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
-        
-        //          temp = t1(rp(1:floor(p*n)));
-        for (i=0; i<measurementLength; i++) {
-            index = [[idx objectAtIndex:i] intValue];
-            if (index == 65536){
-                NSLog(@"i: %d", i);
-            };
-            temp[i] = t1[index];}
-        
-        
-        
-        //         temp2 = y-temp;
-        for (i=0; i<measurementLength; i++) {
-            temp2[i] = y[i] - temp[i];}
-        
-        
-        //          temp3 = zeros(size(I3));
-        for (i=0; i<N; i++) {
-            temp3[i] = 0;}
-        //          temp3(rp(1:floor(p*n))) = temp2;
-        for (i=0; i<measurementLength; i++) {
-            index = [[idx objectAtIndex:i] intValue];
-            temp3[index] = temp2[i];}
-        
-        
-        //          temp3 = dwt2_full(temp3);
-        temp3 = [self waveletOn2DArray:temp3 ofWidth:width andHeight:height ofOrder:order divide:@"null"];
-        
-        
-        //          temp4 = xold + temp3;
-        for (i=0; i<N; i++) {
-            temp4[i] = xold[i] + temp3[i];}
-        
-        // hard thresholding -- keeping the highest s terms, setting the rest to 0
-        /* Matlab code:
-         tt = reshape(temp4,n,1);
-         [srt,inx] = sort(abs(tt),'descend');
-         temp5 = zeros(size(temp4));
-         temp5(inx(1:s)) = tt(inx(1:s));*/
-        // find the max
-        //        float max = -1;
-        //        for (i=0; i<N; i++) {
-        //            if (abs(temp4[i]) > max) {
-        //                max = temp4[i];}}
-        //
-        //        float cut_off = 0.01 * max;
-        //        NSLog(@"cutoff == %f", cut_off);
-        //NSLog(@"max == %f", max);
-        for (i=0; i<N; i++) {
-            tt[i] = abs(temp4[i]);
-        }
-        //bubbleSort(tt, N);
-        //[self reverseArray:tt length:N];
-        //s = 5000;
-        //float cut_off = tt[s];
-        float cut_off = 1 * 165.24 * pow(2.7318, -0.22*its) + 26.25;
-        //NSLog(@"cut_off == %f", cut_off);
-        //float cut_off = 159;
-        //NSLog(@"cut_off, again == %f", cut_off);
-        
-        for (i=0; i<N; i++) {
-            if (abs(temp4[i]) < cut_off) {
-                temp4[i] = 0;
-            }
-        }
-        
-        
-        //          xold = temp5;
-        for (i=0; i<N; i++) {
-            xold[i] = temp4[i];}
-        
-        
-        
-        
-    }
-    free(temp);
-    free(temp2);
-    free(temp4);
-    free(temp3);
-    
-    for (i=0; i<N; i++) {
-        signal[i] = xold[i];}
-    return signal;
-    
-    
-}
 
 // -------------------------------------------------------------------------
 // ------------------------ THIS IS THE START OF NEW DEFINITIONS -----------
@@ -2455,6 +1707,213 @@
               ofWidth:width ofHeight:height order:order
             iteration:its atRate:rate
                  xold:xold y:y idx:idx coarse:coarse numberOfPastIterations:pastIts];
+        
+        // and then update
+        if (n==0) {
+            for (i=0; i<rate*pix; i++) {y_r[i]    = y[i];}
+            for (i=0; i<pix;      i++) {xold_r[i] = xold[i];}
+        } else if (n==1) {
+            for (i=0; i<rate*pix; i++) {y_g[i]    = y[i];}
+            for (i=0; i<pix;      i++) {xold_g[i] = xold[i];}
+        } else if (n==2) {
+            for (i=0; i<rate*pix; i++) {y_b[i]    = y[i];}
+            for (i=0; i<pix;      i++) {xold_b[i] = xold[i];}
+        }
+        
+        // end of do what you want
+        [self inverseOn2DArray:xold ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
+        
+        array      = [self putColorPlaneBackIn:xold into:array ofArea:pix startingIndex:n];
+    }
+    
+    
+    
+    //    for (long i=3; i<4*pix; i=i+4)
+    //    {array[i] = 255;}
+    // return image
+    image = [self UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
+    free(array);
+    free(colorPlane);
+    free(y);
+    free(xold);
+    return image;
+    
+}
+
+-(float *)IST:(float *)signal ofLength:(int)N
+          ofWidth:(int)width ofHeight:(int)height order:(int)order
+        iteration:(int)iter
+           atRate:(float)p
+             xold:(float *)xold
+                y:(float *)y
+            idx:(NSMutableArray *)idx coarse:(float)coarse numberOfPastIterations:(int)pastIts
+                tn:(float)tn
+{
+//    from this matlab code
+//    I = double(imread('~/Desktop/not-used-frequently/pictures_for_project/lenna.jpg'));
+    // signal passed in
+//    I = mean(I, 3);
+//    I = imresize(I, [512, 512]);
+//    sz = size(I);
+//    n = sz(1) * sz(2);
+    // width, height passed in
+//    p = 0.3; %sampling rate
+    // atRate
+//    rp = randperm(n); % randperm
+    // idx
+//    upper = floor(p*n); % upper bound
+    // [idx upper]
+//    its = 10;
+    // pastIts
+//    l = 10; % i'm setting this wrong?
+    // right
+//    % λ = maxi |(K T (y − K x ̃ (ρ)))i |
+//    
+//    y = I(rp(1:upper)); % the samples
+    // y
+//    
+//    xold = zeros(size(I));
+    // xold
+//    xold1 = zeros(sz);
+//    tn = 1;
+//    %s = 5000;
+//
+
+    // TODO: make T(.)
+    // TODO: convert xold
+    
+    
+//    for i=1:its
+//        % pass the new x in
+//        if i ~= 1 tn = tn1; end
+//    tn1 = (1 + sqrt(1 + 4*tn*tn))/2;
+//    
+//    
+//    xold = T(xold + (tn-1)/tn1 * (xold - xold1), y, rp, upper);
+//    % x + K^T(y - Kx)
+//    % l = max(max(abs(dwt2_full(xold))));
+//    
+//    % now the iterative soft thresholding
+//    % if xold[i] > l, set to 0. try l... 100? 16?
+//        
+//        % doing the "soft thresholding"
+//        for j=1:sz(1)*sz(2)
+//            if abs(xold(j)) < l
+//                xold(j) = 0;
+//            else
+//                xold(j) = xold(j) - sign(xold(j))*l;
+//    end
+//    end
+//    
+//    xold1 = xold; % delayed by one value
+//    xold = xold;  % to be extra clear
+}
+-(float *)T:(float *)xold width:(int)width height:(int)height order:(int)order
+          y:(float *)y
+        idx:(NSMutableArray *)idx
+{
+    int i=0;
+    int index;
+    int n=width*height;
+    float * temp = (float *)malloc(sizeof(float) * n);
+    float * temp1 = (float *)malloc(sizeof(float) * n);
+    float * temp2 = (float *)malloc(sizeof(float) * n);
+    float * temp3 = (float *)malloc(sizeof(float) * n);
+    float * temp4 = (float *)malloc(sizeof(float) * n);
+    float * xnew = (float *)malloc(sizeof(float) * n);
+//    function [xnew] = T(xold, y, rp, upper)
+//    t1 = idwt2_full(xold);
+    temp1 = [self inverseOn2DArray:xold ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
+//    temp = t1(rp(1:upper));
+    for (i=0; i<[idx count]; i++) {
+        index = [[idx objectAtIndex:i] intValue];
+        temp[i] = temp1[index];
+    }
+//    temp2 = y - temp;
+    for (i=0; i<[idx count]; i++) {
+        //index = [[idx objectAtIndex:i] intValue];
+        temp2[i] = y[i] - temp[i];
+    }
+//    temp3 = zeros(size(xold));
+    for (i=0; i<n; i++) {
+        temp3[i] = 0;
+    }
+//    temp3(rp(1:upper)) = temp2;
+    for (i=0; i<[idx count]; i++) {
+        index = [[idx objectAtIndex:i] intValue];
+        temp3[index] = temp2[i];
+    }
+//    temp3 = dwt2_full(temp3);
+    temp3 = [self waveletOn2DArray:temp3 ofWidth:width andHeight:height ofOrder:order divide:@"null"];
+//    temp4 = xold + temp3;
+    for (i=0; i<n; i++) {
+        index = [[idx objectAtIndex:i] intValue];
+        temp4[i] = xold[i] + temp3[i];
+    }
+    for (i=0; i<n; i++) {
+        xnew[i] = temp4[i];
+    }
+//    xnew = temp4;
+    free(temp);
+    free(temp1);
+    free(temp2);
+    free(temp3);
+    free(temp4);
+    return xnew;
+
+}
+
+
+-(UIImage *)reconstructWithIST:(UIImage *)image
+                  coarse:(float)coarse
+                     idx:(NSMutableArray *)idx
+                     y_r:(float *)y_r y_g:(float *)y_g y_b:(float *)y_b
+                    rate:(float)rate
+                  xold_r:(float *)xold_r
+                  xold_g:(float *)xold_g
+                  xold_b:(float *)xold_b
+              iterations:(int)its pastIterations:(int)pastIts
+{
+    // We need no image-to-array function, as the arrays are held in the view controller.
+    int height = image.size.height;
+    int width = image.size.width;
+    int order = log2(width);
+    int pix = height * width;
+    float * array = (float *)malloc(sizeof(float) * pix * 4);
+    float * colorPlane = (float *)malloc(sizeof(float) * pix);
+    float * xold = (float *)malloc(sizeof(float) * pix);
+    float * y = (float *)malloc(sizeof(float) * pix);
+    
+    // get data
+    //    array = [self UIImageToRawArray:image];
+    int i, n;
+    //float max, min;
+    // end making raw array
+    // begin the wavelet part
+    
+    // perform wavelet, 2D on image
+    // using color planes, all of that
+    for (n=0; n<3; n++) {
+        
+        //        colorPlane = [self getColorPlane:array ofArea:pix startingIndex:n into:colorPlane];
+        
+        // properly init for IHT2_v4
+        if (n==0) {
+            for (i=0; i<rate*pix; i++) {y[i]    = y_r[i];}
+            for (i=0; i<pix;      i++) {xold[i] = xold_r[i];}
+        } else  if (n==1) {
+            for (i=0; i<rate*pix; i++) {y[i]    = y_g[i];}
+            for (i=0; i<pix;      i++) {xold[i] = xold_g[i];}
+        } else if (n==2) {
+            for (i=0; i<rate*pix; i++) {y[i]    = y_b[i]; }
+            for (i=0; i<pix;      i++) {xold[i] = xold_b[i];}
+        }
+        
+        // the do-what-you-want code should go here.
+        [self IST:xold ofLength:pix
+              ofWidth:width ofHeight:height order:order
+            iteration:its atRate:rate
+                 xold:xold y:y idx:idx coarse:coarse numberOfPastIterations:pastIts tn:1];
         
         // and then update
         if (n==0) {

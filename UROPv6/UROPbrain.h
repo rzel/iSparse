@@ -81,4 +81,13 @@
                  xold_g:(float *)xold_g
                   xold_b:(float *)xold_b
               iterations:(int)its pastIterations:(int)pastIts;
+-(UIImage *)reconstructWithIST:(UIImage *)image
+                        coarse:(float)coarse
+                           idx:(NSMutableArray *)idx
+                           y_r:(float *)y_r y_g:(float *)y_g y_b:(float *)y_b
+                          rate:(float)rate
+                        xold_r:(float *)xold_r
+                        xold_g:(float *)xold_g
+                        xold_b:(float *)xold_b
+                    iterations:(int)its pastIterations:(int)pastIts;
 @end

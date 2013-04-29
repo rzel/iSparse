@@ -13,7 +13,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1665"
          endingLineNumber = "1665"
-         landmarkName = "-doWaveletKeepingLargestKTerms:coarse:"
+         landmarkName = "-reconstruct2:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold_g:xold_b:iterations:pastIterations:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -38,9 +38,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1953"
-         endingLineNumber = "1953"
-         landmarkName = "-makeIDX:ofLength:"
-         landmarkType = "5">
+         endingLineNumber = "1953">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
