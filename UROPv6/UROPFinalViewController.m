@@ -38,9 +38,60 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
     
-
+    [super viewDidLoad];
+    NSLog(@"here");
+    int i;
+    [self.scrollView setBackgroundColor:[UIColor blackColor]];
+    self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
+    float rate = self.rate;
+    float pix = self.imageStay.size.width * self.imageStay.size.height;
+    
+    float * y_r = (float *)malloc(sizeof(float) * pix * rate * 1.01);
+    float * y_g = (float *)malloc(sizeof(float) * pix * rate * 1.01);
+    float * y_b = (float *)malloc(sizeof(float) * pix * rate * 1.01);
+    
+    
+    float * xold_r = (float *)malloc(sizeof(float) * pix);
+    float * xold_g = (float *)malloc(sizeof(float) * pix);
+    float * xold_b = (float *)malloc(sizeof(float) * pix);
+    
+    NSMutableArray * idx = [[NSMutableArray alloc] init];
+    [self.brain makeIDX:idx ofLength:pix * rate];
+    
+    [self.brain makeMeasurements:self.imageStay atRate:self.rate red:y_r green:y_g blue:y_b ofLength:pix idx:idx];
+    
+    for (i=0; i<pix; i++) {
+        xold_r[i] = 0;
+        xold_g[i] = 0;
+        xold_b[i] = 0;
+    }
+    
+    self.idx = idx; self.xold_g = xold_g;
+    self.xold_b = xold_b; self.xold_r = xold_r;
+    self.y_r = y_r; self.y_g = y_g; self.y_b = y_b;
+    self.finished = NO;
+    
+    
+//    [UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
+//        self.imageView.image =
+//        [self.brain reconstruct2:self.imageView.image
+//                          coarse:self.coarse
+//                             idx:self.idx
+//                             y_r:self.y_r y_g:self.y_g y_b:self.y_b
+//                            rate:self.rate
+//                          xold_r:self.xold_r xold_g:self.xold_g
+//                          xold_b:self.xold_b
+//                      iterations:1 pastIterations:0];
+//    } completion:^(BOOL finished){
+    [UIView animateWithDuration:0.0 delay:0.0 options:nil
+                     animations:^{
+                         self.imageView.image = [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse idx:idx y_r:y_r y_g:y_g y_b:y_b rate:self.rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:1 pastIterations:0];
+                     } completion:^(BOOL finished){
+                         self.imageView.image = [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse idx:idx y_r:y_r y_g:y_g y_b:y_b rate:self.rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:2 pastIterations:1];
+                     }];
+    
+/*
     
 //    [main_view release];
 //    NSLog(@"rate = %f", self.rate);
@@ -54,7 +105,7 @@
     //NSLog(@"%@", self.imageView.image);
     // no user-selected image: 0xf6... 0x715...
     // user-selected image:    0xf7... 0x11d
-    // user-sel., largestKTerms0xf6822 0xf6c29
+    // user-sel., largestKTerms0xf6822 0xf6c2
 //    UIImage *image1 = [UIImage imageNamed:@"ted.jpg"];
 //    UIImage *image2 = [UIImage imageNamed:@"mountain.jpg"];
 //    self.imageView.animationImages = [NSArray arrayWithObjects:image1, image2, nil];
@@ -1994,7 +2045,8 @@ xold_b:self.xold_b
 }];
 
 }];
-
+*/
+ 
 }
 - (IBAction)reconstruct:(id)sender {
 

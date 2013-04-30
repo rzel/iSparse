@@ -1789,11 +1789,15 @@
 //    tn1 = (1 + sqrt(1 + 4*tn*tn))/2;
     int n = width * height;
     int i;
-    float tn1 = (1 + sqrt(1 + 4*tn*tn)/2);
-    for (i=0; i<n; i++) {
-        xold[i] = xold[i] + (tn - 1)/tn1 * (xold[i]);// - xold1[i]);
+    for (int j=0; j<1; j++) {
+        float tn1 = (1 + sqrt(1 + 4*tn*tn)/2);
+        for (i=0; i<n; i++) {
+            xold[i] = xold[i] + (tn - 1)/tn1 * (xold[i]);// - xold1[i]);
+        }
+        [self T:xold width:width height:height order:order y:y idx:idx];
+        // xold modified in T
     }
-    xold = [self T:xold width:width height:height order:order y:y idx:idx];
+    
 //    
 //    
 //    xold = T(xold + (tn-1)/tn1 * (xold - xold1), y, rp, upper);
@@ -1822,12 +1826,12 @@
     int i=0;
     int index;
     int n=width*height;
-    float * temp = (float *)malloc(sizeof(float) * n);
+    float * temp  = (float *)malloc(sizeof(float) * n);
     float * temp1 = (float *)malloc(sizeof(float) * n);
     float * temp2 = (float *)malloc(sizeof(float) * n);
     float * temp3 = (float *)malloc(sizeof(float) * n);
     float * temp4 = (float *)malloc(sizeof(float) * n);
-    float * xnew = (float *)malloc(sizeof(float) * n);
+    //float * xnew = (float *)malloc(sizeof(float) * n);
 //    function [xnew] = T(xold, y, rp, upper)
 //    t1 = idwt2_full(xold);
     temp1 = [self inverseOn2DArray:xold ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
@@ -1851,14 +1855,15 @@
         temp3[index] = temp2[i];
     }
 //    temp3 = dwt2_full(temp3);
-    temp3 = [self waveletOn2DArray:temp3 ofWidth:width andHeight:height ofOrder:order divide:@"null"];
+    //temp3 =
+    [self waveletOn2DArray:temp3 ofWidth:width andHeight:height ofOrder:order divide:@"null"];
 //    temp4 = xold + temp3;
     for (i=0; i<n; i++) {
-        index = [[idx objectAtIndex:i] intValue];
+        //index = [[idx objectAtIndex:i] intValue];
         temp4[i] = xold[i] + temp3[i];
     }
     for (i=0; i<n; i++) {
-        xnew[i] = temp4[i];
+        //xnew[i] = temp4[i];
         xold[i] = temp4[i];
     }
 //    xnew = temp4;
@@ -1867,7 +1872,8 @@
     free(temp2);
     free(temp3);
     free(temp4);
-    return xnew;
+    //return xnew;
+    // DEBUG: returning xnew, even though xold is being modified
 
 }
 
