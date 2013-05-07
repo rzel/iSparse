@@ -47,14 +47,21 @@
     float rate = self.rate;
     float pix = self.imageStay.size.width * self.imageStay.size.height;
     
-    float * y_r = (float *)malloc(sizeof(float) * pix * rate * 1.01);
-    float * y_g = (float *)malloc(sizeof(float) * pix * rate * 1.01);
-    float * y_b = (float *)malloc(sizeof(float) * pix * rate * 1.01);
+    float * y_r = (float *)malloc(sizeof(float) * pix * rate * 1.1);
+    float * y_g = (float *)malloc(sizeof(float) * pix * rate * 1.1);
+    float * y_b = (float *)malloc(sizeof(float) * pix * rate * 1.1);
     
     
-    float * xold_r = (float *)malloc(sizeof(float) * pix);
-    float * xold_g = (float *)malloc(sizeof(float) * pix);
-    float * xold_b = (float *)malloc(sizeof(float) * pix);
+    float * xold_r = (float *)malloc(sizeof(float) * pix * 1.1);
+    float * xold_g = (float *)malloc(sizeof(float) * pix * 1.1);
+    float * xold_b = (float *)malloc(sizeof(float) * pix * 1.1);
+    
+    float * xold1_r = (float *)malloc(sizeof(float) * pix * 1.1);
+    float * xold1_g = (float *)malloc(sizeof(float) * pix * 1.1);
+    float * xold1_b = (float *)malloc(sizeof(float) * pix * 1.1);
+    
+    float tn = 1;
+
     
     NSMutableArray * idx = [[NSMutableArray alloc] init];
     [self.brain makeIDX:idx ofLength:pix * rate];
@@ -62,9 +69,15 @@
     [self.brain makeMeasurements:self.imageStay atRate:self.rate red:y_r green:y_g blue:y_b ofLength:pix idx:idx];
     
     for (i=0; i<pix; i++) {
+        // initial all zeros estimate
         xold_r[i] = 0;
         xold_g[i] = 0;
         xold_b[i] = 0;
+        
+        xold1_r[i] = 0;
+        xold1_g[i] = 0;
+        xold1_b[i] = 0;
+
     }
     
     self.idx = idx; self.xold_g = xold_g;
@@ -86,10 +99,28 @@
 //    } completion:^(BOOL finished){
     [UIView animateWithDuration:0.0 delay:0.0 options:nil
                      animations:^{
-                         self.imageView.image = [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse idx:idx y_r:y_r y_g:y_g y_b:y_b rate:self.rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:1 pastIterations:0];
+                         self.imageView.image =
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:self.rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:tn];
                      } completion:^(BOOL finished){
-                         self.imageView.image = [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse idx:idx y_r:y_r y_g:y_g y_b:y_b rate:self.rate xold_r:xold_r xold_g:xold_g xold_b:xold_b iterations:2 pastIterations:1];
+                         self.imageView.image =
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:self.rate
+                                                xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:tn];
                      }];
+    
+
     
 /*
     

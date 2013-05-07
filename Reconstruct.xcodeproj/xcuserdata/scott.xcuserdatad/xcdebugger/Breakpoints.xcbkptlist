@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "383934223.749436"
+         timestampString = "389474110.028463"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1665"
-         endingLineNumber = "1665"
+         startingLineNumber = "1561"
+         endingLineNumber = "1561"
          landmarkName = "-reconstruct2:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold_g:xold_b:iterations:pastIterations:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,22 +34,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977418.003708"
+         timestampString = "389663490.837646"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1967"
-         endingLineNumber = "1967">
+         startingLineNumber = "1954"
+         endingLineNumber = "1954">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPFinalViewController.m"
-         timestampString = "388956510.923516"
+         timestampString = "389663368.880481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1723"
-         endingLineNumber = "1723"
+         startingLineNumber = "1754"
+         endingLineNumber = "1754"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -71,11 +71,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPFinalViewController.m"
-         timestampString = "388956510.923516"
+         timestampString = "389663368.880481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "106"
-         endingLineNumber = "106"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -84,11 +84,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPFinalViewController.m"
-         timestampString = "388956510.923516"
+         timestampString = "389663368.880481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "101"
-         endingLineNumber = "101"
+         startingLineNumber = "132"
+         endingLineNumber = "132"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -97,11 +97,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPFinalViewController.m"
-         timestampString = "388956510.923516"
+         timestampString = "389663368.880481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
+         startingLineNumber = "133"
+         endingLineNumber = "133"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -110,11 +110,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPFinalViewController.m"
-         timestampString = "388956510.923516"
+         timestampString = "389663368.880481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "186"
-         endingLineNumber = "186"
+         startingLineNumber = "217"
+         endingLineNumber = "217"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -123,11 +123,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPFinalViewController.m"
-         timestampString = "388956510.923516"
+         timestampString = "389663368.880481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "248"
-         endingLineNumber = "248"
+         startingLineNumber = "279"
+         endingLineNumber = "279"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -136,11 +136,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPFinalViewController.m"
-         timestampString = "388956510.923516"
+         timestampString = "389663368.880481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "260"
-         endingLineNumber = "260"
+         startingLineNumber = "291"
+         endingLineNumber = "291"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -162,12 +162,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977418.003708"
+         timestampString = "389563679.337699"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1927"
-         endingLineNumber = "1927"
-         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold_g:xold_b:iterations:pastIterations:"
+         startingLineNumber = "1900"
+         endingLineNumber = "1900"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -175,11 +175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977013.154783"
+         timestampString = "389563679.337699"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1837"
-         endingLineNumber = "1837"
+         startingLineNumber = "1803"
+         endingLineNumber = "1803"
          landmarkName = "-T:width:height:order:y:idx:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -188,11 +188,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977013.154783"
+         timestampString = "389563679.337699"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1843"
-         endingLineNumber = "1843"
+         startingLineNumber = "1809"
+         endingLineNumber = "1809"
          landmarkName = "-T:width:height:order:y:idx:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -201,11 +201,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977013.154783"
+         timestampString = "389563679.337699"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1848"
-         endingLineNumber = "1848"
+         startingLineNumber = "1814"
+         endingLineNumber = "1814"
          landmarkName = "-T:width:height:order:y:idx:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -214,11 +214,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977013.154783"
+         timestampString = "389563679.337699"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1853"
-         endingLineNumber = "1853"
+         startingLineNumber = "1819"
+         endingLineNumber = "1819"
          landmarkName = "-T:width:height:order:y:idx:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -227,11 +227,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977013.154783"
+         timestampString = "389563679.337699"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1857"
-         endingLineNumber = "1857"
+         startingLineNumber = "1823"
+         endingLineNumber = "1823"
          landmarkName = "-T:width:height:order:y:idx:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -240,12 +240,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977418.003708"
+         timestampString = "389563679.337699"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1894"
-         endingLineNumber = "1894"
-         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold_g:xold_b:iterations:pastIterations:"
+         startingLineNumber = "1860"
+         endingLineNumber = "1860"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -253,38 +253,194 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977099.683937"
+         timestampString = "389563679.337699"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1753"
-         endingLineNumber = "1753"
-         landmarkName = "-IST:ofLength:ofWidth:ofHeight:order:iteration:atRate:xold:y:idx:coarse:numberOfPastIterations:tn:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977157.025157"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1790"
-         endingLineNumber = "1790"
-         landmarkName = "-IST:ofLength:ofWidth:ofHeight:order:iteration:atRate:xold:y:idx:coarse:numberOfPastIterations:tn:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977418.003708"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1868"
-         endingLineNumber = "1868"
+         startingLineNumber = "1834"
+         endingLineNumber = "1834"
          landmarkName = "-T:width:height:order:y:idx:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389663368.880481"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1935"
+         endingLineNumber = "1935"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389563679.337699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1825"
+         endingLineNumber = "1825"
+         landmarkName = "-T:width:height:order:y:idx:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPFinalViewController.m"
+         timestampString = "389468995.467227"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389563679.337699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1861"
+         endingLineNumber = "1861"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389563679.337699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1931"
+         endingLineNumber = "1931"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389563679.337699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1896"
+         endingLineNumber = "1896"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389563679.337699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1897"
+         endingLineNumber = "1897"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPFinalViewController.m"
+         timestampString = "389469159.684295"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "99"
+         endingLineNumber = "99"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPFinalViewController.m"
+         timestampString = "389469160.244411"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389563679.337699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1877"
+         endingLineNumber = "1877"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389563679.337699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1887"
+         endingLineNumber = "1887"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389563679.337699"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1919"
+         endingLineNumber = "1919"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389474107.536035"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1724"
+         endingLineNumber = "1724"
+         landmarkName = "-IST:ofLength:ofWidth:ofHeight:order:iteration:atRate:xold:xold1:y:idx:coarse:numberOfPastIterations:tn:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UROPv6/UROPbrain.m"
+         timestampString = "389663490.837646"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1942"
+         endingLineNumber = "1942"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -292,26 +448,29 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977418.003708"
+         timestampString = "389663490.837646"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1955"
-         endingLineNumber = "1955"
-         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold_g:xold_b:iterations:pastIterations:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "UROPv6/UROPbrain.m"
-         timestampString = "388977413.614019"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1859"
-         endingLineNumber = "1859"
-         landmarkName = "-T:width:height:order:y:idx:"
+         startingLineNumber = "1939"
+         endingLineNumber = "1939"
+         landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
+   <SymbolicBreakpoints>
+      <SymbolicBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         symbolName = ""
+         moduleName = "malloc_break_error">
+      </SymbolicBreakpoint>
+      <SymbolicBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         symbolName = "malloc_error_break"
+         moduleName = "">
+      </SymbolicBreakpoint>
+   </SymbolicBreakpoints>
 </Bucket>

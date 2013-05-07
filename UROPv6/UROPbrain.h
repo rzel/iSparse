@@ -86,8 +86,8 @@
                            idx:(NSMutableArray *)idx
                            y_r:(float *)y_r y_g:(float *)y_g y_b:(float *)y_b
                           rate:(float)rate
-                        xold_r:(float *)xold_r
-                        xold_g:(float *)xold_g
-                        xold_b:(float *)xold_b
-                    iterations:(int)its pastIterations:(int)pastIts;
+                        xold_r:(float *)xold_r xold1_r:(float *)xold1_r
+                        xold_g:(float *)xold_g xold1_g:(float *)xold1_g
+                        xold_b:(float *)xold_b xold1_b:(float *)xold1_b
+                    iterations:(int)its pastIterations:(int)pastIts tn:(float)tn;
 @end
