@@ -90,4 +90,5 @@
                         xold_g:(float *)xold_g xold1_g:(float *)xold1_g
                         xold_b:(float *)xold_b xold1_b:(float *)xold1_b
                     iterations:(int)its pastIterations:(int)pastIts tn:(float)tn;
+-(float *)makeMeasurementsOf:(float *)image atRate:(float)p length:(int)pix with:(NSMutableArray *)idx into:(float *)y;
 @end

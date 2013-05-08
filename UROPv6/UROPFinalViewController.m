@@ -61,12 +61,34 @@
     float * xold1_b = (float *)malloc(sizeof(float) * pix * 1.1);
     
     float tn = 1;
+    int j=0;
+    
+    // setting up the measurements
+    float * RGB = (float *)malloc(sizeof(float) * pix * 4);
+    float * r = (float *)malloc(sizeof(float) * pix * 1.1);
+    float * g = (float *)malloc(sizeof(float) * pix * 1.1);
+    float * b = (float *)malloc(sizeof(float) * pix * 1.1);
+    RGB = [self.brain UIImageToRawArray:self.imageStay];
+    for (i=0; i<4*pix; i=i+4) {
+        r[j] = RGB[i+0];
+        g[j] = RGB[i+1];
+        b[j] = RGB[i+2];
+        j++;
+    }
+    NSLog(@"%f", self.rate);
+    y_r = [self.brain makeMeasurementsOf:r atRate:self.rate length:pix with:self.idx into:y_r];
+    y_g = [self.brain makeMeasurementsOf:g atRate:self.rate length:pix with:self.idx into:y_g];
+    y_b = [self.brain makeMeasurementsOf:b atRate:self.rate length:pix with:self.idx into:y_b];
+    
 
     
     NSMutableArray * idx = [[NSMutableArray alloc] init];
-    [self.brain makeIDX:idx ofLength:pix * rate];
+    [self.brain makeIDX:idx ofLength:pix] ;//] * rate];
+    // length:pix or :pix*rate?
     
-    [self.brain makeMeasurements:self.imageStay atRate:self.rate red:y_r green:y_g blue:y_b ofLength:pix idx:idx];
+
+    
+//    [self.brain makeMeasurements:self.imageStay atRate:self.rate red:y_r green:y_g blue:y_b ofLength:pix idx:idx];
     
     for (i=0; i<pix; i++) {
         // initial all zeros estimate
@@ -83,43 +105,21 @@
     self.idx = idx; self.xold_g = xold_g;
     self.xold_b = xold_b; self.xold_r = xold_r;
     self.y_r = y_r; self.y_g = y_g; self.y_b = y_b;
+    // setting the global variables to be the local ones
     self.finished = NO;
     
     
-//    [UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
-//        self.imageView.image =
-//        [self.brain reconstruct2:self.imageView.image
-//                          coarse:self.coarse
-//                             idx:self.idx
-//                             y_r:self.y_r y_g:self.y_g y_b:self.y_b
-//                            rate:self.rate
-//                          xold_r:self.xold_r xold_g:self.xold_g
-//                          xold_b:self.xold_b
-//                      iterations:1 pastIterations:0];
-//    } completion:^(BOOL finished){
-    [UIView animateWithDuration:0.0 delay:0.0 options:nil
-                     animations:^{
-                         self.imageView.image =
-                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                    idx:idx
-                                                    y_r:y_r y_g:y_g y_b:y_b
-                                                   rate:self.rate
-                                                 xold_r:xold_r xold1_r:xold1_r
-                                                 xold_g:xold_g xold1_g:xold1_g
-                                                 xold_b:xold_b xold1_b:xold1_b
-                                             iterations:1 pastIterations:0 tn:tn];
-                     } completion:^(BOOL finished){
-                         self.imageView.image =
-                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                    idx:idx
-                                                    y_r:y_r y_g:y_g y_b:y_b
-                                                   rate:self.rate
-                                                xold_r:xold_r xold1_r:xold1_r
-                                                 xold_g:xold_g xold1_g:xold1_g
-                                                 xold_b:xold_b xold1_b:xold1_b
-                                             iterations:1 pastIterations:0 tn:tn];
-                     }];
-    
+
+     self.imageView.image =
+     [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                idx:idx
+                                y_r:y_r y_g:y_g y_b:y_b
+                               rate:self.rate
+                            xold_r:xold_r xold1_r:xold1_r
+                             xold_g:xold_g xold1_g:xold1_g
+                             xold_b:xold_b xold1_b:xold1_b
+                         iterations:10 pastIterations:0 tn:tn];
+
 
     
 /*
