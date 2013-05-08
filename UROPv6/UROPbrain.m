@@ -1640,25 +1640,6 @@
     
 }
 
--(float *)makeMeasurementsOf:(float *)image atRate:(float)p length:(int)pix with:(NSMutableArray *)idx into:(float *)y
-{
-    // idx a random permutation of indicies
-    // "image" the raw array
-    // pix = "n"
-    // assumes y has been allocated to rate*pix
-    int j=0;
-    for (int i=0; i<pix; i++) {
-        if ((rand() % pix)/pix * 1.0 < p) {
-            int index = [[idx objectAtIndex:j] intValue];
-            y[j] = image[index];
-            j++;
-        }
-    }
-    return y;
-    
-}
-
-
 -(float)IST:(float *)signal ofLength:(int)N
     ofWidth:(int)width ofHeight:(int)height order:(int)order
   iteration:(int)iter
@@ -1953,7 +1934,7 @@
     int mean = width*height/2;
     for (i=mean - 10;i<mean + 10;  i++) {
         if(i==mean) NSLog(@"-----");
-        NSLog(@"%f", xold[i]);
+        //NSLog(@"%f", xold[i]);
         // goes 255 255 255 255 0 0 0 0 0... (not 255, but color)
         // somewhere in IST it's being set to 0?
     }
