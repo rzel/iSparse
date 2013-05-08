@@ -64,7 +64,7 @@
 
     
     NSMutableArray * idx = [[NSMutableArray alloc] init];
-    [self.brain makeIDX:idx ofLength:pix * rate];
+    [self.brain makeIDX:idx ofLength:pix ];// *rate];
     
     [self.brain makeMeasurements:self.imageStay atRate:self.rate red:y_r green:y_g blue:y_b ofLength:pix idx:idx];
     
@@ -86,41 +86,40 @@
     self.finished = NO;
     
     
-//    [UIView animateWithDuration:0.25 delay:0.0 options:nil animations:^{
-//        self.imageView.image =
-//        [self.brain reconstruct2:self.imageView.image
-//                          coarse:self.coarse
-//                             idx:self.idx
-//                             y_r:self.y_r y_g:self.y_g y_b:self.y_b
-//                            rate:self.rate
-//                          xold_r:self.xold_r xold_g:self.xold_g
-//                          xold_b:self.xold_b
-//                      iterations:1 pastIterations:0];
-//    } completion:^(BOOL finished){
-    [UIView animateWithDuration:0.0 delay:0.0 options:nil
-                     animations:^{
-                         self.imageView.image =
-                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                    idx:idx
-                                                    y_r:y_r y_g:y_g y_b:y_b
-                                                   rate:self.rate
-                                                 xold_r:xold_r xold1_r:xold1_r
-                                                 xold_g:xold_g xold1_g:xold1_g
-                                                 xold_b:xold_b xold1_b:xold1_b
-                                             iterations:1 pastIterations:0 tn:tn];
-                     } completion:^(BOOL finished){
-                         self.imageView.image =
-                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                    idx:idx
-                                                    y_r:y_r y_g:y_g y_b:y_b
-                                                   rate:self.rate
-                                                xold_r:xold_r xold1_r:xold1_r
-                                                 xold_g:xold_g xold1_g:xold1_g
-                                                 xold_b:xold_b xold1_b:xold1_b
-                                             iterations:1 pastIterations:0 tn:tn];
-                     }];
-    
 
+//    [UIView animateWithDuration:0.0 delay:0.0 options:nil
+//                     animations:^{
+//                         self.imageView.image =
+//                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+//                                                    idx:idx
+//                                                    y_r:y_r y_g:y_g y_b:y_b
+//                                                   rate:self.rate
+//                                                 xold_r:xold_r xold1_r:xold1_r
+//                                                 xold_g:xold_g xold1_g:xold1_g
+//                                                 xold_b:xold_b xold1_b:xold1_b
+//                                             iterations:10 pastIterations:0 tn:tn];
+//                     } completion:^(BOOL finished){
+//                         self.imageView.image =
+//                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+//                                                    idx:idx
+//                                                    y_r:y_r y_g:y_g y_b:y_b
+//                                                   rate:self.rate
+//                                                xold_r:xold_r xold1_r:xold1_r
+//                                                 xold_g:xold_g xold1_g:xold1_g
+//                                                 xold_b:xold_b xold1_b:xold1_b
+//                                             iterations:1 pastIterations:0 tn:tn];
+//                     }];
+     self.imageView.image =
+     [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                idx:idx
+                                y_r:y_r y_g:y_g y_b:y_b
+                               rate:self.rate
+                             xold_r:xold_r xold1_r:xold1_r
+                             xold_g:xold_g xold1_g:xold1_g
+                             xold_b:xold_b xold1_b:xold1_b
+                         iterations:10 pastIterations:0 tn:tn];
+    // we want tn to change: we should pass a pointer in
+    float r = 1;
     
 /*
     
