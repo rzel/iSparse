@@ -1852,7 +1852,7 @@
                   xold_r:(float *)xold_r xold1_r:(float *)xold1_r
                   xold_g:(float *)xold_g xold1_g:(float *)xold1_g
                   xold_b:(float *)xold_b xold1_b:(float *)xold1_b
-              iterations:(int)its pastIterations:(int)pastIts tn:(float)tn
+              iterations:(int)its pastIterations:(int)pastIts tn:(float *)tn
 {
     // We need no image-to-array function, as the arrays are held in the view controller.
     int height = image.size.height;
@@ -1864,6 +1864,8 @@
     float * xold = (float *)malloc(sizeof(float) * pix);
     float * xold1 = (float *)malloc(sizeof(float) * pix);
     float * y = (float *)malloc(sizeof(float) * pix);
+    
+    float tnf = *tn;
     
     // get data
     //    array = [self UIImageToRawArray:image];
@@ -1896,10 +1898,10 @@
         }
         
         // the do-what-you-want code should go here.
-        tn = [self IST:xold ofLength:pix ofWidth:width ofHeight:height
-                 order:order iteration:1 atRate:rate
+        tnf = [self IST:xold ofLength:pix ofWidth:width ofHeight:height
+                 order:order iteration:its atRate:rate
                   xold:xold xold1:xold1 y:y idx:idx
-                coarse:coarse numberOfPastIterations:0 tn:tn];
+                coarse:coarse numberOfPastIterations:0 tn:tnf];
         
         // and then update
         if (n==0) {
@@ -1923,7 +1925,7 @@
         
         array      = [self putColorPlaneBackIn:xold into:array ofArea:pix startingIndex:n];
     }
-    
+    *tn = tnf;
     
     
     //    for (long i=3; i<4*pix; i=i+4)
