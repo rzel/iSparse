@@ -1701,7 +1701,7 @@
     // allocations for T(.)
     float tn1;
     int i, index;
-    float l = 30;
+    float l = 15;
     for (int its=0; its<iter; its++) {
         tn1 = (1+sqrt(1+4*tn*tn))/2;
         // tn1 = tn_{k+1}. computing the tn
