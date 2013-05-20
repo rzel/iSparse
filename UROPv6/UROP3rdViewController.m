@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 com.scott. All rights reserved.
 //
 
-
+#import <QuartzCore/QuartzCore.h>
 #import "UROP3rdViewController.h"
 #import "UROPFinalViewController.h"
 #import "UROPMainViewController.h"
@@ -53,8 +53,13 @@
     
     self.samplingSlider.continuous = NO;
     
-    
-    
+    //self.reconstructButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.reconstructButton2.layer.masksToBounds = YES;
+    self.reconstructButton2.layer.cornerRadius = 10.0f;
+    self.reconstructButton2.layer.borderWidth = 1.0f;
+    [self.reconstructButton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:200/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
+    NSLog(@"button: %@", self.reconstructButton2);
     NSLog(@"%@", self.imageView);
 
     

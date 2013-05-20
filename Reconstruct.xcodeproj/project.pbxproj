@@ -18,6 +18,7 @@
 		D2215D9716D9495C00FD2A48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2215D9616D9495C00FD2A48 /* QuartzCore.framework */; };
 		D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2365EA916D432E70017E15A /* UROPbrain.m */; };
 		D24C2F6D16DD1EDA0041F4CE /* MainStoryboard5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24C2F6B16DD1EDA0041F4CE /* MainStoryboard5.storyboard */; };
+		D27236091749AACC00A0B7C9 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27236081749AACC00A0B7C9 /* white.png */; };
 		D2DF752016CF174900DF158B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF751F16CF174900DF158B /* UIKit.framework */; };
 		D2DF752216CF174900DF158B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF752116CF174900DF158B /* Foundation.framework */; };
 		D2DF752416CF174900DF158B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF752316CF174900DF158B /* CoreGraphics.framework */; };
@@ -51,6 +52,7 @@
 		D2365EA816D432E70017E15A /* UROPbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPbrain.h; sourceTree = "<group>"; };
 		D2365EA916D432E70017E15A /* UROPbrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPbrain.m; sourceTree = "<group>"; };
 		D24C2F6C16DD1EDA0041F4CE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard5.storyboard; sourceTree = "<group>"; };
+		D27236081749AACC00A0B7C9 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		D2DF751C16CF174900DF158B /* Reconstruct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reconstruct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DF751F16CF174900DF158B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D2DF752116CF174900DF158B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -144,6 +146,7 @@
 				D2DF755D16D2811200DF158B /* UROPFlipsideViewController.h */,
 				D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */,
 				D2215D9416D7F9B000FD2A48 /* mountain.jpg */,
+				D27236081749AACC00A0B7C9 /* white.png */,
 				D2DF754816CF1AA100DF158B /* ted.jpg */,
 				D2DF752E16CF174A00DF158B /* UROPAppDelegate.h */,
 				D2DF752F16CF174A00DF158B /* UROPAppDelegate.m */,
@@ -242,6 +245,7 @@
 				D203E50916E263B300336557 /* lenna256x256.gif in Resources */,
 				D203E50B16E424C700336557 /* lenna.jpg in Resources */,
 				D20EEC371712290200CD5637 /* MsYWd.png in Resources */,
+				D27236091749AACC00A0B7C9 /* white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

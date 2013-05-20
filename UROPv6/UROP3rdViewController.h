@@ -26,5 +26,6 @@ UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reconstructButton;
 - (IBAction)buttonPressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *reconstructButton2;
 @property (weak, nonatomic) NSMutableArray * idx;
 @end

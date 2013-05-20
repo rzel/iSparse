@@ -19,7 +19,7 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.text.text =    self.text.text = [NSString stringWithFormat:@"Currently, images are sampled at every pixel then information is lost when compressed into a JPG. Why not build a camera that only takes in the information it needs? \n\nThis application will simulate that. It will take an image from your camera roll, then delete some data (without modifing your camera roll). This data is never looked at again. \n\nThe applications of this are broad. It goes from consumer electronics to medical imaging to discovering planets, and that doesn't even touch an incredible number of fields. \n\nNote that since the iPhone is a low-powered mobile device, the reconstruction is not as good as it could be."];;
+    self.text.text =    self.text.text = [NSString stringWithFormat:@"Currently, images are sampled at every pixel then information is lost when compressed into a JPG. Why not build a camera that only takes in the information it needs? \n\nThis application will simulate that. It will take an image from your camera roll, then delete some data (without modifing your camera roll). This data is never looked at again, and all of the blacked out areas are not taken in. \n\nThe applications of this are broad. It goes from consumer electronics to medical imaging to discovering planets, and that doesn't even touch an incredible number of fields."];;
 
 }
 

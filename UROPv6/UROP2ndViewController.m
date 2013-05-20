@@ -38,6 +38,8 @@
     self.slider.continuous = NO;
     NSLog(@"At 2ndViewController");
     self.coarse = 1.5*(1 - 0.45);
+    
+    
 }
 
 
