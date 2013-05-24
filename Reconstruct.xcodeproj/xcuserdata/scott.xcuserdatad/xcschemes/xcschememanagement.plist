@@ -7,11 +7,6 @@
 		<key>Reconstruct.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>UROPv6.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 	</dict>
