@@ -45,7 +45,7 @@
     
     
     int i;
-    [self.scrollView setBackgroundColor:[UIColor blackColor]];
+    [self.scrollView setBackgroundColor:[UIColor whiteColor]];
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
     float rate = self.rate;
     float pix = self.imageStay.size.width * self.imageStay.size.height;
