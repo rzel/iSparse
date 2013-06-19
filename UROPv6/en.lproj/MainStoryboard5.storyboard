@@ -36,10 +36,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxc-g5-zDU">
-                                <rect key="frame" x="119" y="472" width="83" height="18"/>
+                                <rect key="frame" x="88" y="414" width="131" height="55"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Reconstruct">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -56,6 +56,7 @@
                     <navigationItem key="navigationItem" title="Reconstruct!" id="WXg-aa-oNx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="button" destination="hxc-g5-zDU" id="gBv-6R-Wwl"/>
                         <outlet property="text" destination="jLY-Xp-vRr" id="3x2-t3-Ksa"/>
                     </connections>
                 </viewController>
@@ -79,8 +80,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="12">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12">
+                                <rect key="frame" x="0.0" y="18" width="320" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="40"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="About" id="13">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="14">
@@ -203,10 +207,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgj-tG-N40">
-                                <rect key="frame" x="20" y="453" width="141" height="18"/>
+                                <rect key="frame" x="20" y="448" width="141" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Choose an image">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.69000000000000006" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -226,6 +230,7 @@
                     <navigationItem key="navigationItem" title="Sampling Rate" id="mum-bU-OUC"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="choose" destination="hgj-tG-N40" id="xBN-h6-Ng6"/>
                         <outlet property="imageView" destination="11o-59-Xy7" id="INK-JD-UD0"/>
                         <outlet property="label" destination="BCt-A2-dMm" id="JD9-10-Yus"/>
                         <outlet property="reconstructButton2" destination="g0A-jn-sRv" id="NIE-w9-MBU"/>
@@ -305,9 +310,10 @@
         <class className="UROP3rdViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROP3rdViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
+                <relationship kind="action" name="buttonPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="samplingSliderChanged:"/>
                 <relationship kind="action" name="useCameraRoll2:"/>
+                <relationship kind="outlet" name="choose" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="imageViewTest" candidateClass="UIImageView"/>
@@ -320,6 +326,8 @@
         <class className="UROPFinalViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPFinalViewController.h"/>
             <relationships>
+                <relationship kind="action" name="reconstruct:"/>
+                <relationship kind="action" name="reconstructV2:"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
@@ -335,6 +343,7 @@
         <class className="UROPMainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPMainViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="text" candidateClass="UITextView"/>
             </relationships>
         </class>

@@ -10,5 +10,6 @@
 
 @interface UROPMainViewController : UIViewController <UROPFlipsideViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *text;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end

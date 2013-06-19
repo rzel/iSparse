@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Main View Controller - Reconstruct!-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="UROPMainViewController" sceneMemberID="viewController">
@@ -27,7 +27,7 @@
                                     <segue destination="6" kind="modal" identifier="showAlternate" modalTransitionStyle="flipHorizontal" id="11"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLY-Xp-vRr">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLY-Xp-vRr">
                                 <rect key="frame" x="16" y="70" width="304" height="301"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -39,8 +39,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxc-g5-zDU">
-                                <rect key="frame" x="119" y="379" width="83" height="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvm-Q9-2ax">
+                                <rect key="frame" x="99" y="353" width="138" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Reconstruct">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,24 +51,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cyA-Xc-H01" kind="push" id="uBe-qe-EZA"/>
+                                    <segue destination="cyA-Xc-H01" kind="push" id="upF-QF-5ed"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="hxc-g5-zDU" firstAttribute="top" secondItem="jLY-Xp-vRr" secondAttribute="bottom" constant="8" symbolic="YES" id="3WY-lF-P01"/>
                             <constraint firstItem="jLY-Xp-vRr" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" id="I66-N7-KFd"/>
                             <constraint firstAttribute="trailing" secondItem="10" secondAttribute="trailing" constant="20" symbolic="YES" id="apl-1S-UOC"/>
                             <constraint firstAttribute="bottom" secondItem="10" secondAttribute="bottom" constant="20" symbolic="YES" id="bcr-if-aDO"/>
-                            <constraint firstAttribute="bottom" secondItem="hxc-g5-zDU" secondAttribute="bottom" constant="20" symbolic="YES" id="eox-pl-nIq"/>
-                            <constraint firstItem="hxc-g5-zDU" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" id="qe0-jH-wHO"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="WXg-aa-oNx"/>
+                    <navigationItem key="navigationItem" title="Reconstruct!" id="WXg-aa-oNx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="button" destination="lvm-Q9-2ax" id="33u-mJ-V23"/>
                         <outlet property="text" destination="jLY-Xp-vRr" id="3x2-t3-Ksa"/>
                     </connections>
                 </viewController>
@@ -94,10 +93,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="12">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12">
+                                <rect key="frame" x="0.0" y="19" width="320" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="40"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="About" id="13">
+                                    <navigationItem title="About" prompt="" id="13">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="14">
                                             <connections>
                                                 <action selector="done:" destination="6" id="16"/>
@@ -212,13 +214,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-WF-Ktu">
-                                <rect key="frame" x="18" y="362" width="284" height="29"/>
+                                <rect key="frame" x="18" y="342" width="284" height="29"/>
                                 <connections>
                                     <action selector="samplingSliderChanged:" destination="cyA-Xc-H01" eventType="valueChanged" id="2B0-ye-82t"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0A-jn-sRv">
-                                <rect key="frame" x="198" y="388" width="114" height="18"/>
+                                <rect key="frame" x="190" y="378" width="121" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="6ny-6o-TAo"/>
                                 </constraints>
@@ -234,7 +236,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgj-tG-N40">
-                                <rect key="frame" x="10" y="389" width="138" height="18"/>
+                                <rect key="frame" x="10" y="375" width="140" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="138" id="2uK-9f-JlC"/>
                                 </constraints>
@@ -258,9 +260,16 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sampling rate: 50%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCt-A2-dMm">
-                                <rect key="frame" x="88" y="317" width="145" height="21"/>
+                                <rect key="frame" x="82" y="375" width="145" height="21"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="This application only takes in the data shown." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8h-C3-NqE">
+                                <rect key="frame" x="7" y="283" width="307" height="21"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -285,6 +294,7 @@
                     <navigationItem key="navigationItem" title="Sampling Rate" id="mum-bU-OUC"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="choose" destination="hgj-tG-N40" id="Hmo-dz-W6H"/>
                         <outlet property="imageView" destination="NFq-u7-fco" id="XVL-Rb-7g7"/>
                         <outlet property="label" destination="BCt-A2-dMm" id="JD9-10-Yus"/>
                         <outlet property="reconstructButton2" destination="g0A-jn-sRv" id="V5C-8a-dfD"/>
@@ -293,7 +303,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="498-en-Pel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080" y="979"/>
+            <point key="canvasLocation" x="518" y="647"/>
         </scene>
         <!--Final View Controller - UROPFinalViewController-->
         <scene sceneID="NRv-tC-HqN">
@@ -308,6 +318,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="mountain.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Au6-If-dj6">
                                         <rect key="frame" x="0.0" y="52" width="320" height="320"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="320" id="dJo-EU-3yE"/>
                                         </constraints>

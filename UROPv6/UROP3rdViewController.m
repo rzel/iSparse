@@ -60,6 +60,10 @@
     [self.reconstructButton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.reconstructButton2 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     
+    self.choose.layer.masksToBounds = YES;
+    self.choose.layer.cornerRadius = 3;
+    self.choose.layer.borderWidth = 1.0f;
+    [self.choose setBackgroundColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
         
     [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:100/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
 //    [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"ted.jpg"] forState:UIControlStateSelected];
