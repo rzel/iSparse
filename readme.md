@@ -13,8 +13,8 @@ fix all these issues (the animation being the most significant).
 
 This app takes some image, sampled between 20 and 80 percent, and reconstruct
 it. In pictures, it goes from this...
+
 ![this][sample] 
-to...
 ![this][finished].
 
 [finished]:https://raw.github.com/scottsievert/UROPv6/master/50-reconstruct.png
