@@ -14,7 +14,7 @@ significant).
 This app takes some image, sampled between 20 and 80 percent, and reconstruct
 it. In pictures, it goes between these:
 
-![this][sample] ![this][finished].
+![this][sample].![this][finished].
 
 ### Getting the app on your device 
 
