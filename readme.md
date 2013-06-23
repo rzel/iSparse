@@ -17,6 +17,10 @@ it. In pictures, it goes between these:
 ![this][sample] 
 ![this][finished].
 
+### Getting the app on your device
+Currently, the only method is to clone this repo, then open the XCode project
+and run it. Soon, we hope to release this on the app store.
+
 [finished]:https://raw.github.com/scottsievert/UROPv6/master/50-reconstruct.png
 [sample]:https://raw.github.com/scottsievert/UROPv6/master/50-sample.png
 
