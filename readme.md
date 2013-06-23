@@ -6,9 +6,10 @@ thresholding).
 
 Implementing iterative soft thresholding was anything but easy, and took a
 significant amount of time (a whole semester, actually). At this point, the
-user interface was shoddy, the slider lagged, the animation didn't exist, and
-there was only one view. I had to dive deep into the depths of the iOS API to
-fix all these issues (the animation being the most significant).
+user interface was shoddy, the slider lagged, the animation didn't exist, there
+was only one image and there was only one view. I had to dive deep into the
+depths of the iOS API to fix all these issues (the animation being the most
+significant).
 
 
 This app takes some image, sampled between 20 and 80 percent, and reconstruct
