@@ -23,6 +23,11 @@
 @implementation UROPFinalViewController
 @synthesize brain = _brain;
 
+-(void)stopAmination
+{
+    [self.view.layer removeAllAnimations];
+}
+
 -(UROPbrain *)brain
 {
     if (!_brain) _brain = [[UROPbrain alloc] init];
@@ -31,8 +36,23 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-
+    //[self performSelectorOnMainThread:@selector(stopAmination) withObject:nil waitUntilDone:YES];
     self.imageView = nil;
+    //self.finished = YES;
+    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.2];
+//    [UIView setAnimationBeginsFromCurrentState:NO];
+//    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+//    //cursorView.center = locationOfTouch;
+//    [UIView commitAnimations];
+    
+    [UIView animateWithDuration:0.0
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{self.imageView.image = [UIImage imageNamed:@"lenna.jpg"];}
+                     completion:^(BOOL finished){}
+     ];
 
 }
 

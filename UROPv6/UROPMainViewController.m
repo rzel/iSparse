@@ -23,7 +23,7 @@
     
 
     self.button.layer.masksToBounds = YES;
-    self.button.layer.cornerRadius = 10.0f;
+    self.button.layer.cornerRadius = 5.0f;
     self.button.layer.borderWidth = 1.0f;
         [self.button setBackgroundColor:[UIColor colorWithRed:255/255.0 green:131/255.0 blue:57/255.0 alpha:0.7]];
     [self.button setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
