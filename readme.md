@@ -19,6 +19,6 @@ to...
 
 ![this][finished].
 
-[finished]:https://raw.github.com/scottsievert/UROPv6/master/50reconstruct.png
-[sample]:https://raw.github.com/scottsievert/UROPv6/master/50sample-cropped.png
+[finished]:https://raw.github.com/scottsievert/UROPv6/master/50-reconstruct.png
+[sample]:https://raw.github.com/scottsievert/UROPv6/master/50-sample.png
 
