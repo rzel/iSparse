@@ -11,12 +11,10 @@ was only one image and there was only one view. I had to dive deep into the
 depths of the iOS API to fix all these issues (the animation being the most
 significant).
 
-
 This app takes some image, sampled between 20 and 80 percent, and reconstruct
 it. In pictures, it goes between these:
 
-![this][sample] 
-![this][finished].
+![this][sample] ![this][finished].
 
 ### Getting the app on your device 
 Currently, the only method is to clone this
