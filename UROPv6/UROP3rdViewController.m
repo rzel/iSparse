@@ -29,6 +29,7 @@
 -(IBAction)buttonPressed:(UIButton *)sender{
 //    UIImage *image = [UIImage imageNamed:@"MsYWd.png"];
 //    [sender setImage:image forState:UIControlStateNormal];
+    NSLog(@"\n\n\nIn buttonPressed\n\n\n");
 }
 - (void)viewDidLoad
 {
@@ -66,7 +67,8 @@
     [self.choose setBackgroundColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
         
     [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:100/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
-//    [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"ted.jpg"] forState:UIControlStateSelected];
+    [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"wati2.png"] forState:UIControlStateHighlighted];
+    [self.reconstructButton2 setTitleColor:[UIColor purpleColor] forState:UIControlStateHighlighted];
     
     NSLog(@"button: %@", self.reconstructButton2);
     NSLog(@"%@", self.imageView);

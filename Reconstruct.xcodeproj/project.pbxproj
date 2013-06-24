@@ -37,6 +37,8 @@
 		D2DF755016CF209400DF158B /* UROP3rdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF754F16CF209400DF158B /* UROP3rdViewController.m */; };
 		D2DF755916D2802000DF158B /* UROPFinalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF755816D2802000DF158B /* UROPFinalViewController.m */; };
 		D2DF755F16D2811300DF158B /* UROPFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */; };
+		D2EB30C11777C37A0050D442 /* wait_spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = D2EB30C01777C37A0050D442 /* wait_spinner.gif */; };
+		D2EB30C31777C9BF0050D442 /* wati2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2EB30C21777C9BF0050D442 /* wati2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		D2DF755816D2802000DF158B /* UROPFinalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROPFinalViewController.m; sourceTree = "<group>"; };
 		D2DF755D16D2811200DF158B /* UROPFlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPFlipsideViewController.h; sourceTree = "<group>"; };
 		D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROPFlipsideViewController.m; sourceTree = "<group>"; };
+		D2EB30C01777C37A0050D442 /* wait_spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wait_spinner.gif; sourceTree = "<group>"; };
+		D2EB30C21777C9BF0050D442 /* wati2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wati2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +149,10 @@
 				D2365EA916D432E70017E15A /* UROPbrain.m */,
 				D2DF755D16D2811200DF158B /* UROPFlipsideViewController.h */,
 				D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */,
+				D2EB30C01777C37A0050D442 /* wait_spinner.gif */,
 				D2215D9416D7F9B000FD2A48 /* mountain.jpg */,
 				D27236081749AACC00A0B7C9 /* white.png */,
+				D2EB30C21777C9BF0050D442 /* wati2.png */,
 				D2DF754816CF1AA100DF158B /* ted.jpg */,
 				D2DF752E16CF174A00DF158B /* UROPAppDelegate.h */,
 				D2DF752F16CF174A00DF158B /* UROPAppDelegate.m */,
@@ -233,6 +239,7 @@
 				D2DF752A16CF174900DF158B /* InfoPlist.strings in Resources */,
 				D2DF753216CF174A00DF158B /* Default.png in Resources */,
 				D2DF753416CF174A00DF158B /* Default@2x.png in Resources */,
+				D2EB30C11777C37A0050D442 /* wait_spinner.gif in Resources */,
 				D2DF753616CF174A00DF158B /* Default-568h@2x.png in Resources */,
 				D2DF753916CF174A00DF158B /* MainStoryboard.storyboard in Resources */,
 				D2DF754916CF1AA100DF158B /* ted.jpg in Resources */,
@@ -240,6 +247,7 @@
 				D24C2F6D16DD1EDA0041F4CE /* MainStoryboard5.storyboard in Resources */,
 				D203E50116E1920400336557 /* 57x57.png in Resources */,
 				D203E50316E1924B00336557 /* 114x114.png in Resources */,
+				D2EB30C31777C9BF0050D442 /* wati2.png in Resources */,
 				D203E50516E24FEA00336557 /* icon.png in Resources */,
 				D203E50716E24FF600336557 /* icon2x.png in Resources */,
 				D203E50916E263B300336557 /* lenna256x256.gif in Resources */,
