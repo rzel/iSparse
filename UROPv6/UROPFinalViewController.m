@@ -25,7 +25,11 @@
 
 -(void)stopAmination
 {
-    [self.view.layer removeAllAnimations];
+    //[self.view.layer removeAllAnimations];
+    self.imageView = nil; // gives errors, but works
+    
+    //[self.imageView.layer removeAllAnimations];
+    
 }
 
 -(UROPbrain *)brain
@@ -36,23 +40,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    //[self performSelectorOnMainThread:@selector(stopAmination) withObject:nil waitUntilDone:YES];
-    self.imageView = nil;
-    //self.finished = YES;
-    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.2];
-//    [UIView setAnimationBeginsFromCurrentState:NO];
-//    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-//    //cursorView.center = locationOfTouch;
-//    [UIView commitAnimations];
-    
-    [UIView animateWithDuration:0.0
-                          delay:0.0
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{self.imageView.image = [UIImage imageNamed:@"lenna.jpg"];}
-                     completion:^(BOOL finished){}
-     ];
+    [self performSelectorOnMainThread:@selector(stopAmination) withObject:nil waitUntilDone:YES];
+
 
 }
 
@@ -128,7 +117,7 @@
 
     // we want tn to change: we should pass a pointer in
     float r = 1;
-    [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
                          self.imageView.image =
                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -142,7 +131,7 @@
 
                      }
                      completion:^(BOOL finished){
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -157,7 +146,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -172,7 +161,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -187,7 +176,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -202,7 +191,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -217,7 +206,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -232,7 +221,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -247,7 +236,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -262,7 +251,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -277,7 +266,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -292,7 +281,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -307,7 +296,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -322,7 +311,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -337,7 +326,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -352,7 +341,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -367,7 +356,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -382,7 +371,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -397,7 +386,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -412,7 +401,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -427,7 +416,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -442,7 +431,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -457,7 +446,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -472,7 +461,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -487,7 +476,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -502,7 +491,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -517,7 +506,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -532,7 +521,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -547,7 +536,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -562,7 +551,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -577,7 +566,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -592,7 +581,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -607,7 +596,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -622,7 +611,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -637,7 +626,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -652,7 +641,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -667,7 +656,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -682,7 +671,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -697,7 +686,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -712,7 +701,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -727,7 +716,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -742,7 +731,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -757,7 +746,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -772,7 +761,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -787,7 +776,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -802,7 +791,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -817,7 +806,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -832,7 +821,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -847,7 +836,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -862,7 +851,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -877,7 +866,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -892,7 +881,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -907,7 +896,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -922,7 +911,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -937,7 +926,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -952,7 +941,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -967,7 +956,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -982,7 +971,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -997,7 +986,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1012,7 +1001,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1027,7 +1016,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1042,7 +1031,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1057,7 +1046,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1072,7 +1061,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1087,7 +1076,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1102,7 +1091,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1117,7 +1106,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1132,7 +1121,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1147,7 +1136,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1162,7 +1151,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1177,7 +1166,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1192,7 +1181,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1207,7 +1196,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1222,7 +1211,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1237,7 +1226,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1252,7 +1241,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1267,7 +1256,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1282,7 +1271,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1297,7 +1286,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1312,7 +1301,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1327,7 +1316,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1342,7 +1331,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1357,7 +1346,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1372,7 +1361,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1387,7 +1376,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1402,7 +1391,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1417,7 +1406,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1432,7 +1421,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1447,7 +1436,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1462,7 +1451,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1477,7 +1466,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1492,7 +1481,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1507,7 +1496,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1522,7 +1511,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1537,7 +1526,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1552,7 +1541,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1567,7 +1556,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1582,7 +1571,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1597,7 +1586,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1612,7 +1601,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1627,7 +1616,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1642,7 +1631,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1657,7 +1646,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1672,7 +1661,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1687,7 +1676,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1702,7 +1691,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1717,7 +1706,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1732,7 +1721,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1747,7 +1736,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1762,7 +1751,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1777,7 +1766,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1792,7 +1781,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1807,7 +1796,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1822,7 +1811,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1837,7 +1826,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1852,7 +1841,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1867,7 +1856,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1882,7 +1871,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1897,7 +1886,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1912,7 +1901,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1927,7 +1916,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1942,7 +1931,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1957,7 +1946,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1972,7 +1961,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -1987,7 +1976,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2002,7 +1991,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2017,7 +2006,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2032,7 +2021,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2047,7 +2036,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2062,7 +2051,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2077,7 +2066,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2092,7 +2081,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2107,7 +2096,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2122,7 +2111,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2137,7 +2126,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2152,7 +2141,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2167,7 +2156,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2182,7 +2171,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2197,7 +2186,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2212,7 +2201,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
@@ -2227,7 +2216,7 @@
                       }
                       completion:^(BOOL finished){
                           
-     [UIView animateWithDuration:0.0 delay:0.0 options:Nil
+     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                       animations:^(void){
                           self.imageView.image =
                           [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
