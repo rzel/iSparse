@@ -1859,13 +1859,7 @@
     int width = image.size.width;
     int order = log2(width);
     int pix = height * width;
-    float * array = (float *)malloc(sizeof(float) * pix * 4);
-    float * colorPlane = (float *)malloc(sizeof(float) * pix);
-    float * xold = (float *)malloc(sizeof(float) * pix);
-    float * xold1 = (float *)malloc(sizeof(float) * pix);
-    float * y = (float *)malloc(sizeof(float) * pix);
     
-    float tnf = *tn;
     
     // get data
     //    array = [self UIImageToRawArray:image];
@@ -1876,80 +1870,102 @@
     
     // perform wavelet, 2D on image
     // using color planes, all of that
-    for (n=0; n<3; n++) {
+    if (width < 256){
+        NSLog(@"returned a small image");
+        UIImage * image = [UIImage imageNamed:@"lenna.jpg"];
+        image = [self imageWithImage:image scaledToSize:CGSizeMake(16, 16)];
+        return image;
+    } else{
+        float * array = (float *)malloc(sizeof(float) * pix * 4);
+        float * colorPlane = (float *)malloc(sizeof(float) * pix);
+        float * xold = (float *)malloc(sizeof(float) * pix);
+        float * xold1 = (float *)malloc(sizeof(float) * pix);
+        float * y = (float *)malloc(sizeof(float) * pix);
+        float tnf = *tn;
         
-        //        colorPlane = [self getColorPlane:array ofArea:pix startingIndex:n into:colorPlane];
+        for (n=0; n<3; n++) {
+            
+            //        colorPlane = [self getColorPlane:array ofArea:pix startingIndex:n into:colorPlane];
+            
+            // properly init for IHT2_v4
+            if (n==0) {
+                for (i=0; i<rate*pix; i++) {y[i]    = y_r[i];}
+                for (i=0; i<pix;      i++) {xold[i] = xold_r[i];}
+                for (i=0; i<pix;      i++) {xold1[i] = xold1_r[i];}
+            } else  if (n==1) {
+                for (i=0; i<rate*pix; i++) {y[i]    = y_g[i];}
+                for (i=0; i<pix;      i++) {xold[i] = xold_g[i];}
+                for (i=0; i<pix;      i++) {xold1[i] = xold1_g[i];}
+
+            } else if (n==2) {
+                for (i=0; i<rate*pix; i++) {y[i]    = y_b[i]; }
+                for (i=0; i<pix;      i++) {xold[i] = xold_b[i];}
+                for (i=0; i<pix;      i++) {xold1[i] = xold1_b[i];}
+
+            }
+            
+            // the do-what-you-want code should go here.
+            tnf = [self IST:xold ofLength:pix ofWidth:width ofHeight:height
+                     order:order iteration:its atRate:rate
+                      xold:xold xold1:xold1 y:y idx:idx
+                    coarse:coarse numberOfPastIterations:0 tn:tnf];
+            
+            // and then update
+            if (n==0) {
+                for (i=0; i<rate*pix; i++) {y_r[i]    = y[i];}
+                for (i=0; i<pix;      i++) {xold_r[i] = xold[i];}
+                for (i=0; i<pix;      i++) {xold1_r[i] = xold1[i];}
+            } else if (n==1) {
+                for (i=0; i<rate*pix; i++) {y_g[i]    = y[i];}
+                for (i=0; i<pix;      i++) {xold_g[i] = xold[i];}
+                for (i=0; i<pix;      i++) {xold1_g[i] = xold1[i];}
+
+            } else if (n==2) {
+                for (i=0; i<rate*pix; i++) {y_b[i]    = y[i];}
+                for (i=0; i<pix;      i++) {xold_b[i] = xold[i];}
+                for (i=0; i<pix;      i++) {xold1_b[i] = xold1[i];}
+
+            }
+            
+            // end of do what you want
+            [self inverseOn2DArray:xold ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
+            
+            array      = [self putColorPlaneBackIn:xold into:array ofArea:pix startingIndex:n];
+        }
+        *tn = tnf;
         
-        // properly init for IHT2_v4
-        if (n==0) {
-            for (i=0; i<rate*pix; i++) {y[i]    = y_r[i];}
-            for (i=0; i<pix;      i++) {xold[i] = xold_r[i];}
-            for (i=0; i<pix;      i++) {xold1[i] = xold1_r[i];}
-        } else  if (n==1) {
-            for (i=0; i<rate*pix; i++) {y[i]    = y_g[i];}
-            for (i=0; i<pix;      i++) {xold[i] = xold_g[i];}
-            for (i=0; i<pix;      i++) {xold1[i] = xold1_g[i];}
-
-        } else if (n==2) {
-            for (i=0; i<rate*pix; i++) {y[i]    = y_b[i]; }
-            for (i=0; i<pix;      i++) {xold[i] = xold_b[i];}
-            for (i=0; i<pix;      i++) {xold1[i] = xold1_b[i];}
-
+        
+        //    for (long i=3; i<4*pix; i=i+4)
+        //    {array[i] = 255;}
+        // return image
+        //NSLog(@"here (line 1927 of brain.m");
+        image = [self UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
+        int mean = width*height/2;
+        for (i=mean - 10;i<mean + 10;  i++) {
+            if(i==mean) NSLog(@"-----");
+            //NSLog(@"%f", xold[i]);
+            // goes 255 255 255 255 0 0 0 0 0... (not 255, but color)
+            // somewhere in IST it's being set to 0?
         }
         
-        // the do-what-you-want code should go here.
-        tnf = [self IST:xold ofLength:pix ofWidth:width ofHeight:height
-                 order:order iteration:its atRate:rate
-                  xold:xold xold1:xold1 y:y idx:idx
-                coarse:coarse numberOfPastIterations:0 tn:tnf];
         
-        // and then update
-        if (n==0) {
-            for (i=0; i<rate*pix; i++) {y_r[i]    = y[i];}
-            for (i=0; i<pix;      i++) {xold_r[i] = xold[i];}
-            for (i=0; i<pix;      i++) {xold1_r[i] = xold1[i];}
-        } else if (n==1) {
-            for (i=0; i<rate*pix; i++) {y_g[i]    = y[i];}
-            for (i=0; i<pix;      i++) {xold_g[i] = xold[i];}
-            for (i=0; i<pix;      i++) {xold1_g[i] = xold1[i];}
-
-        } else if (n==2) {
-            for (i=0; i<rate*pix; i++) {y_b[i]    = y[i];}
-            for (i=0; i<pix;      i++) {xold_b[i] = xold[i];}
-            for (i=0; i<pix;      i++) {xold1_b[i] = xold1[i];}
-
-        }
         
-        // end of do what you want
-        [self inverseOn2DArray:xold ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
-        
-        array      = [self putColorPlaneBackIn:xold into:array ofArea:pix startingIndex:n];
-    }
-    *tn = tnf;
-    
-    
-    //    for (long i=3; i<4*pix; i=i+4)
-    //    {array[i] = 255;}
-    // return image
-    //NSLog(@"here (line 1927 of brain.m");
-    image = [self UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
-    int mean = width*height/2;
-    for (i=mean - 10;i<mean + 10;  i++) {
-        if(i==mean) NSLog(@"-----");
-        //NSLog(@"%f", xold[i]);
-        // goes 255 255 255 255 0 0 0 0 0... (not 255, but color)
-        // somewhere in IST it's being set to 0?
+        free(array);
+        free(colorPlane);
+        free(y);
+        free(xold);
+        free(xold1);
+        return image;
     }
     
-    
-    
-    free(array);
-    free(colorPlane);
-    free(y);
-    free(xold);
-    free(xold1);
-    return image;
-    
+}
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 1.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 @end
