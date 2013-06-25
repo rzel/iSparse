@@ -1872,8 +1872,8 @@
     // using color planes, all of that
     if (width < 256){
         NSLog(@"returned a small image");
-        UIImage * image = [UIImage imageNamed:@"lenna.jpg"];
         image = [self imageWithImage:image scaledToSize:CGSizeMake(16, 16)];
+        NSLog(@"%@", image);
         return image;
     } else{
         float * array = (float *)malloc(sizeof(float) * pix * 4);

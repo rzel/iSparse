@@ -17,6 +17,7 @@
 @interface UROPFinalViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
 
+
 @end
 
 
@@ -34,24 +35,19 @@
 }
 -(void)stopAmination
 {
-    //[self.view.layer removeAllAnimations];
+    
     //self.imageView = nil; // gives errors, but works
     
-    //[self.imageView.layer removeAllAnimations];
-    UIImage * image = [UIImage imageNamed:@"lenna.jpg"];
-    image = [self imageWithImage:image scaledToSize:CGSizeMake(32, 32)];
+    // instead, pass a tiny image in to finish the animation in null time.
+    NSLog(@"%@", self.navigationController.visibleViewController.title);
+
+    NSLog(@"%@",self.navigationController.viewControllers);
     
-//    self.imageView.image =
-//    [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-//                               idx:idx
-//                               y_r:y_r y_g:y_g y_b:y_b
-//                              rate:rate
-//                            xold_r:xold_r xold1_r:xold1_r
-//                            xold_g:xold_g xold1_g:xold1_g
-//                            xold_b:xold_b xold1_b:xold1_b
-//                        iterations:1 pastIterations:0 tn:&tn];
-    // we're passing in only the image as new: the rest is larger.
-    self.imageView.image = image;
+   if ([self.navigationController.visibleViewController.title isEqualToString:@"UROP3rdViewController"] ){
+       UIImage * image = self.imageView.image;
+       image = [self imageWithImage:image scaledToSize:CGSizeMake(4,4)];
+       self.imageView.image = image;
+   }
     
 }
 
@@ -74,6 +70,8 @@
     
     [super viewDidLoad];
     NSLog(@"here");
+    
+    
     
     
     
