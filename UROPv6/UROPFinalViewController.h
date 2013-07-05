@@ -27,6 +27,7 @@
 
 @property BOOL finished;// = NO;
 
+@property (weak, nonatomic) IBOutlet UITextView *iterations;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 

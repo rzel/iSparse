@@ -500,7 +500,7 @@
     float * wavelet = (float *)malloc(sizeof(float) * height * width);
     int i=0;
     int k;
-    for (k=0; k<order; k++) {
+    for (k=0;  k<order; k++) {
         // copy array over
         i=0;
         for (x=0; x< width>>k; x++) {
@@ -1854,6 +1854,9 @@
                   xold_b:(float *)xold_b xold1_b:(float *)xold1_b
               iterations:(int)its pastIterations:(int)pastIts tn:(float *)tn
 {
+    static int logPastIts=0;
+    logPastIts++;
+    NSLog(@"%d", logPastIts);
     // We need no image-to-array function, as the arrays are held in the view controller.
     int height = image.size.height;
     int width = image.size.width;
@@ -1871,9 +1874,9 @@
     // perform wavelet, 2D on image
     // using color planes, all of that
     if (width < 256){
-        NSLog(@"returned a small image");
-        image = [self imageWithImage:image scaledToSize:CGSizeMake(16, 16)];
-        NSLog(@"%@", image);
+        //NSLog(@"returned a small image");
+        image = [UIImage imageNamed:@"one.jpg"];
+        //NSLog(@"%@", image);
         return image;
     } else{
         float * array = (float *)malloc(sizeof(float) * pix * 4);
@@ -1942,7 +1945,7 @@
         image = [self UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
         int mean = width*height/2;
         for (i=mean - 10;i<mean + 10;  i++) {
-            if(i==mean) NSLog(@"-----");
+            //if(i==mean) NSLog(@"-----");
             //NSLog(@"%f", xold[i]);
             // goes 255 255 255 255 0 0 0 0 0... (not 255, but color)
             // somewhere in IST it's being set to 0?

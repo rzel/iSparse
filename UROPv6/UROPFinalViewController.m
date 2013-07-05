@@ -35,20 +35,14 @@
 }
 -(void)stopAmination
 {
-    
-    //self.imageView = nil; // gives errors, but works
-    
-    // instead, pass a tiny image in to finish the animation in null time.
-    NSLog(@"%@", self.navigationController.visibleViewController.title);
-
-    NSLog(@"%@",self.navigationController.viewControllers);
+//    NSLog(@"%@", self.navigationController.visibleViewController.title);
+//    NSLog(@"%@",self.navigationController.viewControllers);
     
    if ([self.navigationController.visibleViewController.title isEqualToString:@"UROP3rdViewController"] ){
-       UIImage * image = self.imageView.image;
-       image = [self imageWithImage:image scaledToSize:CGSizeMake(4,4)];
+       UIImage * image = [UIImage imageNamed:@"one.jpg"];
+       
        self.imageView.image = image;
    }
-    
 }
 
 -(UROPbrain *)brain
@@ -134,14 +128,14 @@
 //        NSLog(@"%d", i);
 //        // finally! got the IST working. now for the animation code...
 //    }
+    
+    static int showIts = 0;
+    self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
 
- 
-
-    // we want tn to change: we should pass a pointer in
-    float r = 1;
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         self.imageView.image =
+                         showIts=0;
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image =  
                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
                                                     idx:idx
                                                     y_r:y_r y_g:y_g y_b:y_b
@@ -153,2247 +147,4308 @@
 
                      }
                      completion:^(BOOL finished){
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                      animations:^(void){
-                          self.imageView.image =
-                          [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
-                                                     idx:idx
-                                                     y_r:y_r y_g:y_g y_b:y_b
-                                                    rate:rate
-                                                  xold_r:xold_r xold1_r:xold1_r
-                                                  xold_g:xold_g xold1_g:xold1_g
-                                                  xold_b:xold_b xold1_b:xold1_b
-                                              iterations:1 pastIterations:0 tn:&tn];
-                          
-                      }
-                      completion:^(BOOL finished){
-                          
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
-    }];
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    }}];
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; self.imageView.image = 
+                         [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    idx:idx
+                                                    y_r:y_r y_g:y_g y_b:y_b
+                                                   rate:rate
+                                                 xold_r:xold_r xold1_r:xold1_r
+                                                 xold_g:xold_g xold1_g:xold1_g
+                                                 xold_b:xold_b xold1_b:xold1_b
+                                             iterations:1 pastIterations:0 tn:&tn];
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= 256){
+
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+ 
+
+    // we want tn to change: we should pass a pointer in
+    float r = 1;
+    //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     //animations:^(void){
+                         //self.imageView.image =
+                         //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                    //idx:idx
+                                                    //y_r:y_r y_g:y_g y_b:y_b
+                                                   //rate:rate
+                                                 //xold_r:xold_r xold1_r:xold1_r
+                                                 //xold_g:xold_g xold1_g:xold1_g
+                                                 //xold_b:xold_b xold1_b:xold1_b
+                                             //iterations:1 pastIterations:0 tn:&tn];
+
+                     //}
+                     //completion:^(BOOL finished){
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+     //[UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                      //animations:^(void){
+                          //self.imageView.image =
+                          //[self.brain reconstructWithIST:self.imageView.image coarse:self.coarse
+                                                     //idx:idx
+                                                     //y_r:y_r y_g:y_g y_b:y_b
+                                                    //rate:rate
+                                                  //xold_r:xold_r xold1_r:xold1_r
+                                                  //xold_g:xold_g xold1_g:xold1_g
+                                                  //xold_b:xold_b xold1_b:xold1_b
+                                              //iterations:1 pastIterations:0 tn:&tn];
+                          
+                      //}
+                      //completion:^(BOOL finished){
+                          
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
+    //}];
 
 
 /*
