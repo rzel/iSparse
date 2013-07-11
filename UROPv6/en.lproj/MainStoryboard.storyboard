@@ -335,6 +335,8 @@
         <class className="UROPFinalViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPFinalViewController.h"/>
             <relationships>
+                <relationship kind="action" name="reconstruct:"/>
+                <relationship kind="action" name="reconstructV2:"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="iterations" candidateClass="UITextView"/>

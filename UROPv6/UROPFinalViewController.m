@@ -33,16 +33,10 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
--(void)stopAmination
-{
-//    NSLog(@"%@", self.navigationController.visibleViewController.title);
-//    NSLog(@"%@",self.navigationController.viewControllers);
-    
-   if ([self.navigationController.visibleViewController.title isEqualToString:@"UROP3rdViewController"] ){
-       UIImage * image = [UIImage imageNamed:@"one.jpg"];
-       
-       self.imageView.image = image;
-   }
+-(void)stopAmination{
+   UIImage * image = [self imageWithImage:self.imageStay scaledToSize:CGSizeMake(32, 32)];
+   self.imageView.image = image;
+
 }
 
 -(UROPbrain *)brain
@@ -58,6 +52,13 @@
 
 
 }
+- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2
+{
+    NSData *data1 = UIImagePNGRepresentation(image1);
+    NSData *data2 = UIImagePNGRepresentation(image2);
+    
+    return [data1 isEqual:data2];
+}
 
 - (void)viewDidLoad
 {
@@ -65,10 +66,7 @@
     [super viewDidLoad];
     NSLog(@"here");
     
-    
-    
-    
-    
+ 
     int i;
     [self.scrollView setBackgroundColor:[UIColor whiteColor]];
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
