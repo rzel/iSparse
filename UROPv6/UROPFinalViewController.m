@@ -34,9 +34,10 @@
     return newImage;
 }
 -(void)stopAmination{
-   UIImage * image = [self imageWithImage:self.imageStay scaledToSize:CGSizeMake(32, 32)];
-   self.imageView.image = image;
-
+    int n = 64;
+    // n must be less than 256
+    UIImage * image = [self imageWithImage:self.imageView.image scaledToSize:CGSizeMake(n, n)];
+    self.imageView.image = image;
 }
 
 -(UROPbrain *)brain
