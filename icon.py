@@ -5,24 +5,20 @@ from scipy import signal
 from scipy.ndimage import gaussian_filter, uniform_filter
 from numpy import arctan, tan
 
-mul = 2
+
+mul = 1
 n = mul * 57
 radius = 10 * mul
 
 k = imread('./UROPv6/lenna.jpg')
 k = imresize(k, (n,n,3))
 
-blur = 10
+blur = 7
 k[:,:,0] = uniform_filter(k[:,:,0], blur)
 k[:,:,1] = uniform_filter(k[:,:,1], blur)
 k[:,:,2] = uniform_filter(k[:,:,2], blur)
 
 def paintRoundRectandBorder(arr, cornerRadius, width, color):
-    #arr = k
-    #cornerRadius = 20
-    #width = 4
-    #color = (255, 255, 255)
-
     # painting the rounded rect
     x = arange(arr.shape[0])
     y = arange(arr.shape[1])
@@ -69,9 +65,10 @@ def paintRoundRectandBorder(arr, cornerRadius, width, color):
     return arr
 
 width = 3 * mul
+width = 0
 radius = mul * 12.5
 color = (255, 255, 255)
-k = paintRoundRectandBorder(k, radius, width, color)
+#k = paintRoundRectandBorder(k, radius, width, color)
 
 
 # thirds
@@ -91,15 +88,11 @@ k[one:two, one:two] = color
 
 
 
-width = 3 * mul
-radius = mul * 12.5
-color = (255, 255, 255)
-k = paintRoundRectandBorder(k, radius, width, color)
+#width = 3 * mul
+#radius = mul * 12.5
+#color = (255, 255, 255)
+#k = paintRoundRectandBorder(k, radius, width, color)
 
-blur = 3
-k[:,:,0] = uniform_filter(k[:,:,0], blur)
-k[:,:,1] = uniform_filter(k[:,:,1], blur)
-k[:,:,2] = uniform_filter(k[:,:,2], blur)
 
 
 imshow(k)
@@ -108,6 +101,5 @@ show()
 filename = 'icon2x.png' if mul == 2 else 'icon.png'
 imsave(filename,  k )
 show()
-
 
 
