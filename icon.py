@@ -74,16 +74,32 @@ color = (255, 255, 255)
 k = paintRoundRectandBorder(k, radius, width, color)
 
 
+# thirds
 zero  = width
 one   = 1*(n-2*width)/3 + width
 two   = 2*(n-2*width)/3 + width
 three = 3*(n-2*width)/3 + width
-color = 0.80 * array(color)
-k[one:two, zero:one] = color
-k[one:two, two:three] = color
-k[zero:one, one:two] = color
-k[two:three, one:two] = color
 
+# fourths
+zero  = width
+one   = 1*(n-2*width)/2 + width
+two   = 2*(n-2*width)/2 + width
+
+color = 0.87 * array(color)
+k[zero:one, zero:one] = color
+k[one:two, one:two] = color
+
+
+
+width = 3 * mul
+radius = mul * 12.5
+color = (255, 255, 255)
+k = paintRoundRectandBorder(k, radius, width, color)
+
+blur = 3
+k[:,:,0] = uniform_filter(k[:,:,0], blur)
+k[:,:,1] = uniform_filter(k[:,:,1], blur)
+k[:,:,2] = uniform_filter(k[:,:,2], blur)
 
 
 imshow(k)
