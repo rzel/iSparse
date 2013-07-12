@@ -1,21 +1,96 @@
-
+from __future__ import division
 from pylab import *
+from scipy.misc import imresize
+from scipy import signal
+from scipy.ndimage import gaussian_filter, uniform_filter
+from numpy import arctan, tan
 
-mul = 1
-cmap = 'OrRd'
+mul = 2
+n = mul * 57
+radius = 10 * mul
+
+k = imread('./UROPv6/lenna.jpg')
+k = imresize(k, (n,n,3))
+
+blur = 10
+k[:,:,0] = uniform_filter(k[:,:,0], blur)
+k[:,:,1] = uniform_filter(k[:,:,1], blur)
+k[:,:,2] = uniform_filter(k[:,:,2], blur)
+
+def paintRoundRectandBorder(arr, cornerRadius, width, color):
+    #arr = k
+    #cornerRadius = 20
+    #width = 4
+    #color = (255, 255, 255)
+
+    # painting the rounded rect
+    x = arange(arr.shape[0])
+    y = arange(arr.shape[1])
+    xmax, ymax = max(x), max(y)
+    x, y = meshgrid(x, y)
+    center = cornerRadius
+
+    i = sqrt((x-center)**2 + (y-center)**2)
+    j = arctan((y-center) / (x-center))
+
+    j = j * 180 / 3.14
+    j += 90
+    m = (i > (cornerRadius - width)) & (j > 90) & (j < 180) & (x < center) & (y < center)
+    arr[m] = color
 
 
-n = 57 * mul
-k = zeros((n, n)) + 0.0
-k[1*n/3:2*n/3, 0*n/3:1*n/3] = 1
-k[1*n/3:2*n/3, 2*n/3:3*n/3] = 1
-k[0*n/3:1*n/3, 1*n/3:2*n/3] = 1
-k[2*n/3:3*n/3, 1*n/3:2*n/3] = 1
-#k = 1-k
+    i = sqrt((xmax-x-center)**2 + (y-center)**2)
+    j = (arctan((y-center) / (xmax-x-center))) * (180 / 3.14) #+ 90
+    m = (i > (cornerRadius - width)) & (j > 0) & (j < 135) & (x-xmax < center) & (y < center)
+    arr[m] = color
+
+    i = sqrt((xmax-x-center)**2 + (ymax-y-center)**2)
+    j = (arctan((ymax-y-center) / (xmax-x-center))) * (180 / 3.14) #+ 90
+    m = (i > (cornerRadius - width)) & (j > 0) & (j < 135) & (x-xmax < center) & (ymax-y < center)
+    arr[m] = color
+
+    i = sqrt((x-center)**2 + (ymax-y-center)**2)
+    j = (arctan((ymax-y-center) / (x-center))) * (180 / 3.14) #+ 90
+    m = (i > (cornerRadius - width)) & (j > 0) & (j < 135) & (x < center) & (ymax-y < center)
+    arr[m] = color
+
+    # now, the borders
+    i = x < width
+    arr[i, :] = color
+
+    i = xmax - x < width
+    arr[i,:] = color
+
+    i = ymax - y < width
+    arr[i,:] = color
+
+    i =  y < width
+    arr[i,:] = color
+    return arr
+
+width = 3 * mul
+radius = mul * 12.5
+color = (255, 255, 255)
+k = paintRoundRectandBorder(k, radius, width, color)
+
+
+zero  = width
+one   = 1*(n-2*width)/3 + width
+two   = 2*(n-2*width)/3 + width
+three = 3*(n-2*width)/3 + width
+color = 0.80 * array(color)
+k[one:two, zero:one] = color
+k[one:two, two:three] = color
+k[zero:one, one:two] = color
+k[two:three, one:two] = color
+
+
+
+imshow(k)
+show()
 
 filename = 'icon2x.png' if mul == 2 else 'icon.png'
-imsave(filename,  k, cmap=cmap)
-imshow(k, cmap=cmap)
+imsave(filename,  k )
 show()
 
 
