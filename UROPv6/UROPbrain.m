@@ -23,7 +23,6 @@
 
 @implementation UROPbrain
 
-
 // functions to perform 1D wavelets/FFTs
 -(void *)waveletOn:(float *)array ofLength:(int)N
 {
@@ -70,7 +69,7 @@
         array[i] = output[i];
     }
     
-    return 0;//array;
+    return 0;
 }
 -(float *)waveletOn2DArray:(float *)array ofWidth:(long)width andHeight:(long)height
 {
@@ -84,32 +83,24 @@
     for (y=0; y<height; y++) {
         for (x=0; x<width; x++) {
             wavelet[x] = array[y*width + x];
-            // NSLog(@"before wavelet[%d]: %f", x, wavelet[x]);
         }
         wavelet = [self singleLevelWaveletOn:wavelet ofLength:width];
         for (x=0; x<width; x++) {
             array[y*width + x] = wavelet[x];
-            // NSLog(@"----------after wavelet[%d]: %f", x, wavelet[x]);
-            
+
         }
     }
-    
-    // bug: wavelet goes from index to index + width, not going by width each time
-    // only need to fix for the columns
-    // do wavelet on each column again
+
     y=0;
     for (x=0; x<width; x++) {
         for (y=0; y<height; y++) {
             wavelet[y] = array[x + y*width];
-            // NSLog(@"wavelet[%d] before: %f", y, wavelet[y]);
         }
         
         wavelet = [self singleLevelWaveletOn:wavelet ofLength:height];
         
         for (y=0; y<height; y++) {
             array[x + y*width] = wavelet[y];
-            //  NSLog(@";;;;;;;;;; wavelet[%d] after: %f", y, wavelet[y]);
-            
         }
     }
     free(wavelet);
@@ -128,9 +119,7 @@
     // output = complex split again, same deal.
     
     // basically, it's the sample code with A.imagp[i[ != 0
-    
-    // inputing complex vector
-    //COMPLEX_SPLIT   A;
+
     
     
     
@@ -175,15 +164,7 @@
     for (i=0; i<N; i++) {
         //NSLog(@"after setting signal up: %u, %f, %f", i, signal.realp[i], signal.imagp[i]);
     }
-    
-    //   printf("1D real FFT of length log2 ( %d ) = %d\n\n", n, log2n);
-    
-    /* Allocate memory for the input operands and check its availability,
-     * use the vector version to get 16-byte alignment. */
-    //A.realp = (float *) malloc(nOver2 * sizeof(float));
-    //A.imagp = (float *) malloc(nOver2 * sizeof(float));
-    //    originalReal = (float *) malloc(N * sizeof(float));
-    //    obtainedReal = (float *) malloc(N * sizeof(float));
+
     
     if (/*originalReal == NULL || */signal.realp == NULL || signal.imagp == NULL) {
         printf("\nmalloc failed to allocate memory for  the real FFT"
@@ -191,14 +172,11 @@
         exit(0);
     }
     /* Generate an input signal in the real domain. */
-    //for (i = 0; i < n; i++)
-    //    originalReal[i] = (float) (i + 1);
-    
     /* Look at the real signal as an interleaved complex vector  by
      * casting it.  Then call the transformation function vDSP_ctoz to
      * get a split complex vector, which for a real signal, divides into
      * an even-odd configuration. */
-    //    vDSP_ctoz((COMPLEX *) originalReal, 2, &signal, 1, nOver2);
+
     
     
     
@@ -213,7 +191,6 @@
     
     
     /* Carry out a Forward and Inverse FFT transform. */
-    //vDSP_fft_zrip(setupReal, &signal, stride, log2n, FFT_FORWARD);
     vDSP_fft_zrip(setupReal, &signal, stride, log2n, FFT_INVERSE);
     
     
@@ -227,11 +204,7 @@
     
     /* The output signal is now in a split real form.  Use the  function
      * vDSP_ztoc to get a split real vector. */
-    
-    //vDSP_ztoc(&signal, 1, (COMPLEX *) signal.imagp, 2, nOver2);
-    
-    
-    
+
     COMPLEX_SPLIT copy;
     copy.realp = malloc(N*sizeof(float));
     copy.imagp = malloc(N*sizeof(float));
@@ -244,17 +217,7 @@
         signal.realp[i] = copy.realp[i];
         signal.imagp[i] = 0;
     }
-    
-    // [0] = [0]
-    // [2] = [1]
-    // [4] = [2] = [1]. The bug is right there.
-    // [6] = [3]
-    // [8] = [4]
-    
-    for (i=0; i<N; i++) {
-        //    signal.imagp[i] = 0;
-        // assumes the signal is only real
-    }
+
     
     
     return &signal;
