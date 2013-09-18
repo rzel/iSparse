@@ -70,7 +70,7 @@
 - (IBAction)samplingSliderChanged:(id)sender {
     float rate = 0.6*self.samplingSlider.value + 0.2;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
-    self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 100*(0.6*self.samplingSlider.value + 0.2)];
+    self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 100*rate];
     self.rate = rate;
 }
 
