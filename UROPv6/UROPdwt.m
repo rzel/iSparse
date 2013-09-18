@@ -1,10 +1,24 @@
-//
-//  UROPdwt.m
-//  Reconstruct
-//
-//  Created by Scott Sievert on 9/18/13.
-//  Copyright (c) 2013 com.scott. All rights reserved.
-//
+/*
+ * made by    : SparKEL Lab
+ * at the     : University of Minnesota
+ * advisor    : Jarvis Haupt
+ * programmer : Scott Sievert
+ *
+ * Copyright (c) 2013 by Scott Sievert.
+ *
+ *
+ * This file includes functions that will be helpful in the actual
+ * reconstruction. This means there are heavy math functions here (Haar wavelet
+ * transforms) and easier functions (putColorPlaneIn). I would have to seperate
+ * files for this, but didn't want to go through the pain of making two files
+ * and the related Objective-C-ickyness that goes with all of that.
+ *
+ * In the future, we'll have Daubachies (spelling) wavelet in here.
+ *
+ * --Scott Sievert, sieve121 at umn.edu
+ *      2013-09-18
+ *
+ */
 
 #import "UROPdwt.h"
 
@@ -834,6 +848,7 @@
     return array;
 }
 
+// functions that came prepackaged in XCode
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
