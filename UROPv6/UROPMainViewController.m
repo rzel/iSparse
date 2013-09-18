@@ -14,6 +14,8 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
+
+
 @interface UROPMainViewController ()
 
 @end
@@ -31,6 +33,7 @@
     
     [self.button setBackgroundImage:[UIImage imageNamed:@"background.png"] forState:UIControlStateHighlighted];
     
+    // making the font actually fit on the screen without scrolling, depending on iOS version.
     // setting the proper text size
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         // if it's running iOS 7, don't change the story board
@@ -57,19 +60,11 @@
         }
     }
     
-
-
-    
-
     self.button.layer.masksToBounds = YES;
     self.button.layer.cornerRadius = 5.0f;
     self.button.layer.borderWidth = 1.0f;
         [self.button setBackgroundColor:[UIColor colorWithRed:255/255.0 green:131/255.0 blue:57/255.0 alpha:0.7]];
     [self.button setTitleColor:[UIColor purpleColor] forState:UIControlStateHighlighted];
-    
-    
-
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,10 +82,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"In prepareForSegue");
+    NSLog(@"In prepareForSegue -- UROPMainViewController");
     if ([[segue identifier] isEqualToString:@"showAlternate"]) {
         //self.button.backg
         [[segue destinationViewController] setDelegate:self];
+
     }
 }
 

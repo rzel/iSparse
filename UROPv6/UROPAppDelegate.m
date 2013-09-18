@@ -19,6 +19,7 @@
         CGFloat scale = [UIScreen mainScreen].scale;
         result = CGSizeMake(result.width * scale, result.height * scale);
         
+        // init'ing to either iphone >5 or iphone <4s
         if(result.height == 1136){
             storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard5" bundle:nil];
             UIViewController *initViewController = [storyBoard instantiateInitialViewController];

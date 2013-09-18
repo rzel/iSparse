@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 com.scott. All rights reserved.
 //
 
+// for the screen to tweak the sampling rate.
+
 #import <QuartzCore/QuartzCore.h>
 #import "UROP3rdViewController.h"
 #import "UROPFinalViewController.h"
@@ -27,99 +29,55 @@
     return _brain;
 }
 -(IBAction)buttonPressed:(UIButton *)sender{
-//    UIImage *image = [UIImage imageNamed:@"MsYWd.png"];
-//    [sender setImage:image forState:UIControlStateNormal];
-    NSLog(@"\n\n\nIn buttonPressed\n\n\n");
+    NSLog(@"\n\n\nIn buttonPressed -- UROP3rdViewController\n\n\n");
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-//    self.imageViewTest.image = [UIImage imageNamed:@"mountain.jpg"];
-    
+
     
     self.rate = 0.5;
 
-//    self.imageView.contentMode = UIViewContentModeScaleToFill;
-//   self.imageView.clipsToBounds = YES;
-    
-
-    
+    // making the sampling rate equal to 50% at first, resizing the image
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 50.0];
     UIImage * image = [self imageWithImage:[UIImage imageNamed:@"lenna.jpg"] scaledToSize:CGSizeMake(256, 256)];
-//    UIImage * image = [UIImage imageNamed:@"mountain.jpg"];
     self.imageStay = image;
-//    image =
-    self.imageView.image = [self.brain sampleImage:image atRate:self.rate];//image;
+    self.imageView.image = [self.brain sampleImage:image atRate:self.rate];
     
+    // so the slider doesn't jump/wait.
     self.samplingSlider.continuous = NO;
     
-    //self.reconstructButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    // making the buttons look nice.
     self.reconstructButton2.layer.masksToBounds = YES;
     self.reconstructButton2.layer.cornerRadius = 3.0f;
     self.reconstructButton2.layer.borderWidth = 1.0f;
     [self.reconstructButton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.reconstructButton2 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     
+    // again, buttons looking nice.
     self.choose.layer.masksToBounds = YES;
     self.choose.layer.cornerRadius = 3;
     self.choose.layer.borderWidth = 1.0f;
     [self.choose setBackgroundColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]];
-        
+    
+    // the orange/blue colors.
     [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:100/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
     [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"wati2.png"] forState:UIControlStateHighlighted];
     [self.reconstructButton2 setTitleColor:[UIColor purpleColor] forState:UIControlStateHighlighted];
-    
-    NSLog(@"button: %@", self.reconstructButton2);
-    NSLog(@"%@", self.imageView);
 
-    
 }
 - (IBAction)samplingSliderChanged:(id)sender {
     float rate = 0.6*self.samplingSlider.value + 0.2;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 100*(0.6*self.samplingSlider.value + 0.2)];
     self.rate = rate;
-    
-    int pix = self.imageView.image.size.width * self.imageView.image.size.height;
-    
-    //NSMutableArray * idx = [[NSMutableArray alloc] initWithCapacity:pix];
-    // init xold
-//    float * xold_r = (float *)malloc(sizeof(float) * pix);
-//    float * xold_g = (float *)malloc(sizeof(float) * pix);
-//    float * xold_b = (float *)malloc(sizeof(float) * pix);
-//    float * xold = (float *)malloc(sizeof(float) * 1.01 * pix);
-    
-//    float * y_r = (float *)malloc(sizeof(float) * 1.01 * rate * pix);
-//    float * y_g = (float *)malloc(sizeof(float) * 1.01 * rate * pix);
-//    float * y_b = (float *)malloc(sizeof(float) * 1.01 * rate * pix);
-    //    float * y = (float *)malloc(sizeof(float) * 1.01 * rate * pix);
-    
-    int i;
-    // make measurements
-    // note that idx is modified in this
-    //    int measurement_length = rate*pix;
-    
-    // make idx
-    // length not needed. [idx count]
-    //[self.brain makeIDX:idx ofLength:pix];
-    //self.idx = idx;
-    
-    // make y
-    // length needed
-    // DEBUG: y is only the measurements in one color plane
-    
-//    [self.brain makeMeasurements:self.imageStay atRate:rate
-//                             red:y_r green:y_g blue:y_b
-//                        ofLength:(int)rate*pix
-//                             idx:idx];
-    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"samplingToFinal"]) {
-
         UROPFinalViewController *destViewController = segue.destinationViewController;
+        // keeping the rate/idx/all that constant throughout screen changes.
         destViewController.imageStay = self.imageStay;
         destViewController.rate = self.rate;
         destViewController.coarse = self.coarse;
@@ -134,7 +92,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-// all from web
+// all from web... that is, stackoverflow
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     UIGraphicsBeginImageContext(newSize);
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 1.0);
