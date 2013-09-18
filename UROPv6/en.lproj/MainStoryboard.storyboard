@@ -99,7 +99,7 @@
                                 <rect key="frame" x="20" y="407" width="280" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">The views and opinions expressed in this page are strictly those of the app author. The contents of this app have not been reviewed or approved by the University of Minnesota.</string>
+                                <string key="text">The views and opinions expressed in this app are strictly those of the app author. The contents of this app have not been reviewed or approved by the University of Minnesota.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -329,7 +329,9 @@
         <class className="UROP3rdViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROP3rdViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
+                <relationship kind="action" name="buttonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="samplingSliderChanged:"/>
+                <relationship kind="action" name="useCameraRoll2:"/>
                 <relationship kind="outlet" name="choose" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
@@ -343,6 +345,8 @@
         <class className="UROPFinalViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPFinalViewController.h"/>
             <relationships>
+                <relationship kind="action" name="reconstruct:"/>
+                <relationship kind="action" name="reconstructV2:"/>
                 <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="iterations" candidateClass="UITextView"/>

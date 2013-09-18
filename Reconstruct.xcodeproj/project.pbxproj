@@ -378,10 +378,13 @@
 		D2DF754316CF174A00DF158B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UROPv6/Reconstruct-Prefix.pch";
 				INFOPLIST_FILE = "UROPv6/Reconstruct-Info.plist";
 				PRODUCT_NAME = Reconstruct;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -389,10 +392,13 @@
 		D2DF754416CF174A00DF158B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UROPv6/Reconstruct-Prefix.pch";
 				INFOPLIST_FILE = "UROPv6/Reconstruct-Info.plist";
 				PRODUCT_NAME = Reconstruct;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

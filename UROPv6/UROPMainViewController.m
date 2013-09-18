@@ -8,6 +8,12 @@
 
 #import "UROPMainViewController.h"
 
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
 @interface UROPMainViewController ()
 
 @end
@@ -24,6 +30,35 @@
     self.text.textColor = [UIColor blackColor];
     
     [self.button setBackgroundImage:[UIImage imageNamed:@"background.png"] forState:UIControlStateHighlighted];
+    
+    // setting the proper text size
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        // if it's running iOS 7, don't change the story board
+        NSLog(@"iOS 7 (or newer)");
+        if ([[UIScreen mainScreen] bounds].size.height == 568){
+            NSLog(@"Running on iPhone 5 (large screen size");
+            self.text.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+            
+        } else if ([[UIScreen mainScreen] bounds].size.height < 568){
+            NSLog(@"Running on < iPhone 4S");
+            self.text.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.2];
+        }
+    }
+    else {
+        NSLog(@"iOS 6 (or less)");
+        if ([[UIScreen mainScreen] bounds].size.height == 568){
+            NSLog(@"Running on iPhone 5 (large screen size");
+            self.text.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.8];
+            
+        } else if ([[UIScreen mainScreen] bounds].size.height < 568){
+            NSLog(@"Running on < iPhone 4S");
+            self.text.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.9];
+
+        }
+    }
+    
+
+
     
 
     self.button.layer.masksToBounds = YES;

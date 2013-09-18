@@ -6,7 +6,7 @@ from scipy.ndimage import gaussian_filter, uniform_filter
 from numpy import arctan, tan
 
 
-mul = 1
+mul = 2
 n = mul * 57
 radius = 10 * mul
 
@@ -71,13 +71,7 @@ color = (255, 255, 255)
 #k = paintRoundRectandBorder(k, radius, width, color)
 
 
-# thirds
-zero  = width
-one   = 1*(n-2*width)/3 + width
-two   = 2*(n-2*width)/3 + width
-three = 3*(n-2*width)/3 + width
-
-# fourths
+# half
 zero  = width
 one   = 1*(n-2*width)/2 + width
 two   = 2*(n-2*width)/2 + width
@@ -85,6 +79,9 @@ two   = 2*(n-2*width)/2 + width
 color = 0.87 * array(color)
 k[zero:one, zero:one] = color
 k[one:two, one:two] = color
+
+#k[zero:one, one:two] = color
+#k[one:two, zero:one] = color
 
 
 
