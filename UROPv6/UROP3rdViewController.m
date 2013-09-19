@@ -22,6 +22,7 @@
 @implementation UROP3rdViewController
 @synthesize brain = _brain;
 @synthesize reconstructButton = _reconstructButton;
+@synthesize imageView = _imageView;
 
 -(UROPbrain *)brain
 {

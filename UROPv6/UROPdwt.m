@@ -111,7 +111,7 @@
     
     return array;
 }
--(COMPLEX_SPLIT *)IFFTon:(COMPLEX_SPLIT )signal andLength:(int)N
+-(COMPLEX_SPLIT)IFFTon:(COMPLEX_SPLIT )signal andLength:(int)N
 {
     // changelog:
     // changed signal.realp to signal->realp
@@ -224,11 +224,11 @@
     
     
     
-    return &signal;
+    return signal;
     
     
 }
--(COMPLEX_SPLIT *)FFTon:(COMPLEX_SPLIT )signal andLength:(int)N
+-(COMPLEX_SPLIT)FFTon:(COMPLEX_SPLIT )signal andLength:(int)N
 {
     // copy and pasted from "performFFTforwardWithFlow"
     // performs FFT in place, only first half of signal any good.
@@ -306,7 +306,7 @@
         //NSLog(@"in FFT_debug3: %d, %f, %f", i, signal.realp[i], signal.imagp[i]);
     }
     
-    return &signal;
+    return signal;
 }
 // end of functions helpful for wavelets/FFTs
 
@@ -422,7 +422,7 @@
     const size_t BitsPerComponent = 8;
     const size_t BytesPerRow=((BitsPerComponent * Width) / 8) * ComponentsPerPixel;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef gtx = CGBitmapContextCreate(&pixelData[0], Width, Height, BitsPerComponent, BytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
+    CGContextRef gtx = CGBitmapContextCreate(&pixelData[0], Width, Height, BitsPerComponent, BytesPerRow, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
     
     // create the image:
     CGImageRef toCGImage = CGBitmapContextCreateImage(gtx);
@@ -806,8 +806,8 @@
     for (k=order; k>0; k--) {                       // check
         // copy array over
         i=0;
-        for (y=0; y< height>>k-1; y++) {
-            for (x=0; x< width>>k-1; x++) {
+        for (y=0; y< height>>(k-1); y++) {
+            for (x=0; x< width>>(k-1); x++) {
                 wavelet[i] = array[y*width + x];
                 i++;
             }
@@ -816,14 +816,14 @@
         
         // end copy
         // perform wavelet
-        wavelet = [self inverseOn2DArray:wavelet ofWidth:width>>k-1 andHeight:height>>k-1];
+        wavelet = [self inverseOn2DArray:wavelet ofWidth:width>>(k-1) andHeight:height>>(k-1)];
         for (i=0; i<width*height; i++) {
             wavelet[i] = wavelet[i] * factor;
         }
         // copy array over (wavelet into array)
         i=0;
-        for (y=0; y< height>>k-1; y++) {
-            for (x=0; x< width>>k-1; x++) {
+        for (y=0; y< height>>(k-1); y++) {
+            for (x=0; x< width>>(k-1); x++) {
                 array[y*width + x] = wavelet[i];
                 i++;
             }

@@ -157,6 +157,56 @@
     
 }
 
+// another init. to view while you're setting the largest k terms.
+-(UIImage *)doWaveletKeepingLargestKTerms:(UIImage *)image coarse:(float)coarse
+{
+    int area = image.size.height * image.size.width;
+    float width = image.size.width;
+    float height = image.size.height;
+    float * array = (float *)malloc(sizeof(float) * area);
+    float * colorPlane = (float *)malloc(sizeof(float) * area);
+    int order = (int)log2(image.size.width);
+    NSLog(@"%f", coarse);
+    
+    // get data
+    array = [self.dwt UIImageToRawArray:image];
+    int  i;
+    //float max, min;
+    // end making raw array
+    // begin the wavelet part
+    
+    // perform wavelet, 2D on image
+    // using color planes, all of that
+    for (int n=0; n<3; n++) {
+        
+        colorPlane = [self.dwt getColorPlane:array ofArea:area startingIndex:n into:colorPlane];
+        
+        colorPlane = [self.dwt waveletOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order divide:@"null"]; // change from null to image if want /2
+        
+        float cut_off = coarse * 26.25;
+        for (i=0; i<area; i++) {
+            if (abs(colorPlane[i]) < cut_off) {
+                colorPlane[i] = 0;
+            }
+        }
+        
+        colorPlane = [self.dwt inverseOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
+        
+        array      = [self.dwt putColorPlaneBackIn:colorPlane into:array ofArea:area startingIndex:n];
+    }
+    for (i=0; i<4*area; i=i+4) {
+        //NSLog(@"array[%d] = %f", i, array[i]);
+    }
+    
+    
+    for (long i=3; i<4*area; i=i+4)
+    {array[i] = 255;}
+    image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
+    free(array); free(colorPlane);
+    
+    return image;
+}
+
 // the actual IST
 -(float)IST:(float *)signal ofLength:(int)N
     ofWidth:(int)width ofHeight:(int)height order:(int)order
@@ -263,6 +313,7 @@
           y:(float *)y
         idx:(NSMutableArray *)idx
 {
+    // changed from "return xnew" to "return xold" to squash a bug-error. I don't think it matters because the return value isn't used.
     int i=0;
     int index;
     int n=width*height;
@@ -302,7 +353,7 @@
     free(temp2);
     free(temp3);
     free(temp4);
-    //return xnew;
+    return xold;
 }
 
 // and the function that takes in a UIImage and performs the IST.
