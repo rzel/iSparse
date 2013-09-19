@@ -23,7 +23,6 @@
 #import "UROPdwt.h"
 
 @interface UROPdwt ()
-
 @end
 
 @implementation UROPdwt
@@ -309,6 +308,7 @@
     
     return &signal;
 }
+// end of functions helpful for wavelets/FFTs
 
 // functions to manipulate images/python stuff
 -(NSArray*)getRGBAsFromImage:(UIImage*)image atX:(int)xx andY:(int)yy count:(long)count
@@ -847,8 +847,9 @@
     
     return array;
 }
+// end of various functions for wavelets
 
-// functions that came prepackaged in XCode
+// functions that came prepackaged in XCode, do nothing, and weren't edited.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -857,13 +858,11 @@
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -28,9 +28,6 @@
 
 @implementation UROPbrain
 
-
-
-
 // init'ing the dwt functions
 -(UROPdwt *)dwt
 {
@@ -99,7 +96,7 @@
     
 }
 
-// another init. actual take in what you view.
+// another init. actual for initial view.
 -(void)makeMeasurements:(UIImage *)image atRate:(float)rate
                    red:(float *)y_r green:(float *)y_b
                    blue:(float *)y_g
@@ -160,7 +157,7 @@
     
 }
 
-
+// the actual IST
 -(float)IST:(float *)signal ofLength:(int)N
     ofWidth:(int)width ofHeight:(int)height order:(int)order
   iteration:(int)iter
@@ -260,6 +257,7 @@
     
 }
 
+// used in IST; it's called with a varying step size each time.
 -(float *)T:(float *)xold width:(int)width height:(int)height order:(int)order
     // an unused, hence untested, function.
           y:(float *)y
@@ -307,7 +305,7 @@
     //return xnew;
 }
 
-
+// and the function that takes in a UIImage and performs the IST.
 -(UIImage *)reconstructWithIST:(UIImage *)image
                   coarse:(float)coarse
                      idx:(NSMutableArray *)idx

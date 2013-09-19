@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 com.scott. All rights reserved.
 //
 
-// for the screen to tweak the threshold.
+// for the screen to tweak the threshold. Currently unused.
 
 
 #import "UROP2ndViewController.h"

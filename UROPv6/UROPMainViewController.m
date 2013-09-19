@@ -27,11 +27,12 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.text.text =    self.text.text = [NSString stringWithFormat:@"Currently, images are sampled at every pixel then information is lost when compressed into a JPG. Why not build a camera that only takes in the information it needs? \n\nThis application will simulate that. It will take an image from your camera roll, then delete some data (without modifing your camera roll). This data is never looked at again, and all of the blacked out areas are not taken in. \n\nThe applications of this are broad. It goes from consumer electronics to medical imaging to discovering planets, and that doesn't even touch an incredible number of fields."];
+    self.text.text = [NSString stringWithFormat:@"Currently, images are sampled at every pixel then information is lost when compressed into a JPG. Why not build a camera that only takes in the information it needs? \n\nThis application will simulate that. It will take an image from your camera roll, then delete some data (without modifing your camera roll). This data is never looked at again, and all of the blacked out areas are not taken in. \n\nThe applications of this are broad. It goes from consumer electronics to medical imaging to discovering planets, and that doesn't even touch an incredible number of fields."];
     
     self.text.textColor = [UIColor blackColor];
+
     
-    [self.button setBackgroundImage:[UIImage imageNamed:@"background.png"] forState:UIControlStateHighlighted];
+    [self.button setBackgroundImage:[UIImage imageNamed:@"wait.png"] forState:UIControlStateHighlighted];
     
     // making the font actually fit on the screen without scrolling, depending on iOS version.
     // setting the proper text size
@@ -63,8 +64,13 @@
     self.button.layer.masksToBounds = YES;
     self.button.layer.cornerRadius = 5.0f;
     self.button.layer.borderWidth = 1.0f;
-        [self.button setBackgroundColor:[UIColor colorWithRed:255/255.0 green:131/255.0 blue:57/255.0 alpha:0.7]];
-    [self.button setTitleColor:[UIColor purpleColor] forState:UIControlStateHighlighted];
+
+    UIColor * titleColor = [UIColor colorWithRed:155/255.0 green:141/255.0 blue:80/255.0 alpha:1.0];
+    UIColor * bgColor = [UIColor colorWithRed:255/255.0 green:89/255.0 blue:109/255.0 alpha:1.0];
+    
+    [self.button setBackgroundColor:bgColor];
+    [self.button setTitleColor:titleColor forState:UIControlStateHighlighted];
+    [self.button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

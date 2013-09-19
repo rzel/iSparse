@@ -37,6 +37,8 @@
 // change this to change the algorithm!
 #define IMAGE_STEP self.imageView.image = [self.brain reconstructWithIST:self.imageView.image coarse:self.coarse idx:idx y_r:y_r y_g:y_g y_b:y_b rate:rate xold_r:xold_r xold1_r:xold1_r xold_g:xold_g xold1_g:xold1_g xold_b:xold_b xold1_b:xold1_b iterations:1 pastIterations:0 tn:&tn];
 
+#define ITERATION_STEP showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+
 // the minimum N for the animation to continue.
 #define N_MIN 256
 
@@ -133,13 +135,16 @@
     self.y_r = y_r; self.y_g = y_g; self.y_b = y_b;
     self.finished = NO;
     
+
+    
     // the start of the animation. You shouldn't have to touch anything below here; it's all taken care of in IMAGE_STEP.
+    // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
                          showIts=0;
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP;
                      }
                      completion:^(BOOL finished){
@@ -147,7 +152,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP;
 
                      }
@@ -156,7 +161,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP;
                      }
                      completion:^(BOOL finished){
@@ -164,7 +169,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP;
                      }
                      completion:^(BOOL finished){
@@ -172,7 +177,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -181,7 +186,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -190,7 +195,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -199,7 +204,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -208,7 +213,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -217,7 +222,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -226,7 +231,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -235,7 +240,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -244,7 +249,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -253,7 +258,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -262,7 +267,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -271,7 +276,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -280,7 +285,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -289,7 +294,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -298,7 +303,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -307,7 +312,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -316,7 +321,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -325,7 +330,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -334,7 +339,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -343,7 +348,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -352,7 +357,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -361,7 +366,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -370,7 +375,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -379,7 +384,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -388,7 +393,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -397,7 +402,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -406,7 +411,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -415,7 +420,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -424,7 +429,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -433,7 +438,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -442,7 +447,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -451,7 +456,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -460,7 +465,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -469,7 +474,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -478,7 +483,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -487,7 +492,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -496,7 +501,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -505,7 +510,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -514,7 +519,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -523,7 +528,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -532,7 +537,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -541,7 +546,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -550,7 +555,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -559,7 +564,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -568,7 +573,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -577,7 +582,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -586,7 +591,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -595,7 +600,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -604,7 +609,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -613,7 +618,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -622,7 +627,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -631,7 +636,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -640,7 +645,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -649,7 +654,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -658,7 +663,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -667,7 +672,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -676,7 +681,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -685,7 +690,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -694,7 +699,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -703,7 +708,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -712,7 +717,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -721,7 +726,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -730,7 +735,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -739,7 +744,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -748,7 +753,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -757,7 +762,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -766,7 +771,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -775,7 +780,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -784,7 +789,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -793,7 +798,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -802,7 +807,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -811,7 +816,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -820,7 +825,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -829,7 +834,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -839,7 +844,7 @@
     }}];
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -848,7 +853,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -857,7 +862,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -866,7 +871,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -875,7 +880,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -884,7 +889,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -893,7 +898,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -902,7 +907,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -911,7 +916,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -920,7 +925,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -929,7 +934,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -938,7 +943,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -947,7 +952,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -956,7 +961,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -965,7 +970,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -974,7 +979,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -983,7 +988,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -992,7 +997,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1001,7 +1006,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1010,7 +1015,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1019,7 +1024,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1028,7 +1033,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1037,7 +1042,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1046,7 +1051,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1055,7 +1060,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1064,7 +1069,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1073,7 +1078,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1082,7 +1087,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1091,7 +1096,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1100,7 +1105,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1109,7 +1114,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1118,7 +1123,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1127,7 +1132,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1136,7 +1141,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1145,7 +1150,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1154,7 +1159,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1163,7 +1168,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1172,7 +1177,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1181,7 +1186,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1190,7 +1195,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1199,7 +1204,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1208,7 +1213,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
@@ -1217,7 +1222,7 @@
 
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+                         ITERATION_STEP
                          IMAGE_STEP
 
                      }
