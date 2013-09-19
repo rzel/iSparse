@@ -14,8 +14,8 @@
 
 -(void *)waveletOn:(float *)array ofLength:(int)N;
 -(float *)waveletOn2DArray:(float *)array ofWidth:(long)width andHeight:(long)height;
--(COMPLEX_SPLIT)IFFTon:(COMPLEX_SPLIT )signal andLength:(int)N;
--(COMPLEX_SPLIT)FFTon:(COMPLEX_SPLIT )signal andLength:(int)N;
+-(COMPLEX_SPLIT *)IFFTon:(COMPLEX_SPLIT )signal andLength:(int)N;
+-(COMPLEX_SPLIT *)FFTon:(COMPLEX_SPLIT )signal andLength:(int)N;
 -(NSArray*)getRGBAsFromImage:(UIImage*)image atX:(int)xx andY:(int)yy count:(long)count;
 -(float *)UIImageToRawArray:(UIImage *)image;
 -(UIImage *)UIImageFromRawArray:(float *)array image:(UIImage *)image forwardInverseOrNull:(NSString *)way;

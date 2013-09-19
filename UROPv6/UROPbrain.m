@@ -263,7 +263,6 @@
           y:(float *)y
         idx:(NSMutableArray *)idx
 {
-    // possible bug in return value. 2013-9-18
     int i=0;
     int index;
     int n=width*height;
@@ -303,7 +302,7 @@
     free(temp2);
     free(temp3);
     free(temp4);
-    return xold;
+    //return xnew;
 }
 
 // and the function that takes in a UIImage and performs the IST.
