@@ -14,8 +14,11 @@
 #import "UROPMainViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UROPbrain.h"
+#import "UROPdwt.m"
+
 @interface UROP2ndViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
+//@property (nonatomic, strong) UROPdwt *dwt;
 
 @end
 
@@ -28,13 +31,19 @@
     if (!_brain) _brain = [[UROPbrain alloc] init];
     return _brain;
 }
+// init'ing the dwt functions
+//-(UROPdwt *)dwt
+//{
+//    if (!_dwt) _dwt = [[UROPdwt alloc] init];
+//    return _dwt;
+//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     UIImage * image = [self imageWithImage:[UIImage imageNamed:@"mountain.jpg"] scaledToSize:CGSizeMake(256, 256)];
-    image = [self.brain doWaveletKeepingLargestKTerms:image coarse:1.5*(1-0.5)];
+//    image = [self.dwt doWaveletKeepingLargestKTerms:image coarse:1.5*(1-0.5)];
     self.imageView.image = image;
     self.imageStay = image;
     self.slider.continuous = NO;
@@ -87,10 +96,10 @@
 }
 
 - (IBAction)coarsenessSliderChanged:(id)sender {
-    float rate = 10*(self.slider.value - 0.5);
+    //float rate = 10*(self.slider.value - 0.5);
     
-    self.imageView.image = [self.brain doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
-    NSLog(@"%@", self.slider.continuous);
+    //self.imageView.image = [self.dwt doWaveletKeepingLargestKTerms:self.imageStay coarse:rate];
+    NSLog(@"%hhd", self.slider.continuous);
     self.coarse = self.rate;
 }
 

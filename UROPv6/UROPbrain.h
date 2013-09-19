@@ -14,16 +14,16 @@
 
 
 -(UIImage *)sampleImage:(UIImage *)image atRate:(float)rate;
--(UIImage *)doWaveletKeepingLargestKTerms:(UIImage *)image
-                                   coarse:(float)coarse;
--(float *)UIImageToRawArray:(UIImage *)image;
--(float *)makeMeasurementsOf:(UIImage *)image atRate:(float)p length:(int)length into:(NSMutableArray *)idx;
+//-(UIImage *)doWaveletKeepingLargestKTerms:(UIImage *)image
+//                                   coarse:(float)coarse;
+//-(float *)UIImageToRawArray:(UIImage *)image;
+//-(float *)makeMeasurementsOf:(UIImage *)image atRate:(float)p length:(int)length into:(NSMutableArray *)idx;
 -(void)makeIDX:(NSMutableArray *)idx ofLength:(int)pix;
--(void)makeMeasurements:(UIImage *)image atRate:(float)rate
-                   into:(float *)red_y into:(float *)blue_y
-                   into:(float *)green_y
-               ofLength:(int)length
-                    idx:(NSMutableArray *)idx;
+//-(void)makeMeasurements:(UIImage *)image atRate:(float)rate
+//                   into:(float *)red_y into:(float *)blue_y
+//                   into:(float *)green_y
+//               ofLength:(int)length
+//                    idx:(NSMutableArray *)idx;
 -(void)makeMeasurements:(UIImage *)image atRate:(float)rate
                     red:(float *)y_r green:(float *)y_b
                    blue:(float *)y_g
