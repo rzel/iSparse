@@ -49,12 +49,14 @@
     // so the slider doesn't jump/wait.
     self.samplingSlider.continuous = NO;
     
+    // when you select the "Reconstruct" button, what color is the title?
+    UIColor * selectedTitle = [UIColor grayColor];
+    
     // making the buttons look nice.
     self.reconstructButton2.layer.masksToBounds = YES;
     self.reconstructButton2.layer.cornerRadius = 3.0f;
     self.reconstructButton2.layer.borderWidth = 1.0f;
     [self.reconstructButton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.reconstructButton2 setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     
     // again, buttons looking nice.
     self.choose.layer.masksToBounds = YES;
@@ -65,7 +67,7 @@
     // the orange/blue colors.
     [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:100/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
     [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"wati2.png"] forState:UIControlStateHighlighted];
-    [self.reconstructButton2 setTitleColor:[UIColor purpleColor] forState:UIControlStateHighlighted];
+    [self.reconstructButton2 setTitleColor:selectedTitle forState:UIControlStateHighlighted];
 
 }
 - (IBAction)samplingSliderChanged:(id)sender {
