@@ -16,6 +16,7 @@
 		D2215D9716D9495C00FD2A48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2215D9616D9495C00FD2A48 /* QuartzCore.framework */; };
 		D224CF25177D2E450087A7F4 /* one.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D224CF24177D2E450087A7F4 /* one.jpg */; };
 		D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D2365EA916D432E70017E15A /* UROPbrain.m */; };
+		D249582A17ECF62F0007D015 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D249582917ECF62F0007D015 /* blue.png */; };
 		D24C2F6D16DD1EDA0041F4CE /* MainStoryboard5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24C2F6B16DD1EDA0041F4CE /* MainStoryboard5.storyboard */; };
 		D262A9A21777D43E006A7072 /* wati2.xcf in Resources */ = {isa = PBXBuildFile; fileRef = D262A99F1777D43E006A7072 /* wati2.xcf */; };
 		D262A9A31777D43E006A7072 /* wait_spinner.png in Resources */ = {isa = PBXBuildFile; fileRef = D262A9A01777D43E006A7072 /* wait_spinner.png */; };
@@ -42,7 +43,6 @@
 		D2DF755F16D2811300DF158B /* UROPFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */; };
 		D2E35F091777EE9100FD849F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E35F081777EE9100FD849F /* background.png */; };
 		D2EB30C11777C37A0050D442 /* wait_spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = D2EB30C01777C37A0050D442 /* wait_spinner.gif */; };
-		D2EB30C31777C9BF0050D442 /* wati2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2EB30C21777C9BF0050D442 /* wati2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +56,7 @@
 		D224CF24177D2E450087A7F4 /* one.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = one.jpg; sourceTree = "<group>"; };
 		D2365EA816D432E70017E15A /* UROPbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPbrain.h; sourceTree = "<group>"; };
 		D2365EA916D432E70017E15A /* UROPbrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPbrain.m; sourceTree = "<group>"; };
+		D249582917ECF62F0007D015 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
 		D24C2F6C16DD1EDA0041F4CE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard5.storyboard; sourceTree = "<group>"; };
 		D262A99F1777D43E006A7072 /* wati2.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wati2.xcf; sourceTree = "<group>"; };
 		D262A9A01777D43E006A7072 /* wait_spinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait_spinner.png; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROPFlipsideViewController.m; sourceTree = "<group>"; };
 		D2E35F081777EE9100FD849F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		D2EB30C01777C37A0050D442 /* wait_spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wait_spinner.gif; sourceTree = "<group>"; };
-		D2EB30C21777C9BF0050D442 /* wati2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wati2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +154,7 @@
 		D2DF752516CF174900DF158B /* UROPv6 */ = {
 			isa = PBXGroup;
 			children = (
+				D249582917ECF62F0007D015 /* blue.png */,
 				D24C2F6B16DD1EDA0041F4CE /* MainStoryboard5.storyboard */,
 				D203E50816E263B300336557 /* lenna256x256.gif */,
 				D203E50A16E424C700336557 /* lenna.jpg */,
@@ -167,7 +168,6 @@
 				D2EB30C01777C37A0050D442 /* wait_spinner.gif */,
 				D2215D9416D7F9B000FD2A48 /* mountain.jpg */,
 				D27236081749AACC00A0B7C9 /* white.png */,
-				D2EB30C21777C9BF0050D442 /* wati2.png */,
 				D2DF754816CF1AA100DF158B /* ted.jpg */,
 				D2DF752E16CF174A00DF158B /* UROPAppDelegate.h */,
 				D2DF752F16CF174A00DF158B /* UROPAppDelegate.m */,
@@ -257,6 +257,7 @@
 				D262A9A31777D43E006A7072 /* wait_spinner.png in Resources */,
 				D2DF753416CF174A00DF158B /* Default@2x.png in Resources */,
 				D2EB30C11777C37A0050D442 /* wait_spinner.gif in Resources */,
+				D249582A17ECF62F0007D015 /* blue.png in Resources */,
 				D2DF753616CF174A00DF158B /* Default-568h@2x.png in Resources */,
 				D2DF753916CF174A00DF158B /* MainStoryboard.storyboard in Resources */,
 				D2DF754916CF1AA100DF158B /* ted.jpg in Resources */,
@@ -264,7 +265,6 @@
 				D2E35F091777EE9100FD849F /* background.png in Resources */,
 				D24C2F6D16DD1EDA0041F4CE /* MainStoryboard5.storyboard in Resources */,
 				D224CF25177D2E450087A7F4 /* one.jpg in Resources */,
-				D2EB30C31777C9BF0050D442 /* wati2.png in Resources */,
 				D203E50516E24FEA00336557 /* icon.png in Resources */,
 				D262A9A21777D43E006A7072 /* wati2.xcf in Resources */,
 				D203E50716E24FF600336557 /* icon2x.png in Resources */,

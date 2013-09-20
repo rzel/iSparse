@@ -66,7 +66,7 @@
     
     // the orange/blue colors.
     [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:100/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
-    [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"wati2.png"] forState:UIControlStateHighlighted];
+    [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"blue.png"] forState:UIControlStateHighlighted];
     [self.reconstructButton2 setTitleColor:selectedTitle forState:UIControlStateHighlighted];
 
 }
