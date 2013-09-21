@@ -16,6 +16,8 @@
  *
  *  To show you the correct rate, we have a variable that stores the rate (self.rate)
  *
+ *  --Scott Sievert, sieve121 at umn.edu, 2013-9-18
+ *
  *
  */
 

@@ -26,7 +26,8 @@
  * the animation starts. Anything in there will be taken care of with
  * IMAGE_STEP.
  *
- * --Scott Sievert, sieve121 at umn.edu, 2013-09-17
+ * --Scott Sievert, sieve121 
+ at umn.edu, 2013-09-17
  *
  */
 
@@ -35,7 +36,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 // change this to change the algorithm!
-#define IMAGE_STEP \
+#define IMAGE_STEP\
        self.imageView.image = [self.brain reconstructWithIST:self.imageView.image \
                                                     coarse:self.coarse idx:idx    \
                                                     y_r:y_r y_g:y_g y_b:y_b       \
@@ -49,6 +50,7 @@
 #define ITERATION_STEP \
        showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
 
+// should the animation continue?
 #define IF_STATEMENT self.imageView.image.size.width >= N_MIN
 
 // the minimum N for the animation to continue.
@@ -174,7 +176,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP;
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -199,7 +200,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -208,7 +208,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -217,7 +216,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -226,7 +224,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -235,7 +232,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -244,7 +240,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -253,7 +248,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -262,7 +256,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -271,7 +264,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -280,7 +272,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -289,7 +280,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -298,7 +288,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -307,7 +296,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -316,7 +304,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -325,7 +312,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -334,7 +320,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -343,7 +328,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -352,7 +336,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -361,7 +344,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -370,7 +352,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -379,7 +360,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -388,7 +368,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -397,7 +376,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -406,7 +384,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -415,7 +392,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -424,7 +400,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -433,7 +408,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -442,7 +416,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -451,7 +424,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -460,7 +432,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -469,7 +440,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -478,7 +448,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -487,7 +456,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -496,7 +464,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -505,7 +472,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -514,7 +480,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -523,7 +488,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -532,7 +496,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -541,7 +504,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -550,7 +512,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -559,7 +520,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -568,7 +528,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -577,7 +536,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -586,7 +544,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -595,7 +552,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -604,7 +560,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -613,7 +568,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -622,7 +576,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -631,7 +584,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -640,7 +592,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -649,7 +600,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -658,7 +608,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -667,7 +616,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -676,7 +624,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -685,7 +632,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -694,7 +640,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -703,7 +648,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -712,7 +656,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -721,7 +664,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -730,7 +672,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -739,7 +680,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -748,7 +688,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -757,7 +696,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -766,7 +704,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -775,7 +712,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -784,7 +720,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -793,7 +728,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -802,7 +736,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -811,7 +744,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -820,7 +752,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -829,7 +760,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -838,7 +768,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -847,7 +776,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -856,7 +784,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -865,8 +792,303 @@
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
                          ITERATION_STEP
-                         IMAGE_STEP
 
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     completion:^(BOOL finished){
+                        if (self.imageView.image.size.width >= N_MIN){
+
+    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         ITERATION_STEP
+                         IMAGE_STEP
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -884,7 +1106,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -893,7 +1114,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -902,7 +1122,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){
@@ -911,340 +1130,6 @@
                      animations:^(void){
                          ITERATION_STEP
                          IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-
                      }
                      completion:^(BOOL finished){
                         if (self.imageView.image.size.width >= N_MIN){

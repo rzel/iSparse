@@ -1,10 +1,12 @@
 /*
- * made by    : SparKEL Lab at the     : University of Minnesota advisor    :
- * Dr. Jarvis Haupt programmer : Scott Sievert
+ * made by    : SparKEL Lab
+ * at the     : University of Minnesota
+ * advisor    : Dr. Jarvis Haupt
+ * programmer : Scott Sievert
  *
  * Copyright (c) 2013 by Scott Sievert. All rights reserved.
  *
- * this code can be found online at https://github.com/scottsievert/UROPv6
+ * This code can be found online at https://github.com/scottsievert/UROPv6
  *
  * This app presents you with an intial starting screen, presents another
  * screen that offers how much information you should take in, then
@@ -54,6 +56,8 @@
  *      There are some more functions in UROPbrain that are called from other
  *      places, mainly to init for viewing the coarseness/sampling rate
  *
+ *
+ * --Scott Sievert, sieve121 at umn.edu, 2013-9-18
  */
 
 #import "UROPMainViewController.h"
@@ -76,6 +80,7 @@
 {
     
     [super viewDidLoad];
+
 	// Do any additional setup after loading the view, typically from a nib.
     self.text.text = [NSString stringWithFormat:@"Currently, images are sampled at every pixel then information is lost when compressed into a JPG. Why not build a camera that only takes in the information it needs? \n\nThis application will simulate that. It will take an image from your camera roll, then delete some data (without modifing your camera roll). This data is never looked at again, and all of the blacked out areas are not taken in. \n\nThe applications of this are broad. It goes from consumer electronics to medical imaging to discovering planets, and that doesn't even touch an incredible number of fields."];
     
