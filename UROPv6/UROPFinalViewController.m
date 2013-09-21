@@ -26,8 +26,7 @@
  * the animation starts. Anything in there will be taken care of with
  * IMAGE_STEP.
  *
- * --Scott Sievert, sieve121 
- at umn.edu, 2013-09-17
+ * --Scott Sievert, sieve121 at umn.edu, 2013-09-17
  *
  */
 
@@ -49,6 +48,12 @@
 // updates the text that says "Iterations: 42"
 #define ITERATION_STEP \
        showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+
+#define ANIMATION_COMMAND     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState \
+                                               animations:^(void)
+
+#define FINISHED_IF completion:^(BOOL finished){ \
+                        if (self.imageView.image.size.width >= N_MIN)
 
 // should the animation continue?
 #define IF_STATEMENT self.imageView.image.size.width >= N_MIN
@@ -98,6 +103,7 @@
     [self performSelectorOnMainThread:@selector(stopAmination) withObject:nil waitUntilDone:YES];
 }
 
+// when the screen pops up
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
@@ -163,977 +169,742 @@
     // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          showIts=0;
                          ITERATION_STEP
                          IMAGE_STEP;
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP;
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP;
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP;
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
     }}];
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
 
                      }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
+                     FINISHED_IF{
 
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     FINISHED_IF{
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     FINISHED_IF{
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     FINISHED_IF{
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                     FINISHED_IF{
+    ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP
                      }
                      completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
-    [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     completion:^(BOOL finished){
-                        if (self.imageView.image.size.width >= N_MIN){
-
+                         if (self.imageView.image.size.width >= N_MIN){
+                             
+    }}];
     }}];
     }}];
     }}];
