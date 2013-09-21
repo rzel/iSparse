@@ -901,9 +901,64 @@
                          ITERATION_STEP
                          IMAGE_STEP
                      }
-                     completion:^(BOOL finished){
-                         if (self.imageView.image.size.width >= N_MIN){
+                    FINISHED_IF{
                              
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                    FINISHED_IF{
+                             
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                    FINISHED_IF{
+                             
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                    FINISHED_IF{
+                             
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                    FINISHED_IF{
+                             
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                    FINISHED_IF{
+                             
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                    FINISHED_IF{
+                             
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                    FINISHED_IF{
+                             
+    ANIMATION_COMMAND{
+                         ITERATION_STEP
+                         IMAGE_STEP
+                     }
+                    FINISHED_IF{
+                             
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
     }}];
     }}];
     }}];
