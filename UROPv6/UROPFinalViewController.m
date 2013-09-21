@@ -35,7 +35,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 // change this to change the algorithm!
-#define IMAGE_STEP self.imageView.image = [self.brain reconstructWithIST:self.imageView.image \
+#define IMAGE_STEP \
+       self.imageView.image = [self.brain reconstructWithIST:self.imageView.image \
                                                     coarse:self.coarse idx:idx    \
                                                     y_r:y_r y_g:y_g y_b:y_b       \
                                                     rate:rate                     \
@@ -45,7 +46,10 @@
                                                     iterations:1 pastIterations:0 \
                                                     tn:(float *)&tn];
 // updates the text that says "Iterations: 42"
-#define ITERATION_STEP showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+#define ITERATION_STEP \
+       showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+
+#define IF_STATEMENT self.imageView.image.size.width >= N_MIN
 
 // the minimum N for the animation to continue.
 #define N_MIN 256
@@ -105,14 +109,17 @@
     float pix = self.imageStay.size.width * self.imageStay.size.height;
     
     // our variables for measurement/reconstructing.
+    // y_ holds the measurements for that color plane
     float * y_r = (float *)malloc(sizeof(float) * pix * rate * 1.1);
     float * y_g = (float *)malloc(sizeof(float) * pix * rate * 1.1);
     float * y_b = (float *)malloc(sizeof(float) * pix * rate * 1.1);
     
+    // xold_ holds the wavelet transform for that color plane
     float * xold_r = (float *)malloc(sizeof(float) * pix * 1.1);
     float * xold_g = (float *)malloc(sizeof(float) * pix * 1.1);
     float * xold_b = (float *)malloc(sizeof(float) * pix * 1.1);
     
+    // xold_{n-1}. the previous iteration of xold
     float * xold1_r = (float *)malloc(sizeof(float) * pix * 1.1);
     float * xold1_g = (float *)malloc(sizeof(float) * pix * 1.1);
     float * xold1_b = (float *)malloc(sizeof(float) * pix * 1.1);
@@ -120,11 +127,14 @@
     // our threshold value.
     float tn = 1;
 
+    // the indicies where we want to sample
     NSMutableArray * idx = [[NSMutableArray alloc] init];
     [self.brain makeIDX:idx ofLength:pix];
     
     // goes into y_r, y_g, y_b
-    [self.brain makeMeasurements:self.imageStay atRate:self.rate red:y_r green:y_g blue:y_b ofLength:pix idx:idx];
+    [self.brain makeMeasurements:self.imageStay atRate:self.rate 
+                             red:y_r green:y_g blue:y_b 
+                        ofLength:pix idx:idx];
     
     // ensuring they're all zeros.
     for (i=0; i<pix; i++) {
@@ -138,6 +148,7 @@
     }
     
     
+    // making those global variables the same. for the animation.
     self.idx = idx; self.xold_g = xold_g;
     self.xold_b = xold_b; self.xold_r = xold_r;
     self.y_r = y_r; self.y_g = y_g; self.y_b = y_b;
@@ -145,7 +156,8 @@
     
 
     
-    // the start of the animation. You shouldn't have to touch anything below here; it's all taken care of in IMAGE_STEP.
+    // the start of the animation. You shouldn't have to touch anything below here; 
+    // it's all taken care of in IMAGE_STEP.
     // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];

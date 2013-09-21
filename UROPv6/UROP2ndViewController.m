@@ -6,7 +6,8 @@
  *
  * Copyright (c) 2013 by Scott Sievert. All rights reserved.
  *
- * This screen shows you 
+ * This screen shows you how coarse you want your final image to be. It is
+ * currently unused, for user-interface/expirence reasons.
  *
  */
 

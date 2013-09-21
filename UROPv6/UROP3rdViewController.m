@@ -1,12 +1,23 @@
-//
-//  UROP3rdViewController.m
-//  UROPv6
-//
-//  Created by Scott Sievert on 2/15/13.
-//  Copyright (c) 2013 com.scott. All rights reserved.
-//
-
-// for the screen to tweak the sampling rate.
+/*
+ * made by    : SparKEL Lab
+ * at the     : University of Minnesota
+ * advisor    : Dr. Jarvis Haupt
+ * programmer : Scott Sievert
+ *
+ * Copyright (c) 2013 by Scott Sievert. All rights reserved.
+ *
+ * This screen lets you select the sampling rate.
+ *
+ * It presents...
+ *      1. a slider for the sampling rate (self.samplingSlider)
+ *      2. a button for the camera roll (self.choose)
+ *      3. a button to reconstruct (self.reconstructButton2)
+ *      4. a sampling rate text box (self.label)
+ *
+ *  To show you the correct rate, we have a variable that stores the rate (self.rate)
+ *
+ *
+ */
 
 #import <QuartzCore/QuartzCore.h>
 #import "UROP3rdViewController.h"
