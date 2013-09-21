@@ -17,11 +17,11 @@ it. In pictures, it goes between these:
 ![this][sample].![this][finished].
 
 ### Getting the app on your device 
-
-Currently, the only method is to clone this repo, then open the XCode project
-on a Mac and run it. Using this method, you can not run the app on your device
-unless registered with Apple as an iOS developer.  Soon, we hope to release
-this on the app store.
+We plan to release this app on the App Store in approximately October 2013.
+Until then, you can run this app on your computer by cloning this repo, opening
+the `.xcodeproject` (installing XCode first, of course) and clicking run. This will run on your computer, but you
+can run this app on your device only if you're registered with the Apple
+Developer Program.
 
 [finished]:https://raw.github.com/scottsievert/UROPv6/master/50-reconstruct.png
 [sample]:https://raw.github.com/scottsievert/UROPv6/master/50-sample.png
