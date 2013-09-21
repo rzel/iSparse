@@ -1,10 +1,60 @@
-//
-//  UROPMainViewController.m
-//  UROPv6
-//
-//  Created by Scott Sievert on 2/15/13.
-//  Copyright (c) 2013 com.scott. All rights reserved.
-//
+/*
+ * made by    : SparKEL Lab at the     : University of Minnesota advisor    :
+ * Dr. Jarvis Haupt programmer : Scott Sievert
+ *
+ * Copyright (c) 2013 by Scott Sievert. All rights reserved.
+ *
+ * this code can be found online at https://github.com/scottsievert/UROPv6
+ *
+ * This app presents you with an intial starting screen, presents another
+ * screen that offers how much information you should take in, then
+ * reconstructs the given image with that information.
+ *
+ * This file is for the intial startup screen. It presents you with some
+ * information about why compressed sensing is important, and gives you the
+ * basics of how it works (as in, ultra-basic).
+ *
+ * It presents a button to....  
+ *     1. allow you to go to the sampling screen.  
+ *     2. an "info" button to see more info.
+ *
+ *
+ *  The tree structure for this app: 
+ *  ================================
+ *        
+ *         .-------------------------------------------.
+ *         |                                           |      
+ *         |      main  --> sampling --> reconstruct   |
+ *         |            |                              |
+ *         |            .-> info                       |
+ *         |                                           |      
+ *         |            .-> coarseness (unused)        |
+ *         |                                           |      
+ *         .-------------------------------------------.      
+ *
+ *
+ *          main        : UROPMainController
+ *          info        : UROPFlipsideController
+ *          sampling    : UROP3rdViewController
+ *          reconstruct : UROPFinalViewController
+ *          coarseness  : UROP2ndViewController
+ *        
+ *                                                  
+ *                                                  
+ *  The call tree 
+ *  ============== 
+ *      mainly, reconstruct --> UROPbrain --> UROPdwt
+ *    
+ *      UROPbrain contains the functions that actually matter. Here, the fast
+ *      iterative soft thresholding algorithm (FISTA) is performed. UROPdwt
+ *      contains helper functions for UROPbrain; simple things that are
+ *      included in Python/Matlab/high level languages (eg, getColumn) and more
+ *      complex like wavelet functions (eg, dwt2_full).
+ *
+ *      There are some more functions in UROPbrain that are called from other
+ *      places, mainly to init for viewing the coarseness/sampling rate
+ *
+ */
 
 #import "UROPMainViewController.h"
 

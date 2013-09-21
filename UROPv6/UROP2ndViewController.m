@@ -1,12 +1,14 @@
-//
-//  UROP2ndViewController.m
-//  UROPv6
-//
-//  Created by Scott Sievert on 2/15/13.
-//  Copyright (c) 2013 com.scott. All rights reserved.
-//
-
-// for the screen to tweak the threshold. Currently unused.
+/*
+ * made by    : SparKEL Lab
+ * at the     : University of Minnesota
+ * advisor    : Dr. Jarvis Haupt
+ * programmer : Scott Sievert
+ *
+ * Copyright (c) 2013 by Scott Sievert. All rights reserved.
+ *
+ * This screen shows you 
+ *
+ */
 
 
 #import "UROP2ndViewController.h"
