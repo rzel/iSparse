@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.text.dataDetectorTypes = UIDataDetectorTypeLink;
 
     self.text.text = [NSString stringWithFormat:@"The app uses a technique to reconstruct the image that relies on large areas of the image being largely the same. If the image were completely random, this reconstruction would fail utterly. \n\nFor experts, this app uses the fast iterative soft thresholding algorithm (FISTA).\n\nThis app was made by Scott Sievert with Prof. Jarvis Haupt at the University of Minnesota under the Undergraduate Research Opportunities program."];
     self.text.textColor = [UIColor blackColor];
