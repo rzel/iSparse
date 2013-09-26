@@ -154,8 +154,8 @@
 		D2DF752516CF174900DF158B /* UROPv6 */ = {
 			isa = PBXGroup;
 			children = (
-				D249582917ECF62F0007D015 /* blue.png */,
 				D24C2F6B16DD1EDA0041F4CE /* MainStoryboard5.storyboard */,
+				D249582917ECF62F0007D015 /* blue.png */,
 				D203E50816E263B300336557 /* lenna256x256.gif */,
 				D203E50A16E424C700336557 /* lenna.jpg */,
 				D2E35F081777EE9100FD849F /* background.png */,
