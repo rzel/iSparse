@@ -37,7 +37,7 @@
                       \
                       This app was made by %@ with %@ at the University of Minnesota under the Undergraduate Research Opportunities program.<br><br>\
                       \
-                      For experts, this app uses the fast iterative soft thresholding algorithm (FISTA). There's an %@ that details the theory behind this app.", SCOTT, JARVIS, PAPER];
+                      For experts, this app uses the fast iterative soft thresholding algorithm (FISTA). There's an %@ that details the theory behind this app. We group the high frequency terms with the noise and recover an approximation of the image exactly.", SCOTT, JARVIS, PAPER];
     
     NSString *htmlString;
     if (IS_WIDESCREEN) {

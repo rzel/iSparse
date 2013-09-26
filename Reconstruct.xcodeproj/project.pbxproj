@@ -40,7 +40,6 @@
 		D2DF754D16CF1B8E00DF158B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF754C16CF1B8E00DF158B /* MobileCoreServices.framework */; };
 		D2DF755016CF209400DF158B /* UROP3rdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF754F16CF209400DF158B /* UROP3rdViewController.m */; };
 		D2DF755916D2802000DF158B /* UROPFinalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF755816D2802000DF158B /* UROPFinalViewController.m */; };
-		D2DF755F16D2811300DF158B /* UROPFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */; };
 		D2E35F091777EE9100FD849F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E35F081777EE9100FD849F /* background.png */; };
 		D2EB30C11777C37A0050D442 /* wait_spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = D2EB30C01777C37A0050D442 /* wait_spinner.gif */; };
 		D2F3479A17F4788A00891B89 /* UROPInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3479917F4788A00891B89 /* UROPInfo.m */; };
@@ -92,8 +91,6 @@
 		D2DF754F16CF209400DF158B /* UROP3rdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROP3rdViewController.m; sourceTree = "<group>"; };
 		D2DF755716D2802000DF158B /* UROPFinalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPFinalViewController.h; sourceTree = "<group>"; };
 		D2DF755816D2802000DF158B /* UROPFinalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROPFinalViewController.m; sourceTree = "<group>"; };
-		D2DF755D16D2811200DF158B /* UROPFlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPFlipsideViewController.h; sourceTree = "<group>"; };
-		D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROPFlipsideViewController.m; sourceTree = "<group>"; };
 		D2E35F081777EE9100FD849F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		D2EB30C01777C37A0050D442 /* wait_spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wait_spinner.gif; sourceTree = "<group>"; };
 		D2F3479817F4788A00891B89 /* UROPInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPInfo.h; sourceTree = "<group>"; };
@@ -171,8 +168,6 @@
 				D2365EA916D432E70017E15A /* UROPbrain.m */,
 				D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */,
 				D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */,
-				D2DF755D16D2811200DF158B /* UROPFlipsideViewController.h */,
-				D2DF755E16D2811300DF158B /* UROPFlipsideViewController.m */,
 				D2EB30C01777C37A0050D442 /* wait_spinner.gif */,
 				D2215D9416D7F9B000FD2A48 /* mountain.jpg */,
 				D27236081749AACC00A0B7C9 /* white.png */,
@@ -300,7 +295,6 @@
 				D2F3479A17F4788A00891B89 /* UROPInfo.m in Sources */,
 				D2DF755016CF209400DF158B /* UROP3rdViewController.m in Sources */,
 				D2DF755916D2802000DF158B /* UROPFinalViewController.m in Sources */,
-				D2DF755F16D2811300DF158B /* UROPFlipsideViewController.m in Sources */,
 				D2365EAA16D43BCD0017E15A /* UROPbrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
