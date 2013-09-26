@@ -21,7 +21,10 @@
 #import "UROPFinalViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-#define SPARKEL www.google.com
+
+#define SCOTT @"<a href=\"http:\/\/scottsievert.github.io\">Scott Sievert</a>"
+#define JARVIS @"<a href=\"http:\/\/www.ece.umn.edu/~jdhaupt/\">Prof. Jarvis Haupt</a>"
+#define PAPER @"<a href=\"http:\/\/www.google.com\">academic paper</a>"
 
 @interface UROPFlipsideViewController ()
 
@@ -35,23 +38,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.text.dataDetectorTypes = UIDataDetectorTypeLink;
-
-    self.text.text = [NSString stringWithFormat:@"The app uses a technique to reconstruct the image that relies on large areas of the image being largely the same. If the image were completely random, this reconstruction would fail utterly. \n\nFor experts, this app uses the fast iterative soft thresholding algorithm (FISTA).\n\nThis app was made by Scott Sievert with Prof. Jarvis Haupt at the University of Minnesota under the Undergraduate Research Opportunities program."];
-    self.text.textColor = [UIColor blackColor];
     
-    NSString *body = @"The app uses a technique to reconstruct the image that relies on large areas of the image being largely the same. If the image were completely random, this reconstruction would fail utterly.  <br><br>\
+    NSString *body = [NSString stringWithFormat:@"The app uses a technique to reconstruct the image that relies on large areas of the image being largely the same. If the image were completely random, this reconstruction would fail utterly.  <br><br>\
     \
-    This app was made by <a href=\"http://scottsievert.github.io\">Scott Sievert</a> with <a href=\"http://www.ece.umn.edu/~jdhaupt/\">Prof. Jarvis Haupt</a> at the University of Minnesota under the Undergraduate Research Opportunities program.<br><br>\
+    This app was made by %@ with %@ at the University of Minnesota under the Undergraduate Research Opportunities program.<br><br>\
     \
-    For experts, this app uses the fast iterative soft thresholding algorithm (FISTA). There is an academic paper on arXiv that accompanies this app and details the theory.";
+    For experts, this app uses the fast iterative soft thresholding algorithm (FISTA). There is an %@ on arXiv that accompanies this app and details the theory.", SCOTT, JARVIS, PAPER];
     
     NSString *htmlString = [NSString stringWithFormat:@"<font face='HelveticaNeue-Light' size='3'>%@", body];
     [self.webView loadHTMLString:htmlString baseURL:nil];
     
+    // set the delegate for opening links in Safari -- see webView:shouldStartLoadWithRequest....
     self.webView.delegate = (id)self;
+    // make links clickable.
     self.webView.dataDetectorTypes = UIDataDetectorTypeLink;
-//    [self.webView loadHTMLString:@"Work! <a href=\"http://www.github.com\">Work2!!!</a> " baseURL:[NSURL URLWithString:@"http://www.google.com"]];
 
 }
 
