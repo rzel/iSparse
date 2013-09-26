@@ -23,9 +23,9 @@
 
 #define IS_WIDESCREEN ( fabs( (double)[[UIScreen mainScreen] bounds].size.height - (double)568 ) < DBL_EPSILON )
 
-#define SCOTT  @"<a href=\"http:\/\/scottsievert.github.io\"    >Scott Sievert</a>"
-#define JARVIS @"<a href=\"http:\/\/www.ece.umn.edu/~jdhaupt\"  >Prof. Jarvis Haupt</a>"
-#define PAPER  @"<a href=\"http:\/\/www.google.com\"            >academic paper</a>"
+#define SCOTT  @"<a href=\"http://scottsievert.github.io\"    >Scott Sievert</a>"
+#define JARVIS @"<a href=\"http://www.ece.umn.edu/~jdhaupt\"  >Prof. Jarvis Haupt</a>"
+#define PAPER  @"<a href=\"http://www.google.com\"            >academic paper</a>"
 
 @interface UROPFlipsideViewController ()
 
@@ -44,15 +44,15 @@
     \
     This app was made by %@ with %@ at the University of Minnesota under the Undergraduate Research Opportunities program.<br><br>\
     \
-    For experts, this app uses the fast iterative soft thresholding algorithm (FISTA). There is an %@ that details the theory behind this app.", SCOTT, JARVIS, PAPER];
+    For experts, this app uses the fast iterative soft thresholding algorithm (FISTA). There's an %@ that details the theory behind this app.", SCOTT, JARVIS, PAPER];
     
     NSString *htmlString;
     if (IS_WIDESCREEN) {
-        NSLog(@"5");
+        NSLog(@"5>");
         htmlString = [NSString stringWithFormat:@"<font face='HelveticaNeue-Light' size='3'>%@", body];
     } else {
         NSLog(@"<5");
-        htmlString = [NSString stringWithFormat:@"<font face='HelveticaNeue-Light' size='2.99999'>%@", body];
+        htmlString = [NSString stringWithFormat:@"<font face='HelveticaNeue-Light' size='2'>%@", body];
     }
     
     [self.webView loadHTMLString:htmlString baseURL:nil];
