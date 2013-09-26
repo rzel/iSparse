@@ -25,7 +25,7 @@
 
 #define SCOTT  @"<a href=\"http://scottsievert.github.io\"    >Scott Sievert</a>"
 #define JARVIS @"<a href=\"http://www.ece.umn.edu/~jdhaupt\"  >Prof. Jarvis Haupt</a>"
-#define PAPER  @"<a href=\"http://www.google.com\"            >academic paper</a>"
+#define PAPER  @"<a href=\"http://scholar.google.com\"            >academic paper</a>"
 
 @interface UROPFlipsideViewController ()
 
