@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GGi-HH-o7Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GGi-HH-o7Y">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Main View Controller - Reconstruct-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="UROPMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wG3-Vm-p1n"/>
+                        <viewControllerLayoutGuide type="bottom" id="XkA-ru-2Jt"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,9 +47,6 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
                                     <segue destination="cyA-Xc-H01" kind="push" id="uBe-qe-EZA"/>
                                 </connections>
@@ -69,6 +70,10 @@
         <scene sceneID="9">
             <objects>
                 <viewController id="6" customClass="UROPFlipsideViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Q6-xh-MgS"/>
+                        <viewControllerLayoutGuide type="bottom" id="mkN-cx-qOO"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -105,6 +110,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g1f-rG-fnP">
+                                <rect key="frame" x="20" y="69" width="280" height="412"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -112,6 +122,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="text" destination="IVN-q3-xKF" id="3Hy-8F-Vlk"/>
+                        <outlet property="webView" destination="g1f-rG-fnP" id="FWl-q4-kHf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8" sceneMemberID="firstResponder"/>
@@ -122,6 +133,10 @@
         <scene sceneID="m2R-aW-wHi">
             <objects>
                 <viewController title="UROP2ndViewController" id="Opu-mG-0GY" customClass="UROP2ndViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rcy-f5-5Do"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ib2-64-GR2"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="h9h-Xz-DmK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -133,11 +148,7 @@
                                 <rect key="frame" x="101" y="328" width="118" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Choose an image">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="useCameraRoll" destination="Opu-mG-0GY" eventType="touchUpInside" id="bjm-dK-7G6"/>
@@ -179,6 +190,10 @@
         <scene sceneID="DNp-WK-a8Y">
             <objects>
                 <viewController title="UROP3rdViewController" id="cyA-Xc-H01" customClass="UROP3rdViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UDf-Ir-2O9"/>
+                        <viewControllerLayoutGuide type="bottom" id="fXD-bN-5Kv"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Sf4-Vd-byn">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -198,7 +213,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0A-jn-sRv">
                                 <rect key="frame" x="183" y="443" width="112" height="36"/>
                                 <color key="backgroundColor" red="0.5215790154398402" green="0.73108508449072673" blue="1" alpha="0.63" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Reconstruct">
@@ -220,9 +234,6 @@
                                 <state key="normal" title="Choose an image">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.69000000000000006" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="useCameraRoll2:" destination="cyA-Xc-H01" eventType="touchUpInside" id="XdX-vs-vvv"/>
@@ -260,6 +271,10 @@
         <scene sceneID="NRv-tC-HqN">
             <objects>
                 <viewController title="UROPFinalViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="MW8-sq-QGe" customClass="UROPFinalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p1p-WU-A2D"/>
+                        <viewControllerLayoutGuide type="bottom" id="UYj-fc-zhx"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D8l-sr-5YX">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -316,60 +331,6 @@
             <point key="canvasLocation" x="-427" y="182"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UROP2ndViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UROP2ndViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="coarsenessSliderChanged:"/>
-                <relationship kind="action" name="useCameraRoll"/>
-                <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="slider" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-        <class className="UROP3rdViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UROP3rdViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
-                <relationship kind="action" name="samplingSliderChanged:"/>
-                <relationship kind="action" name="useCameraRoll2:"/>
-                <relationship kind="outlet" name="choose" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imageViewTest" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="reconstructButton" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="reconstructButton2" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="samplingSlider" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-        <class className="UROPFinalViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPFinalViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageStay" candidateClass="UIImage"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="iterations" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="UROPFlipsideViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPFlipsideViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="UROPMainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UROPMainViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

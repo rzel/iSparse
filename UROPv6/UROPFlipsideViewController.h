@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) id <UROPFlipsideViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextView *text;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 - (IBAction)done:(id)sender;
 
