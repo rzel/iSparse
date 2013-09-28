@@ -37,7 +37,7 @@
                       \
                       This app was made by %@ with %@ at the University of Minnesota under the Undergraduate Research Opportunities program.<br><br>\
                       \
-                      For experts, this app uses the fast iterative soft thresholding algorithm (FISTA). There's an %@ that details the theory behind this app. We group the high frequency terms with the noise and recover an approximation of the image exactly.", SCOTT, JARVIS, PAPER];
+                      For experts, we group the high frequency terms with the noise then use the fast iterative soft thresholding algorithm (FISTA) to reconstruct the image. There's an %@ that covers this in detail.", SCOTT, JARVIS, PAPER];
     
     NSString *htmlString;
     if (IS_WIDESCREEN) {
@@ -58,7 +58,7 @@
     
     self.textView.text = @"The views and opinions expressed in this app are strictly those of the app author. The contents of this app have not been reviewed or approved by the University of Minnesota.";
      [self.textView setFont:[UIFont systemFontOfSize:10]];
-    self.textView.textAlignment = NSTextAlignmentCenter;
+    self.textView.textAlignment = NSTextAlignmentLeft;
 
 }
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
