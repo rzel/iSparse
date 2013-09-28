@@ -58,6 +58,7 @@
     
     self.textView.text = @"The views and opinions expressed in this app are strictly those of the app author. The contents of this app have not been reviewed or approved by the University of Minnesota.";
      [self.textView setFont:[UIFont systemFontOfSize:10]];
+    self.textView.textAlignment = NSTextAlignmentCenter;
 
 }
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {

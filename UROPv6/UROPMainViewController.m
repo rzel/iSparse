@@ -73,16 +73,23 @@
 
 
 @interface UROPMainViewController ()
-
+@property (nonatomic, strong) UROPInfo *info;
 @end
 
 @implementation UROPMainViewController
+@synthesize info = _info;
+
+-(UROPInfo *)info
+{
+    if (!_info) _info = [[UROPInfo alloc] init];
+    return _info;
+}
 
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
-    UIImage * info = [UIImage imageNamed:@"info.png"];
+    UIImage * info = [UIImage imageNamed:@"info-larger.png"];
     [self.infoButton setTitle:@" " forState:UIControlStateNormal];
     [self.infoButton setBackgroundImage:info forState:UIControlStateNormal];
 
@@ -134,8 +141,10 @@
     [self.button setTitleColor:titleColor forState:UIControlStateHighlighted];
     [self.button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
+
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
