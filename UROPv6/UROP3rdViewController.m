@@ -50,7 +50,7 @@
     [super viewDidLoad];
     
 
-
+    
     self.rate = 0.5;
 
     // making the sampling rate equal to 50% at first, resizing the image
@@ -81,20 +81,7 @@
     [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:100/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
     [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"blue.png"] forState:UIControlStateHighlighted];
     [self.reconstructButton2 setTitleColor:selectedTitle forState:UIControlStateHighlighted];
-    
 
-    [self.infoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-
-    [self.infoButton setBackgroundImage:[UIImage imageNamed:@"info-larger.png"] forState:UIControlStateNormal];
-    [self.infoButton setTitle:@"" forState:UIControlStateHighlighted];
-    [self.infoButton setTitle:@"" forState:UIControlStateNormal];
-//    [self.infoButton addTarget:self action:@selector(infoScreen) forControlEvents:UIControlEventTouchUpInside];
-
-
-}
--(void)infoScreen{
-    NSLog(@"info pressed");
-    
 }
 - (IBAction)samplingSliderChanged:(id)sender {
     float rate = 0.6*self.samplingSlider.value + 0.2;
