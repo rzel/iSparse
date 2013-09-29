@@ -167,23 +167,23 @@
                         <viewControllerLayoutGuide type="bottom" id="fXD-bN-5Kv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Sf4-Vd-byn">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sampling rate: 50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCt-A2-dMm">
-                                <rect key="frame" x="0.0" y="398" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="451" width="320" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-WF-Ktu">
-                                <rect key="frame" x="18" y="362" width="284" height="29"/>
+                                <rect key="frame" x="18" y="411" width="284" height="34"/>
                                 <connections>
                                     <action selector="samplingSliderChanged:" destination="cyA-Xc-H01" eventType="valueChanged" id="2B0-ye-82t"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0A-jn-sRv">
-                                <rect key="frame" x="183" y="443" width="112" height="36"/>
+                                <rect key="frame" x="183" y="504" width="112" height="36"/>
                                 <color key="backgroundColor" red="0.5215790154398402" green="0.73108508449072673" blue="1" alpha="0.63" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -200,7 +200,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgj-tG-N40">
-                                <rect key="frame" x="20" y="448" width="141" height="27"/>
+                                <rect key="frame" x="20" y="508" width="141" height="27"/>
                                 <color key="backgroundColor" white="0.61104460685483875" alpha="0.63" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Choose an image">
@@ -215,18 +215,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="The blacked out pixels are never looked at again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj5-wB-Qqh">
-                                <rect key="frame" x="0.0" y="321" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="364" width="320" height="22"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oav-e6-lId">
-                                <rect key="frame" x="11" y="345" width="46" height="30"/>
+                                <rect key="frame" x="20" y="342" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="mYJ-hC-hDg" kind="push" id="w1h-LA-V7G"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -256,11 +259,11 @@
                         <viewControllerLayoutGuide type="bottom" id="UYj-fc-zhx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D8l-sr-5YX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" indicatorStyle="black" minimumZoomScale="0.25" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="5e3-nH-5Fj">
-                                <rect key="frame" x="0.0" y="-4" width="320" height="511"/>
+                                <rect key="frame" x="0.0" y="33" width="320" height="511"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Au6-If-dj6">
                                         <rect key="frame" x="0.0" y="55" width="320" height="320"/>
@@ -320,6 +323,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1Mq-uf-MMz"/>
+        <segue reference="uBe-qe-EZA"/>
+        <segue reference="w1h-LA-V7G"/>
     </inferredMetricsTieBreakers>
 </document>

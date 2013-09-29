@@ -22,6 +22,7 @@
  */
 
 #import <QuartzCore/QuartzCore.h>
+#import "UROPInfo.h"
 #import "UROP3rdViewController.h"
 #import "UROPFinalViewController.h"
 #import "UROPMainViewController.h"
@@ -81,7 +82,13 @@
     [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:100/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
     [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"blue.png"] forState:UIControlStateHighlighted];
     [self.reconstructButton2 setTitleColor:selectedTitle forState:UIControlStateHighlighted];
+    
+    [self.infoButton addTarget:self action:@selector(infoPressed) forControlEvents:UIControlEventTouchUpInside];
 
+}
+-(void)infoPressed{
+    NSLog(@"info pressed!");
+    
 }
 - (IBAction)samplingSliderChanged:(id)sender {
     float rate = 0.6*self.samplingSlider.value + 0.2;
