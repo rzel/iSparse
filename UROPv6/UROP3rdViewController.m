@@ -83,7 +83,11 @@
     [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"blue.png"] forState:UIControlStateHighlighted];
     [self.reconstructButton2 setTitleColor:selectedTitle forState:UIControlStateHighlighted];
     
-    [self.infoButton addTarget:self action:@selector(infoPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [self.infoButton addTarget:self action:@selector(infoPressed) forControlEvents:UIControlEventTouchUpInside];
+//    UIImage * infoImage = [UIImage imageNamed:@"i"]
+    [self.infoButton setTitle:@"" forState:UIControlStateNormal];
+    [self.infoButton setTitle:@"" forState:UIControlStateHighlighted];
+//    [self.infoButton setBackgroundImage:infoImage forState:UIControlStateNormal];
 
 }
 -(void)infoPressed{
