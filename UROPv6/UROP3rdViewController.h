@@ -21,6 +21,7 @@ UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UISlider *samplingSlider;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewTest;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reconstructButton;

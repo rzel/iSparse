@@ -14,11 +14,11 @@
                         <viewControllerLayoutGuide type="bottom" id="XkA-ru-2Jt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLY-Xp-vRr">
-                                <rect key="frame" x="20" y="15" width="280" height="407"/>
+                                <rect key="frame" x="20" y="25" width="280" height="407"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,7 +26,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxc-g5-zDU">
-                                <rect key="frame" x="87" y="430" width="131" height="55"/>
+                                <rect key="frame" x="87" y="491" width="131" height="55"/>
                                 <color key="backgroundColor" red="1" green="0.23523284975974756" blue="0.19777783375027114" alpha="0.63" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Reconstruct">
@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="182"/>
+            <point key="canvasLocation" x="491" y="258"/>
         </scene>
         <!--Info - About-->
         <scene sceneID="Mn3-0I-00h">
@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qmy-f1-Dbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="99"/>
+            <point key="canvasLocation" x="1080" y="275"/>
         </scene>
         <!--2nd View Controller - UROP2ndViewController-->
         <scene sceneID="m2R-aW-wHi">
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20R-Kk-E7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296" y="1133"/>
+            <point key="canvasLocation" x="116" y="-261"/>
         </scene>
         <!--3rd View Controller - UROP3rdViewController-->
         <scene sceneID="DNp-WK-a8Y">
@@ -221,6 +221,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oav-e6-lId">
+                                <rect key="frame" x="11" y="345" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -230,6 +237,7 @@
                     <connections>
                         <outlet property="choose" destination="hgj-tG-N40" id="xBN-h6-Ng6"/>
                         <outlet property="imageView" destination="11o-59-Xy7" id="INK-JD-UD0"/>
+                        <outlet property="infoButton" destination="oav-e6-lId" id="rWS-bl-hFA"/>
                         <outlet property="label" destination="BCt-A2-dMm" id="JD9-10-Yus"/>
                         <outlet property="reconstructButton2" destination="g0A-jn-sRv" id="NIE-w9-MBU"/>
                         <outlet property="samplingSlider" destination="Quf-WF-Ktu" id="S0b-8f-GT0"/>
@@ -295,12 +303,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="gN2-hs-TPs"/>
+                        <segue destination="cyA-Xc-H01" kind="relationship" relationship="rootViewController" id="1Mq-uf-MMz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R12-Kn-cK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-427" y="182"/>
+            <point key="canvasLocation" x="-7" y="884"/>
         </scene>
     </scenes>
     <resources>
@@ -311,4 +319,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="1Mq-uf-MMz"/>
+    </inferredMetricsTieBreakers>
 </document>
