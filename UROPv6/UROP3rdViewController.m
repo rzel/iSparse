@@ -84,6 +84,9 @@
     [self.reconstructButton2 setTitleColor:selectedTitle forState:UIControlStateHighlighted];
     
     [self.infoButton addTarget:self action:@selector(infoPressed) forControlEvents:UIControlEventTouchUpInside];
+    UIImage * infoImage = [UIImage imageNamed:@"info-larger.png"];
+    [self.infoButton setBackgroundImage:infoImage forState:UIControlStateNormal];
+    [self.infoButton setTitle:@"" forState:UIControlStateNormal];
 
 }
 -(void)infoPressed{
