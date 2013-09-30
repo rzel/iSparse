@@ -35,9 +35,10 @@
 	// Do any additional setup after loading the view.
     NSString *body = [NSString stringWithFormat:@"The app uses a technique to reconstruct the image that relies on large areas of the image being largely the same. If the image were completely random, this reconstruction would fail utterly.  <br><br>\
                       \
-                      This app was made by %@ with %@ at the University of Minnesota under the Undergraduate Research Opportunities program.<br><br>\
                       \
-                      For experts, we group the high frequency terms with the noise then use the fast iterative soft thresholding algorithm (FISTA) to reconstruct the image. There's an %@ that covers this in detail.", SCOTT, JARVIS, PAPER];
+                      <i>Experts:</i> we group the high frequency terms with the noise then use the fast iterative soft thresholding algorithm (FISTA) to reconstruct the image. There's an %@ that covers this in detail. In our view, this is compressed sensing, though other experts can still have an in depth debate about it.<br><br>\
+                      \
+                      This app was made by %@ with %@ at the University of Minnesota under the Undergraduate Research Opportunities program.", PAPER, SCOTT, JARVIS];
     
     NSString *htmlString;
     if (IS_WIDESCREEN) {
@@ -59,6 +60,9 @@
     self.textView.text = @"The views and opinions expressed in this app are strictly those of the app author. The contents of this app have not been reviewed or approved by the University of Minnesota.";
      [self.textView setFont:[UIFont systemFontOfSize:10]];
     self.textView.textAlignment = NSTextAlignmentLeft;
+    self.textView.editable = NO;
+    self.textView.scrollEnabled = NO;
+    self.webView.scrollView.scrollEnabled = NO;
 
 }
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
