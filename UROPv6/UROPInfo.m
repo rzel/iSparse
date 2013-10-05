@@ -13,6 +13,7 @@
 #define SCOTT  @"<a href=\"http://scottsievert.github.io\"    >Scott Sievert</a>"
 #define JARVIS @"<a href=\"http://www.ece.umn.edu/~jdhaupt\"  >Prof. Jarvis Haupt</a>"
 #define PAPER  @"<a href=\"http://scholar.google.com\"            >academic paper</a>"
+#define AKSHAY @"<a href=\"http://www.tc.umn.edu/~sonix022/\"            >Akshay Soni</a>"
 
 @interface UROPInfo ()
 
@@ -36,9 +37,9 @@
     NSString *body = [NSString stringWithFormat:@"The app uses a technique to reconstruct the image that relies on large areas of the image being largely the same. If the image were completely random, this reconstruction would fail utterly.  <br><br>\
                       \
                       \
-                      <i>Experts:</i> we group the high frequency terms with the noise then use the fast iterative soft thresholding algorithm (FISTA) to reconstruct the image. There's an %@ that covers this in detail. In our view, this is compressed sensing, though other experts can still have an in depth debate about it.<br><br>\
+                      Experts: we group the high frequency terms with the noise then use the fast iterative shrinkage-thresholding algorithm (FISTA) to reconstruct the image. There's an %@ that covers this in detail.<br><br>\
                       \
-                      This app was made by %@ with %@ at the University of Minnesota under the Undergraduate Research Opportunities program.", PAPER, SCOTT, JARVIS];
+                      This app was made by %@, %@ and %@ at the University of Minnesota under the Undergraduate Research Opportunities program.", PAPER, SCOTT, AKSHAY, JARVIS];
     
     NSString *htmlString;
     if (IS_WIDESCREEN) {

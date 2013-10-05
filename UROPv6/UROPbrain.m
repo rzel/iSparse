@@ -227,6 +227,8 @@
     // allocations for T(.)
     float tn1;
     int i, index;
+    
+    // l for lambda. our threshold for setting everything below this to 0.
     float l = 15;
     for (int its=0; its<iter; its++) {
         tn1 = (1+sqrt(1+4*tn*tn))/2;
@@ -308,6 +310,7 @@
 }
 
 // used in IST; it's called with a varying step size each time.
+// not called: had to figure out a bug and didn't use it
 -(float *)T:(float *)xold width:(int)width height:(int)height order:(int)order
     // an unused, hence untested, function.
           y:(float *)y
