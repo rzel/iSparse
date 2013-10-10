@@ -1,0 +1,79 @@
+close all;
+clear;
+
+% addpath('/Users/DON/Dropbox/my work/Projects/ICASSP - 2014 PCS/rwt');
+% addpath('/Users/DON/Dropbox/my work/Projects/ICASSP - 2014 PCS/functions');
+% addpath('/Users/DON/Dropbox/my work/Projects/ICASSP - 2014 PCS/data');
+
+addpath('/Users/admin/Dropbox/my work/Projects/ICASSP - 2014 PCS/rwt');
+addpath('/Users/admin/Dropbox/my work/Projects/ICASSP - 2014 PCS/functions');
+addpath('/Users/admin/Dropbox/my work/Projects/ICASSP - 2014 PCS/data');
+% load('smooth.mat');
+% load('smooth2.mat');
+% load('lena.mat');
+% load('image2.mat');
+% load('obama_full.mat');
+load('dome.mat');
+%% Parameters and Data
+
+N = 2^12;        % input image dimension N x N
+J = log2(N);
+X = imresize(image, [N, N]);
+x = mat2gray(X(:));
+
+
+% L == levels we want to drop
+L = 2;      % L = 0,1,2,..., J - 1
+Jn = J - L; 
+M = 2^((J - L));
+if(Jn > J)
+    display('Jn should be less than J');
+end
+
+
+%% Get random signals
+m = floor(0.4*N^2);            % # of measurements
+
+% m = 0.2*N^2;
+% m = 50000;
+samples = randperm(N^2);
+
+% get measurements
+sig = 0;
+y = x(samples(1:m)) + sig*randn(m,1);
+
+
+
+%% Use SPAMS to reconstruct
+
+% FISTA Parameters
+opts.k = 30;  % # iterations
+opts.L = 2;   % Lipschitz constant
+opts.lam = 0.05;  % lam -- sparsity
+opts.M = M;       %
+opts.N = N;
+opts.level = L;
+
+% Call FISTA
+the1 = FISTA_W(samples(1:m), y, opts);
+
+
+% Get the reconstruction
+The1 = reshape(the1, [M, M]);
+Temp1 = zeros(N, N);
+Temp1(1:M ,1:M) = The1;
+Xhat = midwt(Temp1, daubcqf(2, 'min'));
+
+
+xs = zeros(N^2, 1);
+xs(samples(1:m)) = x(samples(1:m)); 
+
+subplot(1,3,1)
+imshow(reshape(xs, [N, N])); colormap gray;
+subplot(1,3,2)
+imshow(Xhat, [0, 1]); colormap gray
+subplot(1,3,3)
+imshow(mat2gray(X)); colormap gray;
+% subplot(1,4,4)
+% imagesc(reshape(H*H'*x, [N, N])); colormap gray;
+
