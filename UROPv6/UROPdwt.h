@@ -14,6 +14,7 @@
 
 -(float *)vec:(float *)x width:(int)width height:(int)height;
 -(float *)trans:(float *)x width:(int)width height:(int)height;
+-(float *)vec:(float *)x toX:(int)xLimit toY:(int)yLimit width:(int)width height:(int)height;
 -(int)sign:(float)x;
 -(void *)waveletOn:(float *)array ofLength:(int)N;
 -(float *)waveletOn2DArray:(float *)array ofWidth:(long)width andHeight:(long)height;

@@ -64,7 +64,7 @@
     // --2013-10-12
     
     // how to test:
-    //      * make your signal in this function.
+    //      * make your signal in this function. compare with matlab.
     
     /*     k     = opts.k;     % # of iterations
      L     = opts.L;     % Lipschitz constant of Grad(f)
@@ -114,7 +114,7 @@
     float L = LIPSCHITZ_CONSTANT;
     float lam = LAMBDA;
     int level = LEVELS;
-    N = N; // already passed in. width!
+    N = (int)sqrt(N); // already passed in. width!
     int n = (int)powf(1.0*N, 2.0);
     int M = (int)N / powf(2, L);
     
@@ -132,19 +132,22 @@
     int lenA = 16;
 
     // a need to be passed in
-    int * A = (int *)malloc(sizeof(int) * 16);
-    for (i=0; i<lenA; i++) {
-        A[i] = i;
+    int * A = (int *)malloc(sizeof(int) * n);
+    int j = 0;
+    for (i=0; i<N*N; i++) {
+        if (rand() < 0.5) {
+            A[j] = i;
+            j++;
+        }
     }
-
+    lenA = j;
 
     // precalculating b_t
     for (i=0; i<lenA; i++) {
-        phi_b[A[i]] = y[i];
+        phi_b[A[i]] = y[A[i]];
     }
-    
     [self.dwt waveletOn2DArray:phi_b ofWidth:N andHeight:N];
-    b_t = [self.dwt vec:phi_b_w width:N/powf(2, level) height:N/powf(2, level)];
+    b_t = [self.dwt vec:phi_b toX:N/powf(2.0, level*1.0) toY:N/powf(2.0, level*1.0) width:N height:N];
     
     for (k=0; k<iter; k++) {
         /*x_nk = pL(y, A, b_t, lam, L, N, Level);

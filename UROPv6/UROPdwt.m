@@ -34,6 +34,21 @@
     vDSP_mtrans(x, 1, y, 1, width, height);
     return y;
 }
+-(float *)vec:(float *)x toX:(int)xLimit toY:(int)yLimit width:(int)width height:(int)height{
+    float * y = (float *)malloc(sizeof(float) * width * height);
+    float * y1 = (float *)malloc(sizeof(float) * width * height);
+    int xx, yy;
+    for (yy=0; yy<yLimit; yy++) {
+        for (xx=0; xx<xLimit; xx++) {
+            y[xLimit * yy + xx] = x[yy*width + xx];
+        }
+    }
+    // now, y is the upper corner.
+    vDSP_mtrans(y, 1, y1, 1, xLimit, yLimit);
+    free(y);
+    return y1;
+    
+}
 -(float *)trans:(float *)x width:(int)width height:(int)height{
     // creates the transpose of a 2D matrix
     float * y = (float *)malloc(sizeof(float) * width * height);
