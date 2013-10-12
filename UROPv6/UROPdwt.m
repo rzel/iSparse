@@ -27,6 +27,24 @@
 
 @implementation UROPdwt
 
+// functions I couldn't find in BLAS/accelerate
+-(float *)vec:(float *)x width:(int)width height:(int)height{
+    // creates the vec() of a matrix. the same as trans, but renamed for clarity
+    float * y = (float *)malloc(sizeof(float) * width * height);
+    vDSP_mtrans(x, 1, y, 1, width, height);
+    return y;
+}
+-(float *)trans:(float *)x width:(int)width height:(int)height{
+    // creates the transpose of a 2D matrix
+    float * y = (float *)malloc(sizeof(float) * width * height);
+    vDSP_mtrans(x, 1, y, 1, width, height);
+    return y;
+}
+-(int)sign:(float)x{
+    if (x>=0) return 1;
+    else return -1;
+}
+
 // functions to perform 1D wavelets/FFTs
 -(void *)waveletOn:(float *)array ofLength:(int)N
 {

@@ -28,6 +28,10 @@
 #import "UROPMainViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UROPbrain.h"
+
+// how large is the image?
+#define IMAGE_SIZE 512
+
 @interface UROP3rdViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
 
@@ -56,7 +60,7 @@
 
     // making the sampling rate equal to 50% at first, resizing the image
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 50.0];
-    UIImage * image = [self imageWithImage:[UIImage imageNamed:@"lenna.jpg"] scaledToSize:CGSizeMake(256, 256)];
+    UIImage * image = [self imageWithImage:[UIImage imageNamed:@"lenna.jpg"] scaledToSize:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
     self.imageStay = image;
     self.imageView.image = [self.brain sampleImage:image atRate:self.rate];
     
@@ -157,7 +161,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                           objectForKey:UIImagePickerControllerOriginalImage];
         // "self." added by SCOTT
         // IMAGE picks here. FINDME. change as needed.
-        image = [self imageWithImage:image scaledToSize:CGSizeMake(256, 256)];
+        image = [self imageWithImage:image scaledToSize:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
         self.imageView.image = [self.brain sampleImage:image atRate:self.rate];
         self.imageStay = image;
         

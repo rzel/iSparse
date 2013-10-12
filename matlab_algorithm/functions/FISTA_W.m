@@ -44,6 +44,7 @@ function [x] = FISTA_W(A, b, opts)
 
     % Precalulating H'*I'*b 
 
+    % calculate this once (meaning, in the app, pass it in each time)
     Phi_b = zeros(n,1);
     Phi_b(A) = b;           % calculate I'*b
     % do H'*I'*b and vectorize the result

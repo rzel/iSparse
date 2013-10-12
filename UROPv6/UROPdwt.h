@@ -12,6 +12,9 @@
 
 @interface UROPdwt : UIViewController
 
+-(float *)vec:(float *)x width:(int)width height:(int)height;
+-(float *)trans:(float *)x width:(int)width height:(int)height;
+-(int)sign:(float)x;
 -(void *)waveletOn:(float *)array ofLength:(int)N;
 -(float *)waveletOn2DArray:(float *)array ofWidth:(long)width andHeight:(long)height;
 -(COMPLEX_SPLIT)IFFTon:(COMPLEX_SPLIT )signal andLength:(int)N;

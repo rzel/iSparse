@@ -58,6 +58,7 @@
 // should the animation continue?
 #define IF_STATEMENT self.imageView.image.size.width >= N_MIN
 
+
 // the minimum N for the animation to continue.
 #define N_MIN 256
 

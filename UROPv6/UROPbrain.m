@@ -22,6 +22,16 @@
 #import "UROPbrain.h"
 #import "UROPdwt.h"
 
+
+#define LIPSCHITZ_CONSTANT 2
+
+// how many levels are we going to throw away?
+#define LEVELS 2
+
+// everything below this is set to 0.
+#define LAMBDA 0.05
+
+
 @interface UROPbrain ()
 @property (nonatomic, strong) UROPdwt *dwt;
 @end
@@ -33,6 +43,216 @@
 {
     if (!_dwt) _dwt = [[UROPdwt alloc] init];
     return _dwt;
+}
+
+// from Akshat on 2013-10-10
+-(float)FISTA_W:(float *)signal ofLength:(int)N
+    ofWidth:(int)width ofHeight:(int)height order:(int)order
+  iteration:(int)iter
+     atRate:(float)p
+       xold:(float *)xold xold1:(float *)xold1
+          y:(float *)y
+        idx:(NSMutableArray *)idx coarse:(float)coarse numberOfPastIterations:(int)pastIts
+         tn:(float)tn
+{
+    // the function performs the "fast iterative soft thresholding algorithm (FISTA)". This is the meat of the code -- this is where your actual algorithm implementation goes. The rest is just (complicated) wrapper for this.
+    
+    // to straighten out:
+    //      * xold/xold1, tn/tn1
+    //      * vec possibly doesn't vectorize partial matricies right
+    //      * various limit stuff
+    // --2013-10-12
+    
+    // how to test:
+    //      * make your signal in this function.
+    
+    /*     k     = opts.k;     % # of iterations
+     L     = opts.L;     % Lipschitz constant of Grad(f)
+     lam   = opts.lam;   % controls the sparsity
+     Level = opts.level; % # of levels to discard
+     M     = opts.M;     % M^2 == number of columns in new matrix of Haar
+     N     = opts.N;     % N^2 == image dimension
+     n     = N^2;
+     % [~, n] = size(A);
+     
+     x = zeros(M^2,1);     % output initialization
+     y = x;                % initialization for FISTA
+     t = 1;                % step size
+     
+     % I IS THE N x N IDENTITY MATRIX
+     % b IS THE OBSERVATION VECTOR
+     
+     % Precalulating H'*I'*b
+     
+     % calculate this once (meaning, in the app, pass it in each time)
+     Phi_b = zeros(n,1);
+     Phi_b(A) = b;           % calculate I'*b
+     % do H'*I'*b and vectorize the result
+     Phi_b_W = mdwt(reshape(Phi_b, [sqrt(n) sqrt(n)]), daubcqf(2, 'min'));
+     b_t = vec(Phi_b_W(1:sqrt(n)/2^Level, 1:sqrt(n)/2^Level));
+     
+     % FISTA Iterations
+         for i = 1:k
+         
+         % function call to calculate pL
+         x_nk = pL(y, A, b_t, lam, L, N, Level);
+         
+         x_k  = x;
+         t_k = t;
+         
+         % calculate step sizes
+         t_nk = 0.5*(1 + sqrt((1 + 4*t_k^2)));
+         y = x_nk + ((t_k -1)/(t_nk))*(x_nk - x_k);
+         
+         x = x_nk;
+         t = t_nk;
+     end
+     
+     */
+    int i;
+    float k = iter;
+    float L = LIPSCHITZ_CONSTANT;
+    float lam = LAMBDA;
+    int level = LEVELS;
+    N = N; // already passed in. width!
+    int n = (int)powf(1.0*N, 2.0);
+    int M = (int)N / powf(2, L);
+    
+    float * b_t   = (float *)malloc(sizeof(float) * n);
+    float * phi_b = (float *)malloc(sizeof(float) * n);
+    float * phi_b_w = (float *)malloc(sizeof(float) * n);
+    float * x_nk = (float *)malloc(sizeof(float) * n);
+    float * x_k = (float *)malloc(sizeof(float) * n);
+    float * x = (float *)malloc(sizeof(float) * n);
+    
+    float t_k;
+    float t_nk;
+    float t;
+    
+    int lenA = 16;
+
+    // a need to be passed in
+    int * A = (int *)malloc(sizeof(int) * 16);
+    for (i=0; i<lenA; i++) {
+        A[i] = i;
+    }
+
+
+    // precalculating b_t
+    for (i=0; i<lenA; i++) {
+        phi_b[A[i]] = y[i];
+    }
+    
+    [self.dwt waveletOn2DArray:phi_b ofWidth:N andHeight:N];
+    b_t = [self.dwt vec:phi_b_w width:N/powf(2, level) height:N/powf(2, level)];
+    
+    for (k=0; k<iter; k++) {
+        /*x_nk = pL(y, A, b_t, lam, L, N, Level);
+        
+        x_k  = x;
+        t_k = t;
+        
+        % calculate step sizes
+        t_nk = 0.5*(1 + sqrt((1 + 4*t_k^2)));
+        y = x_nk + ((t_k -1)/(t_nk))*(x_nk - x_k);
+        
+        x = x_nk;
+        t = t_nk;*/
+        x_nk = [self pL_y:y A:A lenA:lenA b_t:b_t lam:lam L:lam N:N level:level];
+        
+        for (i=0; i<n; i++) { x_k[i] = xold[i]; }
+        
+        t_k = tn;
+        t_nk = 0.5 * (1+sqrtf(1 + 4* t_k * t_k));
+        
+        for (i=0; i<n; i++) { y[i] = x_nk[i] + ((t_k-1)/(t_nk)) * (x_nk[i] - x_k[i]); }
+        
+        for (i=0; i<n; i++) { x[i] = x_nk[i]; }
+        t = t_nk;
+    }
+
+
+    
+    return tn;
+    
+    
+}
+
+-(float *)pL_y:(float *)y A:(int *)A lenA:(int)lenA b_t:(float *)b_t lam:(float)lam L:(float) L N:(int) N level:(int)level{
+    /* adapted from the following matlab code:
+            n  = N^2;
+            n1 = n/2^(2*Level);
+
+            %
+            Y  = reshape(y, [sqrt(n1), sqrt(n1)]);
+            Yt = zeros(sqrt(n), sqrt(n));
+            Yt(1:sqrt(n1), 1:sqrt(n1)) = Y;
+            y1 = vec(midwt(Yt, daubcqf(2, 'min')));
+            
+            
+            Phi_y    = zeros(n,1);
+            Phi_y(A) = y1(A);
+            Phi_y_W  = mdwt(reshape(Phi_y, [sqrt(n) sqrt(n)]), daubcqf(2, 'min'));
+            y_t = vec(Phi_y_W(1:sqrt(n)/2^Level, 1:sqrt(n)/2^Level));
+            
+            
+            % calculating the gradiend step
+            temp_x = y - 2/L*(y_t - b_t);
+            
+            % thresholding
+            temp_1 = (abs(temp_x) - lam/L);
+            temp_1(temp_1 < 0) = 0;
+            
+            xk = temp_1 .* sign(temp_x);
+     */
+
+    int n = powf(N, 2);
+    int n1 = n / powf(2.0, 2*level);
+    int i;
+    int xx, yy;
+    int width = (int)sqrtf(N);
+    int widthy = (int)sqrtf(n1);
+    
+    float * Yt = (float *)malloc(sizeof(float) * n);
+    float * y1 = (float *)malloc(sizeof(float) * N * N);
+    float * phi_y = (float *)malloc(sizeof(float) * n);
+    float * phi_y_w = (float *)malloc(sizeof(float) * n);
+    float * y_t = (float *)malloc(sizeof(float) * (int)(n / (powf(2, 2*level))));
+    float * temp_x = (float *)malloc(sizeof(float) * (int)(n / powf(2, 2*level)));
+    float * xk = (float *)malloc(sizeof(float) * n);
+    float * temp1 = (float *)malloc(sizeof(float) * n);
+    
+    for (xx=0; xx<sqrtf(n1); xx++) {
+        for (yy=0; yy<sqrtf(n1); yy++) {
+            Yt[width * yy + xx] = y[yy * widthy + xx];
+        }
+    }
+    
+    Yt = [self.dwt inverseOn2DArray:Yt ofWidth:N andHeight:N];
+    y1 = [self.dwt vec:Yt width:N height:N];
+    
+    for (i=0; i<lenA; i++) {
+        phi_y[A[i]] = y1[A[i]];
+    }
+    
+    phi_y = [self.dwt trans:y width:(int)sqrtf(n) height:(int)sqrtf(n)];
+    phi_y_w = [self.dwt waveletOn2DArray:phi_y ofWidth:(int)sqrtf(n) andHeight:(int)sqrtf(n)];
+    
+    y_t = [self.dwt vec:phi_y_w width:(int)(sqrtf(n)/powf(2, level)) height:(int)(sqrtf(n)/powf(2, level))];
+    
+    // calculate the gradient step
+    for (i=0; i<n/powf(2, 2*level); i++) {
+        temp_x[i] = y[i] - (2/(L*1.0)) * (y_t[i] - b_t[i]);
+    }
+    
+    // thresholding
+    for (i=0; i<n/powf(2, 2*level); i++) {
+        temp1[i] = fabsf(temp_x[i]) - lam/(L*1.0);
+        if (temp1[i] < 0) temp1[i] = 0;
+        xk[i] = temp1[i] * [self.dwt sign:temp_x[i]];
+    }
+    
+    return xk;
 }
 
 // functions to sample the image for the initial viewing.
@@ -423,7 +643,7 @@
             }
             
             // the do-what-you-want code should go here. actually performing the algorithm.
-            tnf = [self IST:xold ofLength:pix ofWidth:width ofHeight:height
+            tnf = [self FISTA_W:xold ofLength:pix ofWidth:width ofHeight:height
                      order:order iteration:its atRate:rate
                       xold:xold xold1:xold1 y:y idx:idx
                     coarse:coarse numberOfPastIterations:0 tn:tnf];
