@@ -59,8 +59,10 @@
     
     // to straighten out:
     //      * xold/xold1, tn/tn1
-    //      * vec possibly doesn't vectorize partial matricies right
+    //      x vec possibly doesn't vectorize partial matricies right
     //      * various limit stuff
+    //      * memory leaks
+    //      * assigning x, xold, xold1, tn, tn1
     // --2013-10-12
     
     // how to test:
@@ -110,8 +112,8 @@
      
      */
     int i;
-    float k = iter;
-    float L = LIPSCHITZ_CONSTANT;
+    float k   = iter;
+    float L   = LIPSCHITZ_CONSTANT;
     float lam = LAMBDA;
     int level = LEVELS;
     N = (int)sqrt(N); // already passed in. width!
@@ -149,6 +151,8 @@
     [self.dwt waveletOn2DArray:phi_b ofWidth:N andHeight:N];
     b_t = [self.dwt vec:phi_b toX:N/powf(2.0, level*1.0) toY:N/powf(2.0, level*1.0) width:N height:N];
     
+    // TODO: to delete
+    iter = 20;
     for (k=0; k<iter; k++) {
         /*x_nk = pL(y, A, b_t, lam, L, N, Level);
         
@@ -646,10 +650,14 @@
             }
             
             // the do-what-you-want code should go here. actually performing the algorithm.
-            tnf = [self FISTA_W:xold ofLength:pix ofWidth:width ofHeight:height
-                     order:order iteration:its atRate:rate
-                      xold:xold xold1:xold1 y:y idx:idx
-                    coarse:coarse numberOfPastIterations:0 tn:tnf];
+//            tnf = [self FISTA_W:xold ofLength:pix ofWidth:width ofHeight:height
+//                     order:order iteration:its atRate:rate
+//                      xold:xold xold1:xold1 y:y idx:idx
+//                    coarse:coarse numberOfPastIterations:0 tn:tnf];
+            tnf = [self IST:xold ofLength:pix ofWidth:width ofHeight:height
+                          order:order iteration:its atRate:rate
+                           xold:xold xold1:xold1 y:y idx:idx
+                         coarse:coarse numberOfPastIterations:0 tn:tnf];
             
             // and then update
             if (n==0) {

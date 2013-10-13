@@ -5,6 +5,7 @@ close all; clear all; clc;
 % adding the paths
 addpath('./functions');
 addpath('./rwt');
+S2run = 1; 
 addpath('./data');
 
 % loading the data
