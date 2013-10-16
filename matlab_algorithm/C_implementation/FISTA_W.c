@@ -10,7 +10,7 @@
 #define LIP 2
 
 // how many levels are we going to throw away?
-#define LEVELS 2
+#define LEVELS 0
 
 // everything below this is set to 0.
 #define LAMBDA 0.05
@@ -21,14 +21,11 @@ float * pL(float * y, int * A, float * b_t, int M, int N);
 int main(){
     int i;
 
-    int N = powf(2, 10);
+    int N = powf(2, 9);
     int J = log2(N);
 
     float * x = (float *)malloc(sizeof(float) * N * N);
-    for (i=0; i<N*N; i++){
-        if (i < N*N/2) x[i] = i / (1.0 * N * N);
-        else x[i] = 255;
-    }
+    readImage(x, N, N);
 
     // how many levels do we want to keep?
     int L = LEVELS;
@@ -36,7 +33,7 @@ int main(){
     int M = powf(2, J-L);
 
     // how many samples should we take?
-    int m = floor(0.7 * N * N);
+    int m = floor(1.0 * N * N);
 
     // the indicies where we sample.
     int * samples = (int *)malloc(sizeof(int) * N * N);
@@ -52,6 +49,7 @@ int main(){
     int k = 30; // number of iterations
     x = FISTA_W(samples, y, M, N, k);
 
+    for (i=0; i<N*N; i++) x[i] = 1.0;
     writeImage(x, N, N);
 
 
@@ -76,12 +74,12 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
     float * b_t = (float *)malloc(sizeof(float) * N * N);
     float * b_t_pre = (float *)malloc(sizeof(float) * N * N);
 
+
     // changing every element of y to x
     cblas_scopy(M * M, x, 1, y, 1);
 
     // step size
     float t = 1;
-
 
     // I is the N x N identity matrix
     // b is the obeservation vector
@@ -90,8 +88,10 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
     catlas_sset(N, 0, phi_b, 1); // setting every element to 0
 
     // DEBUG: A[0] = 0 for debugging purposes only
-    A[0] = 0;
-    for (i=0; i<M; i++) phi_b[A[i]] = b[i];
+    /*A[0] = 0;*/
+    /*A[1] = 4;*/
+    /*printf("%d\n", M);*/
+    for (i=0; i<M*M; i++) phi_b[A[i]] = b[i];
 
     // overwrites phi_b
     dwt2_full(phi_b, M, M);
@@ -107,6 +107,9 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
     vDSP_mtrans(b_t_pre, 1, b_t, 1, M, M);
 
     x = pL(y, A, b_t, M, N);
+    /*for (i=0; i<100; i++) printf("%f\n", x[i]);*/
+    /*for (i=0; i<10; i++) printf("%f\n", x[i]);*/
+    idwt2_full(x, N, N);
     return x;
 }
 
