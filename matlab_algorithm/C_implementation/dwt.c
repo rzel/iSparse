@@ -28,6 +28,7 @@ float * dwt2_full(float * x,  int width, int height);
 float * idwt(float * x, int N, float * y);
 float * idwt2(float * x, float * y, int width, int height);
 float * idwt2_full(float * x, int width, int height);
+float *vec(float * x, int width, int height);
 
 void * dwt(float * x, int N, float * y){
     // works
@@ -211,4 +212,15 @@ void randperm(int n,int perm[]){
 		perm[j] = perm[i];
 		perm[i] = t;
 	}
+}
+// functions I couldn't find in BLAS/accelerate
+float *vec(float * x, int width, int height){
+    // creates the vec() of a matrix. the same as trans, but renamed for clarity
+    // overwrites x
+    float * y = (float *)malloc(sizeof(float) * width * height);
+    vDSP_mtrans(x, 1, y, 1, width, height);
+    cblas_scopy(width*height, y, 1, x, 1);
+    
+    // don't listen to!
+    return y;
 }

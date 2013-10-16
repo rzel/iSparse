@@ -61,52 +61,35 @@
 }
 
 // functions to perform 1D wavelets/FFTs
--(void *)waveletOn:(float *)array ofLength:(int)N
-{
-    // works.
-    int i;
-    int length;
-    float output[N];
-    int length_stay = N;
+
+-(void)waveletOn:(float *)x ofLength:(int)n {
+    // overwrites!
+    float * one = (float *)malloc(sizeof(float) * n/2);
+    float * two = (float *)malloc(sizeof(float) * n/2);
+    float * low = (float *)malloc(sizeof(float) * n/2);
+    float * high = (float *)malloc(sizeof(float) * n/2);
     
+    // getting every other element
+    cblas_scopy(n/2, x, 2, one, 1);
+    cblas_scopy(n/2, x+1, 2, two, 1);
     
-    // sample code from wikipedia
+    // copying those elements into the low and high
+    cblas_scopy(n/2, two, 1, low, 1);
+    cblas_scopy(n/2, two, 1, high, 1);
     
-    length = N;
-    //   length = 2; // with this, function does nothing. without, does something.
-    int j = 0;
+    // scaling those functions; a linear combination
+    catlas_saxpby(n/2, 1, one, 1, 1, low, 1);
+    catlas_saxpby(n/2, 1, one, 1, -1, high, 1);
     
+    // copying those elements to the respective parts of the output
+    cblas_scopy(n/2, low, 1, x, 1);
+    cblas_scopy(n/2, high, 1, x+n/2, 1);
     
-    for (length = length >> 1;  ; length >>= 1){
-        for (i=0; i<length; ++i) {
-            float sum = (array[2*i] + array[i*2+1])/sqrt(2);
-            float difference = (array[2*i] - array[i*2+1])/sqrt(2);
-            output[i] = sum;
-            output[length+i] = difference;
-            //NSLog(@"sum: %d, difference: %d. output[][]: %f", sum, difference, output[i][m]);
-        }
-        
-        for (i=0; i<length_stay; i++) {
-            // NSLog(@"iteration: %d. array[%d] = %f", j, i, output[i]);
-        }
-        
-        if (length == 1) {
-            // perform wavelet on next color channel
-            break;
-        }
-        j += 1;
-        // swap arrays to do next iteration
-        for (i=0; i<= length<<1; i++) {
-            array[i] = output[i];
-        }
-    }
-    
-    
-    for (i=0; i<N; i++) {
-        array[i] = output[i];
-    }
-    
-    return 0;
+    // freeing those variables
+    free(one);
+    free(two);
+    free(low);
+    free(high);
 }
 -(float *)waveletOn2DArray:(float *)array ofWidth:(long)width andHeight:(long)height
 {

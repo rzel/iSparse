@@ -74,16 +74,20 @@ function [xk] = pL(y, A, b_t, lam, L, N, Level)
     % Here we are trying to get H'*I'*I*H*y
     n  = N^2;
     n1 = n/2^(2*Level);
-    Y  = reshape(y, [sqrt(n1), sqrt(n1)]);
-    Yt = zeros(sqrt(n), sqrt(n));
-    Yt(1:sqrt(n1), 1:sqrt(n1)) = Y;
-    y1 = vec(midwt(Yt, daubcqf(2, 'min')));
+    N1 = sqrt(n1);
+    Y  = reshape(y, [N1, N1]);
+    Yt = zeros(N, N);
+    Yt(1:N1, 1:N1) = Y;
+    
+    h = midwt(Yt, daubcqf(2, 'min'));
+    y1 = vec(h);
 
 
     Phi_y    = zeros(n,1);
     Phi_y(A) = y1(A);
-    Phi_y_W  = mdwt(reshape(Phi_y, [sqrt(n) sqrt(n)]), daubcqf(2, 'min'));
-    y_t = vec(Phi_y_W(1:sqrt(n)/2^Level, 1:sqrt(n)/2^Level));
+    h = reshape(Phi_y, [N N]);
+    Phi_y_W  = mdwt(h, daubcqf(2, 'min'));
+    y_t = vec(Phi_y_W(1:N/2^Level, 1:N/2^Level));
 
 
     % calculating the gradiend step

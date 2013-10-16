@@ -1,12 +1,13 @@
 
 #include "dwt.h"
+#include "nice.c"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <Accelerate/Accelerate.h>
 
-// libschitz constant
-#define LIPSHITZ_CONSTANT 2
+// the libschitz constant
+#define LIP 2
 
 // how many levels are we going to throw away?
 #define LEVELS 2
@@ -14,8 +15,8 @@
 // everything below this is set to 0.
 #define LAMBDA 0.05
 
-void FISTA_W(int * A, float * b, int m, int N, int k);
-void pL(float * y, int * A, float * b_t, int M, int N);
+float * FISTA_W(int * A, float * b, int m, int N, int k);
+float * pL(float * y, int * A, float * b_t, int M, int N);
 
 int main(){
     int i;
@@ -23,7 +24,7 @@ int main(){
     int N = powf(2, 10);
     int J = log2(N);
 
-    float * x = malloc(sizeof(float) * N * N);
+    float * x = (float *)malloc(sizeof(float) * N * N);
     for (i=0; i<N*N; i++){
         if (i < N*N/2) x[i] = i / (1.0 * N * N);
         else x[i] = 255;
@@ -49,13 +50,14 @@ int main(){
     for (i=0; i<m; i++) y[i] = x[samples[i]] + noise * rand();
 
     int k = 30; // number of iterations
-    FISTA_W(samples, y, M, N, k);
+    x = FISTA_W(samples, y, M, N, k);
+    writeImage(x, N, N);
 
 
     return 0;
 }
 
-void FISTA_W(int * A, float * b, int M, int N, int k){
+float * FISTA_W(int * A, float * b, int M, int N, int k){
     // M: how large the (approx) image is
     // N: how large the actual image is.
     // k: how many iterations.
@@ -103,20 +105,112 @@ void FISTA_W(int * A, float * b, int M, int N, int k){
     // vec
     vDSP_mtrans(b_t_pre, 1, b_t, 1, M, M);
 
-    pL(y, A, b_t, M, N);
+    x = pL(y, A, b_t, M, N);
+    return x;
 }
 
-void pL(float * y, int * A, float * b_t, int M, int N){
+float * pL(float * y, int * A, float * b_t, int M, int N){
+    /*
+     * adapted from this matlab code:
+        n  = N^2;
+        n1 = n/2^(2*Level);
+        N1 = sqrt(n1);
+        Y  = reshape(y, [N1, N1]);
+        Yt = zeros(N, N);
+        Yt(1:N1, 1:N1) = Y;
+
+        h = midwt(Yt, daubcqf(2, 'min'));
+        y1 = vec(h);
+
+
+        Phi_y    = zeros(n,1);
+        Phi_y(A) = y1(A);
+        h = reshape(Phi_y, [N N]);
+        Phi_y_W  = mdwt(h, daubcqf(2, 'min'));
+        y_t = vec(Phi_y_W(1:N/2^Level, 1:N/2^Level));
+
+
+        % calculating the gradiend step
+        temp_x = y - 2/L*(y_t - b_t);
+
+        % thresholding
+        temp_1 = (abs(temp_x) - lam/L);
+        temp_1(temp_1 < 0) = 0;
+
+        xk = temp_1 .* sign(temp_x);
+    */
+    int xx, yy, i;
     int n = powf(N, 2);
     int n1 = n / powf(2, 2*LEVELS);
+    int N1 = sqrt(n1);
+    int Nj = N / powf(2, LEVELS);
+
+    float * Y = (float *)malloc(sizeof(float) * n);
+    float * h = (float *)malloc(sizeof(float) * N * N);
+    float * Yt = (float *)malloc(sizeof(float) * N * N);
+    float * y_t = (float *)malloc(sizeof(float) * Nj * Nj);
+    float * temp_x = (float *)malloc(sizeof(float) * Nj * Nj);
+    float * temp_1 = (float *)malloc(sizeof(float) * Nj * Nj);
+    float * xk = (float *)malloc(sizeof(float) * Nj * Nj);
+    float * phi_y = (float *)malloc(sizeof(float) * N * N);
+    float * phi_y_w = (float *)malloc(sizeof(float) * N * N);
+
+    // is this necessary? we can replace this with a transpose
+    for (xx=0; xx<N1; xx++){
+        for (yy=0; yy<N1; yy++){
+            Y[yy*N1 + xx] = y[i];
+            i++;
+        }
+    }
+
+    // we can replace this with a vectorized version easily
+    for (i=0; i<N*N; i++){
+        Yt[i] = 0;
+    }
+
+    for (xx=0; xx<N1; xx++){
+        for (yy=0; yy<N1; yy++){
+            Yt[yy*N1 + xx] = Y[yy*N + xx];
+        }
+    }
+
+    dwt2_full(Yt, N, N);
+    vec(Yt, N, N);
+    // y1 is really Yt
+    for (i=0; i<M; i++){
+        phi_y[A[i]] = Yt[A[i]];
+    }
+
+    // TODO: have to see about un-vec'ing the function (or re-vec'ing)
+    dwt2_full(phi_y, N, N);
+        /*y_t = vec(Phi_y_W(1:N/2^Level, 1:N/2^Level));*/
+    for (xx=0; xx<Nj; xx++){
+        for (yy=0; yy<Nj; yy++){
+            y_t[yy*Nj + xx] = phi_y[yy*N + xx];
+        }
+    }
 
 
+        /*% calculating the gradiend step*/
+        /*temp_x = y - 2/L*(y_t - b_t);*/
+    for (i=0; i<Nj*Nj; i++){
+        temp_x[i] = y[i] - 2/(LIP*1.0) * (y_t[i] - b_t[i]);
+    }
 
+    for (i=0; i<Nj*Nj; i++){
+        temp_1[i] = (abs(temp_x[i] - LAMBDA / (1.0 * LIP)));
+        if (temp_1[i] == 0) temp_1[i] = 0;
+    }
+    for (i=0; i<Nj*Nj; i++){
+        xk[i] = temp_1[i] * 1; //sign(temp_x[i]);
+    }
+    return xk;
 
+        /*% thresholding*/
+        /*temp_1 = (abs(temp_x) - lam/L);*/
+        /*temp_1(temp_1 < 0) = 0;*/
 
-
-
-
+        /*xk = temp_1 .* sign(temp_x);*/
 }
 
 
