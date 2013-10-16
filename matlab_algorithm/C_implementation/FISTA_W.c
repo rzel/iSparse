@@ -51,6 +51,7 @@ int main(){
 
     int k = 30; // number of iterations
     x = FISTA_W(samples, y, M, N, k);
+
     writeImage(x, N, N);
 
 
