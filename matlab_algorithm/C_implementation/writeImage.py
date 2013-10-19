@@ -5,6 +5,10 @@ from pandas import read_csv
 
 x = read_csv('image.csv', header=None)
 
+x = asarray(x)
+x = rot90(x, k=3)
+x = fliplr(x)
+
 figure()
 imshow(x,  interpolation='nearest', cmap='gray')
 colorbar()

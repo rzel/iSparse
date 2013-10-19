@@ -40,13 +40,13 @@ int main(){
     int * samples = (int *)malloc(sizeof(int) * N * N);
     randperm(N*N, samples);
 
+
     // out samples
     float * y = (float *)malloc(sizeof(float) * m);
 
     // making our samples
     float noise = 0;
     for (i=0; i<m; i++) y[i] = x[samples[i]] + noise * rand();
-    for (i=0; i<10; i++) printf("%f\n", y[i]);
 
     int k = 30; // number of iterations
     xh = FISTA_W(samples, y, M, N, k);
@@ -105,24 +105,38 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
         }
     }
 
-    // vec
+    // vec (just a transpose since C)
     vDSP_mtrans(b_t_pre, 1, b_t, 1, M, M);
+    // similar output to matlab's
 
     // FISTA iterations
     int jj;
     for (jj=0; jj<k; jj++){
+        // if using printf in this loop, use fflush(stdout)
+
+        // for some reason, the energy in my signal keeps growing.
+        // it *looks* like pL is working... the first iteration prints
+        //      approximately correct
         x_nk = pL(y, A, b_t, M, N);
+
+        printf("-------------------------\n");
+        for (i=0; i<10; i++){
+            printf("    %f\n", x_nk[i]);
+            fflush(stdout);
+        }
         // do we have to copy it over? before the pL call?
-        x_k = x;
+        copy(x, x_k, N*N);
         t_k = t;
 
+        // this N*N needs to change
         for (i=0; i<N*N; i++){
             y[i] = x_nk[i] + ((t_k -1)/(t_nk))*(x_nk[i] - x_k[i]);
         }
 
-        t_nk = 0.5*(1 + sqrt((1 + 4*t_k * t_k)));
-        x = x_nk;
+        t_nk = 0.5*(1 + sqrt((1 + 4* t_k * t_k)));
+        copy(x_nk, x, N*N);
         t = t_nk;
+
     }
     idwt2_full(x, N, N);
     return x;

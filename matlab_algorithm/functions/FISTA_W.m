@@ -50,12 +50,12 @@ function [x] = FISTA_W(A, b, opts)
     % do H'*I'*b and vectorize the result
     Phi_b_W = mdwt(reshape(Phi_b, [sqrt(n) sqrt(n)]), daubcqf(2, 'min'));
     b_t = vec(Phi_b_W(1:sqrt(n)/2^Level, 1:sqrt(n)/2^Level));
-
     % FISTA Iterations
     for i = 1:k
 
         % function call to calculate pL
         x_nk = pL(y, A, b_t, lam, L, N, Level);
+        
 
         x_k  = x;
         t_k = t;
@@ -63,6 +63,9 @@ function [x] = FISTA_W(A, b, opts)
         % calculate step sizes
         t_nk = 0.5*(1 + sqrt((1 + 4*t_k^2)));
         y = x_nk + ((t_k -1)/(t_nk))*(x_nk - x_k);
+        display(size(x_nk));
+        display(size(x_k));
+        display(size(y));
 
         x = x_nk;
         t = t_nk;
