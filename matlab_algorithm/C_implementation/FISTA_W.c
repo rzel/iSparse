@@ -10,7 +10,7 @@
 #define LIP 2
 
 // how many levels are we going to throw away?
-#define LEVELS 2
+#define LEVELS 0
 
 // everything below this is set to 0.
 #define LAMBDA 0.05
@@ -32,7 +32,6 @@ int main(){
     int L = LEVELS;
     int Jn = J - L;
     int M = powf(2, J-L);
-    printf("%d, %d\n", M, N);
 
     // how many samples should we take?
     int m = floor(1.0 * N * N);
@@ -81,6 +80,8 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
     // step sizes
     float t, t_k, t_nk;
     t = 1;
+    
+
 
     // changing every element of y to x
     cblas_scopy(M * M, x, 1, y, 1);
@@ -120,25 +121,23 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
 
         printf("-------------------------\n");
         for (i=0; i<10; i++){
-            /*printf("    %f\n", x_nk[i]);*/
+            printf("    %f\n", x_nk[i]);
             fflush(stdout);
         }
         // do we have to copy it over? before the pL call?
-        copy(x, x_k, M*M);
+        copy(x, x_k, N*N);
         t_k = t;
 
         // this N*N needs to change
-        for (i=0; i<M*M; i++){
-            // it seems like the energy is growing here...
+        for (i=0; i<N*N; i++){
             y[i] = x_nk[i] + ((t_k -1)/(t_nk))*(x_nk[i] - x_k[i]);
         }
 
         t_nk = 0.5*(1 + sqrt((1 + 4* t_k * t_k)));
-        copy(x_nk, x, M*M);
+        copy(x_nk, x, N*N);
         t = t_nk;
 
     }
-    printf("%d, %d\n", M, N);
     idwt2_full(x, N, N);
     return x;
 }
