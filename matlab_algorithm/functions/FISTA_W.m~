@@ -78,7 +78,7 @@ function [xk] = pL(y, A, b_t, lam, L, N, Level)
     n  = N^2;
     n1 = n/2^(2*Level);
     N1 = sqrt(n1);
-    display(y(1:4));
+    display(y(1:4F));
     Y  = reshape(y, [N1, N1]);
     display(Y(1:4));
     Yt = zeros(N, N);
