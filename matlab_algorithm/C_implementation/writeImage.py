@@ -6,7 +6,7 @@ from pandas import read_csv
 x = read_csv('image.csv', header=None)
 
 figure()
-imshow(x,  interpolation='nearest')
+imshow(x,  interpolation='nearest', cmap='gray')
 colorbar()
 axis('off')
 title(str(array(x).shape))

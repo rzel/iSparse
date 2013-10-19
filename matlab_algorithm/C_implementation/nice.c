@@ -6,6 +6,7 @@
 
 int writeImage(float * x, int width, int height);
 void readImage(float * x, int width, int height);
+void copy(float * source, float * dest, int N);
 
 int writeImage(float * x, int width, int height){
     char * filename = "filename.png";
@@ -59,4 +60,12 @@ void readImage(float * x, int width, int height){
             fread(buffer, 1, 1, READ_CSV);
         }
     }
+}
+
+void copy(float * source, float * dest, int N){
+    int i;
+    for (i=0; i<N; i++){
+        dest[i] = source[i];
+    }
+
 }

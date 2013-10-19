@@ -25,6 +25,7 @@ int main(){
     int J = log2(N);
 
     float * x = (float *)malloc(sizeof(float) * N * N);
+    float * xh = (float *)malloc(sizeof(float) * N * N);
     readImage(x, N, N);
 
     // how many levels do we want to keep?
@@ -45,12 +46,12 @@ int main(){
     // making our samples
     float noise = 0;
     for (i=0; i<m; i++) y[i] = x[samples[i]] + noise * rand();
+    for (i=0; i<10; i++) printf("%f\n", y[i]);
 
     int k = 30; // number of iterations
-    x = FISTA_W(samples, y, M, N, k);
+    xh = FISTA_W(samples, y, M, N, k);
 
-    for (i=0; i<N*N; i++) x[i] = 1.0;
-    writeImage(x, N, N);
+    writeImage(xh, N, N);
 
 
     return 0;
@@ -68,18 +69,22 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
     int i;
     int xx, yy;
     float * x = (float *)malloc(sizeof(float) * M * M);
+    float * x_nk = (float *)malloc(sizeof(float) * M * M);
+    float * x_k = (float *)malloc(sizeof(float) * M * M);
     float * y = (float *)malloc(sizeof(float) * M * M);
     float * phi_b = (float *)malloc(sizeof(float) * N * N);
     float * phi_b_w = (float *)malloc(sizeof(float) * N * N);
     float * b_t = (float *)malloc(sizeof(float) * N * N);
     float * b_t_pre = (float *)malloc(sizeof(float) * N * N);
 
+    // step sizes
+    float t, t_k, t_nk;
+    t = 1;
+    
+
 
     // changing every element of y to x
     cblas_scopy(M * M, x, 1, y, 1);
-
-    // step size
-    float t = 1;
 
     // I is the N x N identity matrix
     // b is the obeservation vector
@@ -88,9 +93,6 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
     catlas_sset(N, 0, phi_b, 1); // setting every element to 0
 
     // DEBUG: A[0] = 0 for debugging purposes only
-    /*A[0] = 0;*/
-    /*A[1] = 4;*/
-    /*printf("%d\n", M);*/
     for (i=0; i<M*M; i++) phi_b[A[i]] = b[i];
 
     // overwrites phi_b
@@ -106,9 +108,22 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
     // vec
     vDSP_mtrans(b_t_pre, 1, b_t, 1, M, M);
 
-    x = pL(y, A, b_t, M, N);
-    /*for (i=0; i<100; i++) printf("%f\n", x[i]);*/
-    /*for (i=0; i<10; i++) printf("%f\n", x[i]);*/
+    // FISTA iterations
+    int jj;
+    for (jj=0; jj<k; jj++){
+        x_nk = pL(y, A, b_t, M, N);
+        // do we have to copy it over? before the pL call?
+        x_k = x;
+        t_k = t;
+
+        for (i=0; i<N*N; i++){
+            y[i] = x_nk[i] + ((t_k -1)/(t_nk))*(x_nk[i] - x_k[i]);
+        }
+
+        t_nk = 0.5*(1 + sqrt((1 + 4*t_k * t_k)));
+        x = x_nk;
+        t = t_nk;
+    }
     idwt2_full(x, N, N);
     return x;
 }
