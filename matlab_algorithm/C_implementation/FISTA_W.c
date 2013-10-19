@@ -10,7 +10,7 @@
 #define LIP 2
 
 // how many levels are we going to throw away?
-#define LEVELS 2
+#define LEVELS 0
 
 // everything below this is set to 0.
 #define LAMBDA 0.05
@@ -51,7 +51,6 @@ int main(){
     int k = 30; // number of iterations
     xh = FISTA_W(samples, y, M, N, k);
 
-
     writeImage(xh, N, N);
 
 
@@ -69,10 +68,10 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
     //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
     int i;
     int xx, yy;
-    float * x = (float *)malloc(sizeof(float) * N * N);
-    float * x_nk = (float *)malloc(sizeof(float) * N * N);
-    float * x_k = (float *)malloc(sizeof(float) * N * N);
-    float * y = (float *)malloc(sizeof(float) * N * N);
+    float * x = (float *)malloc(sizeof(float) * M * M);
+    float * x_nk = (float *)malloc(sizeof(float) * M * M);
+    float * x_k = (float *)malloc(sizeof(float) * M * M);
+    float * y = (float *)malloc(sizeof(float) * M * M);
     float * phi_b = (float *)malloc(sizeof(float) * N * N);
     float * phi_b_w = (float *)malloc(sizeof(float) * N * N);
     float * b_t = (float *)malloc(sizeof(float) * N * N);
@@ -112,7 +111,7 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
 
     // FISTA iterations
     int jj;
-    for (jj=0; jj<25; jj++){
+    for (jj=0; jj<k; jj++){
         // if using printf in this loop, use fflush(stdout)
 
         // for some reason, the energy in my signal keeps growing.
@@ -120,11 +119,11 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
         //      approximately correct
         x_nk = pL(y, A, b_t, M, N);
 
-        /*printf("-------------------------\n");*/
-        /*for (i=0; i<10; i++){*/
-            /*printf("    %f\n", x_nk[i]);*/
-            /*fflush(stdout);*/
-        /*}*/
+        printf("-------------------------\n");
+        for (i=0; i<10; i++){
+            printf("    %f\n", x_nk[i]);
+            fflush(stdout);
+        }
         // do we have to copy it over? before the pL call?
         copy(x, x_k, N*N);
         t_k = t;
@@ -137,11 +136,9 @@ float * FISTA_W(int * A, float * b, int M, int N, int k){
         t_nk = 0.5*(1 + sqrt((1 + 4* t_k * t_k)));
         copy(x_nk, x, N*N);
         t = t_nk;
-        printf("jj: %d ****************************\n", jj); fflush(stdout);
 
     }
     idwt2_full(x, N, N);
-    for (i=0; i<10; i++) printf("%f\n", x[i]);
     return x;
 }
 

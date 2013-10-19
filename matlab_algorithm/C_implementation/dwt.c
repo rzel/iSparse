@@ -224,8 +224,3 @@ float *vec(float * x, int width, int height){
     // don't listen to!
     return y;
 }
-
-float sign(float x){
-    if (x<=0) return -1;
-    if (x > 0) return 1;
-}
