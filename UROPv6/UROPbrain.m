@@ -23,8 +23,6 @@
 #import "UROPdwt.h"
 #include "dwt.h"
 
-// LEVELS, LIPSHITCH_CONSTANT, LAMBDA defined in UROPbrain.h
-// --Scott Sievert, 2013-10-20, sieve121 (at) umn.edu
 
 @interface UROPbrain ()
 @property (nonatomic, strong) UROPdwt *dwt;
