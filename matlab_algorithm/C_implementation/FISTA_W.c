@@ -10,16 +10,16 @@
 #define LIP 2.0
 
 // how many levels are we going to throw away?
-#define LEVELS 1
+#define LEVELS 2
 
 // sampling rate
-#define P 0.20
+#define P 0.80
 
 // everything below this is set to 0.
 #define LAMBDA 0.05
 
 float * pL(float * y, int * A, float * b_t, int N, int m);
-float * FISTA_W(int * A, float * b, int M, int N, int k, int m);
+float FISTA_W(float * Xhat, int * A, float * b, float t, int M, int N, int k, int m);
 void debug();
 
 int main(){
@@ -40,7 +40,6 @@ int main(){
     float * the1 = (float *)malloc(sizeof(float) * M * M);
     float * The1 = (float *)malloc(sizeof(float) * M * M);
     float * Temp1 = (float *)malloc(sizeof(float) * N * N);
-    float * Xhat = (float *)malloc(sizeof(float) * N * N);
     readImage(x, N, N);
 
     // TODO: vectorize
@@ -66,9 +65,18 @@ int main(){
             // do the measurements change?
         // pass the current estimate in
         // pass tn                   in
+        // we need:
+        //      y
+        //      t_k
+        //      Xhat
 
+    float * Xhat = (float *)malloc(sizeof(float) * N * N);
+    float t = 1;;
+    for (i=0; i<N*N; i++) Xhat[i] = 0;
     // **************************************** FISTA
-    Xhat = FISTA_W(samples, y, M, N, k, m);
+    /*for (k=0; k<30; k++){*/
+        t = FISTA_W(Xhat, samples, y, t, M, N, k, m);
+    /*}*/
     // **************************************** FISTA
     // this printf makes it work. Do I know why? No.
     printf("After FISTA\n");
@@ -81,7 +89,7 @@ int main(){
     return 0;
 }
 
-float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
+float FISTA_W(float * Xhat, int * A, float * b, float t, int M, int N, int k, int m){
     // M: how large the (approx) image is
     // N: how large the actual image is.
     // k: how many iterations.
@@ -104,8 +112,7 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
 
 
     // step sizes
-    float t, t_k, t_nk;
-    t = 1;
+    float t_k, t_nk;
 
     for (i=0; i<M*M; i++) x[i] = 0;
     // changing every element of y to x
@@ -164,10 +171,10 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
 
     }
 
-    float * Xhat = (float *)malloc(sizeof(float) * N * N);
+    /*float * Xhat = (float *)malloc(sizeof(float) * N * N);*/
     float * The1 = (float *)malloc(sizeof(float) * N * N);
     float * Temp1 = (float *)malloc(sizeof(float) * N * N);
-    for (i=0; i<N*N; i++) Xhat[i] = 0;
+    /*for (i=0; i<N*N; i++) Xhat[i] = 0;*/
 
     for (i=0; i<M*M; i++) The1[i] = x[i];
     vec(The1, M*M);
@@ -181,7 +188,7 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
 
     for (i=0; i<N*N; i++) Xhat[i] = Temp1[i];
 
-    return Xhat;
+    return t;
 }
 
 float * pL(float * y, int * A, float * b_t, int N, int m){
@@ -336,7 +343,7 @@ void debug(){
     for (i = 0; i<N2; i++) b_t[i] = exp(i/10.0);
 
     k = 1;
-    y = FISTA_W(A, b, M, N, k, m);
+    /*y = FISTA_W(A, b, M, N, k, m);*/
     /*x = pL(y, A, b_t, N, m);*/
 }
 
