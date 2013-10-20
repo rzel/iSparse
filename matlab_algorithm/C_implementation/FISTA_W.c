@@ -23,7 +23,7 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m);
 void debug();
 
 int main(){
-    debug();
+    /*debug();*/
     int i, xx, yy;
 
     int N = powf(2, 9);
@@ -44,7 +44,6 @@ int main(){
     readImage(x, N, N);
 
     // TODO: vectorize
-
     // how many samples should we take?
     int m = floor(P * N * N);
 
@@ -60,11 +59,13 @@ int main(){
     float noise = 0;
     for (i=0; i<m; i++) y[i] = x[samples[i]] + noise * rand();
 
-    int k = 30; // number of iterations
-    the1 = FISTA_W(samples, y, M, N, k, m);
-    printf("******the image values*************************\n");
-    for (i=0; i<12; i++) printf("%f\n", the1[i]);
+    int k = 10; // number of iterations
 
+    // **************************************** FISTA
+    the1 = FISTA_W(samples, y, M, N, k, m);
+    // **************************************** FISTA
+    // keeping this printf makes it work. Do I know why? No.
+    printf("After FISTA\n");
 
     for (i=0; i<M*M; i++) The1[i] = the1[i];
     vec(The1, M*M);
@@ -326,9 +327,6 @@ void debug(){
     k = 1;
     y = FISTA_W(A, b, M, N, k, m);
     /*x = pL(y, A, b_t, N, m);*/
-
-    printf("***************************************\n");
-    for (i=0; i<N2; i++) printf("%f\n", x[i]);
 }
 
 
