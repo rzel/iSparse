@@ -120,11 +120,21 @@ int main(){
 
 float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_t,
               float t, int M, int N, int k, int m){
-    // M: how large the (approx) image is
-    // N: how large the actual image is.
-    // k: how many iterations.
-    // A: the measurement matrix (m x n)
-    // b: the observations (m x 1), randperm
+  /*
+   *   Xhat : the current wavelet estimate
+   *   A : sampling locations
+   *   b : the observation vector
+   *   y : an intermediate array we need
+   *   x : an intermediate array we need
+   *   b_t : precalculated thing for FISTA
+   *   t : threshold
+   *   M : how large we want wavelet to be after we drop levels
+   *   N : how large with drop_levels=0;
+   *   k : iterations
+   *   m : how samples to take
+   *
+   *   -- Scott Sievert, 2013-10-20, sieve121 (at) umn.edu
+   */
     // the documentation for the BLAS stuff can be found at...
     //      https://developer.apple.com/performance/accelerateframework.html
     //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
@@ -136,9 +146,6 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
 
     // step sizes
     float t_k, t_nk;
-
-    // I is the N x N identity matrix
-    // b is the obeservation vector
 
     // FISTA iterations
     int jj;

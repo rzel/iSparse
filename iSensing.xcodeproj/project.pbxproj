@@ -23,6 +23,7 @@
 		D262A9A41777D43E006A7072 /* wati2.png in Resources */ = {isa = PBXBuildFile; fileRef = D262A9A11777D43E006A7072 /* wati2.png */; };
 		D27236091749AACC00A0B7C9 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27236081749AACC00A0B7C9 /* white.png */; };
 		D27E863817F78AFC0084B604 /* info-larger.png in Resources */ = {isa = PBXBuildFile; fileRef = D27E863717F78AFC0084B604 /* info-larger.png */; };
+		D2BBCE73181456E4000A0C50 /* dwt.c in Sources */ = {isa = PBXBuildFile; fileRef = D2BBCE71181456E4000A0C50 /* dwt.c */; };
 		D2DA0D4717EA1CB700E0A087 /* UROPdwt.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */; };
 		D2DF752016CF174900DF158B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF751F16CF174900DF158B /* UIKit.framework */; };
 		D2DF752216CF174900DF158B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF752116CF174900DF158B /* Foundation.framework */; };
@@ -65,6 +66,8 @@
 		D262A9A11777D43E006A7072 /* wati2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wati2.png; sourceTree = "<group>"; };
 		D27236081749AACC00A0B7C9 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		D27E863717F78AFC0084B604 /* info-larger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-larger.png"; sourceTree = "<group>"; };
+		D2BBCE71181456E4000A0C50 /* dwt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dwt.c; sourceTree = "<group>"; };
+		D2BBCE72181456E4000A0C50 /* dwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dwt.h; sourceTree = "<group>"; };
 		D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPdwt.h; sourceTree = "<group>"; };
 		D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROPdwt.m; sourceTree = "<group>"; };
 		D2DA3900178EFA5E0069F5B6 /* icon.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = icon.py; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				D2365EA816D432E70017E15A /* UROPbrain.h */,
 				D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */,
 				D2365EA916D432E70017E15A /* UROPbrain.m */,
+				D2BBCE71181456E4000A0C50 /* dwt.c */,
+				D2BBCE72181456E4000A0C50 /* dwt.h */,
 				D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */,
 			);
 			name = brains;
@@ -348,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2DF752C16CF174900DF158B /* main.m in Sources */,
+				D2BBCE73181456E4000A0C50 /* dwt.c in Sources */,
 				D2DF753016CF174A00DF158B /* UROPAppDelegate.m in Sources */,
 				D2DA0D4717EA1CB700E0A087 /* UROPdwt.m in Sources */,
 				D2DF753C16CF174A00DF158B /* UROPMainViewController.m in Sources */,
