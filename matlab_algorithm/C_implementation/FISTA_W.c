@@ -59,25 +59,20 @@ int main(){
     float noise = 0;
     for (i=0; i<m; i++) y[i] = x[samples[i]] + noise * rand();
 
-    int k = 10; // number of iterations
+    int k = 30; // number of iterations
+
+    // what are the measurements? what is the current estimate?
+        // pass the measurements     in
+            // do the measurements change?
+        // pass the current estimate in
+        // pass tn                   in
 
     // **************************************** FISTA
-    the1 = FISTA_W(samples, y, M, N, k, m);
+    Xhat = FISTA_W(samples, y, M, N, k, m);
     // **************************************** FISTA
     // this printf makes it work. Do I know why? No.
     printf("After FISTA\n");
 
-    for (i=0; i<M*M; i++) The1[i] = the1[i];
-    vec(The1, M*M);
-
-    for (i=0; i<N*N; i++) Temp1[i] = 0;
-    for (xx=0; xx<M; xx++){
-        for (yy=0; yy<M; yy++){
-            Temp1[yy*N + xx] = The1[yy*M + xx];
-        }
-    }
-
-    for (i=0; i<N*N; i++) Xhat[i] = Temp1[i];
     idwt2_full(Xhat, N, N);
 
 
@@ -152,15 +147,13 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
         // it *looks* like pL is working... the first iteration prints
         //      approximately correct
         x_nk = pL(y, A, b_t, N, m);
-    /*printf("*** in pL *************************************\n");*/
-    /*for (i=0; i<N*N; i++) printf("%f\n", x_nk[i]);*/
 
         // do we have to copy it over? before the pL call?
         copy(x, x_k, M*M);
         t_k = t;
 
 
-        t_nk = 0.5*(1 + sqrt((1 + 4* t_k * t_k)));
+        t_nk = 0.5*(1 + sqrt((1 + 4 * t_k * t_k)));
 
         for (i=0; i<M*M; i++){
             y[i] = x_nk[i] + ((t_k -1)/(t_nk))*(x_nk[i] - x_k[i]);
@@ -170,7 +163,25 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
         t = t_nk;
 
     }
-    return x;
+
+    float * Xhat = (float *)malloc(sizeof(float) * N * N);
+    float * The1 = (float *)malloc(sizeof(float) * N * N);
+    float * Temp1 = (float *)malloc(sizeof(float) * N * N);
+    for (i=0; i<N*N; i++) Xhat[i] = 0;
+
+    for (i=0; i<M*M; i++) The1[i] = x[i];
+    vec(The1, M*M);
+
+    for (i=0; i<N*N; i++) Temp1[i] = 0;
+    for (xx=0; xx<M; xx++){
+        for (yy=0; yy<M; yy++){
+            Temp1[yy*N + xx] = The1[yy*M + xx];
+        }
+    }
+
+    for (i=0; i<N*N; i++) Xhat[i] = Temp1[i];
+
+    return Xhat;
 }
 
 float * pL(float * y, int * A, float * b_t, int N, int m){
