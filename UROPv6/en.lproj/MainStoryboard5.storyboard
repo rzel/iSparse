@@ -179,13 +179,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sampling rate: 50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCt-A2-dMm">
-                                <rect key="frame" x="0.0" y="425" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="332" width="320" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-WF-Ktu">
-                                <rect key="frame" x="18" y="388" width="284" height="34"/>
+                                <rect key="frame" x="18" y="351" width="284" height="34"/>
                                 <connections>
                                     <action selector="samplingSliderChanged:" destination="cyA-Xc-H01" eventType="valueChanged" id="2B0-ye-82t"/>
                                 </connections>
@@ -220,15 +220,22 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="lenna256x256.gif" translatesAutoresizingMaskIntoConstraints="NO" id="11o-59-Xy7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="358"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="The blacked out pixels are never looked at again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj5-wB-Qqh">
-                                <rect key="frame" x="0.0" y="358" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="302" width="320" height="22"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="H9v-8K-KJv">
+                                <rect key="frame" x="18" y="392" width="284" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="levelSliderChanged:" destination="cyA-Xc-H01" eventType="valueChanged" id="BfQ-7p-3o6"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -240,6 +247,7 @@
                         <outlet property="imageView" destination="11o-59-Xy7" id="INK-JD-UD0"/>
                         <outlet property="infoButton" destination="oav-e6-lId" id="rWS-bl-hFA"/>
                         <outlet property="label" destination="BCt-A2-dMm" id="JD9-10-Yus"/>
+                        <outlet property="levelSlider" destination="H9v-8K-KJv" id="cb6-sv-8UU"/>
                         <outlet property="reconstructButton2" destination="g0A-jn-sRv" id="NIE-w9-MBU"/>
                         <outlet property="samplingSlider" destination="Quf-WF-Ktu" id="S0b-8f-GT0"/>
                     </connections>
@@ -324,6 +332,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Vki-md-BOk"/>
+        <segue reference="w1h-LA-V7G"/>
     </inferredMetricsTieBreakers>
 </document>

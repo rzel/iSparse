@@ -17,6 +17,7 @@ UINavigationControllerDelegate>
 }
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
 @property  float rate;
+@property  int levels;
 @property  float coarse;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -29,5 +30,6 @@ UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *reconstructButton2;
 @property (weak, nonatomic) IBOutlet UIButton *choose;
+@property (weak, nonatomic) IBOutlet UISlider *levelSlider;
 @property (weak, nonatomic) NSMutableArray * idx;
 @end

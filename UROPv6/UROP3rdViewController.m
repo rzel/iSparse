@@ -54,9 +54,8 @@
 {
     [super viewDidLoad];
     
-
-    
     self.rate = 0.5;
+    self.levelSlider.continuous = NO;
 
     // making the sampling rate equal to 50% at first, resizing the image
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 50.0];
@@ -102,6 +101,11 @@
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 100*rate];
     self.rate = rate;
+}
+- (IBAction)levelSliderChanged:(id)sender {
+    int level = (int)floor(self.levelSlider.value * 8);
+    NSLog(@"%d", level);
+    self.levels = level;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
