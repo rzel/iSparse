@@ -63,8 +63,6 @@ int main(){
     // *****************************************************
     // *********** START OF FISTA NORMALLY *****************
     // *****************************************************
-    int i;
-    int xx, yy;
     float * x = (float *)malloc(sizeof(float) * M * M);
     float * x_nk = (float *)malloc(sizeof(float) * M * M);
     float * x_k = (float *)malloc(sizeof(float) * M * M);
@@ -84,7 +82,6 @@ int main(){
     // changing every element of y to x
     cblas_scopy(M * M, x, 1, y, 1);
 
-
     // I is the N x N identity matrix
     // b is the obeservation vector
 
@@ -94,11 +91,9 @@ int main(){
     // DEBUG: A[0] = 0 for debugging purposes only
     for (i=0; i<m; i++) phi_b[A[i]] = b[i];
 
-
     // overwrites phi_b
     dwt2_full(phi_b, N, N);
     vec(phi_b, N, N);
-
 
     // reshaping
     for (xx=0; xx<M; xx++){
@@ -117,9 +112,6 @@ int main(){
 
     int k = 30; // number of iterations
     the1 = FISTA_W(samples, y, M, N, k, m);
-    printf("******the image values*************************\n");
-    for (i=0; i<12; i++) printf("%f\n", the1[i]);
-
 
     for (i=0; i<M*M; i++) The1[i] = the1[i];
     vec(The1, M*M);
