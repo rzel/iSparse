@@ -11,13 +11,13 @@ addpath('./data');
 % loading the data
 % load('smooth.mat');
 % load('smooth2.mat');
-% load('lena.mat');
+load('lena.mat');
 % load('image2.mat');
 % load('obama_full.mat');
-load('dome.mat');
+%load('dome.mat');
 
 %% Parameters and Data
-N = 2^10;                    % input image dimension N x N
+N = 2^9;                    % input image dimension N x N
 J = log2(N);                 % how many levels there are
 X = imresize(image, [N, N]); % resizing the image
 x = mat2gray(X(:));          % making it gray scale
@@ -30,15 +30,15 @@ M = 2^((J - L)); % the size that we want to keep
 if(Jn > J) display('Jn should be less than J'); end
 
 %% Get random signals
-m = floor(0.01*N^2);  % # of measurements
+m = floor(0.5*N^2);  % # of measurements
 
 % where to sample
 samples = randperm(N^2);
-
+%samples = 1:N^2;
 % get measurements
 sig = 0; % the noise term
 y = x(samples(1:m)) + sig*randn(m,1);
-
+display(y(1:10));
 
 
 %% Use SPAMS to reconstruct
@@ -51,18 +51,18 @@ opts.M     = M;    % size of sampled image
 opts.N     = N;    % size of full image
 opts.level = L;    % levels we want to throw
 
-% Call FISTA
+%% Call FISTA
 tic;
 the1 = FISTA_W(samples(1:m), y, opts);
-toc
 
 % Get the reconstruction
 The1 = reshape(the1, [M, M]);
 Temp1 = zeros(N, N);
 Temp1(1:M ,1:M) = The1;
 Xhat = midwt(Temp1, daubcqf(2, 'min'));
+toc;
 
-% show the sample image
+%% Show the images
 xs = zeros(N^2, 1);
 xs(samples(1:m)) = x(samples(1:m)); 
 

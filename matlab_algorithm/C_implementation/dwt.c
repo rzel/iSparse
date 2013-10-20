@@ -18,7 +18,7 @@ void copyArray(float * in, float * out, int len);
 void swap(int * one, int * two);
 void shuffle(int * in, int len);
 void copySelectedInstances(float * in, float * out, int * indicies, int len);
-float sign(float x);
+float S2sign(float x);
 float std(float * array, int N);
 
 // the actual dwt/idwt
@@ -223,4 +223,13 @@ float *vec(float * x, int width, int height){
     
     // don't listen to!
     return y;
+}
+float S2sign(float x){
+    printf("Calling\n");
+    float ret;
+    if (x<0)  ret = -1;
+    else if (x>0)  ret = 1;
+    else if (x==0) ret = 0;
+
+    return ret;
 }

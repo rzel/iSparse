@@ -1,0 +1,51 @@
+clc; clear all; close all
+addpath('./rwt');
+addpath('./functions');
+
+% 
+% N = 4;
+% N2 = N*N;
+% M = N;
+% k = 2;
+% m = 9;
+% 
+% t = 0:(N2-1);
+% A = t+1;
+% y = t.*t;
+% 
+% A = A';
+% y = y';
+% 
+% opts.L = 2;
+% opts.level = 0;    
+% opts.k = 30;
+% opts.lam = 0.05;
+% opts.M = M;
+% opts.N = N;
+% 
+% %m = floor(0.25*N2);
+% 
+% h = FISTA_W(A(1:m), y(1:m), opts);
+% 
+% display(h)
+
+N = 4;
+N2 = N*N;
+M = N;
+k = 2;
+m = 9;
+
+t = 0:(N2-1);
+A = t+1;
+y = t .* t;
+b_t = exp(t/10);
+
+A = A';
+y = y';
+b_t = b_t';
+
+h = debug(y, A, b_t, N);
+display(h)
+
+
+

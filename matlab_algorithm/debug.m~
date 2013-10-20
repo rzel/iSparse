@@ -1,0 +1,35 @@
+function [xk] = debug(y, A, b_t, N)
+    % Here we are trying to get H'*I'*I*H*y
+    lam = 0.05;
+    Level = 0;
+    L = 2;
+    
+    % Here we are trying to get H'*I'*I*H*y
+    n  = N^2;
+    n1 = n/2^(2*Level);
+    N1 = sqrt(n1);
+
+    Y  = reshape(y, [N1, N1]);
+    Yt = zeros(N, N);
+    Yt(1:N1, 1:N1) = Y;
+    
+    h = midwt(Yt, daubcqf(2));
+    y1 = vec(h);
+
+
+    Phi_y    = zeros(n,1);
+    Phi_y(A) = y1(A);
+    h = reshape(Phi_y, [N N]);
+    Phi_y_W  = mdwt(h, daubcqf(2, 'min'));
+    y_t = vec(Phi_y_W(1:N/2^Level, 1:N/2^Level));
+
+
+    % calculating the gradiend step
+    temp_x = y - 2/L*(y_t - b_t);
+
+    % thresholding
+    temp_1 = (abs(temp_x) - lam/L);
+    temp_1(temp_1 < 0) = 0;
+
+    xk = temp_1 .* sign(temp_x);
+end
