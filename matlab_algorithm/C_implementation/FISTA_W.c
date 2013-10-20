@@ -128,7 +128,7 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x,
     // I is the N x N identity matrix
     // b is the obeservation vector
 
-    // precalculation H'*I'*b
+     // precalculation H'*I'*b
     catlas_sset(N*N, 0, phi_b, 1); // setting every element to 0
 
     // DEBUG: A[0] = 0 for debugging purposes only
