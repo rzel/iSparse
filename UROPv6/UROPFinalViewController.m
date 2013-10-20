@@ -112,7 +112,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     // TODO: make samples out of idx
     // TODO: N vs. sqrt(N)
     [super viewDidLoad];    
- 
+    NSLog(@"%d", self.levels);
     int i;
     
     [self.scrollView setBackgroundColor:[UIColor whiteColor]];

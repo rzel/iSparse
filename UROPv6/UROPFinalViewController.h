@@ -11,6 +11,7 @@
 @interface UROPFinalViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImage *imageStay;
 @property  float rate;
+@property  int levels;
 @property  float coarse;
 @property  int pastIts;
 

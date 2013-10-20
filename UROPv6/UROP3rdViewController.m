@@ -116,6 +116,7 @@
         destViewController.rate = self.rate;
         destViewController.coarse = self.coarse;
         destViewController.idx = self.idx;
+        destViewController.levels = self.levels;
         
     }
 }
