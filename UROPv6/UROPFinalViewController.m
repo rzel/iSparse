@@ -45,7 +45,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
                          x_r:x_r     x_g:x_g     x_b:x_b          \
                        b_t_r:b_t_r b_t_g:b_t_g b_t_b:b_t_b        \
                          t_r:&t_r    t_g:&t_g    t_b:&t_b         \
-                           M:M N:N k:2 m:m];
+                           M:M N:N k:2 m:m levels:self.levels];
 // updates the text that says "Iterations: 42"
 #define ITERATION_STEP \
        showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];

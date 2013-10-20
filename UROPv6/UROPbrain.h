@@ -53,5 +53,5 @@
                              x_r:(float *)x_r x_g:(float *)x_g x_b:(float *)x_b
                            b_t_r:(float *)b_t_r  b_t_g:(float *)b_t_g  b_t_b:(float *)b_t_b
                              t_r:(float *)t_r t_g:(float *)t_g t_b:(float *)t_b
-                               M:(int)M N:(int)N k:(int)k m:(int)m;
+                               M:(int)M N:(int)N k:(int)k m:(int)m levels:(int)levels;
 @end

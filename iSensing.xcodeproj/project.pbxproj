@@ -60,7 +60,7 @@
 		D2365EA816D432E70017E15A /* UROPbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPbrain.h; sourceTree = "<group>"; };
 		D2365EA916D432E70017E15A /* UROPbrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPbrain.m; sourceTree = "<group>"; };
 		D249582917ECF62F0007D015 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
-		D24C2F6C16DD1EDA0041F4CE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard5.storyboard; sourceTree = "<group>"; };
+		D24C2F6C16DD1EDA0041F4CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/MainStoryboard5.storyboard; sourceTree = "<group>"; };
 		D262A99F1777D43E006A7072 /* wati2.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wati2.xcf; sourceTree = "<group>"; };
 		D262A9A01777D43E006A7072 /* wait_spinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait_spinner.png; sourceTree = "<group>"; };
 		D262A9A11777D43E006A7072 /* wati2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wati2.png; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		D2DF753116CF174A00DF158B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D2DF753316CF174A00DF158B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D2DF753516CF174A00DF158B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		D2DF753816CF174A00DF158B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		D2DF753816CF174A00DF158B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D2DF753A16CF174A00DF158B /* UROPMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPMainViewController.h; sourceTree = "<group>"; };
 		D2DF753B16CF174A00DF158B /* UROPMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPMainViewController.m; sourceTree = "<group>"; };
 		D2DF754516CF181100DF158B /* UROP2ndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROP2ndViewController.h; sourceTree = "<group>"; };

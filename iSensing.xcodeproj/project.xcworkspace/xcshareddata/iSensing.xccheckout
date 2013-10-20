@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0A0C8CC0-3B9F-46E5-A8E3-A2B01828E19B</string>
+	<string>ECC0814F-922C-4BDB-A45B-3C163A2746C2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>iSensing</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>98ADF0A6-67E6-4290-AD2F-0E6ADF7DF86A</key>
-		<string>https://github.com/scottsievert/UROPv6.git</string>
+		<key>4315AE5A-93B5-4E96-8165-6F253308938D</key>
+		<string>https://github.com/scottsievert/iSensing.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>iSensing.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>98ADF0A6-67E6-4290-AD2F-0E6ADF7DF86A</key>
+		<key>4315AE5A-93B5-4E96-8165-6F253308938D</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/scottsievert/UROPv6.git</string>
+	<string>https://github.com/scottsievert/iSensing.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>98ADF0A6-67E6-4290-AD2F-0E6ADF7DF86A</string>
+	<string>4315AE5A-93B5-4E96-8165-6F253308938D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>98ADF0A6-67E6-4290-AD2F-0E6ADF7DF86A</string>
+			<string>4315AE5A-93B5-4E96-8165-6F253308938D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>iSensing</string>
 		</dict>

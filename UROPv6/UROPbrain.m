@@ -699,7 +699,7 @@
                              x_r:(float *)x_r x_g:(float *)x_g x_b:(float *)x_b
                            b_t_r:(float *)b_t_r  b_t_g:(float *)b_t_g  b_t_b:(float *)b_t_b
                              t_r:(float *)t_r t_g:(float *)t_g t_b:(float *)t_b
-                               M:(int)M N:(int)N k:(int)k m:(int)m
+                               M:(int)M N:(int)N k:(int)k m:(int)m levels:(int)levels
 {
     // t = FISTA_W(Xhat, samples, y, y2, x, b_t, t, M, N, 1, m);
 
@@ -754,7 +754,7 @@
             }
             //NSLog(@"in reconstructWithFista: %f", tf);
             // the do-what-you-want code should go here. actually performing the algorithm.
-            tf = FISTA_W(Xhat, samples, y, y2, x, b_t, tf, M, N, 1, m);
+            tf = FISTA_W(Xhat, samples, y, y2, x, b_t, tf, M, N, 1, m, levels);
             // and then update
             if (n==0) {
                 for (i=0; i<m; i++) {y_r[i]    = y[i];}
@@ -813,7 +813,7 @@
 }
 
 float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_t,
-              float t, int M, int N, int k, int m){
+              float t, int M, int N, int k, int m, int levels){
     /*
      *   Xhat : the current wavelet estimate
      *   A : sampling locations
@@ -849,7 +849,7 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
         // for some reason, the energy in my signal keeps growing.
         // it *looks* like pL is working... the first iteration prints
         //      approximately correct
-        x_nk = pL(y, A, b_t, N, m);
+        x_nk = pL(y, A, b_t, N, m, levels);
         NSLog(@"::::: %d", A[4]);
         
         // do we have to copy it over? before the pL call?
@@ -888,7 +888,7 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
     return t;
 }
 
-float * pL(float * y, int * A, float * b_t, int N, int m){
+float * pL(float * y, int * A, float * b_t, int N, int m, int levels){
     /*
      * adapted from this matlab code:
      n  = N^2;
@@ -920,9 +920,9 @@ float * pL(float * y, int * A, float * b_t, int N, int m){
      */
     int xx, yy, i;
     int n = (int)powf(N, 2);
-    int n1 = (int)(n / (1.0 *powf(2, 2*LEVELS)));
+    int n1 = (int)(n / (1.0 *powf(2, 2*levels)));
     int N1 = (int)sqrt(n1);
-    int Nj = (int)(N / (1.0 * powf(2, LEVELS)));
+    int Nj = (int)(N / (1.0 * powf(2, levels)));
     
     float * Y = (float *)malloc(sizeof(float) * N1 * N1);
     float * h = (float *)malloc(sizeof(float) * N * N);
