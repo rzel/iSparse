@@ -13,13 +13,14 @@
 #define LEVELS 2
 
 // sampling rate
-#define P 0.80
+#define P 0.15
 
 // everything below this is set to 0.
 #define LAMBDA 0.05
 
 float * pL(float * y, int * A, float * b_t, int N, int m);
-float FISTA_W(float * Xhat, int * A, float * b, float t, int M, int N, int k, int m);
+float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, 
+              float t, int M, int N, int k, int m);
 void debug();
 
 int main(){
@@ -69,14 +70,18 @@ int main(){
         //      y
         //      t_k
         //      Xhat
+    /*float * x = (float *)malloc(sizeof(float) * M * M);*/
+    float * y2 = (float *)malloc(sizeof(float) * M * M);
+    for (i=0; i<M*M; i++) x[i] = 0;
+    cblas_scopy(M * M, x, 1, y2, 1); // copy y2 into x
 
     float * Xhat = (float *)malloc(sizeof(float) * N * N);
     float t = 1;;
     for (i=0; i<N*N; i++) Xhat[i] = 0;
     // **************************************** FISTA
-    /*for (k=0; k<30; k++){*/
-        t = FISTA_W(Xhat, samples, y, t, M, N, k, m);
-    /*}*/
+    for (k=0; k<10; k++){
+        t = FISTA_W(Xhat, samples, y, y2, x, t, M, N, 1, m);
+    }
     // **************************************** FISTA
     // this printf makes it work. Do I know why? No.
     printf("After FISTA\n");
@@ -89,7 +94,8 @@ int main(){
     return 0;
 }
 
-float FISTA_W(float * Xhat, int * A, float * b, float t, int M, int N, int k, int m){
+float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, 
+              float t, int M, int N, int k, int m){
     // M: how large the (approx) image is
     // N: how large the actual image is.
     // k: how many iterations.
@@ -100,10 +106,10 @@ float FISTA_W(float * Xhat, int * A, float * b, float t, int M, int N, int k, in
     //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
     int i;
     int xx, yy;
-    float * x = (float *)malloc(sizeof(float) * M * M);
+    /*float * x = (float *)malloc(sizeof(float) * M * M);*/
     float * x_nk = (float *)malloc(sizeof(float) * M * M);
     float * x_k = (float *)malloc(sizeof(float) * M * M);
-    float * y = (float *)malloc(sizeof(float) * M * M);
+    /*float * y = (float *)malloc(sizeof(float) * M * M);*/
     float * phi_b = (float *)malloc(sizeof(float) * N * N);
     float * phi_b_w = (float *)malloc(sizeof(float) * N * N);
     float * b_t = (float *)malloc(sizeof(float) * M * M);
@@ -114,9 +120,9 @@ float FISTA_W(float * Xhat, int * A, float * b, float t, int M, int N, int k, in
     // step sizes
     float t_k, t_nk;
 
-    for (i=0; i<M*M; i++) x[i] = 0;
-    // changing every element of y to x
-    cblas_scopy(M * M, x, 1, y, 1);
+    /*for (i=0; i<M*M; i++) x[i] = 0;*/
+    /*// changing every element of y to x*/
+    /*cblas_scopy(M * M, x, 1, y, 1);*/
 
 
     // I is the N x N identity matrix
