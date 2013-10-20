@@ -10,7 +10,7 @@
 #define LIP 2.0
 
 // how many levels are we going to throw away?
-#define LEVELS 0
+#define LEVELS 2
 
 // everything below this is set to 0.
 #define LAMBDA 0.05
@@ -148,7 +148,8 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
         // it *looks* like pL is working... the first iteration prints
         //      approximately correct
         x_nk = pL(y, A, b_t, N, m);
-
+    /*printf("*** in pL *************************************\n");*/
+    /*for (i=0; i<N*N; i++) printf("%f\n", x_nk[i]);*/
 
         // do we have to copy it over? before the pL call?
         copy(x, x_k, M*M);
@@ -271,20 +272,21 @@ float * pL(float * y, int * A, float * b_t, int N, int m){
     }
     vec(y_t, Nj, Nj);
 
+
     for (i=0; i<Nj*Nj; i++){
         temp_x[i] = y[i] - 2/(LIP*1.0) * (y_t[i] - b_t[i]);
     }
 
     for (i=0; i<Nj*Nj; i++){
-        temp_1[i] = (fabs(temp_x[i] - LAMBDA / (1.0 * LIP)));
-        if (temp_1[i] < 0) temp_1[i] = 0.0;
+        temp_1[i] = fabs(temp_x[i]) - LAMBDA / (1.0 * LIP);
+        if (temp_1[i] < 0){
+            temp_1[i] = 0.0;
+        }
     }
 
     for (i=0; i<Nj*Nj; i++){
         xk[i] = temp_1[i] * copysignf(1.0, temp_x[i]);
     }
-    /*printf("***********************************************\n");*/
-    /*for (i=0; i<N*N; i++) printf("%f\n", xk[i]);*/
 
     free(Y);
     free(h);
@@ -318,8 +320,9 @@ void debug(){
     for (i = 0; i<N2; i++) A[i]   = i;
     for (i = 0; i<N2; i++) b_t[i] = exp(i/10.0);
 
-    /*y = FISTA_W(A, b, M, N, k, m);*/
-    x = pL(y, A, b_t, N, m);
+    k = 1;
+    y = FISTA_W(A, b, M, N, k, m);
+    /*x = pL(y, A, b_t, N, m);*/
 
     printf("***************************************\n");
     for (i=0; i<N2; i++) printf("%f\n", x[i]);
