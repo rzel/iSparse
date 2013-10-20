@@ -13,13 +13,13 @@
 #define LEVELS 2
 
 // sampling rate
-#define P 0.15
-
+#define P 0.55
+#define ITERATIONS 30
 // everything below this is set to 0.
 #define LAMBDA 0.05
 
 float * pL(float * y, int * A, float * b_t, int N, int m);
-float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, 
+float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_t,
               float t, int M, int N, int k, int m);
 void debug();
 
@@ -61,16 +61,7 @@ int main(){
 
     int k = 30; // number of iterations
 
-    // what are the measurements? what is the current estimate?
-        // pass the measurements     in
-            // do the measurements change?
-        // pass the current estimate in
-        // pass tn                   in
-        // we need:
-        //      y
-        //      t_k
-        //      Xhat
-    /*float * x = (float *)malloc(sizeof(float) * M * M);*/
+
     float * y2 = (float *)malloc(sizeof(float) * M * M);
     for (i=0; i<M*M; i++) x[i] = 0;
     cblas_scopy(M * M, x, 1, y2, 1); // copy y2 into x
@@ -78,61 +69,17 @@ int main(){
     float * Xhat = (float *)malloc(sizeof(float) * N * N);
     float t = 1;;
     for (i=0; i<N*N; i++) Xhat[i] = 0;
-    // **************************************** FISTA
-    for (k=0; k<10; k++){
-        t = FISTA_W(Xhat, samples, y, y2, x, t, M, N, 1, m);
-    }
-    // **************************************** FISTA
-    // this printf makes it work. Do I know why? No.
-    printf("After FISTA\n");
 
-    idwt2_full(Xhat, N, N);
-
-
-    writeImage(Xhat, N, N);
-
-    return 0;
-}
-
-float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, 
-              float t, int M, int N, int k, int m){
-    // M: how large the (approx) image is
-    // N: how large the actual image is.
-    // k: how many iterations.
-    // A: the measurement matrix (m x n)
-    // b: the observations (m x 1), randperm
-    // the documentation for the BLAS stuff can be found at...
-    //      https://developer.apple.com/performance/accelerateframework.html
-    //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
-    int i;
-    int xx, yy;
-    /*float * x = (float *)malloc(sizeof(float) * M * M);*/
-    float * x_nk = (float *)malloc(sizeof(float) * M * M);
-    float * x_k = (float *)malloc(sizeof(float) * M * M);
-    /*float * y = (float *)malloc(sizeof(float) * M * M);*/
+    // ---------------------- -------------- precalculation H'*I'*b - b_t
     float * phi_b = (float *)malloc(sizeof(float) * N * N);
     float * phi_b_w = (float *)malloc(sizeof(float) * N * N);
     float * b_t = (float *)malloc(sizeof(float) * M * M);
     float * b_t_pre = (float *)malloc(sizeof(float) * M * M);
     for (i=0; i<N*N; i++) phi_b[i] = 0;
-
-
-    // step sizes
-    float t_k, t_nk;
-
-    /*for (i=0; i<M*M; i++) x[i] = 0;*/
-    /*// changing every element of y to x*/
-    /*cblas_scopy(M * M, x, 1, y, 1);*/
-
-
-    // I is the N x N identity matrix
-    // b is the obeservation vector
-
-     // precalculation H'*I'*b
     catlas_sset(N*N, 0, phi_b, 1); // setting every element to 0
 
     // DEBUG: A[0] = 0 for debugging purposes only
-    for (i=0; i<m; i++) phi_b[A[i]] = b[i];
+    for (i=0; i<m; i++) phi_b[samples[i]] = y[i];
 
 
     // overwrites phi_b
@@ -149,7 +96,49 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x,
 
     // vec (just a transpose since C)
     vDSP_mtrans(b_t_pre, 1, b_t, 1, M, M);
-    // similar output to matlab's
+    // ---------===========------------------ done w/ b_t
+   
+
+
+
+
+    // **************************************** FISTA
+    for (k=0; k<ITERATIONS; k++){
+        t = FISTA_W(Xhat, samples, y, y2, x, b_t, t, M, N, 1, m);
+    }
+    // **************************************** FISTA
+    // this printf makes it work. Do I know why? No.
+    printf("After FISTA\n");
+
+    idwt2_full(Xhat, N, N);
+
+
+    writeImage(Xhat, N, N);
+
+    return 0;
+}
+
+float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_t,
+              float t, int M, int N, int k, int m){
+    // M: how large the (approx) image is
+    // N: how large the actual image is.
+    // k: how many iterations.
+    // A: the measurement matrix (m x n)
+    // b: the observations (m x 1), randperm
+    // the documentation for the BLAS stuff can be found at...
+    //      https://developer.apple.com/performance/accelerateframework.html
+    //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
+    int i;
+    int xx, yy;
+    float * x_nk = (float *)malloc(sizeof(float) * M * M);
+    float * x_k = (float *)malloc(sizeof(float) * M * M);
+
+
+    // step sizes
+    float t_k, t_nk;
+
+    // I is the N x N identity matrix
+    // b is the obeservation vector
 
     // FISTA iterations
     int jj;
