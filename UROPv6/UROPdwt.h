@@ -10,6 +10,10 @@
 #import <Foundation/Foundation.h>
 #import "Accelerate/Accelerate.h"
 
+
+
+
+
 @interface UROPdwt : UIViewController
 
 -(float *)vec:(float *)x width:(int)width height:(int)height;

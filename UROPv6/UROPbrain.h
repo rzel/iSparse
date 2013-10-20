@@ -9,6 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "Accelerate/Accelerate.h"
 
+// the libschitz constant
+#define LIP 2.0f
+
+// how many levels are we going to throw away?
+#define LEVELS 3.0f
+
+// sampling rate
+#define P 0.55
+
+// everything below this is set to 0.
+#define LAMBDA 12
 
 
 
@@ -18,14 +29,7 @@
 -(UIImage *)sampleImage:(UIImage *)image atRate:(float)rate;
 -(UIImage *)doWaveletKeepingLargestKTerms:(UIImage *)image
                                    coarse:(float)coarse;
-//-(float *)UIImageToRawArray:(UIImage *)image;
-//-(float *)makeMeasurementsOf:(UIImage *)image atRate:(float)p length:(int)length into:(NSMutableArray *)idx;
 -(void)makeIDX:(NSMutableArray *)idx ofLength:(int)pix;
-//-(void)makeMeasurements:(UIImage *)image atRate:(float)rate
-//                   into:(float *)red_y into:(float *)blue_y
-//                   into:(float *)green_y
-//               ofLength:(int)length
-//                    idx:(NSMutableArray *)idx;
 -(void)makeMeasurements:(UIImage *)image atRate:(float)rate
                     red:(float *)y_r green:(float *)y_b
                    blue:(float *)y_g

@@ -67,18 +67,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
 // what size should the image be when we stop the animation?
 #define N_STOP 64
 
-// the libschitz constant
-#define LIP 2.0
-
-// how many levels are we going to throw away?
-#define LEVELS 2
-
-// sampling rate
-#define P 0.55
-#define ITERATIONS 30
-// everything below this is set to 0.
-#define LAMBDA 0.05
-
 @interface UROPFinalViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
 @end
