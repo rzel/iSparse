@@ -145,6 +145,14 @@
                              red:y_r green:y_g blue:y_b 
                         ofLength:pix idx:idx];
     
+
+    float t_r = 1.618;
+    float t_g = 1.618;
+    float t_b = 1.618;
+    
+    [self.brain reconstructWithFISTA:self.imageView.image Xhat_r:xold1_b Xhat_g:xold1_b Xhat_b:xold1_b samples:y_b y_r:y_r y_g:y_g y_b:y_b y2_r:y_r y2_g:y_r y2_b:y_r x_r:y_r x_g:y_r x_b:y_r b_t_r:y_r b_t_g:y_r b_t_b:y_r t_r:&t_r t_g:&t_g t_b:&t_b M:256 N:256 k:30 m:20];
+    NSLog(@"%f", t_r);
+    
     // ensuring they're all zeros.
     for (i=0; i<pix; i++) {
         xold_r[i] = 0;

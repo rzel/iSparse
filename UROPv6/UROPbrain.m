@@ -37,6 +37,7 @@
 #define LAMBDA 0.05
 
 
+
 @interface UROPbrain ()
 @property (nonatomic, strong) UROPdwt *dwt;
 @end
@@ -730,9 +731,11 @@
         float * y2 = (float *)malloc(sizeof(float) * pix);
         float * x = (float *)malloc(sizeof(float) * pix);
         float * b_t = (float *)malloc(sizeof(float) * pix);
-        //float tnf = *tn;
-        
-        NSLog(@"%f", t_r);
+        float tf;
+        float trf_r = *t_r;
+        float trf_g = *t_g;
+        float trf_b = *t_b;
+
         
         for (n=0; n<3; n++) {
             // for each color plane
@@ -743,24 +746,25 @@
                 for (i=0; i<M*M; i++) {y2[i] = y2_r[i];}
                 for (i=0; i<M*M; i++) {x[i] = x_r[i];}
                 for (i=0; i<M*M; i++) {b_t[i] = b_t_r[i];}
+                tf = trf_b;
             } else  if (n==1) {
                 for (i=0; i<m; i++) {y[i]    = y_g[i];}
                 for (i=0; i<N*N; i++) {Xhat[i] = Xhat_g[i];}
                 for (i=0; i<M*M; i++) {y2[i] = y2_g[i];}
                 for (i=0; i<M*M; i++) {x[i] = x_g[i];}
                 for (i=0; i<M*M; i++) {b_t[i] = b_t_g[i];}
-                
+                tf = trf_g;
             } else if (n==2) {
                 for (i=0; i<m; i++) {y[i]    = y_b[i];}
                 for (i=0; i<N*N; i++) {Xhat[i] = Xhat_b[i];}
                 for (i=0; i<M*M; i++) {y2[i] = y2_b[i];}
                 for (i=0; i<M*M; i++) {x[i] = x_b[i];}
                 for (i=0; i<M*M; i++) {b_t[i] = b_t_b[i];}
-                
+                tf = trf_b;
             }
             
             // the do-what-you-want code should go here. actually performing the algorithm.
-            //t = FISTA_W(Xhat, samples, y, y2, x, b_t, t, M, N, 1, m);
+            tf = FISTA_W(Xhat, samples, y, y2, x, b_t, t, M, N, 1, m);
 
             // and then update
             if (n==0) {
@@ -769,20 +773,21 @@
                 for (i=0; i<M*M; i++) {y2_r[i] = y2[i];}
                 for (i=0; i<M*M; i++) {x_r[i] = x[i];}
                 for (i=0; i<M*M; i++) {b_t_r[i] = b_t[i];}
+                trf_r = tf;
             } else if (n==1) {
                 for (i=0; i<m; i++) {y_g[i]    = y[i];}
                 for (i=0; i<N*N; i++) {Xhat_g[i] = Xhat[i];}
                 for (i=0; i<M*M; i++) {y2_g[i] = y2[i];}
                 for (i=0; i<M*M; i++) {x_g[i] = x[i];}
                 for (i=0; i<M*M; i++) {b_t_g[i] = b_t[i];}
-                
+                trf_g = tf;
             } else if (n==2) {
                 for (i=0; i<m; i++) {y_b[i]    = y[i];}
                 for (i=0; i<N*N; i++) {Xhat_b[i] = Xhat[i];}
                 for (i=0; i<M*M; i++) {y2_b[i] = y2[i];}
                 for (i=0; i<M*M; i++) {x_b[i] = x[i];}
                 for (i=0; i<M*M; i++) {b_t_b[i] = b_t[i];}
-                
+                trf_b = tf;
             }
             
             // end of do what you want
@@ -790,7 +795,9 @@
             
             array      = [self.dwt putColorPlaneBackIn:Xhat into:array ofArea:N*N startingIndex:n];
         }
-        //*tn = tnf;
+        *t_r = trf_r;
+        *t_g = trf_g;
+        *t_b = trf_b;
         
         image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
         
