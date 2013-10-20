@@ -78,7 +78,6 @@ int main(){
     for (i=0; i<N*N; i++) phi_b[i] = 0;
     catlas_sset(N*N, 0, phi_b, 1); // setting every element to 0
 
-    // DEBUG: A[0] = 0 for debugging purposes only
     for (i=0; i<m; i++) phi_b[samples[i]] = y[i];
 
 

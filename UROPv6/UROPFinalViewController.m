@@ -183,6 +183,15 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     float * b_t_g = (float *)malloc(sizeof(float) * M * M);
     float * b_t_b = (float *)malloc(sizeof(float) * M * M);
     
+    float * b_t_r_pre = (float *)malloc(sizeof(float) * M * M);
+    float * b_t_g_pre = (float *)malloc(sizeof(float) * M * M);
+    float * b_t_b_pre = (float *)malloc(sizeof(float) * M * M);
+    
+    
+    // goes into y_r, y_g, y_b
+    [self.brain makeMeasurements:self.imageStay atRate:self.rate
+                             red:y_r green:y_g blue:y_b
+                        ofLength:pix idx:idx];
     for (i=0; i<N*N; i++) phi_b_r[i] = 0;
     for (i=0; i<N*N; i++) phi_b_g[i] = 0;
     for (i=0; i<N*N; i++) phi_b_b[i] = 0;
@@ -194,6 +203,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
         phi_b_g[samples[i]] = y_g[i];
         phi_b_b[samples[i]] = y_b[i];
     }
+    NSLog(@":::::::::::: %f", phi_b_r[0]);
     // overwrites phi_b
     dwt2_full(phi_b_r, N, N);
     dwt2_full(phi_b_g, N, N);
@@ -201,6 +211,22 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     vec(phi_b_r, N, N);
     vec(phi_b_g, N, N);
     vec(phi_b_b, N, N);
+    // reshaping
+    for (int xx=0; xx<M; xx++){
+        for (int yy=0; yy<M; yy++){
+            b_t_r_pre[yy*M + xx] = phi_b_r[yy*N + xx];
+            b_t_g_pre[yy*M + xx] = phi_b_g[yy*N + xx];
+            b_t_b_pre[yy*M + xx] = phi_b_b[yy*N + xx];
+        }
+    }
+
+    
+    // vec (just a transpose since C)
+    vDSP_mtrans(b_t_r_pre, 1, b_t_r, 1, M, M);
+    vDSP_mtrans(b_t_g_pre, 1, b_t_g, 1, M, M);
+    vDSP_mtrans(b_t_b_pre, 1, b_t_b, 1, M, M);
+    // ------------------------ done calculating b_t
+    NSLog(@":::::: %f", b_t_r[0]);
 
     
     for (i=0; i<N; i++) {
@@ -215,10 +241,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
         y_b[i] = 0;
     }
     
-    // goes into y_r, y_g, y_b
-    [self.brain makeMeasurements:self.imageStay atRate:self.rate 
-                             red:y_r green:y_g blue:y_b 
-                        ofLength:pix idx:idx];
+
     NSLog(@"%f", y_g[0]);
     
     // the thresholds.
@@ -241,19 +264,11 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     // it's all taken care of in IMAGE_STEP.
     // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
     static int showIts = 0;
-//    self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+    self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
     ANIMATION_COMMAND{
                          showIts=0;
                          ITERATION_STEP;
-        self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
-                                                         Xhat_r:Xhat_r Xhat_g:Xhat_g Xhat_b:Xhat_b \
-                                                        samples:samples                           \
-                                                            y_r:y_r     y_g:y_g     y_b:y_b          \
-                                                           y2_r:y2_r   y2_g:y2_g   y2_b:y2_b         \
-                                                            x_r:x_r     x_g:x_g     x_b:x_b          \
-                                                          b_t_r:b_t_r b_t_g:b_t_g b_t_b:b_t_b        \
-                                                            t_r:&t_r    t_g:&t_g    t_b:&t_b         \
-                                                              M:M N:N k:2 m:m];
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{

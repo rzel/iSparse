@@ -34,7 +34,7 @@
 #define P 0.55
 #define ITERATIONS 30
 // everything below this is set to 0.
-#define LAMBDA 0.05
+#define LAMBDA 12.75
 
 
 
@@ -766,7 +766,6 @@
             //NSLog(@"in reconstructWithFista: %f", tf);
             // the do-what-you-want code should go here. actually performing the algorithm.
             tf = FISTA_W(Xhat, samples, y, y2, x, b_t, tf, M, N, 1, m);
-            NSLog(@"%f", tf);
             // and then update
             if (n==0) {
                 for (i=0; i<m; i++) {y_r[i]    = y[i];}
@@ -861,6 +860,7 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
         // it *looks* like pL is working... the first iteration prints
         //      approximately correct
         x_nk = pL(y, A, b_t, N, m);
+        NSLog(@"::::: %d", A[4]);
         
         // do we have to copy it over? before the pL call?
         copy(x, x_k, M*M);
