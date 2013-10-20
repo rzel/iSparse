@@ -33,18 +33,19 @@
 #import "UROPFinalViewController.h"
 #import "UROPbrain.h"
 #import <QuartzCore/QuartzCore.h>
+#include "dwt.h"
 
 // change this to change the algorithm!
-#define IMAGE_STEP\
-       self.imageView.image = [self.brain reconstructWithIST:self.imageView.image \
-                                                    coarse:self.coarse idx:idx    \
-                                                    y_r:y_r y_g:y_g y_b:y_b       \
-                                                    rate:rate                     \
-                                                    xold_r:xold_r xold1_r:xold1_r \
-                                                    xold_g:xold_g xold1_g:xold1_g \
-                                                    xold_b:xold_b xold1_b:xold1_b \
-                                                    iterations:1 pastIterations:0 \
-                                                    tn:(float *)&tn];
+#define IMAGE_STEP \
+self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
+                        Xhat_r:Xhat_r Xhat_g:Xhat_g Xhat_b:Xhat_b \
+                        samples:samples                           \
+                         y_r:y_r     y_g:y_g     y_b:y_b          \
+                        y2_r:y2_r   y2_g:y2_g   y2_b:y2_b         \
+                         x_r:x_r     x_g:x_g     x_b:x_b          \
+                       b_t_r:b_t_r b_t_g:b_t_g b_t_b:b_t_b        \
+                         t_r:&t_r    t_g:&t_g    t_b:&t_b         \
+                           M:M N:N k:1 m:m];
 // updates the text that says "Iterations: 42"
 #define ITERATION_STEP \
        showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
@@ -64,6 +65,18 @@
 
 // what size should the image be when we stop the animation?
 #define N_STOP 64
+
+// the libschitz constant
+#define LIP 2.0
+
+// how many levels are we going to throw away?
+#define LEVELS 2
+
+// sampling rate
+#define P 0.55
+#define ITERATIONS 30
+// everything below this is set to 0.
+#define LAMBDA 0.05
 
 @interface UROPFinalViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
@@ -107,6 +120,8 @@
 // when the screen pops up
 - (void)viewDidLoad
 {
+    // TODO: make samples out of idx
+    // TODO: N vs. sqrt(N)
     [super viewDidLoad];    
  
     int i;
@@ -116,60 +131,108 @@
     
     float rate = self.rate;
     float pix = self.imageStay.size.width * self.imageStay.size.height;
+    int N = (int)sqrtf(pix);
     
-    // our variables for measurement/reconstructing.
-    // y_ holds the measurements for that color plane
-    float * y_r = (float *)malloc(sizeof(float) * pix * rate * 1.1);
-    float * y_g = (float *)malloc(sizeof(float) * pix * rate * 1.1);
-    float * y_b = (float *)malloc(sizeof(float) * pix * rate * 1.1);
+    int m = (int)floorf(rate * N * N);
+    int J = log2(N);
     
-    // xold_ holds the wavelet transform for that color plane
-    float * xold_r = (float *)malloc(sizeof(float) * pix * 1.1);
-    float * xold_g = (float *)malloc(sizeof(float) * pix * 1.1);
-    float * xold_b = (float *)malloc(sizeof(float) * pix * 1.1);
-    
-    // xold_{n-1}. the previous iteration of xold
-    float * xold1_r = (float *)malloc(sizeof(float) * pix * 1.1);
-    float * xold1_g = (float *)malloc(sizeof(float) * pix * 1.1);
-    float * xold1_b = (float *)malloc(sizeof(float) * pix * 1.1);
-    
-    // our threshold value.
-    float tn = 1;
+    // how many levels do we want to keep?
+    int L = LEVELS;
+    int Jn = J - L;
+    int M = powf(2, J-L);
 
     // the indicies where we want to sample
+    int * samples = (int *)malloc(sizeof(int) * N*N);
     NSMutableArray * idx = [[NSMutableArray alloc] init];
+    
     [self.brain makeIDX:idx ofLength:pix];
+    NSLog(@"%@", [idx objectAtIndex:0]);
+
+    for (i=0; i<N*N; i++) {
+        samples[i] = [[idx objectAtIndex:i] integerValue];
+    }
+
+
+
+
+    float * x_r = (float *)malloc(sizeof(float) * N*N);
+    float * x_g = (float *)malloc(sizeof(float) *  N*N);
+    float * x_b = (float *)malloc(sizeof(float) *  N*N);
+    
+    float * y_r = (float *)malloc(sizeof(float) * N*N);
+    float * y_g = (float *)malloc(sizeof(float) *  N*N);
+    float * y_b = (float *)malloc(sizeof(float) *  N*N);
+    
+    float * Xhat_r = (float *)malloc(sizeof(float) * N * N);
+    float * Xhat_g = (float *)malloc(sizeof(float) * N * N);
+    float * Xhat_b = (float *)malloc(sizeof(float) * N * N);
+    
+    float * y2_r = (float *)malloc(sizeof(float) * N * N);
+    float * y2_g = (float *)malloc(sizeof(float) * N * N);
+    float * y2_b = (float *)malloc(sizeof(float) * N * N);
+    
+    float * phi_b_r = (float *)malloc(sizeof(float) * N * N);
+    float * phi_b_g = (float *)malloc(sizeof(float) * N * N);
+    float * phi_b_b = (float *)malloc(sizeof(float) * N * N);
+    
+    float * phi_b_w = (float *)malloc(sizeof(float) * N * N);
+    float * b_t_pre = (float *)malloc(sizeof(float) * M * M);
+    
+    float * b_t_r = (float *)malloc(sizeof(float) * M * M);
+    float * b_t_g = (float *)malloc(sizeof(float) * M * M);
+    float * b_t_b = (float *)malloc(sizeof(float) * M * M);
+    
+    for (i=0; i<N*N; i++) phi_b_r[i] = 0;
+    for (i=0; i<N*N; i++) phi_b_g[i] = 0;
+    for (i=0; i<N*N; i++) phi_b_b[i] = 0;
+    catlas_sset(N*N, 0, phi_b_r, 1); // setting every element to 0
+    catlas_sset(N*N, 0, phi_b_g, 1); // setting every element to 0
+    catlas_sset(N*N, 0, phi_b_b, 1); // setting every element to 0
+    for (i=0; i<m; i++) {
+        phi_b_r[samples[i]] = y_r[i];
+        phi_b_g[samples[i]] = y_g[i];
+        phi_b_b[samples[i]] = y_b[i];
+    }
+    // overwrites phi_b
+    dwt2_full(phi_b_r, N, N);
+    dwt2_full(phi_b_g, N, N);
+    dwt2_full(phi_b_b, N, N);
+    vec(phi_b_r, N, N);
+    vec(phi_b_g, N, N);
+    vec(phi_b_b, N, N);
+
+    
+    for (i=0; i<N; i++) {
+        Xhat_r[i] = 0;
+        Xhat_g[i] = 0;
+        Xhat_b[i] = 0;
+        y2_r[i] = 0;
+        y2_g[i] = 0;
+        y2_b[i] = 0;
+        y_r[i] = 0;
+        y_g[i] = 0;
+        y_b[i] = 0;
+    }
     
     // goes into y_r, y_g, y_b
     [self.brain makeMeasurements:self.imageStay atRate:self.rate 
                              red:y_r green:y_g blue:y_b 
                         ofLength:pix idx:idx];
+    NSLog(@"%f", y_g[0]);
+    
+    // the thresholds.
+    float t_r = 1.0;
+    float t_g = 1.0;
+    float t_b = 1.0;
     
 
-    float t_r = 1.618;
-    float t_g = 1.618;
-    float t_b = 1.618;
-    
-    [self.brain reconstructWithFISTA:self.imageView.image Xhat_r:xold1_b Xhat_g:xold1_b Xhat_b:xold1_b samples:y_b y_r:y_r y_g:y_g y_b:y_b y2_r:y_r y2_g:y_r y2_b:y_r x_r:y_r x_g:y_r x_b:y_r b_t_r:y_r b_t_g:y_r b_t_b:y_r t_r:&t_r t_g:&t_g t_b:&t_b M:256 N:256 k:30 m:20];
-    NSLog(@"%f", t_r);
-    
-    // ensuring they're all zeros.
-    for (i=0; i<pix; i++) {
-        xold_r[i] = 0;
-        xold_g[i] = 0;
-        xold_b[i] = 0;
-        
-        xold1_r[i] = 0;
-        xold1_g[i] = 0;
-        xold1_b[i] = 0;
-    }
     
     
     // making those global variables the same. for the animation.
-    self.idx = idx; self.xold_g = xold_g;
-    self.xold_b = xold_b; self.xold_r = xold_r;
-    self.y_r = y_r; self.y_g = y_g; self.y_b = y_b;
-    self.finished = NO;
+//    self.idx = idx; self.xold_g = xold_g;
+//    self.xold_b = xold_b; self.xold_r = xold_r;
+//    self.y_r = y_r; self.y_g = y_g; self.y_b = y_b;
+//    self.finished = NO;
     
 
     
@@ -177,23 +240,28 @@
     // it's all taken care of in IMAGE_STEP.
     // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
     static int showIts = 0;
-    self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+//    self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
     ANIMATION_COMMAND{
                          showIts=0;
                          ITERATION_STEP
                          IMAGE_STEP;
+        NSLog(@"t_r = %f", t_r);
                      }
                      FINISHED_IF{
 
     ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP;
+        NSLog(@"t_r = %f", t_r);
+
                      }
                      FINISHED_IF{
 
     ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP;
+        NSLog(@"t_r = %f", t_r);
+
                      }
                      FINISHED_IF{
 

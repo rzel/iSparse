@@ -722,6 +722,7 @@
     int i, n;
     float * array = (float *)malloc(sizeof(float) * 4 * N * N);
 
+
     if (width < 256){
         image = [UIImage imageNamed:@"one.jpg"];
         return image;
@@ -746,7 +747,7 @@
                 for (i=0; i<M*M; i++) {y2[i] = y2_r[i];}
                 for (i=0; i<M*M; i++) {x[i] = x_r[i];}
                 for (i=0; i<M*M; i++) {b_t[i] = b_t_r[i];}
-                tf = trf_b;
+                tf = trf_r;
             } else  if (n==1) {
                 for (i=0; i<m; i++) {y[i]    = y_g[i];}
                 for (i=0; i<N*N; i++) {Xhat[i] = Xhat_g[i];}
@@ -762,10 +763,10 @@
                 for (i=0; i<M*M; i++) {b_t[i] = b_t_b[i];}
                 tf = trf_b;
             }
-            
+            //NSLog(@"in reconstructWithFista: %f", tf);
             // the do-what-you-want code should go here. actually performing the algorithm.
             tf = FISTA_W(Xhat, samples, y, y2, x, b_t, tf, M, N, 1, m);
-
+            //NSLog(@"%f", tf);
             // and then update
             if (n==0) {
                 for (i=0; i<m; i++) {y_r[i]    = y[i];}
@@ -798,6 +799,11 @@
         *t_r = trf_r;
         *t_g = trf_g;
         *t_b = trf_b;
+        // the assignment isn't working.
+        NSLog(@" Below the color changing thinger");
+        NSLog(@"    %f", *t_r);
+        NSLog(@"    %f", *t_g);
+        NSLog(@"    %f", *t_b);
         
         image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
         
@@ -863,16 +869,16 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
         // do we have to copy it over? before the pL call?
         copy(x, x_k, M*M);
         t_k = t;
-        
-        
         t_nk = 0.5*(1 + sqrt((1 + 4 * t_k * t_k)));
         
+
         for (i=0; i<M*M; i++){
             y[i] = x_nk[i] + ((t_k -1)/(t_nk))*(x_nk[i] - x_k[i]);
         }
         
         copy(x_nk, x, M*M);
         t = t_nk;
+        //NSLog(@"FISTA_W: %f", t);
         
     }
     
@@ -882,7 +888,7 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
     /*for (i=0; i<N*N; i++) Xhat[i] = 0;*/
     
     for (i=0; i<M*M; i++) The1[i] = x[i];
-    vec(The1, M*M);
+    vec(The1, M, M);
     
     for (i=0; i<N*N; i++) Temp1[i] = 0;
     for (xx=0; xx<M; xx++){
@@ -893,6 +899,7 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
     
     for (i=0; i<N*N; i++) Xhat[i] = Temp1[i];
     
+    NSLog(@"return: %f", t);
     return t;
 }
 

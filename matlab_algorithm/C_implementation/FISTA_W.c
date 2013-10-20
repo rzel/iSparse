@@ -179,7 +179,7 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
     /*for (i=0; i<N*N; i++) Xhat[i] = 0;*/
 
     for (i=0; i<M*M; i++) The1[i] = x[i];
-    vec(The1, M*M);
+    vec(The1, M,M);
 
     for (i=0; i<N*N; i++) Temp1[i] = 0;
     for (xx=0; xx<M; xx++){
