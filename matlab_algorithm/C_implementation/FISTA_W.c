@@ -60,58 +60,11 @@ int main(){
     float noise = 0;
     for (i=0; i<m; i++) y[i] = x[samples[i]] + noise * rand();
 
-    // *****************************************************
-    // *********** START OF FISTA NORMALLY *****************
-    // *****************************************************
-    float * x = (float *)malloc(sizeof(float) * M * M);
-    float * x_nk = (float *)malloc(sizeof(float) * M * M);
-    float * x_k = (float *)malloc(sizeof(float) * M * M);
-    float * y = (float *)malloc(sizeof(float) * M * M);
-    float * phi_b = (float *)malloc(sizeof(float) * N * N);
-    float * phi_b_w = (float *)malloc(sizeof(float) * N * N);
-    float * b_t = (float *)malloc(sizeof(float) * M * M);
-    float * b_t_pre = (float *)malloc(sizeof(float) * M * M);
-    for (i=0; i<N*N; i++) phi_b[i] = 0;
-
-
-    // step sizes
-    float t, t_k, t_nk;
-    t = 1;
-
-    for (i=0; i<M*M; i++) x[i] = 0;
-    // changing every element of y to x
-    cblas_scopy(M * M, x, 1, y, 1);
-
-    // I is the N x N identity matrix
-    // b is the obeservation vector
-
-    // precalculation H'*I'*b
-    catlas_sset(N*N, 0, phi_b, 1); // setting every element to 0
-
-    // DEBUG: A[0] = 0 for debugging purposes only
-    for (i=0; i<m; i++) phi_b[A[i]] = b[i];
-
-    // overwrites phi_b
-    dwt2_full(phi_b, N, N);
-    vec(phi_b, N, N);
-
-    // reshaping
-    for (xx=0; xx<M; xx++){
-        for (yy=0; yy<M; yy++){
-            b_t_pre[yy*M + xx] = phi_b[yy*N + xx];
-        }
-    }
-
-    // vec (just a transpose since C)
-    vDSP_mtrans(b_t_pre, 1, b_t, 1, M, M);
-    // similar output to matlab's
-
-    // *****************************************************
-    // *********** END OF FISTA NORMALLY *****************
-    // *****************************************************
-
     int k = 30; // number of iterations
     the1 = FISTA_W(samples, y, M, N, k, m);
+    printf("******the image values*************************\n");
+    for (i=0; i<12; i++) printf("%f\n", the1[i]);
+
 
     for (i=0; i<M*M; i++) The1[i] = the1[i];
     vec(The1, M*M);
@@ -141,10 +94,55 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
     // the documentation for the BLAS stuff can be found at...
     //      https://developer.apple.com/performance/accelerateframework.html
     //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
+    int i;
+    int xx, yy;
+    float * x = (float *)malloc(sizeof(float) * M * M);
+    float * x_nk = (float *)malloc(sizeof(float) * M * M);
+    float * x_k = (float *)malloc(sizeof(float) * M * M);
+    float * y = (float *)malloc(sizeof(float) * M * M);
+    float * phi_b = (float *)malloc(sizeof(float) * N * N);
+    float * phi_b_w = (float *)malloc(sizeof(float) * N * N);
+    float * b_t = (float *)malloc(sizeof(float) * M * M);
+    float * b_t_pre = (float *)malloc(sizeof(float) * M * M);
+    for (i=0; i<N*N; i++) phi_b[i] = 0;
+
+
+    // step sizes
+    float t, t_k, t_nk;
+    t = 1;
+
+    for (i=0; i<M*M; i++) x[i] = 0;
+    // changing every element of y to x
+    cblas_scopy(M * M, x, 1, y, 1);
+
+
+    // I is the N x N identity matrix
+    // b is the obeservation vector
+
+    // precalculation H'*I'*b
+    catlas_sset(N*N, 0, phi_b, 1); // setting every element to 0
+
+    // DEBUG: A[0] = 0 for debugging purposes only
+    for (i=0; i<m; i++) phi_b[A[i]] = b[i];
+
+
+    // overwrites phi_b
+    dwt2_full(phi_b, N, N);
+    vec(phi_b, N, N);
+
+
+    // reshaping
+    for (xx=0; xx<M; xx++){
+        for (yy=0; yy<M; yy++){
+            b_t_pre[yy*M + xx] = phi_b[yy*N + xx];
+        }
+    }
+
+    // vec (just a transpose since C)
+    vDSP_mtrans(b_t_pre, 1, b_t, 1, M, M);
+    // similar output to matlab's
 
     // FISTA iterations
-    // this is where we want the function to start in iOS.
-    // we need to precalculate b_t and return the right threshold
     int jj;
     for (jj=0; jj<k; jj++){
         // if using printf in this loop, use fflush(stdout)
