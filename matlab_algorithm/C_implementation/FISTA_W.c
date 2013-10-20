@@ -60,40 +60,9 @@ int main(){
     float noise = 0;
     for (i=0; i<m; i++) y[i] = x[samples[i]] + noise * rand();
 
-    int k = 30; // number of iterations
-    the1 = FISTA_W(samples, y, M, N, k, m);
-    printf("******the image values*************************\n");
-    for (i=0; i<12; i++) printf("%f\n", the1[i]);
-
-
-    for (i=0; i<M*M; i++) The1[i] = the1[i];
-    vec(The1, M*M);
-
-    for (i=0; i<N*N; i++) Temp1[i] = 0;
-    for (xx=0; xx<M; xx++){
-        for (yy=0; yy<M; yy++){
-            Temp1[yy*N + xx] = The1[yy*M + xx];
-        }
-    }
-
-    for (i=0; i<N*N; i++) Xhat[i] = Temp1[i];
-    idwt2_full(Xhat, N, N);
-
-
-    writeImage(Xhat, N, N);
-
-    return 0;
-}
-
-float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
-    // M: how large the (approx) image is
-    // N: how large the actual image is.
-    // k: how many iterations.
-    // A: the measurement matrix (m x n)
-    // b: the observations (m x 1), randperm
-    // the documentation for the BLAS stuff can be found at...
-    //      https://developer.apple.com/performance/accelerateframework.html
-    //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
+    // *****************************************************
+    // *********** START OF FISTA NORMALLY *****************
+    // *****************************************************
     int i;
     int xx, yy;
     float * x = (float *)malloc(sizeof(float) * M * M);
@@ -142,7 +111,48 @@ float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
     vDSP_mtrans(b_t_pre, 1, b_t, 1, M, M);
     // similar output to matlab's
 
+    // *****************************************************
+    // *********** END OF FISTA NORMALLY *****************
+    // *****************************************************
+
+    int k = 30; // number of iterations
+    the1 = FISTA_W(samples, y, M, N, k, m);
+    printf("******the image values*************************\n");
+    for (i=0; i<12; i++) printf("%f\n", the1[i]);
+
+
+    for (i=0; i<M*M; i++) The1[i] = the1[i];
+    vec(The1, M*M);
+
+    for (i=0; i<N*N; i++) Temp1[i] = 0;
+    for (xx=0; xx<M; xx++){
+        for (yy=0; yy<M; yy++){
+            Temp1[yy*N + xx] = The1[yy*M + xx];
+        }
+    }
+
+    for (i=0; i<N*N; i++) Xhat[i] = Temp1[i];
+    idwt2_full(Xhat, N, N);
+
+
+    writeImage(Xhat, N, N);
+
+    return 0;
+}
+
+float * FISTA_W(int * A, float * b, int M, int N, int k, int m){
+    // M: how large the (approx) image is
+    // N: how large the actual image is.
+    // k: how many iterations.
+    // A: the measurement matrix (m x n)
+    // b: the observations (m x 1), randperm
+    // the documentation for the BLAS stuff can be found at...
+    //      https://developer.apple.com/performance/accelerateframework.html
+    //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
+
     // FISTA iterations
+    // this is where we want the function to start in iOS.
+    // we need to precalculate b_t and return the right threshold
     int jj;
     for (jj=0; jj<k; jj++){
         // if using printf in this loop, use fflush(stdout)
