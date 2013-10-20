@@ -64,7 +64,7 @@ int main(){
     // **************************************** FISTA
     the1 = FISTA_W(samples, y, M, N, k, m);
     // **************************************** FISTA
-    // keeping this printf makes it work. Do I know why? No.
+    // keeping this printf makes it work. Do I know why? No. 
     printf("After FISTA\n");
 
     for (i=0; i<M*M; i++) The1[i] = the1[i];
