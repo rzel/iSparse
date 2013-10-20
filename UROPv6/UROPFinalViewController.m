@@ -45,12 +45,13 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
                          x_r:x_r     x_g:x_g     x_b:x_b          \
                        b_t_r:b_t_r b_t_g:b_t_g b_t_b:b_t_b        \
                          t_r:&t_r    t_g:&t_g    t_b:&t_b         \
-                           M:M N:N k:1 m:m];
+                           M:M N:N k:2 m:m];
 // updates the text that says "Iterations: 42"
 #define ITERATION_STEP \
        showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
 
-#define ANIMATION_COMMAND     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState \
+#define ANIMATION_COMMAND     [UIView animateWithDuration:0.0 delay:0.0 \
+                                    options:UIViewAnimationOptionBeginFromCurrentState \
                                                animations:^(void)
 
 #define FINISHED_IF completion:^(BOOL finished){ \
@@ -221,11 +222,11 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     NSLog(@"%f", y_g[0]);
     
     // the thresholds.
-    float t_r = 1.0;
-    float t_g = 1.0;
-    float t_b = 1.0;
+    __block float t_r = 1.0;
+    __block float t_g = 1.0;
+    __block float t_b = 1.0;
     
-
+    // "const" float *
     
     
     // making those global variables the same. for the animation.
@@ -243,16 +244,23 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
 //    self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
     ANIMATION_COMMAND{
                          showIts=0;
-                         ITERATION_STEP
-                         IMAGE_STEP;
-        NSLog(@"t_r = %f", t_r);
+                         ITERATION_STEP;
+        self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
+                                                         Xhat_r:Xhat_r Xhat_g:Xhat_g Xhat_b:Xhat_b \
+                                                        samples:samples                           \
+                                                            y_r:y_r     y_g:y_g     y_b:y_b          \
+                                                           y2_r:y2_r   y2_g:y2_g   y2_b:y2_b         \
+                                                            x_r:x_r     x_g:x_g     x_b:x_b          \
+                                                          b_t_r:b_t_r b_t_g:b_t_g b_t_b:b_t_b        \
+                                                            t_r:&t_r    t_g:&t_g    t_b:&t_b         \
+                                                              M:M N:N k:2 m:m];
+
                      }
                      FINISHED_IF{
 
     ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP;
-        NSLog(@"t_r = %f", t_r);
 
                      }
                      FINISHED_IF{
@@ -260,8 +268,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     ANIMATION_COMMAND{
                          ITERATION_STEP
                          IMAGE_STEP;
-        NSLog(@"t_r = %f", t_r);
-
                      }
                      FINISHED_IF{
 

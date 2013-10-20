@@ -20,8 +20,8 @@ void function(float * t_r){
 
     trf_r = *t_r;
     tf = trf_r;
+
     tf = f2(tf);
-    printf("   %f\n", tf);
 
     // change from trf to trf_r
     trf_r = tf;

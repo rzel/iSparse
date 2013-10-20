@@ -766,7 +766,7 @@
             //NSLog(@"in reconstructWithFista: %f", tf);
             // the do-what-you-want code should go here. actually performing the algorithm.
             tf = FISTA_W(Xhat, samples, y, y2, x, b_t, tf, M, N, 1, m);
-            //NSLog(@"%f", tf);
+            NSLog(@"%f", tf);
             // and then update
             if (n==0) {
                 for (i=0; i<m; i++) {y_r[i]    = y[i];}
@@ -800,11 +800,7 @@
         *t_g = trf_g;
         *t_b = trf_b;
         // the assignment isn't working.
-        NSLog(@" Below the color changing thinger");
-        NSLog(@"    %f", *t_r);
-        NSLog(@"    %f", *t_g);
-        NSLog(@"    %f", *t_b);
-        
+
         image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
         
         
@@ -898,8 +894,7 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
     }
     
     for (i=0; i<N*N; i++) Xhat[i] = Temp1[i];
-    
-    NSLog(@"return: %f", t);
+
     return t;
 }
 
