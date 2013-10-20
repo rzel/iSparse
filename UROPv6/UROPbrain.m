@@ -708,7 +708,7 @@
                             y2_r:(float *)y2_r y2_g:(float *)y2_g y2_b:(float *)y2_b
                              x_r:(float *)x_r x_g:(float *)x_g x_b:(float *)x_b
                            b_t_r:(float *)b_t_r  b_t_g:(float *)b_t_g  b_t_b:(float *)b_t_b
-                             t_r:(float)t_r t_g:(float)t_g t_b:(float)t_b
+                             t_r:(float *)t_r t_g:(float *)t_g t_b:(float *)t_b
                                M:(int)M N:(int)N k:(int)k m:(int)m
 {
     // t = FISTA_W(Xhat, samples, y, y2, x, b_t, t, M, N, 1, m);
@@ -731,6 +731,8 @@
         float * x = (float *)malloc(sizeof(float) * pix);
         float * b_t = (float *)malloc(sizeof(float) * pix);
         //float tnf = *tn;
+        
+        NSLog(@"%f", t_r);
         
         for (n=0; n<3; n++) {
             // for each color plane
@@ -758,7 +760,8 @@
             }
             
             // the do-what-you-want code should go here. actually performing the algorithm.
-            
+            //t = FISTA_W(Xhat, samples, y, y2, x, b_t, t, M, N, 1, m);
+
             // and then update
             if (n==0) {
                 for (i=0; i<m; i++) {y_r[i]    = y[i];}
