@@ -34,8 +34,6 @@ function [x] = FISTA_W(A, b, opts)
     N     = opts.N;     % N^2 == image dimension
     n     = N^2;
     % [~, n] = size(A);
-    display(M);
-    display(N);
 
     x = zeros(M^2,1);     % output initialization
     y = x;                % initialization for FISTA

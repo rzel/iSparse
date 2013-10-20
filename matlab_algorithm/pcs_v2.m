@@ -17,7 +17,7 @@ load('lena.mat');
 %load('dome.mat');
 
 %% Parameters and Data
-N = 2^9;                    % input image dimension N x N
+N = 2^11;                    % input image dimension N x N
 J = log2(N);                 % how many levels there are
 X = imresize(image, [N, N]); % resizing the image
 x = mat2gray(X(:));          % making it gray scale
@@ -30,7 +30,7 @@ M = 2^((J - L)); % the size that we want to keep
 if(Jn > J) display('Jn should be less than J'); end
 
 %% Get random signals
-m = floor(0.5*N^2);  % # of measurements
+m = floor(0.15*N^2);  % # of measurements
 
 % where to sample
 samples = randperm(N^2);
@@ -44,7 +44,7 @@ display(y(1:10));
 %% Use SPAMS to reconstruct
 
 % FISTA Parameters
-opts.k     = 10;   % iterations
+opts.k     = 40;   % iterations
 opts.L     = 2;    % Lipschitz constant
 opts.lam   = 0.05; % lam -- sparsity (everything below this =  = 0)
 opts.M     = M;    % size of sampled image

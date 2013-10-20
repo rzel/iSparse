@@ -3,13 +3,9 @@ clear;
 
 % Here I am trying to make color images
 
-% addpath('/Users/DON/Dropbox/my work/Projects/ICASSP - 2014 PCS/rwt');
-% addpath('/Users/DON/Dropbox/my work/Projects/ICASSP - 2014 PCS/functions');
-% addpath('/Users/DON/Dropbox/my work/Projects/ICASSP - 2014 PCS/data');
-
-addpath('/Users/admin/Dropbox/my work/Projects/ICASSP - 2014 PCS/rwt');
-addpath('/Users/admin/Dropbox/my work/Projects/ICASSP - 2014 PCS/functions');
-addpath('/Users/admin/Dropbox/my work/Projects/ICASSP - 2014 PCS/data');
+addpath('./rwt');
+addpath('./functions');
+addpath('./data');
 % load('smooth.mat');
 % load('smooth2.mat');
 % load('lena.mat');
@@ -21,7 +17,7 @@ load('obama_full_C.mat');
 % load('dome_C.mat');
 %% Parameters and Data
 
-N = 2^11;        % input image dimension N x N
+N = 2^12;        % input image dimension N x N
 J = log2(N);
 
 X1 = double(imresize(obama_full(:,:,1), [N, N]))/255;
@@ -50,7 +46,7 @@ end
 
 
 %% Get random signals
-m = floor(0.2*N^2);            % # of measurements
+m = floor(0.1*N^2);            % # of measurements
 
 % m = 0.2*N^2;
 % m = 50000;
@@ -68,18 +64,19 @@ y3 = x3(samples(1:m)) + sig*randn(m,1);
 %% Use SPAMS to reconstruct
 
 % FISTA Parameters
-opts.k = 30;
+opts.k = 50;
 opts.L = 2;
 opts.lam = 0.05;
 opts.M = M;
 opts.N = N;
 opts.level = L;
 
+tic;
 % Call FISTA
 the1 = FISTA_W(samples(1:m), y1, opts);
 the2 = FISTA_W(samples(1:m), y2, opts);
 the3 = FISTA_W(samples(1:m), y3, opts);
-
+toc;
 
 % Get the reconstruction
 The1 = reshape(the1, [M, M]);

@@ -10,7 +10,10 @@
 #define LIP 2.0
 
 // how many levels are we going to throw away?
-#define LEVELS 2
+#define LEVELS 1
+
+// sampling rate
+#define P 0.20
 
 // everything below this is set to 0.
 #define LAMBDA 0.05
@@ -43,7 +46,7 @@ int main(){
     // TODO: vectorize
 
     // how many samples should we take?
-    int m = floor(0.5 * N * N);
+    int m = floor(P * N * N);
 
     // the indicies where we sample.
     int * samples = (int *)malloc(sizeof(int) * N * N);
