@@ -764,7 +764,7 @@
             }
             
             // the do-what-you-want code should go here. actually performing the algorithm.
-            tf = FISTA_W(Xhat, samples, y, y2, x, b_t, t, M, N, 1, m);
+            tf = FISTA_W(Xhat, samples, y, y2, x, b_t, tf, M, N, 1, m);
 
             // and then update
             if (n==0) {
