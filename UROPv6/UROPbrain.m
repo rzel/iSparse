@@ -792,6 +792,7 @@
             
             // end of do what you want
             idwt2_full(Xhat, N, N);
+            vec(Xhat, N, N);
             
             array      = [self.dwt putColorPlaneBackIn:Xhat into:array ofArea:N*N startingIndex:n];
         }
