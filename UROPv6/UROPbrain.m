@@ -25,16 +25,16 @@
 
 
 // the libschitz constant
-#define LIP 2.0
+#define LIP 2.0f
 
 // how many levels are we going to throw away?
-#define LEVELS 2
+#define LEVELS 1.0f
 
 // sampling rate
 #define P 0.55
-#define ITERATIONS 30
+
 // everything below this is set to 0.
-#define LAMBDA 12.75
+#define LAMBDA 12
 
 
 

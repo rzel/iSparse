@@ -141,6 +141,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     int L = LEVELS;
     int Jn = J - L;
     int M = powf(2, J-L);
+    NSLog(@"%d", M);
 
     // the indicies where we want to sample
     int * samples = (int *)malloc(sizeof(int) * N*N);

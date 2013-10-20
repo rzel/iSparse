@@ -30,7 +30,7 @@
 #import "UROPbrain.h"
 
 // how large is the image?
-#define IMAGE_SIZE 256
+#define IMAGE_SIZE 1024
 
 @interface UROP3rdViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
