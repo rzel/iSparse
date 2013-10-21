@@ -110,7 +110,7 @@
     float k   = iter;
     float L   = LIP;
     float lam = LAMBDA;
-    int level = LEVELS;
+    int level = level;
     N = (int)sqrt(N); // already passed in. width!
     int n = (int)powf(1.0*N, 2.0);
     int M = (int)N / powf(2, L);
@@ -884,6 +884,11 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
     }
     
     for (i=0; i<N*N; i++) Xhat[i] = Temp1[i];
+    
+    free(The1);
+    free(Temp1);
+    free(x_k);
+    free(x_nk);
 
     return t;
 }
@@ -1011,10 +1016,13 @@ float * pL(float * y, int * A, float * b_t, int N, int m, int levels){
     free(h);
     free(Yt);
     free(y_t);
+    free(xk);
     free(temp_x);
     free(temp_1);
     free(phi_y);
     free(phi_y_w);
+    
+
     return xk;
 }
 @end

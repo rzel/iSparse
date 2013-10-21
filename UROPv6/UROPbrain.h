@@ -13,7 +13,7 @@
 #define LIP 2.0f
 
 // how many levels are we going to throw away?
-#define LEVELS 5.0f
+//#define LEVELS 5.0f
 
 // sampling rate
 #define P 0.55

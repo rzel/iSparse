@@ -10,8 +10,8 @@
             <objects>
                 <viewController id="2" customClass="UROPMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wG3-Vm-p1n"/>
-                        <viewControllerLayoutGuide type="bottom" id="XkA-ru-2Jt"/>
+                        <viewControllerLayoutGuide type="top" id="2nl-Fp-5bI"/>
+                        <viewControllerLayoutGuide type="bottom" id="otb-g6-P4U"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -65,8 +65,8 @@
             <objects>
                 <viewController id="mYJ-hC-hDg" customClass="UROPInfo" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AOh-OE-fLR"/>
-                        <viewControllerLayoutGuide type="bottom" id="dEh-v1-6gD"/>
+                        <viewControllerLayoutGuide type="top" id="As4-PE-H3N"/>
+                        <viewControllerLayoutGuide type="bottom" id="0ZM-pw-Iuc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sOc-mt-aZp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -103,8 +103,8 @@
             <objects>
                 <viewController title="UROP2ndViewController" id="Opu-mG-0GY" customClass="UROP2ndViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rcy-f5-5Do"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ib2-64-GR2"/>
+                        <viewControllerLayoutGuide type="top" id="ITA-iP-JAc"/>
+                        <viewControllerLayoutGuide type="bottom" id="DPj-z9-zSp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="h9h-Xz-DmK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -160,8 +160,8 @@
             <objects>
                 <viewController title="UROP3rdViewController" id="cyA-Xc-H01" customClass="UROP3rdViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UDf-Ir-2O9"/>
-                        <viewControllerLayoutGuide type="bottom" id="fXD-bN-5Kv"/>
+                        <viewControllerLayoutGuide type="top" id="OOh-S5-HuB"/>
+                        <viewControllerLayoutGuide type="bottom" id="PBL-Ex-SGd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Sf4-Vd-byn">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
@@ -179,13 +179,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sampling rate: 50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCt-A2-dMm">
-                                <rect key="frame" x="0.0" y="332" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="340" width="320" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-WF-Ktu">
-                                <rect key="frame" x="18" y="351" width="284" height="34"/>
+                                <rect key="frame" x="18" y="359" width="284" height="34"/>
                                 <connections>
                                     <action selector="samplingSliderChanged:" destination="cyA-Xc-H01" eventType="valueChanged" id="2B0-ye-82t"/>
                                 </connections>
@@ -230,12 +230,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="H9v-8K-KJv">
-                                <rect key="frame" x="18" y="392" width="284" height="34"/>
+                                <rect key="frame" x="18" y="420" width="284" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="levelSliderChanged:" destination="cyA-Xc-H01" eventType="valueChanged" id="BfQ-7p-3o6"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wtp-n1-H3z">
+                                <rect key="frame" x="20" y="400" width="289" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -248,6 +255,7 @@
                         <outlet property="infoButton" destination="oav-e6-lId" id="rWS-bl-hFA"/>
                         <outlet property="label" destination="BCt-A2-dMm" id="JD9-10-Yus"/>
                         <outlet property="levelSlider" destination="H9v-8K-KJv" id="cb6-sv-8UU"/>
+                        <outlet property="levelText" destination="Wtp-n1-H3z" id="6py-jZ-H9z"/>
                         <outlet property="reconstructButton2" destination="g0A-jn-sRv" id="NIE-w9-MBU"/>
                         <outlet property="samplingSlider" destination="Quf-WF-Ktu" id="S0b-8f-GT0"/>
                     </connections>
@@ -261,8 +269,8 @@
             <objects>
                 <viewController title="UROPFinalViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="MW8-sq-QGe" customClass="UROPFinalViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="p1p-WU-A2D"/>
-                        <viewControllerLayoutGuide type="bottom" id="UYj-fc-zhx"/>
+                        <viewControllerLayoutGuide type="top" id="0QC-7g-ugz"/>
+                        <viewControllerLayoutGuide type="bottom" id="LyA-SZ-oCQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D8l-sr-5YX">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>

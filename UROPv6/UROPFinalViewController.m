@@ -126,7 +126,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     int J = log2(N);
     
     // how many levels do we want to keep?
-    int L = LEVELS;
+    int L = self.levels;
     int Jn = J - L;
     int M = powf(2, J-L);
     NSLog(@"%d", M);

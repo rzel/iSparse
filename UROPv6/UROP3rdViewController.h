@@ -27,6 +27,7 @@ UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewTest;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reconstructButton;
 - (IBAction)buttonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *levelText;
 
 @property (weak, nonatomic) IBOutlet UIButton *reconstructButton2;
 @property (weak, nonatomic) IBOutlet UIButton *choose;

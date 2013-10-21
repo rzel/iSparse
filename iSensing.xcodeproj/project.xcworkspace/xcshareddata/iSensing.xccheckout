@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>ECC0814F-922C-4BDB-A45B-3C163A2746C2</string>
+	<string>3CF8CD91-A003-4F79-8829-6C14FCA662CA</string>
 	<key>IDESourceControlProjectName</key>
 	<string>iSensing</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4315AE5A-93B5-4E96-8165-6F253308938D</key>
+		<key>80E52FF7-18FB-4FBB-A49E-4A08F101A437</key>
 		<string>https://github.com/scottsievert/iSensing.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>iSensing.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4315AE5A-93B5-4E96-8165-6F253308938D</key>
+		<key>80E52FF7-18FB-4FBB-A49E-4A08F101A437</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4315AE5A-93B5-4E96-8165-6F253308938D</string>
+	<string>80E52FF7-18FB-4FBB-A49E-4A08F101A437</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4315AE5A-93B5-4E96-8165-6F253308938D</string>
+			<string>80E52FF7-18FB-4FBB-A49E-4A08F101A437</string>
 			<key>IDESourceControlWCCName</key>
 			<string>iSensing</string>
 		</dict>

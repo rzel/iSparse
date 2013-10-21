@@ -223,6 +223,7 @@ float *vec(float * x, int width, int height){
     cblas_scopy(width*height, y, 1, x, 1);
     
     // don't listen to!
+    free(y);
     return y;
 }
 float S2sign(float x){

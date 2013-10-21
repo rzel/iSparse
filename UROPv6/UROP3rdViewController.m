@@ -32,6 +32,8 @@
 // how large is the image?
 #define IMAGE_SIZE 1024
 
+#define MAX_LEVELS 5.0f
+
 @interface UROP3rdViewController ()
 @property (nonatomic, strong) UROPbrain *brain;
 
@@ -53,9 +55,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    NSLog(@"With my code?");
     self.rate = 0.5;
     self.levelSlider.continuous = NO;
+    self.levelText.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+    
+    self.levels = 2;
+    self.levelSlider.value = self.levels / MAX_LEVELS;
+    self.levelText.text = [NSString stringWithFormat:@"Dropped detail levels: %d", self.levels];
+    self.levelText.enabled = YES;
+    self.levelText.textAlignment = NSTextAlignmentCenter;
 
     // making the sampling rate equal to 50% at first, resizing the image
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 50.0];
@@ -85,17 +94,14 @@
     [self.reconstructButton2 setBackgroundColor:[UIColor colorWithRed:100/255.0 green:191/255.0 blue:231/255.0 alpha:1]];
     [self.reconstructButton2 setBackgroundImage:[UIImage imageNamed:@"blue.png"] forState:UIControlStateHighlighted];
     [self.reconstructButton2 setTitleColor:selectedTitle forState:UIControlStateHighlighted];
-    
+     
     [self.infoButton addTarget:self action:@selector(infoPressed) forControlEvents:UIControlEventTouchUpInside];
     UIImage * infoImage = [UIImage imageNamed:@"info-larger.png"];
     [self.infoButton setBackgroundImage:infoImage forState:UIControlStateNormal];
     [self.infoButton setTitle:@"" forState:UIControlStateNormal];
 
 }
--(void)infoPressed{
-    NSLog(@"info pressed!");
-    
-}
+
 - (IBAction)samplingSliderChanged:(id)sender {
     float rate = 0.6*self.samplingSlider.value + 0.2;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
@@ -103,9 +109,12 @@
     self.rate = rate;
 }
 - (IBAction)levelSliderChanged:(id)sender {
-    int level = (int)floor(self.levelSlider.value * 8);
+    int level = (int)floor(self.levelSlider.value * MAX_LEVELS);
     NSLog(@"%d", level);
+    self.levelSlider.value = level / MAX_LEVELS;
     self.levels = level;
+    self.levelText.text = [NSString stringWithFormat:@"Dropped detail levels: %d", self.levels];
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
