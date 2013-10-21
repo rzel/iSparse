@@ -24,6 +24,9 @@
 #include "dwt.h"
 #include "nice.h"
 
+// below this value, we stop the animation
+#define N_STOP 256
+
 // #define....
 // LAMBDA, LEVELS, LIPSHITZ_CONTANT defined in UROPbrain.h
 //      -- Scott Sievert, 2013-10-20, sieve121 (at) umn.edu
@@ -496,7 +499,7 @@
     float * array = (float *)malloc(sizeof(float) * 4 * N * N);
 
 
-    if (width < 256){
+    if (width < N_STOP){
         image = [UIImage imageNamed:@"one.jpg"];
         return image;
     } else{
@@ -510,7 +513,7 @@
         float trf_g = *t_g;
         float trf_b = *t_b;
 
-         
+        
         for (n=0; n<3; n++) {
             // for each color plane
             // properly init
