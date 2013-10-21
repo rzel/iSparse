@@ -69,7 +69,6 @@
 		D296FA4C1814A6B200A55D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = UROPv6/en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D296FA4E1814A6B200A55D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = UROPv6/en.lproj/MainStoryboard5.storyboard; sourceTree = "<group>"; };
 		D2AADE7E1814D3E4006CC985 /* nice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nice.c; sourceTree = "<group>"; };
-		D2AADE811814D59A006CC985 /* nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nice.h; path = ../nice.h; sourceTree = "<group>"; };
 		D2BBCE71181456E4000A0C50 /* dwt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dwt.c; sourceTree = "<group>"; };
 		D2BBCE72181456E4000A0C50 /* dwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dwt.h; sourceTree = "<group>"; };
 		D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPdwt.h; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		D2E39D3618156DD200D09238 /* wait_spinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait_spinner.png; sourceTree = "<group>"; };
 		D2E39D3718156DD200D09238 /* wati2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wati2.png; sourceTree = "<group>"; };
 		D2E39D3818156DD200D09238 /* wati2.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wati2.xcf; sourceTree = "<group>"; };
+		D2E39D4918156EBF00D09238 /* nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nice.h; sourceTree = "<group>"; };
 		D2EB30C01777C37A0050D442 /* wait_spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wait_spinner.gif; sourceTree = "<group>"; };
 		D2F3479817F4788A00891B89 /* UROPInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPInfo.h; sourceTree = "<group>"; };
 		D2F3479917F4788A00891B89 /* UROPInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROPInfo.m; sourceTree = "<group>"; };
@@ -164,14 +164,14 @@
 		D227B93217F4D7400022546D /* brains */ = {
 			isa = PBXGroup;
 			children = (
-				D2365EA816D432E70017E15A /* UROPbrain.h */,
-				D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */,
-				D2365EA916D432E70017E15A /* UROPbrain.m */,
-				D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */,
-				D2BBCE71181456E4000A0C50 /* dwt.c */,
+				D2E39D4918156EBF00D09238 /* nice.h */,
 				D2AADE7E1814D3E4006CC985 /* nice.c */,
-				D2AADE811814D59A006CC985 /* nice.h */,
+				D2365EA816D432E70017E15A /* UROPbrain.h */,
+				D2365EA916D432E70017E15A /* UROPbrain.m */,
+				D2BBCE71181456E4000A0C50 /* dwt.c */,
 				D2BBCE72181456E4000A0C50 /* dwt.h */,
+				D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */,
+				D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */,
 			);
 			name = brains;
 			sourceTree = "<group>";
@@ -180,8 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				D2F3479817F4788A00891B89 /* UROPInfo.h */,
-				D2DF753A16CF174A00DF158B /* UROPMainViewController.h */,
 				D2F3479917F4788A00891B89 /* UROPInfo.m */,
+				D2DF753A16CF174A00DF158B /* UROPMainViewController.h */,
 				D2DF753B16CF174A00DF158B /* UROPMainViewController.m */,
 			);
 			name = main/info;
@@ -191,8 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				D2DF754516CF181100DF158B /* UROP2ndViewController.h */,
-				D2DF754E16CF209300DF158B /* UROP3rdViewController.h */,
 				D2DF754616CF181100DF158B /* UROP2ndViewController.m */,
+				D2DF754E16CF209300DF158B /* UROP3rdViewController.h */,
 				D2DF754F16CF209400DF158B /* UROP3rdViewController.m */,
 			);
 			name = selections;
@@ -201,8 +201,8 @@
 		D227B93517F4D7A90022546D /* animation */ = {
 			isa = PBXGroup;
 			children = (
-				D2DF755816D2802000DF158B /* UROPFinalViewController.m */,
 				D2DF755716D2802000DF158B /* UROPFinalViewController.h */,
+				D2DF755816D2802000DF158B /* UROPFinalViewController.m */,
 			);
 			name = animation;
 			sourceTree = "<group>";
