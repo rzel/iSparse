@@ -24,7 +24,7 @@
  *
  * You shouldn't have to touch anything below line 140 or so -- that's where
  * the animation starts. Anything in there will be taken care of with
- * IMAGE_STEP.
+ * IMAGE_STEP and other #defines.
  *
  * --Scott Sievert, sieve121 at umn.edu, 2013-09-17
  *
@@ -34,21 +34,23 @@
 #import "UROPbrain.h"
 #import <QuartzCore/QuartzCore.h>
 #include "dwt.h"
+#include "nice.h"
 
 // change this to change the algorithm!
-#define IMAGE_STEP \
+#define IMAGE_STEP                                                           \
 self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
-                        Xhat_r:Xhat_r Xhat_g:Xhat_g Xhat_b:Xhat_b \
-                        samples:samples                           \
-                         y_r:y_r     y_g:y_g     y_b:y_b          \
-                        y2_r:y2_r   y2_g:y2_g   y2_b:y2_b         \
-                         x_r:x_r     x_g:x_g     x_b:x_b          \
-                       b_t_r:b_t_r b_t_g:b_t_g b_t_b:b_t_b        \
-                         t_r:&t_r    t_g:&t_g    t_b:&t_b         \
+                        Xhat_r:Xhat_r Xhat_g:Xhat_g Xhat_b:Xhat_b            \
+                        samples:samples                                      \
+                         y_r:y_r     y_g:y_g     y_b:y_b                     \
+                        y2_r:y2_r   y2_g:y2_g   y2_b:y2_b                    \
+                         x_r:x_r     x_g:x_g     x_b:x_b                     \
+                       b_t_r:b_t_r b_t_g:b_t_g b_t_b:b_t_b                   \
+                         t_r:&t_r    t_g:&t_g    t_b:&t_b                    \
                            M:M N:N k:2 m:m levels:self.levels];
+
 // updates the text that says "Iterations: 42"
 #define ITERATION_STEP \
-       showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+       showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; NSLog(@"iteration %d", showIts);
 
 #define ANIMATION_COMMAND     [UIView animateWithDuration:0.0 delay:0.0 \
                                     options:UIViewAnimationOptionBeginFromCurrentState \
@@ -112,7 +114,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     // TODO: make samples out of idx
     // TODO: N vs. sqrt(N)
     [super viewDidLoad];    
-    NSLog(@"%d", self.levels);
     int i;
     
     [self.scrollView setBackgroundColor:[UIColor whiteColor]];
@@ -127,7 +128,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     
     // how many levels do we want to keep?
     int L = self.levels;
-    int Jn = J - L;
     int M = powf(2, J-L);
     // the indicies where we want to sample
     int * samples = (int *)malloc(sizeof(int) * N*N);
@@ -212,18 +212,16 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     vDSP_mtrans(b_t_b_pre, 1, b_t_b, 1, M, M);
     // ------------------------ done calculating b_t
 
+    value(Xhat_r, N*N, 0);
+    value(Xhat_g, N*N, 0);
+    value(Xhat_b, N*N, 0);
+    value(y2_r, N*N, 0);
+    value(y2_g, N*N, 0);
+    value(y2_b, N*N, 0);
+    value(y_r, N*N, 0);
+    value(y_g, N*N, 0);
+    value(y_b, N*N, 0);
     
-    for (i=0; i<N; i++) {
-        Xhat_r[i] = 0;
-        Xhat_g[i] = 0;
-        Xhat_b[i] = 0;
-        y2_r[i] = 0;
-        y2_g[i] = 0;
-        y2_b[i] = 0;
-        y_r[i] = 0;
-        y_g[i] = 0;
-        y_b[i] = 0;
-    }
     
     // the thresholds.
     __block float t_r = 1.0;
@@ -236,7 +234,38 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     // the start of the animation. You shouldn't have to touch anything below here; 
     // it's all taken care of in IMAGE_STEP.
     // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
-    // below are frees for the frees we can do.
+    //free(x_r);
+    //free(x_g);
+    //free(x_b);
+    
+    //free(y_r);
+    //free(y_g);
+    //free(y_b);
+    
+    //free(Xhat_r);
+    //free(Xhat_g);
+    //free(Xhat_b);
+    
+    //free(y2_r);
+    //free(y2_g);
+    //free(y2_b);
+    
+    //free(b_t_r);
+    //free(b_t_g);
+    //free(b_t_b);
+    // we need to free these in the return. use free(self.x_r);
+    
+    free(phi_b_r);
+    free(phi_b_g);
+    free(phi_b_b);
+    
+    free(b_t_r_pre);
+    free(b_t_g_pre);
+    free(b_t_b_pre);
+    
+    free(phi_b_w);
+    free(b_t_pre);
+    
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
     ANIMATION_COMMAND{
@@ -1117,36 +1146,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     }}];
     }}];
 
-//free(x_r);
-//free(x_g);
-//free(x_b);
 
-//free(y_r);
-//free(y_g);
-//free(y_b);
-
-//free(Xhat_r);
-//free(Xhat_g);
-//free(Xhat_b);
-
-//free(y2_r);
-//free(y2_g);
-//free(y2_b);
-
-free(phi_b_r);
-free(phi_b_g);
-free(phi_b_b);
-
-//free(b_t_r);
-//free(b_t_g);
-//free(b_t_b);
-
-free(b_t_r_pre);
-free(b_t_g_pre);
-free(b_t_b_pre);
-
-free(phi_b_w);
-free(b_t_pre);
 
 }
 

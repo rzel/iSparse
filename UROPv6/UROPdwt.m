@@ -19,12 +19,14 @@
  *      2013-09-18
  *  
  *
- * Without vectorizing, 1.15 iterations/second.
- * With vectorizing dwt and idwt, 1.63 iterations/second ==> 41.7% speed up.
+ * Without vectorizing,                  1.15 iterations/second.
+ * With vectorizing dwt and idwt,        1.63 iterations/second ==> 41.7% speed up.
+ * With vectorizing UIImageFromRawArray, 1.67 iterations/second ==> 45.2% speed up.
  *
  */
 
 #import "UROPdwt.h"
+#include "nice.h"
 
 @interface UROPdwt ()
 @end
@@ -404,18 +406,11 @@
     const size_t ComponentsPerPixel = 4; // rgba
 
     uint8_t * pixelData = (uint8_t *) malloc(sizeof(uint8_t) * Area * ComponentsPerPixel);
-    float factor;
-    factor = 1;
     
-    
-    for (long i=0; i < Area; ++i) {
-        const size_t offset = i * ComponentsPerPixel;
-        pixelData[offset + 0] = array[offset + 0] *factor;
-        pixelData[offset + 1] = array[offset + 1] *factor;
-        pixelData[offset + 2] = array[offset + 2] *factor;
-        pixelData[offset + 3] = array[offset + 3] *1;
-        
-    }
+    // copying from the floating array to an array of ints.
+    float * floating = (float *)malloc(sizeof(float) * Area * ComponentsPerPixel);
+    copy(array, floating, 4 * Area);
+    vDSP_vfixu8(floating, 1, pixelData, 1, 4 * Area);
     
     // create the bitmap context:
     const size_t BitsPerComponent = 8;
@@ -445,21 +440,12 @@
 }
 -(float *)getColorPlane:(float *)array ofArea:(int)area startingIndex:(int)start into:(float *)colorPlane
 {
-    //float * colorPlane = (float *)malloc(sizeof(float) * area);
-    int j=0, i=0;
-    for (i=start; i<4*area; i=i+4) {
-        colorPlane[j] = array[i];
-        j++;
-    }
+    cblas_scopy(area, array+start, 4, colorPlane, 1);
     return colorPlane;
 }
 -(float *)putColorPlaneBackIn:(float *)colorPlane into:(float *)array ofArea:(long)area startingIndex:(int)start
 {
-    int j=0, i=0;
-    for (i=start; i<4*area; i=i+4) {
-        array[i] = colorPlane[j];
-        j++;
-    }
+    cblas_scopy(area, colorPlane, 1, array+start, 4);
     return array;
 }
 

@@ -56,7 +56,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"With my code?");
     self.rate = 0.5;
     self.levelSlider.continuous = NO;
     self.levelText.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
