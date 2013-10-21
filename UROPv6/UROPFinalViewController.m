@@ -204,7 +204,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
             b_t_b_pre[yy*M + xx] = phi_b_b[yy*N + xx];
         }
     }
-    vecQuad(phi_b_r, M, M, N, N);
 
     
     // vec (just a transpose since C)

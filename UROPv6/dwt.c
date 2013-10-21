@@ -277,15 +277,13 @@ float *vec(float * x, int width, int height){
     free(y);
     return y;
 }
-
-
-
 float S2sign(float x){
     printf("Calling\n");
     float ret;
     if (x<0)  ret = -1;
     else if (x>0)  ret = 1;
-    else ret = 0;
+    else if (x==0) ret = 0;
+
     return ret;
 }
 
