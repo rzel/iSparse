@@ -197,14 +197,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     vec(phi_b_g, N, N);
     vec(phi_b_b, N, N);
     // reshaping
-    for (int xx=0; xx<M; xx++){
-        for (int yy=0; yy<M; yy++){
-//            b_t_r_pre[yy*M + xx] = phi_b_r[yy*N + xx];
-//            b_t_g_pre[yy*M + xx] = phi_b_g[yy*N + xx];
-//            b_t_b_pre[yy*M + xx] = phi_b_b[yy*N + xx];
-        }
-    }
-//    b_t_r_pre =
     vecQuad(phi_b_r, M, M, N, N, b_t_r_pre);
     vecQuad(phi_b_g, M, M, N, N, b_t_g_pre);
     vecQuad(phi_b_b, M, M, N, N, b_t_b_pre);
