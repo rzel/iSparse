@@ -23,6 +23,6 @@ the `.xcodeproject` (installing XCode first, of course) and clicking run. This w
 can run this app on your device only if you're registered with the Apple
 Developer Program.
 
-[finished]:https://raw.github.com/scottsievert/UROPv6/master/50-reconstruct.png
-[sample]:https://raw.github.com/scottsievert/UROPv6/master/50-sample.png
+[finished]:https://raw.github.com/scottsievert/iSensing/master/images/50-reconstruct.png
+[sample]:https://raw.github.com/scottsievert/iSensing/master/images/50-sample.png
 
