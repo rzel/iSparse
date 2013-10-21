@@ -19,7 +19,7 @@
 #define P 0.55
 
 // everything below this is set to 0.
-#define LAMBDA 12
+#define LAMBDA 18
 
 
 

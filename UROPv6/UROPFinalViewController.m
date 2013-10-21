@@ -272,875 +272,266 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
                      }
                      FINISHED_IF{
 
+
     ANIMATION_COMMAND{
-                         ITERATION_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
+
+                     }
+                     FINISHED_IF{
+
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
+
+                     }
+                     FINISHED_IF{
+
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
+
+                     }
+                     FINISHED_IF{
+
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
+
+                     }
+                     FINISHED_IF{
+
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
+
+                     }
+                     FINISHED_IF{
+
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
+
+                     }
+                     FINISHED_IF{
+
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
+
+                     }
+                     FINISHED_IF{
+
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
+
+                     }
+                     FINISHED_IF{
+
+
+    ANIMATION_COMMAND{
+                         ITERATION_STEP;
                          IMAGE_STEP;
 
                      }
                      FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
+                         ITERATION_STEP;
                          IMAGE_STEP;
+
                      }
                      FINISHED_IF{
 
+
     ANIMATION_COMMAND{
-                         ITERATION_STEP
+                         ITERATION_STEP;
                          IMAGE_STEP;
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
                      }
                      FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
 
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
 
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
 
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
 
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
 
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
 
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
 
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-
-                     }
-                     FINISHED_IF{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
+                         ITERATION_STEP;
+                         IMAGE_STEP;
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
                      }
                      FINISHED_IF{
 
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-    ANIMATION_COMMAND{
-                         ITERATION_STEP
-                         IMAGE_STEP
-                     }
-                     FINISHED_IF{
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
-    }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
+     }}];
 
 
 

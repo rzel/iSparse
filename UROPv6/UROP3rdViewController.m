@@ -31,7 +31,7 @@
 #import "UROPbrain.h"
 
 // how large is the image?
-#define IMAGE_SIZE 512
+#define IMAGE_SIZE 1024
 
 #define MAX_LEVELS 5.0f
 
@@ -56,7 +56,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.rate = 0.5;
+    self.rate = 0.3;
+    self.samplingSlider.value = self.rate - 0.2;
     self.levelSlider.continuous = NO;
     self.levelText.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
     
@@ -67,7 +68,7 @@
     self.levelText.textAlignment = NSTextAlignmentCenter;
 
     // making the sampling rate equal to 50% at first, resizing the image
-    self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 50.0];
+    self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 100*self.rate];
     UIImage * image = [self imageWithImage:[UIImage imageNamed:@"lenna.jpg"] scaledToSize:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
     self.imageStay = image;
     self.imageView.image = [self.brain sampleImage:image atRate:self.rate];
