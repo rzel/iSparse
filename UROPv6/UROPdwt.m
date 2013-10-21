@@ -17,6 +17,10 @@
  *
  * --Scott Sievert, sieve121 at umn.edu
  *      2013-09-18
+ *  
+ *
+ * Without vectorizing, 1.15 iterations/second.
+ * With vectorizing dwt and idwt, 1.63 iterations/second ==> 41.7% speed up.
  *
  */
 
