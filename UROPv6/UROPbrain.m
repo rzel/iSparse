@@ -850,7 +850,6 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
         // it *looks* like pL is working... the first iteration prints
         //      approximately correct
         x_nk = pL(y, A, b_t, N, m, levels);
-        NSLog(@"::::: %d", A[4]);
         
         // do we have to copy it over? before the pL call?
         copy(x, x_k, M*M);

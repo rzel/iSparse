@@ -129,14 +129,12 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     int L = self.levels;
     int Jn = J - L;
     int M = powf(2, J-L);
-    NSLog(@"%d", M);
 
     // the indicies where we want to sample
     int * samples = (int *)malloc(sizeof(int) * N*N);
     NSMutableArray * idx = [[NSMutableArray alloc] init];
     
     [self.brain makeIDX:idx ofLength:pix];
-    NSLog(@"%@", [idx objectAtIndex:0]);
 
     for (i=0; i<N*N; i++) {
         samples[i] = [[idx objectAtIndex:i] integerValue];
@@ -192,7 +190,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
         phi_b_g[samples[i]] = y_g[i];
         phi_b_b[samples[i]] = y_b[i];
     }
-    NSLog(@":::::::::::: %f", phi_b_r[0]);
     // overwrites phi_b
     dwt2_full(phi_b_r, N, N);
     dwt2_full(phi_b_g, N, N);
@@ -215,7 +212,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     vDSP_mtrans(b_t_g_pre, 1, b_t_g, 1, M, M);
     vDSP_mtrans(b_t_b_pre, 1, b_t_b, 1, M, M);
     // ------------------------ done calculating b_t
-    NSLog(@":::::: %f", b_t_r[0]);
 
     
     for (i=0; i<N; i++) {
@@ -230,22 +226,11 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
         y_b[i] = 0;
     }
     
-
-    NSLog(@"%f", y_g[0]);
-    
     // the thresholds.
     __block float t_r = 1.0;
     __block float t_g = 1.0;
     __block float t_b = 1.0;
     
-    // "const" float *
-    
-    
-    // making those global variables the same. for the animation.
-//    self.idx = idx; self.xold_g = xold_g;
-//    self.xold_b = xold_b; self.xold_r = xold_r;
-//    self.y_r = y_r; self.y_g = y_g; self.y_b = y_b;
-//    self.finished = NO;
     
 
     
