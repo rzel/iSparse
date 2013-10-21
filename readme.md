@@ -16,7 +16,8 @@ it. In pictures, it goes between these:
 
 <!--![this][sample].![this][finished].-->
 
-<img src=https://raw.github.com/scottsievert/iSensing/master/images/demo/first_final/goldy_smoke_sample.png width="320" height="568"> 
+<!--<img src=https://raw.github.com/scottsievert/iSensing/master/images/demo/first_final/goldy_smoke_sample.png width="320" height="568"> -->
+<img src=[this][sample] width="320" height="568"> 
 .
 <img src=https://raw.github.com/scottsievert/iSensing/master/images/demo/first_final/30p_18lam_30i_2lev.png width="320" height="568">
 
