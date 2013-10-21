@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
+#include "Accelerate/Accelerate.h"
 
 // the nice stuff python has
 void getCol(float * in, int col, float * out, int width, int height);
@@ -32,22 +33,41 @@ float * idwt2_full(float * x, int width, int height);
 float *vec(float * x, int width, int height);
 
 void * dwt(float * x, int N, float * y){
-    // works
     // N must be a factor of two
-    int l = N/2;
-    int i;
-    for (i=0; i<l; i++){
-        y[i] = x[2*i] + x[2*i + 1];
-        y[i + l] = x[2*i] - x[2*i + 1];
-    }
-    for (i=0; i<N; i++){
-        y[i] = y[i] / sqrt(2);
-    }
+    float * one = (float *)malloc(sizeof(float) * N/2);
+    float * two = (float *)malloc(sizeof(float) * N/2);
+    float * low = (float *)malloc(sizeof(float) * N/2);
+    float * high = (float *)malloc(sizeof(float) * N/2);
+    float * w = (float *)malloc(sizeof(float) * N/1);
+    
+    // getting every other elemeNt
+    cblas_scopy(N/2, x, 2, one, 1);
+    cblas_scopy(N/2, x+1, 2, two, 1);
+    
+    // adding those elemeNts
+    cblas_scopy(N/2, two, 1, low, 1);
+    cblas_scopy(N/2, two, 1, high, 1);
+    catlas_saxpby(N/2, 1, one, 1, 1, low, 1);
+    catlas_saxpby(N/2, 1, one, 1, -1, high, 1);
+    
+    cblas_scopy(N/2, low, 1, w, 1);
+    cblas_scopy(N/2, high, 1, w+N/2, 1);
+    cblas_sscal(N, 1.0f/sqrt(2), w, 1);
+    cblas_scopy(N, w, 1, y, 1);
+    
+    free(one);
+    free(two);
+    free(low);
+    free(high);
+    free(w);
+    
+    return (void*)0xbad;
+
 }
 float * dwt2(float * x, float * y, int width, int height){
     // x is our input
     // y is our output
-    int i, j;
+    int i;
 
     // our row
     float * k  = (float *)malloc(sizeof(float) * width);
@@ -65,11 +85,12 @@ float * dwt2(float * x, float * y, int width, int height){
     }
     free(k);
     free(k1);
+    // return value just to get rid of error
+    return k;
 }
 float * dwt2_full(float * x, int width, int height){
     // overwrites x
-    int i, j, k;
-    int xx, yy;
+    int k;
     int order = log2(width);
     float * wavelet = (float *)malloc(sizeof(float) * height * width);
     float * waveletF = (float *)malloc(sizeof(float) * width * height);
@@ -87,13 +108,38 @@ float * dwt2_full(float * x, int width, int height){
     free(waveletF);
 }
 float * idwt(float * x, int N, float * y){
-    int i;
-    int le = N/2;
-    for (i=0; i<le; i++){
-        // we have (1+2) (3+4) (1-2) (3-4)
-        y[2*i]   = (x[i] + x[i+le])/sqrt(2);
-        y[2*i+1] = (x[i] - x[i+le])/sqrt(2);
-    }
+    float * one = (float *)malloc(sizeof(float) * N/2);
+    float * two = (float *)malloc(sizeof(float) * N/2);
+    float * low = (float *)malloc(sizeof(float) * N/2);
+    float * high = (float *)malloc(sizeof(float) * N/2);
+    float * w = (float *)malloc(sizeof(float) * N/1);
+    
+    // one and two are the first halfs of the signal
+    cblas_scopy(N/2, x, 1, one, 1);
+    cblas_scopy(N/2, x+N/2, 1, two, 1);
+    
+    // the additions
+    cblas_scopy(N/2, two, 1, low, 1);
+    catlas_saxpby(N/2, 1, one, 1, 1, low, 1);
+    
+    // the subtractions
+    cblas_scopy(N/2, two, 1, high, 1);
+    catlas_saxpby(N/2, 1, one, 1, -1, high, 1);
+    
+    // now, the arrays are split up: the first and third elements are in one
+    // array, the second and fourth elements in the other.
+    
+    cblas_scopy(N/2, low, 1, w, 2);
+    cblas_scopy(N/2, high, 1, w+1, 2);
+    // and scaling properly
+    cblas_sscal(N, 1/sqrt(2), w, 1);
+    cblas_scopy(N, w, 1, y, 1);
+    free(one);
+    free(two);
+    free(low);
+    free(high);
+    free(w);
+    return (void*)0xbad;
 }
 float * idwt2(float * x, float * y, int width, int height){
     int i;
@@ -237,10 +283,10 @@ float S2sign(float x){
 }
 
 
-void copy(float * source, float * dest, int N){
-    int i;
-    for (i=0; i<N; i++){
-        dest[i] = source[i];
-    }
-    
-}
+//void copy(float * source, float * dest, int N){
+//    int i;
+//    for (i=0; i<N; i++){
+//        dest[i] = source[i];
+//    }
+//    
+//}

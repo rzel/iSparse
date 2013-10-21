@@ -24,6 +24,7 @@
 		D27E863817F78AFC0084B604 /* info-larger.png in Resources */ = {isa = PBXBuildFile; fileRef = D27E863717F78AFC0084B604 /* info-larger.png */; };
 		D296FA4F1814A6B200A55D61 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D296FA4B1814A6B200A55D61 /* MainStoryboard.storyboard */; };
 		D296FA501814A6B200A55D61 /* MainStoryboard5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D296FA4D1814A6B200A55D61 /* MainStoryboard5.storyboard */; };
+		D2AADE7F1814D3E4006CC985 /* nice.c in Sources */ = {isa = PBXBuildFile; fileRef = D2AADE7E1814D3E4006CC985 /* nice.c */; };
 		D2BBCE73181456E4000A0C50 /* dwt.c in Sources */ = {isa = PBXBuildFile; fileRef = D2BBCE71181456E4000A0C50 /* dwt.c */; };
 		D2DA0D4717EA1CB700E0A087 /* UROPdwt.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */; };
 		D2DF752016CF174900DF158B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DF751F16CF174900DF158B /* UIKit.framework */; };
@@ -67,6 +68,8 @@
 		D27E863717F78AFC0084B604 /* info-larger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-larger.png"; sourceTree = "<group>"; };
 		D296FA4C1814A6B200A55D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = UROPv6/en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D296FA4E1814A6B200A55D61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = UROPv6/en.lproj/MainStoryboard5.storyboard; sourceTree = "<group>"; };
+		D2AADE7E1814D3E4006CC985 /* nice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nice.c; sourceTree = "<group>"; };
+		D2AADE811814D59A006CC985 /* nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nice.h; path = ../nice.h; sourceTree = "<group>"; };
 		D2BBCE71181456E4000A0C50 /* dwt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dwt.c; sourceTree = "<group>"; };
 		D2BBCE72181456E4000A0C50 /* dwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dwt.h; sourceTree = "<group>"; };
 		D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPdwt.h; sourceTree = "<group>"; };
@@ -151,9 +154,11 @@
 				D2365EA816D432E70017E15A /* UROPbrain.h */,
 				D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */,
 				D2365EA916D432E70017E15A /* UROPbrain.m */,
-				D2BBCE71181456E4000A0C50 /* dwt.c */,
-				D2BBCE72181456E4000A0C50 /* dwt.h */,
 				D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */,
+				D2BBCE71181456E4000A0C50 /* dwt.c */,
+				D2AADE7E1814D3E4006CC985 /* nice.c */,
+				D2AADE811814D59A006CC985 /* nice.h */,
+				D2BBCE72181456E4000A0C50 /* dwt.h */,
 			);
 			name = brains;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				D2DF753016CF174A00DF158B /* UROPAppDelegate.m in Sources */,
 				D2DA0D4717EA1CB700E0A087 /* UROPdwt.m in Sources */,
 				D2DF753C16CF174A00DF158B /* UROPMainViewController.m in Sources */,
+				D2AADE7F1814D3E4006CC985 /* nice.c in Sources */,
 				D2DF754716CF181100DF158B /* UROP2ndViewController.m in Sources */,
 				D2F3479A17F4788A00891B89 /* UROPInfo.m in Sources */,
 				D2DF755016CF209400DF158B /* UROP3rdViewController.m in Sources */,

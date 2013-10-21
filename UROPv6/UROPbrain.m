@@ -22,6 +22,7 @@
 #import "UROPbrain.h"
 #import "UROPdwt.h"
 #include "dwt.h"
+#include "nice.h"
 
 // #define....
 // LAMBDA, LEVELS, LIPSHITZ_CONTANT defined in UROPbrain.h
@@ -38,223 +39,6 @@
 {
     if (!_dwt) _dwt = [[UROPdwt alloc] init];
     return _dwt;
-}
-
-// from Akshat on 2013-10-10
--(float)FISTA_W:(float *)signal ofLength:(int)N
-    ofWidth:(int)width ofHeight:(int)height order:(int)order
-  iteration:(int)iter
-     atRate:(float)p
-       xold:(float *)xold xold1:(float *)xold1
-          y:(float *)y
-        idx:(NSMutableArray *)idx coarse:(float)coarse numberOfPastIterations:(int)pastIts
-         tn:(float)tn
-{
-    // the function performs the "fast iterative soft thresholding algorithm (FISTA)". This is the meat of the code -- this is where your actual algorithm implementation goes. The rest is just (complicated) wrapper for this.
-    
-    // to straighten out:
-    //      * xold/xold1, tn/tn1
-    //      x vec possibly doesn't vectorize partial matricies right
-    //      * various limit stuff
-    //      * memory leaks
-    //      * assigning x, xold, xold1, tn, tn1
-    // --2013-10-12
-    
-    // how to test:
-    //      * make your signal in this function. compare with matlab.
-    
-    /*     k     = opts.k;     % # of iterations
-     L     = opts.L;     % Lipschitz constant of Grad(f)
-     lam   = opts.lam;   % controls the sparsity
-     Level = opts.level; % # of levels to discard
-     M     = opts.M;     % M^2 == number of columns in new matrix of Haar
-     N     = opts.N;     % N^2 == image dimension
-     n     = N^2;
-     % [~, n] = size(A);
-     
-     x = zeros(M^2,1);     % output initialization
-     y = x;                % initialization for FISTA
-     t = 1;                % step size
-     
-     % I IS THE N x N IDENTITY MATRIX
-     % b IS THE OBSERVATION VECTOR
-     
-     % Precalulating H'*I'*b
-     
-     % calculate this once (meaning, in the app, pass it in each time)
-     Phi_b = zeros(n,1);
-     Phi_b(A) = b;           % calculate I'*b
-     % do H'*I'*b and vectorize the result
-     Phi_b_W = mdwt(reshape(Phi_b, [sqrt(n) sqrt(n)]), daubcqf(2, 'min'));
-     b_t = vec(Phi_b_W(1:sqrt(n)/2^Level, 1:sqrt(n)/2^Level));
-     
-     % FISTA Iterations
-         for i = 1:k
-         
-         % function call to calculate pL
-         x_nk = pL(y, A, b_t, lam, L, N, Level);
-         
-         x_k  = x;
-         t_k = t;
-         
-         % calculate step sizes
-         t_nk = 0.5*(1 + sqrt((1 + 4*t_k^2)));
-         y = x_nk + ((t_k -1)/(t_nk))*(x_nk - x_k);
-         
-         x = x_nk;
-         t = t_nk;
-     end
-     
-     */
-    int i;
-    float k   = iter;
-    float L   = LIP;
-    float lam = LAMBDA;
-    int level = level;
-    N = (int)sqrt(N); // already passed in. width!
-    int n = (int)powf(1.0*N, 2.0);
-    int M = (int)N / powf(2, L);
-    
-    float * b_t   = (float *)malloc(sizeof(float) * n);
-    float * phi_b = (float *)malloc(sizeof(float) * n);
-    float * phi_b_w = (float *)malloc(sizeof(float) * n);
-    float * x_nk = (float *)malloc(sizeof(float) * n);
-    float * x_k = (float *)malloc(sizeof(float) * n);
-    float * x = (float *)malloc(sizeof(float) * n);
-    
-    float t_k;
-    float t_nk;
-    float t;
-    
-    int lenA = 16;
-
-    // a need to be passed in
-    int * A = (int *)malloc(sizeof(int) * n);
-    int j = 0;
-    for (i=0; i<N*N; i++) {
-        if (rand() < 0.5) {
-            A[j] = i;
-            j++;
-        }
-    }
-    lenA = j;
-
-    // precalculating b_t
-    for (i=0; i<lenA; i++) {
-        phi_b[A[i]] = y[A[i]];
-    }
-    [self.dwt waveletOn2DArray:phi_b ofWidth:N andHeight:N];
-    b_t = [self.dwt vec:phi_b toX:N/powf(2.0, level*1.0) toY:N/powf(2.0, level*1.0) width:N height:N];
-    
-    // TODO: to delete
-    iter = 20;
-    for (k=0; k<iter; k++) {
-        /*x_nk = pL(y, A, b_t, lam, L, N, Level);
-        
-        x_k  = x;
-        t_k = t;
-        
-        % calculate step sizes
-        t_nk = 0.5*(1 + sqrt((1 + 4*t_k^2)));
-        y = x_nk + ((t_k -1)/(t_nk))*(x_nk - x_k);
-        
-        x = x_nk;
-        t = t_nk;*/
-        x_nk = [self pL_y:y A:A lenA:lenA b_t:b_t lam:lam L:lam N:N level:level];
-        
-        for (i=0; i<n; i++) { x_k[i] = xold[i]; }
-        
-        t_k = tn;
-        t_nk = 0.5 * (1+sqrtf(1 + 4* t_k * t_k));
-        
-        for (i=0; i<n; i++) { y[i] = x_nk[i] + ((t_k-1)/(t_nk)) * (x_nk[i] - x_k[i]); }
-        
-        for (i=0; i<n; i++) { x[i] = x_nk[i]; }
-        t = t_nk;
-    }
-
-
-    
-    return tn;
-    
-    
-}
-
--(float *)pL_y:(float *)y A:(int *)A lenA:(int)lenA b_t:(float *)b_t lam:(float)lam L:(float) L N:(int) N level:(int)level{
-    /* adapted from the following matlab code:
-            n  = N^2;
-            n1 = n/2^(2*Level);
-
-            %
-            Y  = reshape(y, [sqrt(n1), sqrt(n1)]);
-            Yt = zeros(sqrt(n), sqrt(n));
-            Yt(1:sqrt(n1), 1:sqrt(n1)) = Y;
-            y1 = vec(midwt(Yt, daubcqf(2, 'min')));
-            
-            
-            Phi_y    = zeros(n,1);
-            Phi_y(A) = y1(A);
-            Phi_y_W  = mdwt(reshape(Phi_y, [sqrt(n) sqrt(n)]), daubcqf(2, 'min'));
-            y_t = vec(Phi_y_W(1:sqrt(n)/2^Level, 1:sqrt(n)/2^Level));
-            
-            
-            % calculating the gradiend step
-            temp_x = y - 2/L*(y_t - b_t);
-            
-            % thresholding
-            temp_1 = (abs(temp_x) - lam/L);
-            temp_1(temp_1 < 0) = 0;
-            
-            xk = temp_1 .* sign(temp_x);
-     */
-
-    int n = powf(N, 2);
-    int n1 = n / powf(2.0, 2*level);
-    int i;
-    int xx, yy;
-    int width = (int)sqrtf(N);
-    int widthy = (int)sqrtf(n1);
-    
-    float * Yt = (float *)malloc(sizeof(float) * n);
-    float * y1 = (float *)malloc(sizeof(float) * N * N);
-    float * phi_y = (float *)malloc(sizeof(float) * n);
-    float * phi_y_w = (float *)malloc(sizeof(float) * n);
-    float * y_t = (float *)malloc(sizeof(float) * (int)(n / (powf(2, 2*level))));
-    float * temp_x = (float *)malloc(sizeof(float) * (int)(n / powf(2, 2*level)));
-    float * xk = (float *)malloc(sizeof(float) * n);
-    float * temp1 = (float *)malloc(sizeof(float) * n);
-    
-    for (xx=0; xx<sqrtf(n1); xx++) {
-        for (yy=0; yy<sqrtf(n1); yy++) {
-            Yt[width * yy + xx] = y[yy * widthy + xx];
-        }
-    }
-    
-    Yt = [self.dwt inverseOn2DArray:Yt ofWidth:N andHeight:N];
-    y1 = [self.dwt vec:Yt width:N height:N];
-    
-    for (i=0; i<lenA; i++) {
-        phi_y[A[i]] = y1[A[i]];
-    }
-    
-    phi_y = [self.dwt trans:y width:(int)sqrtf(n) height:(int)sqrtf(n)];
-    phi_y_w = [self.dwt waveletOn2DArray:phi_y ofWidth:(int)sqrtf(n) andHeight:(int)sqrtf(n)];
-    
-    y_t = [self.dwt vec:phi_y_w width:(int)(sqrtf(n)/powf(2, level)) height:(int)(sqrtf(n)/powf(2, level))];
-    
-    // calculate the gradient step
-    for (i=0; i<n/powf(2, 2*level); i++) {
-        temp_x[i] = y[i] - (2/(L*1.0)) * (y_t[i] - b_t[i]);
-    }
-    
-    // thresholding
-    for (i=0; i<n/powf(2, 2*level); i++) {
-        temp1[i] = fabsf(temp_x[i]) - lam/(L*1.0);
-        if (temp1[i] < 0) temp1[i] = 0;
-        xk[i] = temp1[i] * [self.dwt sign:temp_x[i]];
-    }
-    
-    return xk;
 }
 
 // functions to sample the image for the initial viewing.
@@ -731,51 +515,50 @@
             // for each color plane
             // properly init
             if (n==0) {
-                for (i=0; i<m; i++) {y[i]    = y_r[i];}
-                for (i=0; i<N*N; i++) {Xhat[i] = Xhat_r[i];}
-                for (i=0; i<M*M; i++) {y2[i] = y2_r[i];}
-                for (i=0; i<M*M; i++) {x[i] = x_r[i];}
-                for (i=0; i<M*M; i++) {b_t[i] = b_t_r[i];}
+                copy(y_r, y, m);
+                copy(Xhat_r, Xhat, N*N);
+                copy(y2_r, y2, M*M);
+                copy(x_r, x, M*M);
+                copy(b_t_r, b_t, M*M);
                 tf = trf_r;
             } else  if (n==1) {
-                for (i=0; i<m; i++) {y[i]    = y_g[i];}
-                for (i=0; i<N*N; i++) {Xhat[i] = Xhat_g[i];}
-                for (i=0; i<M*M; i++) {y2[i] = y2_g[i];}
-                for (i=0; i<M*M; i++) {x[i] = x_g[i];}
-                for (i=0; i<M*M; i++) {b_t[i] = b_t_g[i];}
+                copy(y_g, y, m);
+                copy(Xhat_g, Xhat, N*N);
+                copy(y2_g, y2, M*M);
+                copy(x_g, x, M*M);
+                copy(b_t_g, b_t, M*M);
                 tf = trf_g;
             } else if (n==2) {
-                for (i=0; i<m; i++) {y[i]    = y_b[i];}
-                for (i=0; i<N*N; i++) {Xhat[i] = Xhat_b[i];}
-                for (i=0; i<M*M; i++) {y2[i] = y2_b[i];}
-                for (i=0; i<M*M; i++) {x[i] = x_b[i];}
-                for (i=0; i<M*M; i++) {b_t[i] = b_t_b[i];}
+                copy(y_b, y, m);
+                copy(Xhat_b, Xhat, N*N);
+                copy(y2_b, y2, M*M);
+                copy(x_b, x, M*M);
+                copy(b_t_b, b_t, M*M);
                 tf = trf_b;
             }
-            //NSLog(@"in reconstructWithFista: %f", tf);
             // the do-what-you-want code should go here. actually performing the algorithm.
             tf = FISTA_W(Xhat, samples, y, y2, x, b_t, tf, M, N, 1, m, levels);
             // and then update
             if (n==0) {
-                for (i=0; i<m; i++) {y_r[i]    = y[i];}
-                for (i=0; i<N*N; i++) {Xhat_r[i] = Xhat[i];}
-                for (i=0; i<M*M; i++) {y2_r[i] = y2[i];}
-                for (i=0; i<M*M; i++) {x_r[i] = x[i];}
-                for (i=0; i<M*M; i++) {b_t_r[i] = b_t[i];}
+                copy(y, y_r, m);
+                copy(Xhat, Xhat_r, N*N);
+                copy(y2, y2_r, M*M);
+                copy(x, x_r, M*M);
+                copy(b_t, b_t_r, M*M);
                 trf_r = tf;
             } else if (n==1) {
-                for (i=0; i<m; i++) {y_g[i]    = y[i];}
-                for (i=0; i<N*N; i++) {Xhat_g[i] = Xhat[i];}
-                for (i=0; i<M*M; i++) {y2_g[i] = y2[i];}
-                for (i=0; i<M*M; i++) {x_g[i] = x[i];}
-                for (i=0; i<M*M; i++) {b_t_g[i] = b_t[i];}
+                copy(y, y_g, m);
+                copy(Xhat, Xhat_g, N*N);
+                copy(y2, y2_g, M*M);
+                copy(x, x_g, M*M);
+                copy(b_t, b_t_g, M*M);
                 trf_g = tf;
             } else if (n==2) {
-                for (i=0; i<m; i++) {y_b[i]    = y[i];}
-                for (i=0; i<N*N; i++) {Xhat_b[i] = Xhat[i];}
-                for (i=0; i<M*M; i++) {y2_b[i] = y2[i];}
-                for (i=0; i<M*M; i++) {x_b[i] = x[i];}
-                for (i=0; i<M*M; i++) {b_t_b[i] = b_t[i];}
+                copy(y, y_b, m);
+                copy(Xhat, Xhat_b, N*N);
+                copy(y2, y2_b, M*M);
+                copy(x, x_b, M*M);
+                copy(b_t, b_t_b, M*M);
                 trf_b = tf;
             }
             
@@ -832,11 +615,11 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
     // the documentation for the BLAS stuff can be found at...
     //      https://developer.apple.com/performance/accelerateframework.html
     //      https://developer.apple.com/library/IOs/documentation/Accelerate/ Reference/AccelerateFWRef/_index.html#//apple_ref/doc/uid/TP40009465
+    
     int i;
     int xx, yy;
     float * x_nk = (float *)malloc(sizeof(float) * M * M);
     float * x_k = (float *)malloc(sizeof(float) * M * M);
-    
     
     // step sizes
     float t_k, t_nk;
@@ -845,17 +628,12 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
     int jj;
     for (jj=0; jj<k; jj++){
         // if using printf in this loop, use fflush(stdout)
-        
-        // for some reason, the energy in my signal keeps growing.
-        // it *looks* like pL is working... the first iteration prints
-        //      approximately correct
         x_nk = pL(y, A, b_t, N, m, levels);
         
         // do we have to copy it over? before the pL call?
         copy(x, x_k, M*M);
         t_k = t;
         t_nk = 0.5*(1 + sqrt((1 + 4 * t_k * t_k)));
-        
 
         for (i=0; i<M*M; i++){
             y[i] = x_nk[i] + ((t_k -1)/(t_nk))*(x_nk[i] - x_k[i]);
@@ -863,16 +641,12 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
         
         copy(x_nk, x, M*M);
         t = t_nk;
-        //NSLog(@"FISTA_W: %f", t);
-        
     }
     
-    /*float * Xhat = (float *)malloc(sizeof(float) * N * N);*/
     float * The1 = (float *)malloc(sizeof(float) * N * N);
     float * Temp1 = (float *)malloc(sizeof(float) * N * N);
-    /*for (i=0; i<N*N; i++) Xhat[i] = 0;*/
-    
-    for (i=0; i<M*M; i++) The1[i] = x[i];
+
+    copy(x, The1, M*M);
     vec(The1, M, M);
     
     for (i=0; i<N*N; i++) Temp1[i] = 0;
@@ -893,35 +667,6 @@ float FISTA_W(float * Xhat, int * A, float * b, float * y, float * x, float * b_
 }
 
 float * pL(float * y, int * A, float * b_t, int N, int m, int levels){
-    /*
-     * adapted from this matlab code:
-     n  = N^2;
-     n1 = n/2^(2*Level);
-     N1 = sqrt(n1);
-     Y  = reshape(y, [N1, N1]);
-     Yt = zeros(N, N);
-     Yt(1:N1, 1:N1) = Y;
-     
-     h = midwt(Yt, daubcqf(2, 'min'));
-     y1 = vec(h);
-     
-     
-     Phi_y    = zeros(n,1);
-     Phi_y(A) = y1(A);
-     h = reshape(Phi_y, [N N]);
-     Phi_y_W  = mdwt(h, daubcqf(2, 'min'));
-     y_t = vec(Phi_y_W(1:N/2^Level, 1:N/2^Level));
-     
-     
-     % calculating the gradiend step
-     temp_x = y - 2/L*(y_t - b_t);
-     
-     % thresholding
-     temp_1 = (abs(temp_x) - lam/L);
-     temp_1(temp_1 < 0) = 0;
-     
-     xk = temp_1 .* sign(temp_x);
-     */
     int xx, yy, i;
     int n = (int)powf(N, 2);
     int n1 = (int)(n / (1.0 *powf(2, 2*levels)));
@@ -937,15 +682,15 @@ float * pL(float * y, int * A, float * b_t, int N, int m, int levels){
     float * xk = (float *)malloc(sizeof(float) * Nj * Nj);
     float * phi_y = (float *)malloc(sizeof(float) * N * N);
     float * phi_y_w = (float *)malloc(sizeof(float) * N * N);
-    for (i=0; i<N1*N1; i++) Y[i] = 0;
-    for (i=0; i<N*N; i++) h[i] = 0;
-    for (i=0; i<N*N; i++) Yt[i] = 0;
-    for (i=0; i<Nj*Nj; i++) y_t[i] = 0;
-    for (i=0; i<Nj*Nj; i++) temp_x[i] = 0;
-    for (i=0; i<Nj*Nj; i++) temp_1[i] = 0;
-    for (i=0; i<Nj*Nj; i++) xk[i] = 0;
-    for (i=0; i<N*N; i++) phi_y[i] = 0;
-    for (i=0; i<N*N; i++) phi_y_w[i] = 0;
+    value(Y, N1*N1, 0);
+    value(h, N*N, 0);
+    value(Yt, N*N, 0);
+    value(y_t, Nj*Nj, 0);
+    value(temp_x, Nj*Nj, 0);
+    value(temp_1, Nj*Nj, 0);
+    value(xk, Nj*Nj, 0);
+    value(phi_y, N*N, 0);
+    value(phi_y_w, N*N, 0);
     
     // is this necessary? we can replace this with a transpose
     // Y = reshape(y, [N1 N1])
@@ -957,13 +702,7 @@ float * pL(float * y, int * A, float * b_t, int N, int m, int levels){
         }
     }
     vec(Y, N1, N1);
-    
-    
-    // we can replace this with a vectorized version easily
-    for (i=0; i<N*N; i++){
-        Yt[i] = 0;
-    }
-    
+    value(Yt, N*N, 0);
     for (xx=0; xx<N1; xx++){
         for (yy=0; yy<N1; yy++){
             Yt[yy*N + xx] = Y[yy*N1 + xx];
@@ -972,22 +711,14 @@ float * pL(float * y, int * A, float * b_t, int N, int m, int levels){
     
     idwt2_full(Yt, N, N);
     vec(Yt, N, N);
-    
-    
-    /*vec(Yt, N, N);*/
-    
-    // END BUG
-    // y1 is really Yt
-    
+
     for (i=0; i<N*N; i++) phi_y[i] = 0;
     for (i=0; i<m; i++){
         phi_y[A[i]] = Yt[A[i]];
     }
     
-    // TODO: have to see about un-vec'ing the function (or re-vec'ing)
     vec(phi_y, N, N);
     dwt2_full(phi_y, N, N);
-    /*y_t = vec(Phi_y_W(1:N/2^Level, 1:N/2^Level));*/
     for (xx=0; xx<Nj; xx++){
         for (yy=0; yy<Nj; yy++){
             y_t[yy*Nj + xx] = phi_y[yy*N + xx];
@@ -1019,7 +750,6 @@ float * pL(float * y, int * A, float * b_t, int N, int m, int levels){
     free(temp_1);
     free(phi_y);
     free(phi_y_w);
-    
 
     return xk;
 }
