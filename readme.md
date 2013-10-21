@@ -16,6 +16,8 @@ it. In pictures, it goes between these:
 
 ![this][sample].![this][finished].
 
+<img src=[sample] width="60" height="60"> 
+
 ### Getting the app on your device 
 We plan to release this app on the App Store in approximately October 2013.
 Until then, you can run this app on your computer by cloning this repo, opening
