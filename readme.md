@@ -14,6 +14,7 @@ significant).
 This app takes some image, sampled between 20 and 80 percent, and reconstruct
 it. In pictures, it goes between these:
 
+<!--sampled.finished-->
 <img src=https://raw.github.com/scottsievert/iSensing/master/images/demo/first_final/goldy_smoke_sample.png width="320" height="568">
 .
 <img src=https://raw.github.com/scottsievert/iSensing/master/images/demo/first_final/30p_18lam_30i_2lev.png width="320" height="568">
@@ -24,7 +25,4 @@ Until then, you can run this app on your computer by cloning this repo, opening
 the `.xcodeproject` (installing XCode first, of course) and clicking run. This will run on your computer, but you
 can run this app on your device only if you're registered with the Apple
 Developer Program.
-
-[finished]:https://raw.github.com/scottsievert/iSensing/master/images/demo/first_final/30p_18lam_30i_2lev.png
-[sample]:https://raw.github.com/scottsievert/iSensing/master/images/demo/first_final/goldy_smoke_sample.png
 
