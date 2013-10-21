@@ -252,6 +252,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     // the start of the animation. You shouldn't have to touch anything below here; 
     // it's all taken care of in IMAGE_STEP.
     // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
+    // below are frees for the frees we can do.
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
     ANIMATION_COMMAND{
@@ -1131,6 +1132,38 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     }}];
     }}];
     }}];
+
+//free(x_r);
+//free(x_g);
+//free(x_b);
+
+//free(y_r);
+//free(y_g);
+//free(y_b);
+
+//free(Xhat_r);
+//free(Xhat_g);
+//free(Xhat_b);
+
+//free(y2_r);
+//free(y2_g);
+//free(y2_b);
+
+free(phi_b_r);
+free(phi_b_g);
+free(phi_b_b);
+
+//free(b_t_r);
+//free(b_t_g);
+//free(b_t_b);
+
+free(b_t_r_pre);
+free(b_t_g_pre);
+free(b_t_b_pre);
+
+free(phi_b_w);
+free(b_t_pre);
+
 }
 
 - (void)didReceiveMemoryWarning
