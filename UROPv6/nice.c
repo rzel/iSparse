@@ -18,3 +18,11 @@ void value(float * x, int N, float value){
 void copy(float * source, float * dest, int N){
     cblas_scopy(N, source, 1, dest, 1);
 }
+void vecQuad(float * x, int xLimit, int yLimit, int width, int height, float * y){
+    // overwrites!
+    int yy;
+    for (yy=0; yy<yLimit; yy++) {
+        copy(x+yy*width, y+xLimit*yy, xLimit);
+    }
+    // now, y is the upper corner.
+}

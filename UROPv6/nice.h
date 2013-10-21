@@ -11,6 +11,5 @@
 
 void value(float * x, int N, float value);
 void copy(float * source, float * dest, int N);
-
-
+void vecQuad(float * x, int xLimit, int yLimit, int width, int height, float * y1);
 #endif
