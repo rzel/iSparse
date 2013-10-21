@@ -510,7 +510,7 @@
         float trf_g = *t_g;
         float trf_b = *t_b;
 
-        
+         
         for (n=0; n<3; n++) {
             // for each color plane
             // properly init
