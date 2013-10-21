@@ -1016,7 +1016,6 @@ float * pL(float * y, int * A, float * b_t, int N, int m, int levels){
     free(h);
     free(Yt);
     free(y_t);
-    free(xk);
     free(temp_x);
     free(temp_1);
     free(phi_y);

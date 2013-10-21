@@ -222,7 +222,7 @@ float *vec(float * x, int width, int height){
     vDSP_mtrans(x, 1, y, 1, width, height);
     cblas_scopy(width*height, y, 1, x, 1);
     
-    // don't listen to!
+    // don't listen to the return!
     free(y);
     return y;
 }

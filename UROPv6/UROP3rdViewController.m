@@ -20,6 +20,7 @@
  *
  *
  */
+// a comment
 
 #import <QuartzCore/QuartzCore.h>
 #import "UROPInfo.h"
@@ -30,7 +31,7 @@
 #import "UROPbrain.h"
 
 // how large is the image?
-#define IMAGE_SIZE 1024
+#define IMAGE_SIZE 512
 
 #define MAX_LEVELS 5.0f
 
