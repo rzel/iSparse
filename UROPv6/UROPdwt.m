@@ -398,31 +398,10 @@
     const size_t Height = image.size.height;
     const size_t Area = Width * Height;
     const size_t ComponentsPerPixel = 4; // rgba
-    
-    //  uint8_t pixelData[Area * ComponentsPerPixel];
+
     uint8_t * pixelData = (uint8_t *) malloc(sizeof(uint8_t) * Area * ComponentsPerPixel);
-    // fill the pixels with a lovely opaque blue gradient:
-    //    for (size_t i=0; i < Area; ++i) {
-    //        const size_t offset = i * ComponentsPerPixel;
-    //        pixelData[offset] = i;
-    //        pixelData[offset+1] = i;
-    //        pixelData[offset+2] = i + i; // enhance blue
-    //        pixelData[offset+3] = UINT8_MAX; // opaque
-    //    }
     float factor;
-    if ([way isEqualToString:@"forward"]) {
-        factor = 0.5;
-    }
-    else if ([way isEqualToString:@"inverse"]) {
-        factor = 2 * 1;
-    }
-    else {
-        factor = 1;
-    }
-    
-    
-    // WARNING: added because am seeing if normalizing works
-    //factor = 1;
+    factor = 1;
     
     
     for (long i=0; i < Area; ++i) {
@@ -444,15 +423,12 @@
     CGImageRef toCGImage = CGBitmapContextCreateImage(gtx);
     UIImage * uiimage = [[UIImage alloc] initWithCGImage:toCGImage];
     
-    
-    
-    //    image = uiimage;
-    
+    CGContextRelease(gtx);
+    CGColorSpaceRelease(colorSpace);
+    CGImageRelease(toCGImage);
     free(pixelData);
     
     return uiimage;
-    
-    // remember to cleanup your resources! :)
 }
 -(float *)copyArray:(float *)source intoDest:(float *)dest ofLength:(int)N
 {

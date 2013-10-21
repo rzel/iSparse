@@ -72,6 +72,7 @@
     UIImage * image = [self imageWithImage:[UIImage imageNamed:@"lenna.jpg"] scaledToSize:CGSizeMake(IMAGE_SIZE, IMAGE_SIZE)];
     self.imageStay = image;
     self.imageView.image = [self.brain sampleImage:image atRate:self.rate];
+
     
     // so the slider doesn't jump/wait.
     self.samplingSlider.continuous = NO;
