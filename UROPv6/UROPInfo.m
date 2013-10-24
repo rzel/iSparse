@@ -37,9 +37,9 @@
     NSString *body = [NSString stringWithFormat:@"The app uses a technique to reconstruct the image that relies on large areas of the image being largely the same. If the image were completely random, this reconstruction would fail utterly.  <br><br>\
                       \
                       \
-                      Experts: we group the high frequency terms with the noise then use the fast iterative shrinkage-thresholding algorithm (FISTA) to reconstruct the image. There's an %@ that covers this in detail.<br><br>\
+                      We group the high frequency terms with the noise then use the fast iterative shrinkage-thresholding algorithm (FISTA) to reconstruct the image. There's an %@ that covers this in detail.<br><br>\
                       \
-                      This app was made by %@, %@ and %@ at the University of Minnesota under the Undergraduate Research Opportunities program.", PAPER, SCOTT, AKSHAY, JARVIS];
+                      This app was made by %@, %@ and %@ at the University of Minnesota with funding from DARPA and the Undergraduate Research Oppurtunities Program.", PAPER, SCOTT, AKSHAY, JARVIS];
     
     NSString *htmlString;
     if (IS_WIDESCREEN) {
