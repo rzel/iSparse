@@ -118,6 +118,10 @@
 
 }
 
+-(void)infoPressed{
+    NSLog(@"In info pressed");
+}
+
 - (IBAction)samplingSliderChanged:(id)sender {
     float rate = (P_MAX-P_MIN)*self.samplingSlider.value + P_MIN;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
