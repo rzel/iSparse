@@ -108,10 +108,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     [self performSelectorOnMainThread:@selector(stopAmination) withObject:nil waitUntilDone:YES];
 }
 
--(void)saveImage{
-    NSLog(@"in save image");
-}
-
 // when the screen pops up
 - (void)viewDidLoad
 {
