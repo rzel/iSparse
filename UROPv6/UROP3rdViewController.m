@@ -78,7 +78,7 @@
     self.levelSlider.value = self.levels / MAX_LEVELS;
     
     // setting the levels dropped text up
-    self.levelText.text = [NSString stringWithFormat:@"Dropped detail levels: %d", self.levels];
+    self.levelText.text = [NSString stringWithFormat:@"Ignored detail levels: %d", self.levels];
     self.levelText.textAlignment = NSTextAlignmentCenter;
 
     // making the sampling rate equal to 50% at first, resizing the image
@@ -133,7 +133,7 @@
     NSLog(@"%d", level);
     self.levelSlider.value = level / MAX_LEVELS;
     self.levels = level;
-    self.levelText.text = [NSString stringWithFormat:@"Dropped detail levels: %d", self.levels];
+    self.levelText.text = [NSString stringWithFormat:@"Ignored detail levels: %d", self.levels];
 
 }
 
