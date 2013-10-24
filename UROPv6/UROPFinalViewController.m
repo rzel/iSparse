@@ -50,7 +50,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
 
 // updates the text that says "Iterations: 42"
 #define ITERATION_STEP \
-       showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts]; NSLog(@"iteration %d", showIts);
+       showIts++; self.iterations.text = [NSString stringWithFormat:@"Iterations: %d / 30", showIts]; NSLog(@"iteration %d", showIts);
 
 #define ANIMATION_COMMAND     [UIView animateWithDuration:0.0 delay:0.0 \
                                     options:UIViewAnimationOptionBeginFromCurrentState \

@@ -31,7 +31,10 @@
 #import "UROPbrain.h"
 
 // how large is the image?
-#define IMAGE_SIZE 1024
+#define IMAGE_SIZE 512
+
+#define P_MAX 0.5
+#define P_MIN 0.1
 
 #define MAX_LEVELS 5.0f
 
@@ -57,14 +60,25 @@
 {
     [super viewDidLoad];
     self.rate = 0.3;
-    self.samplingSlider.value = self.rate - 0.2;
+//    float rate = (P_MAX-P_MIN)*self.samplingSlider.value + P_MIN;
+
+    // (rate - P_MIN)/(P_MAX - P_MIN) = self.sampleSlider.value
+    self.samplingSlider.value = (self.rate - P_MIN) / (P_MAX - P_MIN);
     self.levelSlider.continuous = NO;
-    self.levelText.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+    
+    // allow newlines in the labels
+    self.label.numberOfLines = 0;
+    self.levelText.numberOfLines = 0;
+    
+    // setting the fonts
+    self.levelText.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+    self.label.font     = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
     
     self.levels = 2;
     self.levelSlider.value = self.levels / MAX_LEVELS;
+    
+    // setting the levels dropped text up
     self.levelText.text = [NSString stringWithFormat:@"Dropped detail levels: %d", self.levels];
-    self.levelText.enabled = YES;
     self.levelText.textAlignment = NSTextAlignmentCenter;
 
     // making the sampling rate equal to 50% at first, resizing the image
@@ -105,7 +119,7 @@
 }
 
 - (IBAction)samplingSliderChanged:(id)sender {
-    float rate = 0.6*self.samplingSlider.value + 0.2;
+    float rate = (P_MAX-P_MIN)*self.samplingSlider.value + P_MIN;
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:rate];
     self.label.text = [NSString stringWithFormat:@"Sampling rate: %.0f%%", 100*rate];
     self.rate = rate;
