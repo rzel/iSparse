@@ -31,10 +31,11 @@
 #import "UROPbrain.h"
 
 // how large is the image?
-#define IMAGE_SIZE 512
+#define IMAGE_SIZE 1024
 
 #define P_MAX 0.5
 #define P_MIN 0.1
+#define P_START 0.15
 
 #define MAX_LEVELS 5.0f
 
@@ -59,7 +60,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.rate = 0.3;
+    self.rate = P_START;
 //    float rate = (P_MAX-P_MIN)*self.samplingSlider.value + P_MIN;
 
     // (rate - P_MIN)/(P_MAX - P_MIN) = self.sampleSlider.value
