@@ -119,6 +119,13 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     [self.scrollView setBackgroundColor:[UIColor whiteColor]];
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
     
+    [self animateFISTA];
+
+
+}
+
+-(void)animateFISTA{
+    int i;
     float rate = self.rate;
     float pix = self.imageStay.size.width * self.imageStay.size.height;
     int N = (int)sqrtf(pix);
@@ -134,14 +141,14 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     NSMutableArray * idx = [[NSMutableArray alloc] init];
     
     [self.brain makeIDX:idx ofLength:pix];
-
+    
     for (i=0; i<N*N; i++) {
         samples[i] = [[idx objectAtIndex:i] integerValue];
     }
-
-
-
-
+    
+    
+    
+    
     float * x_r = (float *)malloc(sizeof(float) * N*N);
     float * x_g = (float *)malloc(sizeof(float) *  N*N);
     float * x_b = (float *)malloc(sizeof(float) *  N*N);
@@ -200,14 +207,14 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     vecQuad(phi_b_r, M, M, N, N, b_t_r_pre);
     vecQuad(phi_b_g, M, M, N, N, b_t_g_pre);
     vecQuad(phi_b_b, M, M, N, N, b_t_b_pre);
-
+    
     
     // vec (just a transpose since C)
     vDSP_mtrans(b_t_r_pre, 1, b_t_r, 1, M, M);
     vDSP_mtrans(b_t_g_pre, 1, b_t_g, 1, M, M);
     vDSP_mtrans(b_t_b_pre, 1, b_t_b, 1, M, M);
     // ------------------------ done calculating b_t
-
+    
     value(Xhat_r, N*N, 0);
     value(Xhat_g, N*N, 0);
     value(Xhat_b, N*N, 0);
@@ -225,9 +232,9 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     __block float t_b = 1.0;
     
     
-
     
-    // the start of the animation. You shouldn't have to touch anything below here; 
+    
+    // the start of the animation. You shouldn't have to touch anything below here;
     // it's all taken care of in IMAGE_STEP.
     // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
     //free(x_r);
@@ -264,276 +271,221 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
-    ANIMATION_COMMAND{
-                         showIts=0;
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        showIts=0;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
 
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
 
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
+    ANIMATION_COMMAND{
+        ITERATION_STEP;
+        IMAGE_STEP;
+
+        }
+        FINISHED_IF{
 
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
-
-
+        }
+        FINISHED_IF{
     ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
+        ITERATION_STEP;
+        IMAGE_STEP;
 
-                     }
-                     FINISHED_IF{
+        }
+        FINISHED_IF{
 
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-
-    ANIMATION_COMMAND{
-                         ITERATION_STEP;
-                         IMAGE_STEP;
-
-                     }
-                     FINISHED_IF{
-
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-     }}];
-
-
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
+    }}];
 
 }
 
