@@ -92,18 +92,16 @@
     for (i=0; i<pix; i++) {
         [idx addObject:[NSNumber numberWithInt:i]];
     }
-    srandom(42); srand(42); // 'srand' works
+    srand(42); // 'srand' works
     for (i=0; i<pix; i++) {
         int index = random() % pix;
         [idx exchangeObjectAtIndex:i withObjectAtIndex:index];
     }
-   // NSLog(@"-----------");
-    for (i=0; i<5; i++) {
-       // NSLog(@"%@", [idx objectAtIndex:i]);
-
-    }
-    
+    int * h = malloc(sizeof(float) * 10);
+    makeIDX(h, 10);
 }
+
+
 
 // another init. actual for initial view.
 -(void)makeMeasurements:(UIImage *)image atRate:(float)rate

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404018365.02308"
+            timestampString = "404759115.559642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "-T:width:height:order:y:idx:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404018365.02308"
+            timestampString = "404759115.559642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
             landmarkName = "-reconstructWithIST:coarse:idx:y_r:y_g:y_b:rate:xold_r:xold1_r:xold_g:xold1_g:xold_b:xold1_b:iterations:pastIterations:tn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,7 +58,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404019605.375188"
+            timestampString = "404759115.559642"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
+            landmarkName = "-reconstructWithFISTA:Xhat_r:Xhat_g:Xhat_b:samples:y_r:y_g:y_b:y2_r:y2_g:y2_b:x_r:x_g:x_b:b_t_r:b_t_g:b_t_b:t_r:t_g:t_b:M:N:k:m:levels:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UROPv6/UROPbrain.m"
+            timestampString = "404759115.559642"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
+            landmarkName = "-reconstructWithFISTA:Xhat_r:Xhat_g:Xhat_b:samples:y_r:y_g:y_b:y2_r:y2_g:y2_b:x_r:x_g:x_b:b_t_r:b_t_g:b_t_b:t_r:t_g:t_b:M:N:k:m:levels:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UROPv6/UROPbrain.m"
+            timestampString = "404759115.559642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "539"
@@ -74,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404018365.02308"
+            timestampString = "404759115.559642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
             landmarkName = "-reconstructWithFISTA:Xhat_r:Xhat_g:Xhat_b:samples:y_r:y_g:y_b:y2_r:y2_g:y2_b:x_r:x_g:x_b:b_t_r:b_t_g:b_t_b:t_r:t_g:t_b:M:N:k:m:levels:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404019605.375188"
+            timestampString = "404759115.559642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "541"
-            endingLineNumber = "541"
+            startingLineNumber = "570"
+            endingLineNumber = "570"
             landmarkName = "-reconstructWithFISTA:Xhat_r:Xhat_g:Xhat_b:samples:y_r:y_g:y_b:y2_r:y2_g:y2_b:x_r:x_g:x_b:b_t_r:b_t_g:b_t_b:t_r:t_g:t_b:M:N:k:m:levels:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404019656.873983"
+            timestampString = "404759115.559642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "554"
-            endingLineNumber = "554"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
             landmarkName = "-reconstructWithFISTA:Xhat_r:Xhat_g:Xhat_b:samples:y_r:y_g:y_b:y2_r:y2_g:y2_b:x_r:x_g:x_b:b_t_r:b_t_g:b_t_b:t_r:t_g:t_b:M:N:k:m:levels:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,43 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404019605.375188"
+            timestampString = "404759115.559642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "572"
             endingLineNumber = "572"
-            landmarkName = "-reconstructWithFISTA:Xhat_r:Xhat_g:Xhat_b:samples:y_r:y_g:y_b:y2_r:y2_g:y2_b:x_r:x_g:x_b:b_t_r:b_t_g:b_t_b:t_r:t_g:t_b:M:N:k:m:levels:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404019605.375188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "573"
-            endingLineNumber = "573"
-            landmarkName = "-reconstructWithFISTA:Xhat_r:Xhat_g:Xhat_b:samples:y_r:y_g:y_b:y2_r:y2_g:y2_b:x_r:x_g:x_b:b_t_r:b_t_g:b_t_b:t_r:t_g:t_b:M:N:k:m:levels:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UROPv6/UROPbrain.m"
-            timestampString = "404019605.375188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
             landmarkName = "-reconstructWithFISTA:Xhat_r:Xhat_g:Xhat_b:samples:y_r:y_g:y_b:y2_r:y2_g:y2_b:x_r:x_g:x_b:b_t_r:b_t_g:b_t_b:t_r:t_g:t_b:M:N:k:m:levels:"
             landmarkType = "5">
          </BreakpointContent>

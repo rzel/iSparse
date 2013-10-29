@@ -138,10 +138,12 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     int M = powf(2, J-L);
     // the indicies where we want to sample
     int * samples = (int *)malloc(sizeof(int) * N*N);
-    NSMutableArray * idx = [[NSMutableArray alloc] init];
     
+    makeIDX(samples, N*N); //  there's a bug in here
+    NSMutableArray * idx = [[NSMutableArray alloc] init];
     [self.brain makeIDX:idx ofLength:pix];
     
+    // FOR LOOP
     for (i=0; i<N*N; i++) {
         samples[i] = [[idx objectAtIndex:i] integerValue];
     }
@@ -169,9 +171,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     float * phi_b_g = (float *)malloc(sizeof(float) * N * N);
     float * phi_b_b = (float *)malloc(sizeof(float) * N * N);
     
-    float * phi_b_w = (float *)malloc(sizeof(float) * N * N);
-    float * b_t_pre = (float *)malloc(sizeof(float) * M * M);
-    
     float * b_t_r = (float *)malloc(sizeof(float) * M * M);
     float * b_t_g = (float *)malloc(sizeof(float) * M * M);
     float * b_t_b = (float *)malloc(sizeof(float) * M * M);
@@ -180,17 +179,16 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     float * b_t_g_pre = (float *)malloc(sizeof(float) * M * M);
     float * b_t_b_pre = (float *)malloc(sizeof(float) * M * M);
     
-    
-    // goes into y_r, y_g, y_b
+    // FOR LOOP
     [self.brain makeMeasurements:self.imageStay atRate:self.rate
                              red:y_r green:y_g blue:y_b
                         ofLength:pix idx:idx];
-    for (i=0; i<N*N; i++) phi_b_r[i] = 0;
-    for (i=0; i<N*N; i++) phi_b_g[i] = 0;
-    for (i=0; i<N*N; i++) phi_b_b[i] = 0;
-    catlas_sset(N*N, 0, phi_b_r, 1); // setting every element to 0
-    catlas_sset(N*N, 0, phi_b_g, 1); // setting every element to 0
-    catlas_sset(N*N, 0, phi_b_b, 1); // setting every element to 0
+    
+    value(phi_b_r, N*N, 0);
+    value(phi_b_g, N*N, 0);
+    value(phi_b_b, N*N, 0);
+    
+    // FOR LOOP
     for (i=0; i<m; i++) {
         phi_b_r[samples[i]] = y_r[i];
         phi_b_g[samples[i]] = y_g[i];
@@ -204,6 +202,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     vec(phi_b_g, N, N);
     vec(phi_b_b, N, N);
     // reshaping
+    // FOR LOOP
     vecQuad(phi_b_r, M, M, N, N, b_t_r_pre);
     vecQuad(phi_b_g, M, M, N, N, b_t_g_pre);
     vecQuad(phi_b_b, M, M, N, N, b_t_b_pre);
@@ -265,9 +264,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     free(b_t_r_pre);
     free(b_t_g_pre);
     free(b_t_b_pre);
-    
-    free(phi_b_w);
-    free(b_t_pre);
     
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
