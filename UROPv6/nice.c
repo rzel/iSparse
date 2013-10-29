@@ -29,7 +29,7 @@ void vecQuad(float * x, int xLimit, int yLimit, int width, int height, float * y
 void makeIDX(int * array, int N){
     // samples: an array of int's, malloc'd. gets overwritten.
     // N: how large samples should be
-    
+    printf("%d\n", N);
     float * in1 = (float *)malloc(sizeof(float) * N);
     float * in2 = (float *)malloc(sizeof(float) * N);
     float * out1 = (float *)malloc(sizeof(float) * N);
@@ -41,7 +41,7 @@ void makeIDX(int * array, int N){
     // now, scramble that vector
     srand(42);
     for (int i=0; i<N; i++) {
-        int ind = (int)(rand() % N);
+        int ind = (int)(random() % N);
         swapS2(out1+i, out1+ind);
     }
     vDSP_vfix32(out1, 1, array, 1, N);

@@ -137,15 +137,20 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     int L = self.levels;
     int M = powf(2, J-L);
     // the indicies where we want to sample
+    int * samples1 = (int *)malloc(sizeof(int) * N*N);
     int * samples = (int *)malloc(sizeof(int) * N*N);
     
-    makeIDX(samples, N*N); //  there's a bug in here
+    makeIDX(samples1, N*N); //  there's a bug in here
     NSMutableArray * idx = [[NSMutableArray alloc] init];
     [self.brain makeIDX:idx ofLength:pix];
     
     // FOR LOOP
+    srand(42);
     for (i=0; i<N*N; i++) {
         samples[i] = [[idx objectAtIndex:i] integerValue];
+    }
+    for (int i=0; i<10; i++) {
+        NSLog(@"%d %d", samples[i], samples1[i]);
     }
     
     

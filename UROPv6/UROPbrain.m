@@ -97,8 +97,6 @@
         int index = random() % pix;
         [idx exchangeObjectAtIndex:i withObjectAtIndex:index];
     }
-    int * h = malloc(sizeof(float) * 10);
-    makeIDX(h, 10);
 }
 
 
