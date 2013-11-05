@@ -125,6 +125,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
 }
 
 -(void)animateFISTA{
+    NSDate * beg = [NSDate date];
     int i;
     float rate = self.rate;
     float pix = self.imageStay.size.width * self.imageStay.size.height;
@@ -149,10 +150,10 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     for (i=0; i<N*N; i++) {
         samples[i] = [[idx objectAtIndex:i] integerValue];
     }
-    for (int i=0; i<10; i++) {
-        NSLog(@"%d %d", samples[i], samples1[i]);
-    }
-    
+    NSTimeInterval first = [beg timeIntervalSinceNow];
+    NSLog(@"Time: %f", first);
+    beg = [NSDate date];
+
     
     
     
@@ -189,6 +190,8 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
                              red:y_r green:y_g blue:y_b
                         ofLength:pix idx:idx];
     
+
+    
     value(phi_b_r, N*N, 0);
     value(phi_b_g, N*N, 0);
     value(phi_b_b, N*N, 0);
@@ -199,6 +202,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
         phi_b_g[samples[i]] = y_g[i];
         phi_b_b[samples[i]] = y_b[i];
     }
+
     // overwrites phi_b
     dwt2_full(phi_b_r, N, N);
     dwt2_full(phi_b_g, N, N);

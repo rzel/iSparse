@@ -73,14 +73,14 @@
 		D2BBCE72181456E4000A0C50 /* dwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dwt.h; sourceTree = "<group>"; };
 		D2DA0D4517EA1CB700E0A087 /* UROPdwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UROPdwt.h; sourceTree = "<group>"; };
 		D2DA0D4617EA1CB700E0A087 /* UROPdwt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UROPdwt.m; sourceTree = "<group>"; };
-		D2DF751C16CF174900DF158B /* iSensing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSensing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2DF751C16CF174900DF158B /* iSparse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSparse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DF751F16CF174900DF158B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D2DF752116CF174900DF158B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2DF752316CF174900DF158B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D2DF752716CF174900DF158B /* iSensing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSensing-Info.plist"; sourceTree = "<group>"; };
+		D2DF752716CF174900DF158B /* iSparse-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iSparse-Info.plist"; sourceTree = "<group>"; };
 		D2DF752916CF174900DF158B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2DF752B16CF174900DF158B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D2DF752D16CF174900DF158B /* iSensing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSensing-Prefix.pch"; sourceTree = "<group>"; };
+		D2DF752D16CF174900DF158B /* iSparse-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSparse-Prefix.pch"; sourceTree = "<group>"; };
 		D2DF752E16CF174A00DF158B /* UROPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UROPAppDelegate.h; sourceTree = "<group>"; };
 		D2DF752F16CF174A00DF158B /* UROPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UROPAppDelegate.m; sourceTree = "<group>"; };
 		D2DF753116CF174A00DF158B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 		D2DF751D16CF174900DF158B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2DF751C16CF174900DF158B /* iSensing.app */,
+				D2DF751C16CF174900DF158B /* iSparse.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,10 +258,10 @@
 			children = (
 				D2DF752E16CF174A00DF158B /* UROPAppDelegate.h */,
 				D2DF752F16CF174A00DF158B /* UROPAppDelegate.m */,
-				D2DF752716CF174900DF158B /* iSensing-Info.plist */,
+				D2DF752716CF174900DF158B /* iSparse-Info.plist */,
 				D2DF752816CF174900DF158B /* InfoPlist.strings */,
 				D2DF752B16CF174900DF158B /* main.m */,
-				D2DF752D16CF174900DF158B /* iSensing-Prefix.pch */,
+				D2DF752D16CF174900DF158B /* iSparse-Prefix.pch */,
 				D2DF753116CF174A00DF158B /* Default.png */,
 				D2DF753316CF174A00DF158B /* Default@2x.png */,
 				D2DF753516CF174A00DF158B /* Default-568h@2x.png */,
@@ -294,9 +294,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D2DF751B16CF174900DF158B /* iSensing */ = {
+		D2DF751B16CF174900DF158B /* iSparse */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2DF754216CF174A00DF158B /* Build configuration list for PBXNativeTarget "iSensing" */;
+			buildConfigurationList = D2DF754216CF174A00DF158B /* Build configuration list for PBXNativeTarget "iSparse" */;
 			buildPhases = (
 				D2DF751816CF174900DF158B /* Sources */,
 				D2DF751916CF174900DF158B /* Frameworks */,
@@ -306,9 +306,9 @@
 			);
 			dependencies = (
 			);
-			name = iSensing;
+			name = iSparse;
 			productName = UROPv6;
-			productReference = D2DF751C16CF174900DF158B /* iSensing.app */;
+			productReference = D2DF751C16CF174900DF158B /* iSparse.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -321,7 +321,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = com.scott;
 			};
-			buildConfigurationList = D2DF751716CF174900DF158B /* Build configuration list for PBXProject "iSensing" */;
+			buildConfigurationList = D2DF751716CF174900DF158B /* Build configuration list for PBXProject "iSparse" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -333,7 +333,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2DF751B16CF174900DF158B /* iSensing */,
+				D2DF751B16CF174900DF158B /* iSparse */,
 			);
 		};
 /* End PBXProject section */
@@ -491,9 +491,9 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UROPv6/iSensing-Prefix.pch";
-				INFOPLIST_FILE = "UROPv6/iSensing-Info.plist";
-				PRODUCT_NAME = iSensing;
+				GCC_PREFIX_HEADER = "UROPv6/iSparse-Prefix.pch";
+				INFOPLIST_FILE = "UROPv6/iSparse-Info.plist";
+				PRODUCT_NAME = iSparse;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -505,9 +505,9 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UROPv6/iSensing-Prefix.pch";
-				INFOPLIST_FILE = "UROPv6/iSensing-Info.plist";
-				PRODUCT_NAME = iSensing;
+				GCC_PREFIX_HEADER = "UROPv6/iSparse-Prefix.pch";
+				INFOPLIST_FILE = "UROPv6/iSparse-Info.plist";
+				PRODUCT_NAME = iSparse;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -516,7 +516,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D2DF751716CF174900DF158B /* Build configuration list for PBXProject "iSensing" */ = {
+		D2DF751716CF174900DF158B /* Build configuration list for PBXProject "iSparse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2DF754016CF174A00DF158B /* Debug */,
@@ -525,7 +525,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2DF754216CF174A00DF158B /* Build configuration list for PBXNativeTarget "iSensing" */ = {
+		D2DF754216CF174A00DF158B /* Build configuration list for PBXNativeTarget "iSparse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2DF754316CF174A00DF158B /* Debug */,
