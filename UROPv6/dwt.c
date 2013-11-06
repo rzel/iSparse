@@ -285,12 +285,3 @@ float S2sign(float x){
 
     return ret;
 }
-
-
-//void copy(float * source, float * dest, int N){
-//    int i;
-//    for (i=0; i<N; i++){
-//        dest[i] = source[i];
-//    }
-//    
-//}
