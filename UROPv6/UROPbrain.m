@@ -47,7 +47,13 @@
 // functions to sample the image for the initial viewing.
 -(float *)sample:(float *)array atRate:(float)rate ofLength:(int)n
 {
-    // vDSP_vthr
+    // vDSP_vthr will speed this up.
+    // but how to make a random vector?
+    
+    // vDSP_vgen to make a ramped function
+    // gsl_ran_shuffle to shuffle
+    // vDSP_vthr to threshold
+    
     srand(42);
     for (int i=0; i<n; i++) {
         float ra = (float)(rand() % n)/n;
@@ -57,7 +63,6 @@
     }
 
     return array;
-    
 }
 -(UIImage *)sampleImage:(UIImage *)image atRate:(float)rate
 {
@@ -95,6 +100,7 @@
 -(void)makeMeasurements2:(UIImage *)image atRate:(float)rate
                      red:(float *)y_r green:(float *)y_b blue:(float *)y_g
                 ofLength:(int)length idx:(int *)idx{
+    // vDSP_vgathr is equivalent to a[i] = b[c[i]] (!)
     int pix = image.size.height * image.size.width;
     float * array = (float *)malloc(sizeof(float) * pix * 4);
     float * colorPlane = (float *)malloc(sizeof(float) * pix);
@@ -195,318 +201,6 @@
     
 }
 
-// another init. to view while you're setting the largest k terms.
--(UIImage *)doWaveletKeepingLargestKTerms:(UIImage *)image coarse:(float)coarse
-{
-    int area = image.size.height * image.size.width;
-    float width = image.size.width;
-    float height = image.size.height;
-    float * array = (float *)malloc(sizeof(float) * area);
-    float * colorPlane = (float *)malloc(sizeof(float) * area);
-    int order = (int)log2(image.size.width);
-    NSLog(@"%f", coarse);
-    
-    // get data
-    array = [self.dwt UIImageToRawArray:image];
-    int  i;
-    //float max, min;
-    // end making raw array
-    // begin the wavelet part
-    
-    // perform wavelet, 2D on image
-    // using color planes, all of that
-    for (int n=0; n<3; n++) {
-        
-        colorPlane = [self.dwt getColorPlane:array ofArea:area startingIndex:n into:colorPlane];
-        
-        colorPlane = [self.dwt waveletOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order divide:@"null"]; // change from null to image if want /2
-        
-        float cut_off = coarse * 26.25;
-        for (i=0; i<area; i++) {
-            if (abs(colorPlane[i]) < cut_off) {
-                colorPlane[i] = 0;
-            }
-        }
-        
-        colorPlane = [self.dwt inverseOn2DArray:colorPlane ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
-        
-        array      = [self.dwt putColorPlaneBackIn:colorPlane into:array ofArea:area startingIndex:n];
-    }
-    for (i=0; i<4*area; i=i+4) {
-        //NSLog(@"array[%d] = %f", i, array[i]);
-    }
-    
-    
-    for (long i=3; i<4*area; i=i+4)
-    {array[i] = 255;}
-    image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
-    free(array); free(colorPlane);
-    
-    return image;
-}
-
-// the actual IST
--(float)IST:(float *)signal ofLength:(int)N
-    ofWidth:(int)width ofHeight:(int)height order:(int)order
-  iteration:(int)iter
-     atRate:(float)p
-       xold:(float *)xold xold1:(float *)xold1
-          y:(float *)y
-        idx:(NSMutableArray *)idx coarse:(float)coarse numberOfPastIterations:(int)pastIts
-         tn:(float)tn
-{
-    // the function performs the "fast iterative soft thresholding algorithm (FISTA)". This is the meat of the code -- this is where your actual algorithm implementation goes. The rest is just (complicated) wrapper for this.
-    float * t1 = (float *)malloc(sizeof(float) * N);
-    float * temp = (float *)malloc(sizeof(float) * N);
-    float * temp2 = (float *)malloc(sizeof(float) * N);
-    float * temp3 = (float *)malloc(sizeof(float) * N);
-    float * temp4 = (float *)malloc(sizeof(float) * N);
-    float * tt = (float *)malloc(sizeof(float) * N);
-    // allocations for T(.)
-    float tn1;
-    int i, index;
-    
-    // l for lambda. our threshold for setting everything below this to 0.
-    float l = 15;
-    for (int its=0; its<iter; its++) {
-        tn1 = (1+sqrt(1+4*tn*tn))/2;
-        // tn1 = tn_{k+1}. computing the tn
-        
-        // xold1 = xold_{k-1}
-        // "calling" T(.) with a new xold
-        for (i=0; i<N; i++)
-        {xold[i] = xold[i] + ((tn - 1.0)/tn1) * (xold[i] - xold1[i]);} // check
-        
-        // implementing T(.) (could be a function)
-        for (i=0; i<N; i++) {t1[i] = xold[i];}
-        
-        t1 = [self.dwt inverseOn2DArray:t1 ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
-        
-        //          temp = t1(rp(1:floor(p*n)));
-        for (i=0; i<p*N; i++) {
-            index = [[idx objectAtIndex:i] intValue];
-            temp[i] = t1[index];}
-        
-        
-        //         temp2 = y-temp;
-        for (i=0; i<p*N; i++) {
-            temp2[i] = y[i] - temp[i];}
-        
-        
-        //          temp3 = zeros(size(I3));
-        for (i=0; i<N; i++) {
-            temp3[i] = 0;}
-        //          temp3(rp(1:floor(p*n))) = temp2;
-        for (i=0; i<p*N; i++) {
-            index = [[idx objectAtIndex:i] intValue];
-            temp3[index] = temp2[i];}
-        
-        
-        //          temp3 = dwt2_full(temp3);
-        temp3 = [self.dwt waveletOn2DArray:temp3 ofWidth:width andHeight:height ofOrder:order divide:@"null"];
-        
-        
-        //          temp4 = xold + temp3;
-        for (i=0; i<N; i++) {
-            //temp4[i] = xold[i] + temp3[i];
-            temp4[i] = xold[i] + temp3[i];
-        }
-        for (i=0; i<N; i++) {
-            //temp4[i] = xold[i] + temp3[i];
-            xold[i] = temp4[i]; // probably unnecassary
-        }
-        // the end of T(.)
-        
-        // use iterative soft thresholding
-        // look at each value, and see if abs() is less than l
-        for (i=0; i<N; i++) {
-            if (abs(xold[i]) < l) {
-                xold[i] = 0;
-            } else xold[i] = xold[i] - copysignf(1, xold[i]) * l;
-        }
-        
-        // updating the past iteration
-        for (i=0; i<N; i++) {
-            xold1[i] = xold[i];
-            xold[i] = xold[i]; // not nesecarry...
-            // updating xold_{n-1} = xold_n            
-        }
-        // updating the tn
-        tn = tn1;
-        // updating tn = tn_{n+1}
-    }
-    
-    free(temp);
-    free(temp2);
-    free(temp4);
-    free(temp3);
-    free(tt);
-    free(t1);
-    return tn;
-    
-    
-}
-
-// used in IST; it's called with a varying step size each time.
-// not called: had to figure out a bug and didn't use it
--(float *)T:(float *)xold width:(int)width height:(int)height order:(int)order
-    // an unused, hence untested, function.
-          y:(float *)y
-        idx:(NSMutableArray *)idx
-{
-    // changed from "return xnew" to "return xold" to squash a bug-error. I don't think it matters because the return value isn't used.
-    int i=0;
-    int index;
-    int n=width*height;
-    float * temp  = (float *)malloc(sizeof(float) * n);
-    float * temp1 = (float *)malloc(sizeof(float) * n);
-    float * temp2 = (float *)malloc(sizeof(float) * n);
-    float * temp3 = (float *)malloc(sizeof(float) * n);
-    float * temp4 = (float *)malloc(sizeof(float) * n);
-    //float * xnew = (float *)malloc(sizeof(float) * n);
-    temp1 = [self.dwt inverseOn2DArray:xold ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
-    for (i=0; i<[idx count]; i++) {
-        index = [[idx objectAtIndex:i] intValue];
-        temp[i] = temp1[index];
-    }
-    for (i=0; i<[idx count]; i++) {
-        //index = [[idx objectAtIndex:i] intValue];
-        temp2[i] = y[i] - temp[i];
-    }
-    for (i=0; i<n; i++) {
-        temp3[i] = 0;
-    }
-    for (i=0; i<[idx count]; i++) {
-        index = [[idx objectAtIndex:i] intValue];
-        temp3[index] = temp2[i];
-    }
-    [self.dwt waveletOn2DArray:temp3 ofWidth:width andHeight:height ofOrder:order divide:@"null"];
-    for (i=0; i<n; i++) {
-        //index = [[idx objectAtIndex:i] intValue];
-        temp4[i] = xold[i] + temp3[i];
-    }
-    for (i=0; i<n; i++) {
-        //xnew[i] = temp4[i];
-        xold[i] = temp4[i];
-    }
-    free(temp);
-    free(temp1);
-    free(temp2);
-    free(temp3);
-    free(temp4);
-    return xold;
-}
-
-// and the function that takes in a UIImage and performs the IST.
--(UIImage *)reconstructWithIST:(UIImage *)image
-                  coarse:(float)coarse
-                     idx:(NSMutableArray *)idx
-                     y_r:(float *)y_r y_g:(float *)y_g y_b:(float *)y_b
-                    rate:(float)rate
-                  xold_r:(float *)xold_r xold1_r:(float *)xold1_r
-                  xold_g:(float *)xold_g xold1_g:(float *)xold1_g
-                  xold_b:(float *)xold_b xold1_b:(float *)xold1_b
-              iterations:(int)its pastIterations:(int)pastIts tn:(float *)tn
-{
-    static int logPastIts=0;
-    logPastIts++;
-    NSLog(@"%d", logPastIts);
-    // We need no image-to-array function, as the arrays are held in the view controller.
-    int height = image.size.height;
-    int width = image.size.width;
-    int order = log2(width);
-    int pix = height * width;
-    
-    
-    // get data
-    //    array = [self.dwt UIImageToRawArray:image];
-    int i, n;
-    //float max, min;
-    // end making raw array
-    // begin the wavelet part
-    
-    // perform wavelet, 2D on image
-    // using color planes, all of that
-    if (width < 256){
-        //NSLog(@"returned a small image");
-        image = [UIImage imageNamed:@"one.jpg"];
-        //NSLog(@"%@", image);
-        return image;
-    } else{
-        float * array = (float *)malloc(sizeof(float) * pix * 4);
-        float * colorPlane = (float *)malloc(sizeof(float) * pix);
-        float * xold = (float *)malloc(sizeof(float) * pix);
-        float * xold1 = (float *)malloc(sizeof(float) * pix);
-        float * y = (float *)malloc(sizeof(float) * pix);
-        float tnf = *tn;
-        
-        for (n=0; n<3; n++) {
-            
-            
-            // properly init
-            if (n==0) {
-                for (i=0; i<rate*pix; i++) {y[i]    = y_r[i];}
-                for (i=0; i<pix;      i++) {xold[i] = xold_r[i];}
-                for (i=0; i<pix;      i++) {xold1[i] = xold1_r[i];}
-            } else  if (n==1) {
-                for (i=0; i<rate*pix; i++) {y[i]    = y_g[i];}
-                for (i=0; i<pix;      i++) {xold[i] = xold_g[i];}
-                for (i=0; i<pix;      i++) {xold1[i] = xold1_g[i];}
-
-            } else if (n==2) {
-                for (i=0; i<rate*pix; i++) {y[i]    = y_b[i]; }
-                for (i=0; i<pix;      i++) {xold[i] = xold_b[i];}
-                for (i=0; i<pix;      i++) {xold1[i] = xold1_b[i];}
-
-            }
-            
-            // the do-what-you-want code should go here. actually performing the algorithm.
-//            tnf = [self FISTA_W:xold ofLength:pix ofWidth:width ofHeight:height
-//                     order:order iteration:its atRate:rate
-//                      xold:xold xold1:xold1 y:y idx:idx
-//                    coarse:coarse numberOfPastIterations:0 tn:tnf];
-            tnf = [self IST:xold ofLength:pix ofWidth:width ofHeight:height
-                          order:order iteration:its atRate:rate
-                           xold:xold xold1:xold1 y:y idx:idx
-                         coarse:coarse numberOfPastIterations:0 tn:tnf];
-            
-            // and then update
-            if (n==0) {
-                for (i=0; i<rate*pix; i++) {y_r[i]    = y[i];}
-                for (i=0; i<pix;      i++) {xold_r[i] = xold[i];}
-                for (i=0; i<pix;      i++) {xold1_r[i] = xold1[i];}
-            } else if (n==1) {
-                for (i=0; i<rate*pix; i++) {y_g[i]    = y[i];}
-                for (i=0; i<pix;      i++) {xold_g[i] = xold[i];}
-                for (i=0; i<pix;      i++) {xold1_g[i] = xold1[i];}
-
-            } else if (n==2) {
-                for (i=0; i<rate*pix; i++) {y_b[i]    = y[i];}
-                for (i=0; i<pix;      i++) {xold_b[i] = xold[i];}
-                for (i=0; i<pix;      i++) {xold1_b[i] = xold1[i];}
-
-            }
-            
-            // end of do what you want
-            [self.dwt inverseOn2DArray:xold ofWidth:width andHeight:height ofOrder:order multiply:@"null"];
-            
-            array      = [self.dwt putColorPlaneBackIn:xold into:array ofArea:pix startingIndex:n];
-        }
-        *tn = tnf;
-        
-        image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
-        
-        
-        free(array);
-        free(colorPlane);
-        free(y);
-        free(xold);
-        free(xold1);
-        return image;
-    }
-    
-}
-
 -(UIImage *)reconstructWithFISTA:(UIImage *)image
                           Xhat_r:(float *)Xhat_r Xhat_g:(float *)Xhat_g Xhat_b:(float *)Xhat_b
                          samples:(int *)samples
@@ -522,9 +216,8 @@
     // we need no image-to-array function, as the arrays are held in the view controller.
     int height = image.size.height;
     int width = image.size.width;
-    int order = log2(width);
     int pix = height * width;
-    int i, n;
+    int n;
     float * array = (float *)malloc(sizeof(float) * 4 * N * N);
 
 

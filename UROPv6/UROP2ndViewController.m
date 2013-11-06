@@ -124,6 +124,7 @@ finishedSavingWithError:(NSError *)error
 //    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
 //    UIGraphicsEndImageContext();
 //    return newImage;
+    return image;
 }
 
 

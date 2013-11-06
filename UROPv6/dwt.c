@@ -111,6 +111,7 @@ float * dwt2_full(float * x, int width, int height){
     }
     free(wavelet);
     free(waveletF);
+    return (void *)0xbad;
 }
 float * idwt(float * x, int N, float * y){
     float * one = (float *)malloc(sizeof(float) * N/2);
@@ -162,6 +163,7 @@ float * idwt2(float * x, float * y, int width, int height){
     }
     free(wavelet);
     free(wavelet1);
+    return (void *)0xbad;
 }
 float * idwt2_full(float * x, int width, int height){
     // overwrites x
@@ -171,14 +173,15 @@ float * idwt2_full(float * x, int width, int height){
     float * waveletF = (float *)malloc(sizeof(float) * width * height);
     for (k=order; k>0; k--){
         // copy parts of array
-        copyPartsOfArray(x, wavelet, width>>k-1, height>>k-1, width, height);
+        copyPartsOfArray(x, wavelet, width>>(k-1), height>>(k-1), width, height);
         // idwt2
-        idwt2(wavelet, waveletF, width>>k-1, height>>k-1);
+        idwt2(wavelet, waveletF, width>>(k-1), height>>(k-1));
         // copy parts of array back in
-        copyPartsOfArrayInverse(waveletF, x, width>>k-1, height>>k-1, width, height);
+        copyPartsOfArrayInverse(waveletF, x, width>>(k-1), height>>(k-1), width, height);
     }
     free(wavelet);
     free(waveletF);
+    return (void *)0xbad;
 }
 
 void copyPartsOfArray(float * in, float * out, int maxX, int maxY, int width, int height){
@@ -203,7 +206,6 @@ void copyPartsOfArrayInverse(float * in, float * out, int maxX, int maxY, int wi
 }
 
 void putRowIn(float * row, float rowNumber, float * arr, int width, int height){
-    int i=0;
     int x, y;
     y = rowNumber;
     for (x=0; x<width; x++){
@@ -211,7 +213,6 @@ void putRowIn(float * row, float rowNumber, float * arr, int width, int height){
     }
 }
 void putColIn(float * col, float colNumber, float * arr, int width, int height){
-    int i=0;
     int x, y;
     x = colNumber;
     for (y=0; y<height; y++){
@@ -219,7 +220,6 @@ void putColIn(float * col, float colNumber, float * arr, int width, int height){
     }
 }
 void getRow(float * in, int row, float * out, int width, int height){
-    int i=0;
     int x, y;
     y = row;
 
@@ -228,7 +228,6 @@ void getRow(float * in, int row, float * out, int width, int height){
     }
 }
 void getCol(float * in, int col, float * out, int width, int height){
-    int i=0;
     int x, y;
     x = col;
 
@@ -282,7 +281,7 @@ float S2sign(float x){
     float ret;
     if (x<0)  ret = -1;
     else if (x>0)  ret = 1;
-    else if (x==0) ret = 0;
+    else ret = 0;
 
     return ret;
 }

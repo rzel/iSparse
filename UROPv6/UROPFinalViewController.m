@@ -109,20 +109,15 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
 }
 
 // when the screen pops up
-- (void)viewDidLoad
-{
-    // TODO: make samples out of idx
-    // TODO: N vs. sqrt(N)
+- (void)viewDidLoad{
     [super viewDidLoad];    
 
+    [self.scrollView setBackgroundColor:[UIColor whiteColor]];
     NSDate * tic = [NSDate date];
 
-    [self.scrollView setBackgroundColor:[UIColor whiteColor]];
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
-    
     NSTimeInterval toc = [tic timeIntervalSinceNow];
-    NSLog(@"viewDidLoad: %f", toc); // ~0.1 out of 0.9
-    
+    NSLog(@"sampleImage: %f", toc);
     [self animateFISTA];
 
 
@@ -150,18 +145,13 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     // how many levels do we want to keep?
     int L = self.levels;
     int M = powf(2, J-L);
+    
     // the indicies where we want to sample
-    int * samples1 = (int *)malloc(sizeof(int) * N*N);
     int * samples = (int *)malloc(sizeof(int) * N*N);
     
     // making the sampled location
     makeIDX(samples, N*N);
-    
-    // FOR LOOP
-    srand(42);
 
-
-    // samples[i] takes about 36% of the total time
     float * x_r = (float *)malloc(sizeof(float) * N*N);
     float * x_g = (float *)malloc(sizeof(float) *  N*N);
     float * x_b = (float *)malloc(sizeof(float) *  N*N);
@@ -190,9 +180,6 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     float * b_t_g_pre = (float *)malloc(sizeof(float) * M * M);
     float * b_t_b_pre = (float *)malloc(sizeof(float) * M * M);
     
-    // FOR LOOP
-    // makeMeasurements takes about 50% of the total time
-    // vDSP_vgathr!! is equivalent to a[b[i]]
     [self.brain makeMeasurements2:self.imageStay atRate:self.rate
                              red:y_r green:y_g blue:y_b
                         ofLength:pix idx:samples];
@@ -205,12 +192,12 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     value(phi_b_b, N*N, 0);
     
     // FOR LOOP
-
     for (i=0; i<m; i++) {
         phi_b_r[samples[i]] = y_r[i];
         phi_b_g[samples[i]] = y_g[i];
         phi_b_b[samples[i]] = y_b[i];
     }
+
 
 
     // overwrites phi_b
@@ -273,9 +260,8 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
-
     NSTimeInterval toc = [tic timeIntervalSinceNow];
-    NSLog(@"Time: %f", 0-toc);
+    NSLog(@"Time: %f", toc);
     // total time: ~1.5 --> 0.8
 
     ANIMATION_COMMAND{

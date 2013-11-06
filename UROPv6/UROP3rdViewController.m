@@ -29,15 +29,15 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UROPbrain.h"
 
-// how large is the image?
-#define IMAGE_SIZE 1024
-
 // sampling rate min/max/start
 #define P_MAX 0.5
 #define P_MIN 0.1
 #define P_START 0.15
 
 #define MAX_LEVELS 5.0f
+
+// how large is the image?
+#define IMAGE_SIZE 512
 
 @interface UROP3rdViewController ()
 @property (nonatomic, strong) UROPbrain *brain;

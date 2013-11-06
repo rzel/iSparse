@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "Accelerate/Accelerate.h"
 
 void swapS2(float * a, float * b);
