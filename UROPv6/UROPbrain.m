@@ -47,9 +47,8 @@
 // functions to sample the image for the initial viewing.
 -(float *)sample:(float *)array atRate:(float)rate ofLength:(int)n
 {
-    srandom(42);
+    // vDSP_vthr
     srand(42);
-
     for (int i=0; i<n; i++) {
         float ra = (float)(rand() % n)/n;
         if (ra > rate) {
@@ -71,13 +70,7 @@
     for (n=0; n<3; n++) {
 
         colorPlane = [self.dwt getColorPlane:array ofArea:pix startingIndex:n into:colorPlane];
-
-        
         colorPlane = [self sample:colorPlane atRate:rate ofLength:pix];
-        for ( i=0; i<10; i++) {
-        }
-
-        //colorPlane = [self normalize:colorPlane ofLength:area max:&max min:&min];
         array      = [self.dwt putColorPlaneBackIn:colorPlane into:array ofArea:pix startingIndex:n];
     }
     image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
@@ -99,7 +92,49 @@
     }
 }
 
+-(void)makeMeasurements2:(UIImage *)image atRate:(float)rate
+                     red:(float *)y_r green:(float *)y_b blue:(float *)y_g
+                ofLength:(int)length idx:(int *)idx{
+    int pix = image.size.height * image.size.width;
+    float * array = (float *)malloc(sizeof(float) * pix * 4);
+    float * colorPlane = (float *)malloc(sizeof(float) * pix);
+    // get data
 
+    array = [self.dwt UIImageToRawArray:image];
+    int n;
+
+    // perform wavelet, 2D on image
+    // using color planes, all of that
+
+    // vDSP_vgathr is the equivalent of a[i] = b[c[i]]
+    for (n=0; n<3; n++) {
+        // copy from "array", which is RGBA,RGBA,RGBA...
+        // and get the colorplane out
+        cblas_scopy(pix, array+n, 4, colorPlane, 1);
+        
+        // the do-what-you-want code should go here.
+        if (n == 0) {
+            vDSP_vgathr(colorPlane, (const vDSP_Length *)idx, 1, y_r, 1, (int)(rate*pix));
+        }
+        if (n == 1) {
+            vDSP_vgathr(colorPlane, (const vDSP_Length *)idx, 1, y_b, 1, (int)(rate*pix));
+        }
+        if (n == 2) {
+            vDSP_vgathr(colorPlane, (const vDSP_Length *)idx, 1, y_g, 1, (int)(rate*pix));
+        }
+        cblas_scopy(pix, colorPlane, 1, array+n, 4);
+    }
+    
+    
+    
+    for (long i=3; i<4*pix; i=i+4) {array[i] = 255;}
+    image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
+    free(array);
+    free(colorPlane);
+
+
+
+}
 
 // another init. actual for initial view.
 -(void)makeMeasurements:(UIImage *)image atRate:(float)rate

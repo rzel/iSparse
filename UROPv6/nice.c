@@ -37,11 +37,14 @@ void makeIDX(int * array, int N){
     value(in2, N, 1);
     vDSP_vramp(in1, in2, out1, 1, N);
     // ^ we've built the ramp vector from 0 to N-1
+    for (int i=0; i<20; i++){
+        printf("%f\n", out1[i]);
+    }
     
     // now, scramble that vector
     srand(42);
     for (int i=0; i<N; i++) {
-        int ind = (int)(random() % N);
+        int ind = (random() % N);
         swapS2(out1+i, out1+ind);
     }
     vDSP_vfix32(out1, 1, array, 1, N);

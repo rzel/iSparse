@@ -125,7 +125,14 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
 }
 
 -(void)animateFISTA{
-    NSDate * beg = [NSDate date];
+    /* Use this to time stuff:
+     tic = [NSDate date];
+     NSTimeInterval toc = [toc timeIntervalSinceNow];
+     NSLog(@"Time: %f", toc);
+     
+     */
+
+    NSDate * tic = [NSDate date];
     int i;
     float rate = self.rate;
     float pix = self.imageStay.size.width * self.imageStay.size.height;
@@ -138,10 +145,10 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     int L = self.levels;
     int M = powf(2, J-L);
     // the indicies where we want to sample
-    int * samples1 = (int *)malloc(sizeof(int) * N*N);
+    //int * samples1 = (int *)malloc(sizeof(int) * N*N);
     int * samples = (int *)malloc(sizeof(int) * N*N);
     
-    makeIDX(samples1, N*N); //  there's a bug in here
+    //makeIDX(samples1, N*N); //  there's a bug in here
     NSMutableArray * idx = [[NSMutableArray alloc] init];
     [self.brain makeIDX:idx ofLength:pix];
     
@@ -150,13 +157,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     for (i=0; i<N*N; i++) {
         samples[i] = [[idx objectAtIndex:i] integerValue];
     }
-    NSTimeInterval first = [beg timeIntervalSinceNow];
-    NSLog(@"Time: %f", first);
-    beg = [NSDate date];
-
-    
-    
-    
+    // samples[i] takes about 36% of the total time
     float * x_r = (float *)malloc(sizeof(float) * N*N);
     float * x_g = (float *)malloc(sizeof(float) *  N*N);
     float * x_b = (float *)malloc(sizeof(float) *  N*N);
@@ -186,22 +187,27 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     float * b_t_b_pre = (float *)malloc(sizeof(float) * M * M);
     
     // FOR LOOP
-    [self.brain makeMeasurements:self.imageStay atRate:self.rate
+    // makeMeasurements takes about 50% of the total time
+    // vDSP_vgathr!! is equivalent to a[b[i]]
+    [self.brain makeMeasurements2:self.imageStay atRate:self.rate
                              red:y_r green:y_g blue:y_b
-                        ofLength:pix idx:idx];
-    
+                        ofLength:pix idx:samples];
 
+    
     
     value(phi_b_r, N*N, 0);
     value(phi_b_g, N*N, 0);
     value(phi_b_b, N*N, 0);
     
     // FOR LOOP
+
     for (i=0; i<m; i++) {
         phi_b_r[samples[i]] = y_r[i];
         phi_b_g[samples[i]] = y_g[i];
         phi_b_b[samples[i]] = y_b[i];
     }
+
+
 
     // overwrites phi_b
     dwt2_full(phi_b_r, N, N);
@@ -211,7 +217,9 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     vec(phi_b_g, N, N);
     vec(phi_b_b, N, N);
     // reshaping
+    
     // FOR LOOP
+    // here takes about 14% of the total time
     vecQuad(phi_b_r, M, M, N, N, b_t_r_pre);
     vecQuad(phi_b_g, M, M, N, N, b_t_g_pre);
     vecQuad(phi_b_b, M, M, N, N, b_t_b_pre);
@@ -223,6 +231,7 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     vDSP_mtrans(b_t_b_pre, 1, b_t_b, 1, M, M);
     // ------------------------ done calculating b_t
     
+    // ensuring all 0's
     value(Xhat_r, N*N, 0);
     value(Xhat_g, N*N, 0);
     value(Xhat_b, N*N, 0);
@@ -234,36 +243,20 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     value(y_b, N*N, 0);
     
     
-    // the thresholds.
+    // the thresholds. __block required for ANIMATION_COMMAND
     __block float t_r = 1.0;
     __block float t_g = 1.0;
     __block float t_b = 1.0;
-    
-    
-    
-    
+
     // the start of the animation. You shouldn't have to touch anything below here;
     // it's all taken care of in IMAGE_STEP.
     // everything critical is in #defines: N_MIN, ITERATION_STEP, IMAGE_STEP
+    
     //free(x_r);
-    //free(x_g);
-    //free(x_b);
-    
     //free(y_r);
-    //free(y_g);
-    //free(y_b);
-    
     //free(Xhat_r);
-    //free(Xhat_g);
-    //free(Xhat_b);
-    
     //free(y2_r);
-    //free(y2_g);
-    //free(y2_b);
-    
     //free(b_t_r);
-    //free(b_t_g);
-    //free(b_t_b);
     // we need to free these in the return. use free(self.x_r);
     
     free(phi_b_r);
@@ -276,6 +269,10 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+    
+
+    
+    // total time: ~1.5
 
     ANIMATION_COMMAND{
         showIts=0;

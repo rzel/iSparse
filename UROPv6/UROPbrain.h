@@ -35,6 +35,9 @@
                    blue:(float *)y_g
                ofLength:(int)length
                     idx:(NSMutableArray *)idx;
+-(void)makeMeasurements2:(UIImage *)image atRate:(float)rate
+                     red:(float *)y_r green:(float *)y_b blue:(float *)y_g
+                ofLength:(int)length idx:(int *)idx;
 -(UIImage *)reconstructWithIST:(UIImage *)image
                         coarse:(float)coarse
                            idx:(NSMutableArray *)idx

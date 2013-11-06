@@ -308,6 +308,10 @@
 }
 -(float *)UIImageToRawArray:(UIImage *)image
 {
+    NSLog(@"self.dwt.UIImageToRawArray: HERE!!");
+    NSDate * toc;
+    toc = [NSDate date];
+
     int length = image.size.height;
     int width  = image.size.width;
     int i;
@@ -315,11 +319,8 @@
     float * array = (float *)malloc(sizeof(float) * 4 * area);
     float red, green, blue, alpha;
     NSArray * data = [self getRGBAsFromImage:image atX:0 andY:0 count:area];
-    //   NSLog(@"----------------------");
-    for (i=0; i<10; i++) {
-        // NSLog(@"%@", [data objectAtIndex:i]);
-        
-    }
+    NSTimeInterval tic = [toc timeIntervalSinceNow];
+    NSLog(@"    self.dwt...time: %f", tic);
     // move data from NSArray to raw array
     int j=0;
     for (i=0; i<area; i++) {
