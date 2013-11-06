@@ -191,13 +191,10 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     // FOR LOOP
     // makeMeasurements takes about 50% of the total time
     // vDSP_vgathr!! is equivalent to a[b[i]]
-    tic = [NSDate date];
-
     [self.brain makeMeasurements2:self.imageStay atRate:self.rate
                              red:y_r green:y_g blue:y_b
                         ofLength:pix idx:samples];
-    NSTimeInterval toc = [tic timeIntervalSinceNow];
-    NSLog(@"Time: %f", toc);
+
 
     
     
@@ -274,8 +271,10 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+    NSTimeInterval toc = [tic timeIntervalSinceNow];
+    NSLog(@"Time: %f", 0-toc);
     
-    // total time: ~1.5
+    // total time: ~1.5 --> 0.8
 
     ANIMATION_COMMAND{
         showIts=0;

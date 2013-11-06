@@ -100,12 +100,11 @@
     float * colorPlane = (float *)malloc(sizeof(float) * pix);
     // get data
 
-    array = [self.dwt UIImageToRawArray:image];
+    [self.dwt imageToRawArray:image into:array pix:length];
     int n;
 
     // perform wavelet, 2D on image
     // using color planes, all of that
-
     // vDSP_vgathr is the equivalent of a[i] = b[c[i]]
     for (n=0; n<3; n++) {
         // copy from "array", which is RGBA,RGBA,RGBA...

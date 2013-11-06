@@ -37,6 +37,7 @@
 -(float *)inverseOn2DArray:(float *)array ofWidth:(int)width andHeight:(int)height;
 -(UIImage *)inverseWaveletOnImage:(UIImage *)image ofOrder:(int)order;
 -(float *)inverseOn2DArray:(float *)array ofWidth:(int)width andHeight:(int)height ofOrder:(int)order multiply:(NSString *)mul;
+-(void)imageToRawArray:(UIImage*)image into:(float *)array pix:(long)count;
 
 
 

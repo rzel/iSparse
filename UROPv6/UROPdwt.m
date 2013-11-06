@@ -265,8 +265,8 @@
     return signal;
 }
 // end of functions helpful for wavelets/FFTs
--(void)ImageToArrayOfImage:(UIImage*)image into:(float *)array pix:(long)count
-{    
+-(void)imageToRawArray:(UIImage*)image into:(float *)array pix:(long)count
+{
     // First get the image into your data buffer
     CGImageRef imageRef = [image CGImage];
     NSUInteger width = CGImageGetWidth(imageRef);
@@ -284,8 +284,8 @@
     CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
     CGContextRelease(context);
     
-    vDSP_vflt8((char *)rawData, 1, array, 1, count);
-    
+    // unsigned char to float conversion
+    vDSP_vfltu8(rawData, 1, array, 1, 4*count);
     free(rawData);
 }
 
