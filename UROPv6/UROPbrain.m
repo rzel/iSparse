@@ -125,9 +125,8 @@
         cblas_scopy(pix, colorPlane, 1, array+n, 4);
     }
     
+    catlas_sset(pix, 255, array+3, 4);
     
-    
-    for (long i=3; i<4*pix; i=i+4) {array[i] = 255;}
     image = [self.dwt UIImageFromRawArray:array image:image forwardInverseOrNull:@"null"];
     free(array);
     free(colorPlane);

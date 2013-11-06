@@ -265,10 +265,34 @@
     return signal;
 }
 // end of functions helpful for wavelets/FFTs
+-(void)ImageToArrayOfImage:(UIImage*)image into:(float *)array pix:(long)count
+{    
+    // First get the image into your data buffer
+    CGImageRef imageRef = [image CGImage];
+    NSUInteger width = CGImageGetWidth(imageRef);
+    NSUInteger height = CGImageGetHeight(imageRef);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char *rawData = (unsigned char*) calloc(height * width * 4, sizeof(unsigned char));
+    NSUInteger bytesPerPixel = 4;
+    NSUInteger bytesPerRow = bytesPerPixel * width;
+    NSUInteger bitsPerComponent = 8;
+    CGContextRef context = CGBitmapContextCreate(rawData, width, height,
+                                                 bitsPerComponent, bytesPerRow, colorSpace,
+                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(colorSpace);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+    CGContextRelease(context);
+    
+    vDSP_vflt8((char *)rawData, 1, array, 1, count);
+    
+    free(rawData);
+}
 
 // functions to manipulate images/python stuff
 -(NSArray*)getRGBAsFromImage:(UIImage*)image atX:(int)xx andY:(int)yy count:(long)count
 {
+    NSDate * tic = [NSDate date];
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:count];
     
     // First get the image into your data buffer
@@ -287,12 +311,14 @@
     
     CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
     CGContextRelease(context);
-    
+
     // Now your rawData contains the image data in the RGBA8888 pixel format.
     int byteIndex = (bytesPerRow * yy) + xx * bytesPerPixel;
+    tic = [NSDate date];
     for (int ii = 0 ; ii < count ; ii++)    // changed from ++ii to ii++
     {
-        // error here. byteIndex = 794304, 787584
+        // specifically, it's this loop that's slowing us down.
+        // we don't care about the intermediate step of the NSMutableArray filled with UIColors -- we want the raw array.
         CGFloat red   = (rawData[byteIndex]     * 1.0) / 255.0;
         CGFloat green = (rawData[byteIndex + 1] * 1.0) / 255.0;
         CGFloat blue  = (rawData[byteIndex + 2] * 1.0) / 255.0;
@@ -302,15 +328,16 @@
         UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
         [result addObject:acolor];
     }
-    
+    NSTimeInterval toc = [tic timeIntervalSinceNow];
+    NSLog(@"    current testing: %f", toc);
     free(rawData);
     return result;
 }
 -(float *)UIImageToRawArray:(UIImage *)image
 {
     NSLog(@"self.dwt.UIImageToRawArray: HERE!!");
-    NSDate * toc;
-    toc = [NSDate date];
+    NSDate * tic;
+    tic = [NSDate date];
 
     int length = image.size.height;
     int width  = image.size.width;
@@ -318,9 +345,10 @@
     int area = length * width;
     float * array = (float *)malloc(sizeof(float) * 4 * area);
     float red, green, blue, alpha;
+    
+    tic = [NSDate date];
     NSArray * data = [self getRGBAsFromImage:image atX:0 andY:0 count:area];
-    NSTimeInterval tic = [toc timeIntervalSinceNow];
-    NSLog(@"    self.dwt...time: %f", tic);
+
     // move data from NSArray to raw array
     int j=0;
     for (i=0; i<area; i++) {
