@@ -62,11 +62,11 @@
 -(UIImage *)sampleImage:(UIImage *)image atRate:(float)rate
 {
     float pix = image.size.width * image.size.height;
-    int n, i;
+    int n;
     float * colorPlane = (float *)malloc(sizeof(float) * pix);
     float * array = (float *)malloc(sizeof(float) * pix * 4);
-    array = [self.dwt UIImageToRawArray:image];
-    srandom(42);
+    [self.dwt imageToRawArray:image into:array pix:pix];
+    srandom(42); srand(42);
     for (n=0; n<3; n++) {
 
         colorPlane = [self.dwt getColorPlane:array ofArea:pix startingIndex:n into:colorPlane];

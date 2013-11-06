@@ -29,7 +29,6 @@ void vecQuad(float * x, int xLimit, int yLimit, int width, int height, float * y
 void makeIDX(int * array, int N){
     // samples: an array of int's, malloc'd. gets overwritten.
     // N: how large samples should be
-    printf("%d\n", N);
     float * in1 = (float *)malloc(sizeof(float) * N);
     float * in2 = (float *)malloc(sizeof(float) * N);
     float * out1 = (float *)malloc(sizeof(float) * N);
@@ -37,9 +36,6 @@ void makeIDX(int * array, int N){
     value(in2, N, 1);
     vDSP_vramp(in1, in2, out1, 1, N);
     // ^ we've built the ramp vector from 0 to N-1
-    for (int i=0; i<20; i++){
-        printf("%f\n", out1[i]);
-    }
     
     // now, scramble that vector
     srand(42);

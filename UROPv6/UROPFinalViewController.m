@@ -114,10 +114,14 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     // TODO: make samples out of idx
     // TODO: N vs. sqrt(N)
     [super viewDidLoad];    
-    int i;
-    
+
+    NSDate * tic = [NSDate date];
+
     [self.scrollView setBackgroundColor:[UIColor whiteColor]];
     self.imageView.image = [self.brain sampleImage:self.imageStay atRate:self.rate];
+    
+    NSTimeInterval toc = [tic timeIntervalSinceNow];
+    NSLog(@"viewDidLoad: %f", toc); // ~0.1 out of 0.9
     
     [self animateFISTA];
 
@@ -147,18 +151,16 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     int L = self.levels;
     int M = powf(2, J-L);
     // the indicies where we want to sample
-    //int * samples1 = (int *)malloc(sizeof(int) * N*N);
+    int * samples1 = (int *)malloc(sizeof(int) * N*N);
     int * samples = (int *)malloc(sizeof(int) * N*N);
     
-    //makeIDX(samples1, N*N); //  there's a bug in here
-    NSMutableArray * idx = [[NSMutableArray alloc] init];
-    [self.brain makeIDX:idx ofLength:pix];
+    // making the sampled location
+    makeIDX(samples, N*N);
     
     // FOR LOOP
     srand(42);
-    for (i=0; i<N*N; i++) {
-        samples[i] = [[idx objectAtIndex:i] integerValue];
-    }
+
+
     // samples[i] takes about 36% of the total time
     float * x_r = (float *)malloc(sizeof(float) * N*N);
     float * x_g = (float *)malloc(sizeof(float) *  N*N);
@@ -271,9 +273,9 @@ self.imageView.image = [self.brain reconstructWithFISTA:self.imageView.image \
     
     static int showIts = 0;
     self.iterations.text = [NSString stringWithFormat:@"Iterations: %d", showIts];
+
     NSTimeInterval toc = [tic timeIntervalSinceNow];
     NSLog(@"Time: %f", 0-toc);
-    
     // total time: ~1.5 --> 0.8
 
     ANIMATION_COMMAND{

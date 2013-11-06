@@ -20,7 +20,6 @@
  *
  *
  */
-// a comment
 
 #import <QuartzCore/QuartzCore.h>
 #import "UROPInfo.h"
@@ -33,6 +32,7 @@
 // how large is the image?
 #define IMAGE_SIZE 1024
 
+// sampling rate min/max/start
 #define P_MAX 0.5
 #define P_MIN 0.1
 #define P_START 0.15
@@ -61,7 +61,6 @@
 {
     [super viewDidLoad];
     self.rate = P_START;
-//    float rate = (P_MAX-P_MIN)*self.samplingSlider.value + P_MIN;
 
     // (rate - P_MIN)/(P_MAX - P_MIN) = self.sampleSlider.value
     self.samplingSlider.value = (self.rate - P_MIN) / (P_MAX - P_MIN);
